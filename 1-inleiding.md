@@ -15,5 +15,5 @@ Deze standaard is gebaseerd op de volgende standaard(en):
 
 | Afkorting | Document | Versie | Datum | Auteur c.q. beheerder |
 |-----------|----------|--------|-------|-----------------------|
-| [OAuth2] | OAuth | 2.0 |  | IETF | 
+| [[OAuth2]] | OAuth | 2.0 |  | IETF | 
 | [xxx] | xxxx |  |  |  |
