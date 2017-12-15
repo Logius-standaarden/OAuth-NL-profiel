@@ -4,7 +4,7 @@ Dit hoofdstuk beschrijft de uitgangspunten voor het Nederlands profiel OAuth.
 
 # Expert advies OAuth forum standaardisatie 
 
-Het opstellen van deze standaard is voortgekomen uit het Expert advies OAuth [[expert]]. Daarin wordt aangeraden eerst een nederlands profiel op stellen alvorens OAuth op de pas toe of leg uit lijst van het forum standaardisatie te plaatsen.
+Het opstellen van deze standaard is voortgekomen uit het Expert advies OAuth [[Expert]]. Daarin wordt aangeraden eerst een nederlands profiel op stellen alvorens OAuth op de pas toe of leg uit lijst van het forum standaardisatie te plaatsen.
 
 ## Werkingsgebied standaard
 
