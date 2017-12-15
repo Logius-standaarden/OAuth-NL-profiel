@@ -1,4 +1,4 @@
-#Werkgroep Authenticatie/Autorisatie
+# Werkgroep Authenticatie/Autorisatie
 
 **Datum:** 11-12-2017 9:30-12:00
 
@@ -6,26 +6,26 @@
 
 **Afgemeld:** Henri Korver(VNG realisatie)
 
-##Presentatie Gemeenten
+## Presentatie Gemeenten
 
 Arnoud Quanjer ligt plannen gemeenten toe mbt rechten delegatie. Gebaseerd op document https://www.gemmaonline.nl/index.php/Gegevenslandschap_-_Aansluiting_op_het_het_gegevenslandschap_vanuit_gemeentelijk_perspectief
 Belangrijk punt om te behandelen in Kennisplatform APIs maar niet in deze werkgroep is hoe om te gaan met tijdreizen(formele/materiële historie) in relatie tot APIs.
 
-##Presentatie Digitaal Stelsel Omgevingswet
+## Presentatie Digitaal Stelsel Omgevingswet
 
 Jan Jaap Zoutendijk ligt het gebruik van OAuth door het DSO toe.
 Het DSO kent 3 use cases
-..*De eerste en tevens eenvoudigste use case, bestaat uit koppelingen tussen applicaties binnen DSO. Een voorbeeld is het loket met de content API. De communicatie verloopt via het knooppunt. Hierbij is het alleen van belang dat de applicatie zelf informatie nodig heeft en is er geen sprake van bijvoorbeeld ingelogde eindgebruikers die een bevraging doen. De identiteit die gepropageerd wordt is in dit geval die van een applicatie. Dit is een technische identiteit. Omdat de services blootgesteld worden via het knooppunt zullen partijen kenbaar moeten maken dat ze geautoriseerd zijn op de API’s die ze bevragen. Dit word afgedwongen door de API gateway.
+..* De eerste en tevens eenvoudigste use case, bestaat uit koppelingen tussen applicaties binnen DSO. Een voorbeeld is het loket met de content API. De communicatie verloopt via het knooppunt. Hierbij is het alleen van belang dat de applicatie zelf informatie nodig heeft en is er geen sprake van bijvoorbeeld ingelogde eindgebruikers die een bevraging doen. De identiteit die gepropageerd wordt is in dit geval die van een applicatie. Dit is een technische identiteit. Omdat de services blootgesteld worden via het knooppunt zullen partijen kenbaar moeten maken dat ze geautoriseerd zijn op de API’s die ze bevragen. Dit word afgedwongen door de API gateway.
 Deze usecase gebruikt de client credentials grant met opaque bearer tokens.
 
-..*De tweede use case betreft, naast applicaties van het DSO, ook ingelogde eindgebruikers. Deze gebruikers kunnen ingelogd zijn met bijvoorbeeld DigiD, eHerkenning of een DSO ID. Een voorbeeld van deze use case is een initiatiefnemer die ingelogd is in het loket, en een aanvraag in wil dienen via een gebruikerstoepassing. Het knooppunt moet de identiteit van de eindgebruiker doorgeven. In deze use-case werken meerdere componenten van het DSO samen en wordt gebruik gemaakt van de GDI componenten DigiD / EHerkenning. Deze use case is dus een uitbreiding/ specialisatie van de eerste usecase.
+..* De tweede use case betreft, naast applicaties van het DSO, ook ingelogde eindgebruikers. Deze gebruikers kunnen ingelogd zijn met bijvoorbeeld DigiD, eHerkenning of een DSO ID. Een voorbeeld van deze use case is een initiatiefnemer die ingelogd is in het loket, en een aanvraag in wil dienen via een gebruikerstoepassing. Het knooppunt moet de identiteit van de eindgebruiker doorgeven. In deze use-case werken meerdere componenten van het DSO samen en wordt gebruik gemaakt van de GDI componenten DigiD / EHerkenning. Deze use case is dus een uitbreiding/ specialisatie van de eerste usecase.
 Deze usecase gebruikt OpenID Connect, bearer +ID tokens(JWT) en de authorization code grant.
 
-..*De derde use case betreft die van applicaties van derden die gebruik maken van de functionaliteit van het DSO. Een voorbeeld van deze use case is een aannemersbedrijf met een app waarin klanten van het aannemersbedrijf het aannemersbedrijf machtigen om een aanvraag voor een vergunning te doen namens hen.  
+..* De derde use case betreft die van applicaties van derden die gebruik maken van de functionaliteit van het DSO. Een voorbeeld van deze use case is een aannemersbedrijf met een app waarin klanten van het aannemersbedrijf het aannemersbedrijf machtigen om een aanvraag voor een vergunning te doen namens hen.  
 Deze usecase moet nog uitgewerkt worden maar gebruikt waarschijnlijk minimaal OpenID Connect, bearer +ID tokens(JWT) en de authorization code grant.
 
 
-##Aandachtspunten andere deelnemers
+## Aandachtspunten andere deelnemers
 
 Bij de plannen van VNG realisatie wordt alleen identiteit organisatie doorgegeven.
 Volgens logius zijn er voorbeelden (advocatuur) waar dit niet voldoende is en de medewerker ook bekend moet zijn bij de externe dienstaanbieder.
@@ -43,7 +43,7 @@ Mogelijk is dit via scopes in OAuth op te lossen.
 Token formaat is een interessant onderwerp. OAuth zegt niets over token, Openid connect kent JWT tokens waar scopes( en identiteit) kunnen worden meegegeven.
  Inzien eigen gegevens, hoe om te gaan met machtigingen en vertegenwoordigingen hierbij.
 
-Hoof onderwerpen voor de standaard: 
+Hoofd onderwerpen voor de standaard: 
 * Hoe ziet de client eruit
 	..* Hoe kom je aan je tokens, met mobiel(met een backend), webapplicatie etc...
 	..* Wat staat er in het token
@@ -51,7 +51,7 @@ Hoof onderwerpen voor de standaard:
 	..* Wil je Knooppunt, API aggregators onderkennen
 	..* Hoe om te gaan met federated identity management
 
-##Usecases
+## Usecases
 
 1. KvK: ondernemer die inlogt, zijn eigen gegevens inziet die bij meerdere uitvoeringsinstanties vandaan komen (MOVO). Ondernemer kan 1 manszaak(mag zich laten vertegenwoordigen, werkt op basis van BSN) zijn t/m internationale B.V. Vertegenwoordiging in Eidas lijkt niet relevant.
 2. Kadaster: nu alleen ontsluiten openbare dat maar straks ook privacy gevoelige APIs. Privacy gevoelige (notaris mag alleen in eigen regio inzien, burger alleen eigen gegevens)
@@ -62,7 +62,7 @@ Hoof onderwerpen voor de standaard:
 8. Kadaster: Browser apllicaties die geen serverside code hebben is een interessante usecase (API keys zijn daar niet geschikt) misschien biedt OAuth profiel een alternatief. Achter grond is een behoefte aan het herkennen van individuele gebruikers t.b.v. monitoring e.d. Dynamic client registration mogelijk een oplossing voor deze case?
 9. Logius: Vanuit Eid aan het kijken naar modernisering. OAuth/openid connect kandidaad. Met name voor BSN domein. Identiteit van de gebruiker inclusief machtiging (burger/ medewerker namens organisatie). Client gaat een rol spelen. 
 
-##Vervolgafspraken
+## Vervolgafspraken
 
 * **Volgende bijeenkomst:** 5 februari 9:30-12:00 bij Geonovum
 * Geonovum stuurt verslag
