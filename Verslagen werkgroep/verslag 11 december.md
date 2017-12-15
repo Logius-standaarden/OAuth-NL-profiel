@@ -45,11 +45,11 @@ Token formaat is een interessant onderwerp. OAuth zegt niets over token, Openid 
 
 Hoofd onderwerpen voor de standaard: 
 * Hoe ziet de client eruit
-..* Hoe kom je aan je tokens, met mobiel(met een backend), webapplicatie etc...
-..* Wat staat er in het token
+  * Hoe kom je aan je tokens, met mobiel(met een backend), webapplicatie etc...
+  * Wat staat er in het token
 * Hoe ziet de server eruit
-..* Wil je Knooppunt, API aggregators onderkennen
-..* Hoe om te gaan met federated identity management
+  * Wil je Knooppunt, API aggregators onderkennen
+  * Hoe om te gaan met federated identity management
 
 ## Usecases
 
