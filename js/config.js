@@ -28,5 +28,13 @@ var respecConfig = {
       date: "October 2012",
       publisher: "The Internet Engineering Task Force",
     },
+	Expert: {
+      href: "https://www.forumstandaardisatie.nl/sites/bfs/files/Expertadvies%20OAuth%202.0.pdf",
+      title:
+        "Expertadvies OAuth 2.0",
+      authors: ["P. Dam"],
+      date: "24 februari 2017",
+      publisher: "Forum STandaardisatie",
+    },
   },
 };
