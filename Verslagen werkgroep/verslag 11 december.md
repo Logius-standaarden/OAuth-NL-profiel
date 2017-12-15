@@ -6,6 +6,10 @@
 
 **Afgemeld:** Henri Korver(VNG realisatie)
 
+Gestart wordt met een voorstel ronde. Paul Dam en Frank Terpstra lichten kort de aanleiding toe. Geonovum is het Kennisplatform APIs gestart (samen met KvK, Forum standaardisatie, Kadaster en VNG realisatie), doel is om kennis te delen over het gebruik van APIs door de overheid. Dat gebeurd in verschillende werkgroepen. De werkgroep Authenticatie/Autorisatie is als eerste gestart omdat er een kant en klaar onderwerp klaar lag. Bij het forum standaardisatie was uit het expert advies naar voren gekomen dat OAuth (een belangrijke standaard voor APIs) pas op de pas toe of leg uit lijst kon komen als er een Nederlands profiel voor is opgesteld. Het opstellen van dit profiel is het eerste doel van deze werkgroep. Hierna kunnen mogelijk nog andere onderwerpen op authenticatie/autorisatie gebied in relatie tot APIs besproken worden.
+zie ook: https://www.geonovum.nl/onderwerpen/platform-apis/nieuws/kennisplatform-apis-van-start-gegaan
+
+
 ## Presentatie Gemeenten
 
 Arnoud Quanjer ligt plannen gemeenten toe mbt rechten delegatie. Gebaseerd op document https://www.gemmaonline.nl/index.php/Gegevenslandschap_-_Aansluiting_op_het_het_gegevenslandschap_vanuit_gemeentelijk_perspectief
