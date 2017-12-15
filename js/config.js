@@ -20,7 +20,7 @@ var respecConfig = {
   github: "https://github.com/Geonovum/KP-APIs-OAuthNL",
   issueBase: "https://github.com/Geonovum/KP-APIs-OAuthNL/issues/",
   localBiblio: {
-    OAuth2: {
+    "OAuth2": {
       href: "https://tools.ietf.org/html/rfc6749",
       title:
         "The OAuth 2.0 Authorization Framework",
@@ -28,7 +28,7 @@ var respecConfig = {
       date: "October 2012",
       publisher: "The Internet Engineering Task Force",
     },
-	Expert: {
+	"Expert": {
       href: "https://www.forumstandaardisatie.nl/sites/bfs/files/Expertadvies%20OAuth%202.0.pdf",
       title:
         "Expertadvies OAuth 2.0",
