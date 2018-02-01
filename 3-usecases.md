@@ -6,25 +6,25 @@ Hieronder even een hele kort overzicht van een paar aspecten voor de interfaces 
 
 Use Cases
 * DV-perspectief
-..*	authentication for single service
-..*	authentication for service set (dienstensets)
-..*	authentication with multiple recipients / relying parties
-..*	authentication with attributes
-....*	verplicht/optioneel van attributen
-....*	authentication without identity/pseudonym, just attributes (e.g. 18+)
-..*	(mogelijkheid) authentication with IDP preselection (en/of MR preselectie (?))
-..*	follow-up authentication (re-authentication, step-up, other representation) (?)
-..*	ondertekenen (?)
-*	User-perspectief
-..*	authentication for self
-..*	authentication with representation
-..*	remember IDP selection
-..*	authenticate using browser or app from IDP; app-2-app waar mogelijk ondersteunen
-*	IT/applicatie-architectuur perspectief
-..*	web-based applicatie
-..*	native app
-..*	refresh token / langduriger “sessies”
-..*	m2m / dienstbemiddeling
+** authentication for single service
+..* authentication for service set (dienstensets)
+..* authentication with multiple recipients / relying parties
+..* authentication with attributes
+....* verplicht/optioneel van attributen
+....* authentication without identity/pseudonym, just attributes (e.g. 18+)
+..* (mogelijkheid) authentication with IDP preselection (en/of MR preselectie (?))
+..* follow-up authentication (re-authentication, step-up, other representation) (?)
+..* ondertekenen (?)
+* User-perspectief
+..* authentication for self
+..* authentication with representation
+..* remember IDP selection
+..* authenticate using browser or app from IDP; app-2-app waar mogelijk ondersteunen
+* IT/applicatie-architectuur perspectief
+..* web-based applicatie
+..* native app
+..* refresh token / langduriger “sessies”
+..* m2m / dienstbemiddeling
 
 Benodigde specificaties
 *	berichten (functioneel, technisch)
