@@ -36,6 +36,7 @@ Erwin Reinhoud: Binnen het onderwijs veld is er een usecase waarbij de omgang me
 **Discussie: Wat is een generieke grootste gemene deler voor het Nederlands profiel OAuth**
 
 Jan Jaap Zoutendijk geeft de volgende vier usecases op hoofdlijnen aan: 
+
 	1. pure autorisatie met resource server en authorization server in zelfde domein
 	2. pure autorisatie met resource server en authorization server in verschillend domein
 	3. authenticatie/autorisatie met resource server en authorization server in zelfde domein
@@ -57,13 +58,17 @@ Wanneer je gebruik maakt van een authorization server buiten het domein dan heb 
 Identiteitsgegevens kan je via token introspection of (JWT) tokens doorgeven.
 
 Voorstel Martin: specificeren identity informatie, manier waarop OAuth gebruikt wordt. Hierbij kan je het beste volgen wat er wereldwijd gebeurd. Er zijn drie dominante profielen:
+
 	* Google
 	* OKTA 
 	* Git
+
 Eventueel kan je in Facebook een vierde zien. Dit zijn allemaal profielen voor Authorization servers buiten het domein van de resource server. Voor usecases waar de Authorization server binnen het domein van de resource server ligt kan je elementen van deze profielen hergebruiken.
 
 **Discussie: wat is binnen scope eerste versie, wat is binnen scope doorontwikkeling en wat is buiten scope**
+
 Paul Dam: Er lijkt een spanningsveld tussen ideale oplossing en grootste gemene deler. Groot denken maar klein beginnen kan daarbij de aanpak zijn.
+
 Frank Terpstra: voorstel profiel met wat echt moet en een aantal best practices (ongeveer 4) die aangegeven hoe je dit het beste gebruikt waar mogelijk inclusief voorbeeld implementatie.
 Dit biedt in de toekomst de mogelijkheid om één of meerdere best practices ook tot standaard te verheffen indien ze aanslaan.
 
