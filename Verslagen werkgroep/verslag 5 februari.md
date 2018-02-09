@@ -18,12 +18,19 @@ Gestart wordt met een voorstel ronde voor alle nieuwe deelnemers.
 Remco licht de apsecten toe die logius heeft geidentificeerd voor usecases. Deze zijn te vinden in de draft standaard van 5 februari op https://geonovum.github.io/KP-APIs-OAuthNL/#logius
 
 Marcel van den brink: Geeft als aandachtspunt mee de (identiteit van de) eindgebruiker die uiteindelijk geautoriseerd wordt expliciet te maken. Daarnaast zou ondertekenen buiten scope moeten vallen.
+
 Bob te Riele: Je kan bij lijst van Logius aangeven wat direct onder OAuth valt en wat een randvoorwaarde is.
+
 Remco: We hebben vanuit logius te maken met divers landschap, kan niet allemaal in 1x over naar OAuth en niet alles zal OAuth zijn.
+
 Eelco: Remco merkte op dat een eerder voorstel het niet gehaald omdat het teveel vast legt in achterliggende landschappen. Dat is juist wat Eelco wil bereiken, een beperkt aantal usecases dat overal geïmplementeerd wordt.
+
 Remco: idealiter mee eens, politiek is het echter een zeer complex probleem, alle ministeries op twee na hebben een belang.
+
 Frits Bouma: Heeft in zijn usecases behoefte aan vorm van dienstbemiddeling.
+
 Frank: gebruik de aspecten van Logius als eerste versie usecase waarbij je aangeeft wat context is en wat binnen specificatie valt.
+
 Erwin Reinhoud: Binnen het onderwijs veld is er een usecase waarbij de omgang met meerdere IDP en resource servers in meerdere bijbehorende domeinen speelt. Erwin stelt het gebruik van de UMA standaard daarvoor voor.
 
 **Discussie: Wat is een generieke grootste gemene deler voor het Nederlands profiel OAuth**
@@ -48,10 +55,11 @@ dat kan bijvoorbeeld door hier https://github.com/OAI/OpenAPI-Specification/issu
 Martin: bij authorization server gekoppeld aan resourcce server dan is vastleggen identiteitgegevens “verborgen in de oplossing”
 Wanneer je gebruik maakt van een authorization server buiten het domein dan heb je identiteitsgegevens nodig.
 Identiteitsgegevens kan je via token introspection of (JWT) tokens doorgeven.
+
 Voorstel Martin: specificeren identity informatie, manier waarop OAuth gebruikt wordt. Hierbij kan je het beste volgen wat er wereldwijd gebeurd. Er zijn drie dominante profielen:
-	*Google
-	*OKTA 
-	*Git
+	* Google
+	* OKTA 
+	* Git
 Eventueel kan je in Facebook een vierde zien. Dit zijn allemaal profielen voor Authorization servers buiten het domein van de resource server. Voor usecases waar de Authorization server binnen het domein van de resource server ligt kan je elementen van deze profielen hergebruiken.
 
 **Discussie: wat is binnen scope eerste versie, wat is binnen scope doorontwikkeling en wat is buiten scope**
