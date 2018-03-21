@@ -20,13 +20,14 @@ er zijn 5 gevallen:
 3.	Extern app(zonder user)  -> overheid API
 4.	Extern app( Met User) -> overheid AI
 5.	User  en overheid API in één domein
+
 Voorstel is om 4 als basis te nemen van de eerste versie van het profiel OAuth. Dit wordt voorstel wordt door de groep geaccepteerd. Overige usecases worden in het profiel niet gestandaardiseerd en moeten buiten het toepassingsprofiel vallen. Daarvoor moet het functioneel toepassingsgebied zoals aaan bevolen door de expert groep verder worden aangescherpt.
 Usecase 1 kan mogelijk op een later moment worden toegevoegd. Voorbeeld hiervoor is de gegevenscatalogus van het DSO waar decentrale overheden rechten hebben om hun eigen brgrippen op te voeren en muteren in een landelijke voorziening.
 Usecases waarbij je individuele medewerkers van andere overheden wil autoriseren zijn niet wenselijk.
 Eelco Hotting en RviG werken plaatjes uit in document. Zodra document bijgewerkt is doen alle organisaties een check of deze mappen op de door hen aangeleverde usecase. Dit ter verificatie of we niets gemist hebben bij de usecase. Organisatie specificieke usecase verdwijnen uit het document.
 
 ## Scope profiel OAuth
-** Martin ligt profiel toe: **
+**Martin ligt profiel toe:**
 Het profiel is op GitHub te vinden op https://github.com/Geonovum/KP-APIs-OAuthNL/blob/master/4-OAuth%202.0%20NL%20Profiel.md
 
 Begrippen uit OAuth worden uitgelegd:
