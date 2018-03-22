@@ -76,9 +76,12 @@ Mogelijke deelnemers:
 * KvK MOVO
 
 Actie Frank: opdracht formulering Datavisibility
-ACtie Eelco: mogelijkheid locatie bij gemeente Utrecht vragen.
+
+Actie Eelco: mogelijkheid locatie bij gemeente Utrecht vragen.
+
 Actie Frank: Gemeente Amsterdam datapunt vragen.
-We mikken erop het fieldlab over twee maanden te houden. 
+
+We mikken erop het fieldlab over twee maanden te houden. Voor het organiseren communiceren we via slack: https://datavisibility.slack.com/
 
 
 ## Afsluiting
