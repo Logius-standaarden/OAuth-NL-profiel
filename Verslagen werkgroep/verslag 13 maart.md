@@ -4,7 +4,7 @@
 
 **Aanwezig:** 
 
-Paul Dam(forum standaardisatie, voorzitter), Jan Jaap Zoutendijk(Enable-U/RWS Digitaal Stelsel Omgevingswet), Jan jaap zoutendijk(DSO), Marcel van den brink (KvK), Bob te Riele (RvIG), Hans Hendrikman(RvIG), Eelco Hotting(Gemeente Haarlem, VNG), Martin Borgman (Kadaster), Peter Haasnoot (Logius), Frank Terpstra (Geonovum), Erwin Reinhoud (Kennisnet)
+Paul Dam(forum standaardisatie, voorzitter), Jan Jaap Zoutendijk(Enable-U/RWS Digitaal Stelsel Omgevingswet), Marcel van den brink (KvK), Bob te Riele (RvIG), Hans Hendrikman(RvIG), Eelco Hotting(Gemeente Haarlem, VNG), Martin Borgman (Kadaster), Peter Haasnoot (Logius), Frank Terpstra (Geonovum), Erwin Reinhoud (Kennisnet)
 
 **Afgemeld:** Frits bouma(DUO), Henri Korver(VNG realisatie), Remco schaar(Logius), Arnoud Quanjer (VNG), Rob Post (RvIG)
 ##	Introductie, mededelingen
