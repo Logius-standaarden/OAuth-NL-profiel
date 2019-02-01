@@ -362,20 +362,21 @@ Note that the second example contains both the public and private keys, while th
 ### Token Response
 
 **iGov-NL**
+TODO logischer om "Token Response" in AS profile te beschrijven ipv in client profile.
 
-The Token Response has the following contents
+The Token Response has the following contents:
 
 <dl>
 <dt>access_token</dt>
-<dd>Mandatory. TODO</dd>
+<dd>Mandatory. Structured access token a.k.a. a JWT Bearer token. The JWT MUST be signed.</dd>
 <dt>token_type</dt>
-<dd>Mandatory. TODO</dd>
+<dd>Mandatory. The type for a JWT Bearer token is <code>Bearer</code>, as per [[rfc6750]]</dd>
 <dt>refresh_toke</dt>
 <dd>Under this profile, refresh tokens are (currently) not supported and MUST NOT be used.</dd>
 <dt>expires_in</dt>
 <dd>Optional. Lifetime of the access token, in seconds.</dd>
 <dt>scope</dt>
-<dd>Optional. TODO</dd>
+<dd>Optional. Scope(s) of the access (token) granted, multiple scopes are separated by whitespace. The scope MAY be omitted if it is identical to the scope requested.</dd>
 </dl>
 
 For best practices on token lifetime see section [TokenLifetimes].
