@@ -744,10 +744,10 @@ The authorization server MAY encrypt access tokens ~~and refresh tokens~~ using 
 
 **/iGov-NL**
 
-SHOULD encrypt instead of MAY encrypt?
-FIXME Which key / how to obtain key of protected resource?
+How to select or obtain the key to be used for encryption of an access token is out of scope of this profile.
+A early draft of "Resource Indicators for OAuth 2.0" exist and could be used. This draft describes usage of the <code>resource</code> parameter to indicate the applicable resource server.
 
-TODO use PKIo when inter-organisational, see above.
+In case the Authorization Server, Resource Server and client are not operated under responsibility of the same organisation, each party MUST use PKIoverheid certificates with OIN for encryption.
 
 **/iGov-NL**
 
