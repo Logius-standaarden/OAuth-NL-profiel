@@ -36,5 +36,12 @@ var respecConfig = {
       date: "24 februari 2017",
       publisher: "Forum STandaardisatie",
     },
+    "UUID": {
+      href:  'https://tools.ietf.org/html/rfc4122',
+      title: 'A Universally Unique IDentifier (UUID) URN Namespace',
+      authors: ['P. Leach', 'M. Mealling', 'R. Salz'],
+      date: 'July 2005',
+      publisher: 'The Internet Engineering Task Force'
+    }
   },
 };
