@@ -943,6 +943,13 @@ OAuth proof of possession tokens are currently defined in a set of drafts under 
 
 Proof of Possession tokens are somewhat analogous to the Security Assertion Markup Language's (SAML's) Holder-of-Key mechanism for binding assertions to user identities. Proof of possession could prevent a number of attacks on OAuth that entail the interception of access tokens by unauthorized parties. The attacker would need to obtain the legitimate client's cryptographic key along with the access token to gain access to protected resources. Additionally, portions of the HTTP request could be protected by the same signature used in presentation of the token. Proof of possession tokens may not provide all of the same protections as PKI authentication, but they are far less challenging to implement on a distributed scale.
 
+**iGov-NL**
+
+Proof of possession can be implemented using various methods. An example of such an implementation is using TLS with mutual authentication, where the client is using a PKIoverheid certificate. The authorized party (<code>azp</code>) can then be verified with the client certificate to match the authorized party.
+As an alternative, the authorization server can include a <code>cnf</code> parameter in the JWT by the authorization server. The key referenced in <code>cnf</code> can be validated using a form of client authentication, e.g. using an private\_key\_jwt.
+
+**/iGov-NL**
+
 <!-- ### [6.](#rfc.section.6) Security Considerations -->
 ### Security Considerations
 
