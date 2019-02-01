@@ -145,7 +145,7 @@ Request fields:
 <dt>state</dt>
 <dd>Mandatory, see above. Do not use the SessionID secure cookie for this.</dd>
 <dt>code_challenge</dt>
-<dd>In case of using a native app as user-agent mandatory. (Eg. an UUID [[#rfc4122]])</dd>
+<dd>In case of using a native app as user-agent mandatory. (Eg. an UUID [[rfc4122]])</dd>
 <dt>code_challenge_method</dt>
 <dd>In case `code_challenge` is used with a native app, mandatory. MUST use the value `S256`.</dd>
 </dl>
@@ -183,7 +183,7 @@ Host: idp-p.example.com
 Response parameters
 <dl>
 <dt>code</dt>
-<dd>Mandatory. MUST be a cryptographic random value of at least 128 bits of entropy.</dd>
+<dd>Mandatory. MUST be a cryptographic random value, using an unpredictable value with at least 128 bits of entropy.</dd>
 <dt>state</dt>
 <dd>Mandatory. MUST be a verbatim copy of the value of the <code>state</code> parameter in the Authorization Request.</dd>
 </dl>
@@ -251,6 +251,8 @@ Effectively, the Token Request has the following content:
 <dd>Mandatory. MUST be the value obtained from the Authorization Response.</dd>
 <dt>scope<dt>
 <dd>Optional. MUST be less or same as the requested scope.</dd>
+<dt>redirect_uri</dt>
+<dd>Mandatory. MUST be an absolute HTTPS URL, pre-registered with the Authorization Server.</dd>
 <dt>client_id</dt>
 <dd>Mandatory. MUST have the value as obtained during registration.</dd>
 <dt>client_assertion_type</dt>
@@ -363,20 +365,21 @@ Note that the second example contains both the public and private keys, while th
 ### Token Response
 
 **iGov-NL**
+TODO logischer om "Token Response" in AS profile te beschrijven ipv in client profile.
 
-The Token Response has the following contents
+The Token Response has the following contents:
 
 <dl>
 <dt>access_token</dt>
-<dd>Mandatory. TODO</dd>
+<dd>Mandatory. Structured access token a.k.a. a JWT Bearer token. The JWT MUST be signed.</dd>
 <dt>token_type</dt>
-<dd>Mandatory. TODO</dd>
+<dd>Mandatory. The type for a JWT Bearer token is <code>Bearer</code>, as per [[rfc6750]]</dd>
 <dt>refresh_token</dt>
 <dd>Under this profile, refresh tokens are (currently) not supported and MUST NOT be used.</dd>
 <dt>expires_in</dt>
 <dd>Optional. Lifetime of the access token, in seconds.</dd>
 <dt>scope</dt>
-<dd>Optional. TODO</dd>
+<dd>Optional. Scope(s) of the access (token) granted, multiple scopes are separated by whitespace. The scope MAY be omitted if it is identical to the scope requested.</dd>
 </dl>
 
 For best practices on token lifetime see section [Token Lifetimes](#TokenLifetimes).
@@ -703,7 +706,7 @@ The access tokens MUST be signed with [JWS] [[rfc7515]] . The authorization serv
 
 **NLProfile**
 
-TODO Add SHOULD PS256 signing.
+In addition to above signing methods, the Authorization server SHOULD support PS256 signing algorithm [[RFC7518]] for the signing of the JWT Bearer Tokens.
 
 **/NLProfile**
 
