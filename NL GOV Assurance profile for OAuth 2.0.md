@@ -251,8 +251,8 @@ Effectively, the Token Request has the following content:
 <dd>Mandatory. MUST contain the value `authorization_code`</dd>
 <dt>code</dt>
 <dd>Mandatory. MUST be the value obtained from the Authorization Response.</dd>
-<dt>scope<dt>
-<dd>Optional. TODO.</dd>
+<dt>redirect_uri</dt>
+<dd>Mandatory. MUST be an absolute HTTPS URL, pre-registered with the Authorization Server.</dd>
 <dt>client_id</dt>
 <dd>Mandatory. MUST have the value as obtained during registration.</dd>
 <dt>client_assertion_type</dt>
@@ -260,8 +260,6 @@ Effectively, the Token Request has the following content:
 <dt>client_assertion</dt>
 <dd>Mandatory. MUST have the above specified signed JWT as contents.</dd>
 </dl>
-
-TODO redirect_uri beschrijven
 
 **/iGov-NL**
 
