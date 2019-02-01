@@ -85,6 +85,7 @@ Native applications not registering a separate public key for each instance are 
 ### Direct Access Client
 
 ~~This client type MUST NOT request or be issued a refresh token.
+
 ~~Direct Access Clients are out of scope in this version of iGOV-NL
 
 This profile applies to clients that connect directly to protected resources and do not act on behalf of a particular resource owner, such as those clients that facilitate bulk transfers.
@@ -685,6 +686,12 @@ The server MAY issue tokens with additional fields, including the following as d
 
 <dd style="margin-left: 8">The identifier of the end-user that authorized this client, or the client id of a client acting on its own behalf (such as a bulk transfer). Since this information could potentially leak private user information, it should be used only when needed. End-user identifiers SHOULD be pairwise anonymous identifiers unless the audiance requires otherwise.</dd>
 
+**/iGov-NL**
+
+In iGov-NL the sub claim MUST be present.
+
+**/iGov-NL**
+
 <dt>aud</dt>
 
 <dd style="margin-left: 8">The audience of the token, an array containing the identifier(s) of protected resource(s) for which the token is valid, if this information is known. The aud claim may contain multiple values if the token is valid for multiple protected resources. Note that at runtime, the authorization server may not know the identifiers of all possible protected resources at which a token may be used.</dd>
@@ -731,18 +738,18 @@ M70-GXuRY4iucKbuytz9e7eW4Egkk4Aagl3iTk9-l5V-tvL6dYu8IlR93GKsaKE8bng0
 EZ04xcnq8s4V5Yykuc_NARBJENiKTJM8w3wh7xWP2gvMp39Y0XnuCOLyIx-J1ttX83xm
 pXDaLyyY-4HT9XHT9V73fKF8rLWJu9grrA</pre>
 
-Refresh tokens SHOULD be signed with [JWS] [[rfc7515]] using the same private key and contain the same set of claims as the access tokens.
+~~Refresh tokens SHOULD be signed with [JWS] [[rfc7515]] using the same private key and contain the same set of claims as the access tokens.~~
 
-The authorization server MAY encrypt access tokens and refresh tokens using [JWE] [[rfc7516]] . Encrypted access tokens MUST be encrypted using the public key of the protected resource. Encrypted refresh tokens MUST be encrypted using the authorization server's public key.
+The authorization server MAY encrypt access tokens ~~and refresh tokens~~ using [JWE] [[rfc7516]] . Encrypted access tokens MUST be encrypted using the public key of the protected resource. ~~Encrypted refresh tokens MUST be encrypted using the authorization server's public key.~~
 
-**NLprofile**
+**/iGov-NL**
 
 SHOULD encrypt instead of MAY encrypt?
 FIXME Which key / how to obtain key of protected resource?
 
 TODO use PKIo when inter-organisational, see above.
 
-**/NLProfile**
+**/iGov-NL**
 
 <!-- ### [3.2.2.](#rfc.section.3.2.2) Introspection -->
 ### Introspection
