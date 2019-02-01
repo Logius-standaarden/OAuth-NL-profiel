@@ -707,7 +707,7 @@ The access tokens MUST be signed with [JWS] [[rfc7515]] . The authorization serv
 
 **NLProfile**
 
-TODO Add SHOULD PS256 signing.
+In addition to above signing methods, the Authorization server SHOULD support PS256 signing algorithm [[RFC7518]] for the signing of the JWT Bearer Tokens.
 
 **/NLProfile**
 
