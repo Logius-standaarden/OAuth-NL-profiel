@@ -378,7 +378,7 @@ The Token Response has the following contents
 <dd>Optional. TODO</dd>
 </dl>
 
-For best practices on token lifetime see section [TokenLifetimes].
+For best practices on token lifetime see section [Token Lifetimes](#TokenLifetimes).
 **/iGov-NL**
 
 
@@ -388,7 +388,7 @@ For best practices on token lifetime see section [TokenLifetimes].
 <!-- ### [2.4.1.](#rfc.section.2.4.1) [Requests to the Protected Resource](#RequestsToProtectedResource) -->
 ### Requests to the Protected Resource
 
-Clients SHOULD send bearer tokens passed in the Authentication header as defined by [[rfc6750]] . Clients MAY use the form-parameter or query-parameter methods in [[rfc6750]] . Authorized requests MUST be made over TLS, and clients MUST validate the protected resource server's certificate.
+Clients SHOULD send bearer tokens passed in the Authentication header as defined by [[rfc6750]] . Clients MAY use the form-parameter ~~or query-parameter~~ method~~s~~ in [[rfc6750]] . Authorized requests MUST be made over TLS, and clients MUST validate the protected resource server's certificate.
 
 An example of an OAuth-protected call to the OpenID Connect UserInfo endpoint, sending the token in the Authorization header, follows:
 
@@ -410,7 +410,7 @@ User-Agent: Apache-HttpClient/4.2.3 (java 1.5)
 <!-- ### [3.](#rfc.section.3) [Authorization Server Profile](#ServerProfile) -->
 ### Authorization Server Profile
 
-All servers MUST conform to applicable recommendations found in the Security Considerations sections of [[RFC6749]] [[rfc6749]] and those found in the [OAuth Threat Model Document] [[rfc6819]] .
+All servers MUST conform to applicable recommendations found in the Security Considerations sections of [[rfc6749]] and those found in the "OAuth Threat Model Document" [[rfc6819]] .
 
 The authorization server MUST protect all communications to and from its OAuth endpoints using TLS.
 
@@ -420,19 +420,19 @@ The authorization server MUST protect all communications to and from its OAuth e
 <!-- ### [3.1.1.](#rfc.section.3.1.1) Grant types -->
 ### Grant types
 
-The authorization server MUST support the <samp>authorization_code</samp> , and MAY support the <samp>client_credentials</samp> grant types as described in [Section 2](#ClientProfiles) . The authorization server MUST limit each registered client (identified by a client ID) to a single grant type only, since a single piece of software will be functioning at runtime in only one of the modes described in [Section 2](#ClientProfiles) . Clients that have multiple modes of operation MUST have a separate client ID for each mode.
+The authorization server MUST support the <samp>authorization_code</samp> , ~~and MAY support the <samp>client_credentials</samp>~~ grant types as described in [Section 2](#ClientProfiles) . ~~The authorization server MUST limit each registered client (identified by a client ID) to a single grant type only, since a single piece of software will be functioning at runtime in only one of the modes described in [Section 2](#ClientProfiles) . Clients that have multiple modes of operation MUST have a separate client ID for each mode.~~
 
 <!-- ### [3.1.2.](#rfc.section.3.1.2) Client authentication -->
 ### Client authentication
 
-The authorization server MUST enforce client authentication as described above for the authorization code and client credentials grant types. Public client cannot authenticate to the authorization server.
+The authorization server MUST enforce client authentication as described above for the authorization code ~~and client credentials grant types~~. Public client cannot authenticate to the authorization server.
 
-The authorization server MUST validate all redirect URIs for authorization code and implicit grant types.
+The authorization server MUST validate all redirect URIs for authorization code ~~and implicit grant types~~.
 
 <!-- ### [3.1.3.](#rfc.section.3.1.3) [Dynamic Registration](#DynamicRegistration) -->
 ### Dynamic Registration
 
-Dynamic Registration allows for authorized Clients to on-board programatically without administrative intervention. This is particularly important in ecosystems with many potential Clients, including Mobile Apps acting as independent Clients. Authorization servers MUST support dynamic client registration, and clients MAY register using the [Dynamic Client Registration Protocol] [[rfc7591]] for authorization code grant types. Clients MUST NOT dynamically register for the client credentials grant type. Authorization servers MAY limit the scopes available to dynamically registered clients.
+Dynamic Registration allows for authorized Clients to on-board programatically without administrative intervention. This is particularly important in ecosystems with many potential Clients, including Mobile Apps acting as independent Clients. Authorization servers MUST support dynamic client registration, and clients MAY register using the [Dynamic Client Registration Protocol] [[rfc7591]] for authorization code grant types. ~~Clients MUST NOT dynamically register for the client credentials grant type~~. Authorization servers MAY limit the scopes available to dynamically registered clients.
 
 Authorization servers MAY protect their Dynamic Registration endpoints by requiring clients to present credentials that the authorization server would recognize as authorized participants. Authorization servers MAY accept signed software statements as described in [[RFC7591]] [[rfc7591]] issued to client software developers from a trusted registration entity. The software statement can be used to tie together many instances of the same client software that will be run, dynamically registered, and authorized separately at runtime. The software statement MUST include the following client metadata parameters:
 
@@ -459,6 +459,10 @@ Authorization servers MAY protect their Dynamic Registration endpoints by requir
 <dd style="margin-left: 8">URL of a web page containing further information about the client</dd>
 
 </dl>
+
+**iGov-NL**
+In this version of iGOV-NL we follow iGOV for the requirement that the Authorization servers MUST support dynamic client registration. However depending on how the future authentication architecture of the dutch government develops in regards to OAuth we may revisit this in a future revision. The current requirement fits an architecture where there is a limited number of widely used authorization servers. However if in practice we start seeing a very large number of authorization servers with limited use this requirement can become a reccomendation in a future version of this profile. For these authorization servers with limited use we consider mandatory support for dynamic client registration a large burden.
+**/iGov-NL**
 
 <!-- ### [3.1.4.](#rfc.section.3.1.4) Client Approval -->
 ### Client Approval
