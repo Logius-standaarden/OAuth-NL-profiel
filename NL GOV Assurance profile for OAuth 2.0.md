@@ -109,6 +109,10 @@ A client MUST protect the values passed back to its redirect URI by ensuring tha
 *   Hosted on a client-specific non-remote-protocol URI scheme (e.g., myapp://)
 *   Hosted on the local domain of the client (e.g., http://localhost/)
 
+
+TODO: ban localhost
+TODO: native app (below) custom scheme prohibited (HTTPS required)
+
 Clients SHOULD NOT have multiple redirect URIs on different domains.
 
 Clients MUST NOT forward values passed back to their redirect URIs to other arbitrary or user-provided URIs (a practice known as an "open redirector”).
@@ -133,7 +137,7 @@ Effectively this means that a Native Client MUST include a cryptographic random 
 Request fields:
 <dl>
 <dt>client_id</dt>
-<dd>Mandatory. MUst have the value as obtained during registration.</dd>
+<dd>Mandatory. MUST have the value as obtained during registration.</dd>
 <dt>scope</dt>
 <dd>Optional.</dd>
 <dt>response_type</dt>
@@ -185,6 +189,8 @@ Response parameters
 <dt>state</dt>
 <dd>Mandatory. MUST be a verbatim copy of the value of the <code>state</code> parameter in the Authorization Request.</dd>
 </dl>
+
+TODO: strength of crypto
 
 **/iGov-NL**
 
@@ -256,6 +262,8 @@ Effectively, the Token Request has the following content:
 <dt>client_assertion</dt>
 <dd>Mandatory. MUST have the above specified signed JWT as contents.</dd>
 </dl>
+
+TODO redirect_uri beschrijven
 
 **/iGov-NL**
 
@@ -370,8 +378,8 @@ The Token Response has the following contents
 <dd>Mandatory. TODO</dd>
 <dt>token_type</dt>
 <dd>Mandatory. TODO</dd>
-<dt>refresh_toke</dt>
-<dd>Optional. Under this profile, refresh tokens are (currently) not supported. MUST NOT be used, unless explicitly speficied in an additional applicable profile based on this profile.</dd>
+<dt>refresh_token</dt>
+<dd>Prohibited. Under this profile, refresh tokens are (currently) not supported. MUST NOT be used, unless explicitly specified in an additional applicable profile based on this profile.</dd>
 <dt>expires_in</dt>
 <dd>Optional. Lifetime of the access token, in seconds.</dd>
 <dt>scope</dt>
@@ -405,6 +413,8 @@ Host: idp-p.example.com
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.2.3 (java 1.5)
 </pre>
+
+TODO: query-parameter method uitsluiten?
 
 <!-- ### [3.](#rfc.section.3) [Authorization Server Profile](#ServerProfile) -->
 ### Authorization Server Profile
@@ -474,6 +484,8 @@ For example, for native clients a message indicating a new App installation has 
 ### Discovery
 
 The authorization server MUST provide an [OpenID Connect service discovery] [[OpenID.Discovery]] endpoint listing the components relevant to the OAuth protocol:
+
+TODO: OAuth discovery
 
 <dl>
 
@@ -892,6 +904,8 @@ For example: a resource server has resources classified as "public" and "sensiti
 
 In this manner, protected resources and authorization servers work together to meet risk tolerance levels for sensitive resources and end-user authentication.
 
+TODO: toelichting voor NL?
+
 <!-- ### [4.2.](#rfc.section.4.2) Connections with Clients -->
 ### Connections with Clients
 
@@ -899,12 +913,13 @@ A protected resource MUST accept bearer tokens passed in the authorization heade
 
 **NLProfile**
 
-A Protected Resource under this profile MUST NOT accept access tokens passed using the query paramter method.
+A Protected Resource under this profile MUST NOT accept access tokens passed using the query parameter method.
 
 **/NLProfile**
 
-
 Protected resources MUST define and document which scopes are required for access to the resource.
+
+TODO check azp in JWT.
 
 <!-- ### [4.3.](#rfc.section.4.3) Connections with Authorization Servers -->
 ### Connections with Authorization Servers
@@ -927,6 +942,8 @@ OAuth proof of possession tokens are currently defined in a set of drafts under 
 
 Proof of Possession tokens are somewhat analogous to the Security Assertion Markup Language's (SAML's) Holder-of-Key mechanism for binding assertions to user identities. Proof of possession could prevent a number of attacks on OAuth that entail the interception of access tokens by unauthorized parties. The attacker would need to obtain the legitimate client's cryptographic key along with the access token to gain access to protected resources. Additionally, portions of the HTTP request could be protected by the same signature used in presentation of the token. Proof of possession tokens may not provide all of the same protections as PKI authentication, but they are far less challenging to implement on a distributed scale.
 
+TODO: hint voor mutual TLS geven? PKIo + OIN
+
 <!-- ### [6.](#rfc.section.6) Security Considerations -->
 ### Security Considerations
 
@@ -938,3 +955,9 @@ All clients MUST conform to applicable recommendations found in the Security Con
 
 <!-- ### [7.](#rfc.references) Normative References -->
 ### Normative References
+
+
+TODO Check
+
+
+TODO implementation note
