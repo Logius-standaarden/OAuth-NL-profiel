@@ -86,10 +86,11 @@ Native applications not registering a separate public key for each instance are 
 
 ~~This client type MUST NOT request or be issued a refresh token.
 
+~~Direct Access Clients are out of scope in this version of iGOV-NL
+
 This profile applies to clients that connect directly to protected resources and do not act on behalf of a particular resource owner, such as those clients that facilitate bulk transfers.
 
-These clients use the client credentials flow of OAuth 2 by sending a request to the token endpoint with the client's credentials and obtaining an access token in the response. Since this profile does not involve an authenticated user, this flow is appropriate only for trusted applications, such as those that would traditionally use a developer key. For example, a partner system that performs bulk data transfers between two systems would be considered a direct access client.~~
-Direct Access Clients are out of scope in this version of iGOV-NL
+These clients use the client credentials flow of OAuth 2 by sending a request to the token endpoint with the client's credentials and obtaining an access token in the response. Since this profile does not involve an authenticated user, this flow is appropriate only for trusted applications, such as those that would traditionally use a developer key. For example, a partner system that performs bulk data transfers between two systems would be considered a direct access client.
 
 <!-- ### [2.2.](#rfc.section.2.2) [Client Registration](#ClientRegistration) -->
 ### Client Registration
@@ -145,7 +146,7 @@ Request fields:
 <dt>state</dt>
 <dd>Mandatory, see above. Do not use the SessionID secure cookie for this.</dd>
 <dt>code_challenge</dt>
-<dd>In case of using a native app as user-agent mandatory. (Eg. an UUID [[#rfc4122]])</dd>
+<dd>In case of using a native app as user-agent mandatory. (Eg. an UUID [[rfc4122]])</dd>
 <dt>code_challenge_method</dt>
 <dd>In case `code_challenge` is used with a native app, mandatory. MUST use the value `S256`.</dd>
 </dl>
@@ -465,7 +466,9 @@ Authorization servers MAY protect their Dynamic Registration endpoints by requir
 </dl>
 
 **iGov-NL**
+
 In this version of iGOV-NL we follow iGOV for the requirement that the Authorization servers MUST support dynamic client registration. However depending on how the future authentication architecture of the dutch government develops in regards to OAuth we may revisit this in a future revision. The current requirement fits an architecture where there is a limited number of widely used authorization servers. However if in practice we start seeing a very large number of authorization servers with limited use this requirement can become a reccomendation in a future version of this profile. For these authorization servers with limited use we consider mandatory support for dynamic client registration a large burden.
+
 **/iGov-NL**
 
 <!-- ### [3.1.4.](#rfc.section.3.1.4) Client Approval -->
@@ -607,6 +610,11 @@ U-27mb6esswnP2WgHZQPsk779fTcNDBIcYgyLujlcUATEqfCaPDNp00J6AbY6w",
 
 Clients and protected resources SHOULD cache this key. It is RECOMMENDED that servers provide cache information through HTTP headers and make the cache valid for at least one week.
 
+**iGov-NL**
+
+iGOV requires that the authorization server provides an OpenIDConnect service discovery endpoint. Recently OAuth 2.0 Authorization Server Metadata [[rfc8414]] has been finalized, this provide the same functionality in a more generic way and could replace this requirement in a future version of the iGOV-NL profile.
+
+**/iGov-NL**
 <!-- ### [3.1.6.](#rfc.section.3.1.6) Revocation -->
 ### Revocation
 
@@ -629,14 +637,14 @@ The authorization server MUST compare a client's registered redirect URIs with t
 <!-- ### [3.1.9.](#rfc.section.3.1.9) RefreshTokens -->
 ### RefreshTokens
 
-Authorization Servers MAY issue refresh tokens to clients under the following context:
+~~Authorization Servers MAY issue refresh tokens to clients under the following context:~~
 
 
-Clients MUST be registered with the Authorization Server.
+~~Clients MUST be registered with the Authorization Server.~~
 
-Clients MUST present a valid client_id. COnfidential clients MUST present a signed client_assertion with their associated keypair.
+~~Clients MUST present a valid client_id. COnfidential clients MUST present a signed client_assertion with their associated keypair.~~
 
-Clients using the Direct Credentials method MUST NOT be issued refresh_tokens. These clients MUST present their client credentials with a new access_token request and the desired scope.
+~~Clients using the Direct Credentials method MUST NOT be issued refresh_tokens. These clients MUST present their client credentials with a new access_token request and the desired scope.~~
 
 <!-- ### [3.2.](#rfc.section.3.2) Connections with protected resources -->
 ### Connections with protected resources
