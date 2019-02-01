@@ -146,7 +146,7 @@ Request fields:
 <dt>state</dt>
 <dd>Mandatory, see above. Do not use the SessionID secure cookie for this.</dd>
 <dt>code_challenge</dt>
-<dd>In case of using a native app as user-agent mandatory. (Eg. an UUID [[#rfc4122]])</dd>
+<dd>In case of using a native app as user-agent mandatory. (Eg. an UUID [[rfc4122]])</dd>
 <dt>code_challenge_method</dt>
 <dd>In case `code_challenge` is used with a native app, mandatory. MUST use the value `S256`.</dd>
 </dl>
