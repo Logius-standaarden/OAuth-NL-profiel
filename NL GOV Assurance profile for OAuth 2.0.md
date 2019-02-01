@@ -185,12 +185,10 @@ Host: idp-p.example.com
 Response parameters
 <dl>
 <dt>code</dt>
-<dd>Mandatory. MUST be a cryptographic random value.</dd>
+<dd>Mandatory. MUST be a cryptographic random value, using an unpredictable value with at least 128 bits of entropy.</dd>
 <dt>state</dt>
 <dd>Mandatory. MUST be a verbatim copy of the value of the <code>state</code> parameter in the Authorization Request.</dd>
 </dl>
-
-TODO: strength of crypto
 
 **/iGov-NL**
 
