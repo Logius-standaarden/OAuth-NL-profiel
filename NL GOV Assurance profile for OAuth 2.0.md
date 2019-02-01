@@ -603,6 +603,9 @@ U-27mb6esswnP2WgHZQPsk779fTcNDBIcYgyLujlcUATEqfCaPDNp00J6AbY6w",
 
 Clients and protected resources SHOULD cache this key. It is RECOMMENDED that servers provide cache information through HTTP headers and make the cache valid for at least one week.
 
+**iGov-NL**
+iGOV requires that the authorization server provides an OpenIDConnect service discovery endpoint. Recently OAuth 2.0 Authorization Server Metadata [[rfc8414]] has been finalized, this provide the same functionality in a more generic way and could replace this requirement in a future version of the iGOV-NL profile.
+**/iGov-NL**
 <!-- ### [3.1.6.](#rfc.section.3.1.6) Revocation -->
 ### Revocation
 
@@ -625,14 +628,14 @@ The authorization server MUST compare a client's registered redirect URIs with t
 <!-- ### [3.1.9.](#rfc.section.3.1.9) RefreshTokens -->
 ### RefreshTokens
 
-Authorization Servers MAY issue refresh tokens to clients under the following context:
+~~Authorization Servers MAY issue refresh tokens to clients under the following context:
 
 
 Clients MUST be registered with the Authorization Server.
 
 Clients MUST present a valid client_id. COnfidential clients MUST present a signed client_assertion with their associated keypair.
 
-Clients using the Direct Credentials method MUST NOT be issued refresh_tokens. These clients MUST present their client credentials with a new access_token request and the desired scope.
+Clients using the Direct Credentials method MUST NOT be issued refresh_tokens. These clients MUST present their client credentials with a new access_token request and the desired scope.~~
 
 <!-- ### [3.2.](#rfc.section.3.2) Connections with protected resources -->
 ### Connections with protected resources
