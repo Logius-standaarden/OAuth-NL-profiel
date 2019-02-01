@@ -85,11 +85,11 @@ Native applications not registering a separate public key for each instance are 
 ### Direct Access Client
 
 ~~This client type MUST NOT request or be issued a refresh token.
+~~Direct Access Clients are out of scope in this version of iGOV-NL
 
 This profile applies to clients that connect directly to protected resources and do not act on behalf of a particular resource owner, such as those clients that facilitate bulk transfers.
 
-These clients use the client credentials flow of OAuth 2 by sending a request to the token endpoint with the client's credentials and obtaining an access token in the response. Since this profile does not involve an authenticated user, this flow is appropriate only for trusted applications, such as those that would traditionally use a developer key. For example, a partner system that performs bulk data transfers between two systems would be considered a direct access client.~~
-Direct Access Clients are out of scope in this version of iGOV-NL
+These clients use the client credentials flow of OAuth 2 by sending a request to the token endpoint with the client's credentials and obtaining an access token in the response. Since this profile does not involve an authenticated user, this flow is appropriate only for trusted applications, such as those that would traditionally use a developer key. For example, a partner system that performs bulk data transfers between two systems would be considered a direct access client.
 
 <!-- ### [2.2.](#rfc.section.2.2) [Client Registration](#ClientRegistration) -->
 ### Client Registration
@@ -107,7 +107,9 @@ A client MUST protect the values passed back to its redirect URI by ensuring tha
 
 *   Hosted on a website with Transport Layer Security (TLS) protection (a Hypertext Transfer Protocol – Secure (HTTPS) URI)
 *   Hosted on a client-specific non-remote-protocol URI scheme (e.g., myapp://)
-*   Hosted on the local domain of the client (e.g., http://localhost/)
+*   Hosted on the local domain of the client (e.g., http://localhost/).
+
+Clients MUST NOT allow the redirecting to the local domain.
 
 Clients SHOULD NOT have multiple redirect URIs on different domains.
 
@@ -133,7 +135,7 @@ Effectively this means that a Native Client MUST include a cryptographic random 
 Request fields:
 <dl>
 <dt>client_id</dt>
-<dd>Mandatory. MUst have the value as obtained during registration.</dd>
+<dd>Mandatory. MUST have the value as obtained during registration.</dd>
 <dt>scope</dt>
 <dd>Optional.</dd>
 <dt>response_type</dt>
@@ -141,11 +143,11 @@ Request fields:
 <dt>redirect_uri</dt>
 <dd>Mandatory. MUST be an absolute HTTPS URL, pre-registered with the Authorization Server.</dd>
 <dt>state</dt>
-<dd>Mandatory, see above.</dd>
+<dd>Mandatory, see above. Do not use the SessionID secure cookie for this.</dd>
 <dt>code_challenge</dt>
-<dd>In case of using a native app as user-agent mandatory.</dd>
+<dd>In case of using a native app as user-agent mandatory. (Eg. an UUID [[#rfc4122]])</dd>
 <dt>code_challenge_method</dt>
-<dd>In case `code_challenge` is used, mandatory. MUST use the value `S256`.</dd>
+<dd>In case `code_challenge` is used with a native app, mandatory. MUST use the value `S256`.</dd>
 </dl>
 
 **/iGov-NL**
@@ -181,7 +183,7 @@ Host: idp-p.example.com
 Response parameters
 <dl>
 <dt>code</dt>
-<dd>Mandatory. MUST be a cryptographic random value.</dd>
+<dd>Mandatory. MUST be a cryptographic random value of at least 128 bits of entropy.</dd>
 <dt>state</dt>
 <dd>Mandatory. MUST be a verbatim copy of the value of the <code>state</code> parameter in the Authorization Request.</dd>
 </dl>
@@ -248,7 +250,7 @@ Effectively, the Token Request has the following content:
 <dt>code</dt>
 <dd>Mandatory. MUST be the value obtained from the Authorization Response.</dd>
 <dt>scope<dt>
-<dd>Optional. TODO.</dd>
+<dd>Optional. MUST be less or same as the requested scope.</dd>
 <dt>client_id</dt>
 <dd>Mandatory. MUST have the value as obtained during registration.</dd>
 <dt>client_assertion_type</dt>
@@ -303,7 +305,7 @@ xuCxgOotXY6O3et4n77GtgspMgOEKj3b_WpCiuNEwQ
 <!-- ### [2.3.3.](#rfc.section.2.3.3) Client Keys -->
 ### Client Keys
 
-Clients using the authorization code grant type or direct access clients using the client credentials grant type MUST have a public and private key pair for use in authentication to the token endpoint. These clients MUST register their public keys in their client registration metadata by either sending the public key directly in the <samp>jwks</samp> field or by registering a <samp>jwks\_uri</samp> that MUST be reachable by the authorization server. It is RECOMMENDED that clients use a <samp>jwks_uri</samp> if possible as this allows for key rotation more easily. This applies to both dynamic and static (out-of-band) client registration.
+Clients using the authorization code grant type ~~or direct access clients using the client credentials grant type~~ MUST have a public and private key pair for use in authentication to the token endpoint. These clients MUST register their public keys in their client registration metadata by either sending the public key directly in the <samp>jwks</samp> field or by registering a <samp>jwks\_uri</samp> that MUST be reachable by the authorization server. It is RECOMMENDED that clients use a <samp>jwks_uri</samp> if possible as this allows for key rotation more easily. This applies to both dynamic and static (out-of-band) client registration.
 
 The <samp>jwks</samp> field or the content available from the <samp>jwks\_uri</samp> of a client MUST contain a public key in [JSON Web Key Set (JWK Set)] [[rfc7517]] format. The authorization server MUST validate the content of the client's registered jwks_uri document and verify that it contains a JWK Set. The following example is of a 2048-bit RSA key:
 
@@ -326,8 +328,7 @@ cNt1H2_VQ_Ww1JOLn9vRn-H48FDj7TxlIT74XdTZgTv31w_GRPAOfyxEw_ZUmxhz5Z-gTlQ",
 
 **iGov-NL**
 
-In case the Authorization Server, Resource Server and client are not operated under responsibility of the same organisation, each party MUST use PKIoverheid certificates.
-TODO PKIoverheid with OIN!
+In case the Authorization Server, Resource Server and client are not operated under responsibility of the same organisation, each party MUST use PKIoverheid certificates with OIN.
 
 The PKIoverheid certificate MUST be included as a <code>x5c</code> parameter.
 The <code>x5c</code> parameter MUST be included as a list (array) of X509 certificate(s), as Base64 DER encoded PKIoverheid certificate(s).
@@ -370,7 +371,7 @@ The Token Response has the following contents
 <dd>Mandatory. TODO</dd>
 <dt>token_type</dt>
 <dd>Mandatory. TODO</dd>
-<dt>refresh_toke</dt>
+<dt>refresh_token</dt>
 <dd>Under this profile, refresh tokens are (currently) not supported and MUST NOT be used.</dd>
 <dt>expires_in</dt>
 <dd>Optional. Lifetime of the access token, in seconds.</dd>
