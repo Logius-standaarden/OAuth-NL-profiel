@@ -85,7 +85,6 @@ Native applications not registering a separate public key for each instance are 
 ### Direct Access Client
 
 ~~This client type MUST NOT request or be issued a refresh token.
-
 ~~Direct Access Clients are out of scope in this version of iGOV-NL
 
 This profile applies to clients that connect directly to protected resources and do not act on behalf of a particular resource owner, such as those clients that facilitate bulk transfers.
