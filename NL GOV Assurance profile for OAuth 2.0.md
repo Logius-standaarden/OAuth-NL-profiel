@@ -90,7 +90,7 @@ The Client can inform an interact with the User based on the information receive
 The contents and protocol of the Resource Request and Resource Response are out of scope of this profile.
 
 <!-- ### [1.](#rfc.section.1) [Introduction](#Introduction) -->
-## Introduction  
+# Introduction  
 
 This document profiles the OAuth 2.0 web authorization framework for use in the context of securing web-facing application programming interfaces (APIs), particularly Representational State Transfer (RESTful) APIs. The OAuth 2.0 specifications accommodate a wide range of implementations with varying security and usability considerations, across different types of software clients. The OAuth 2.0 client, protected resource, and authorization server profiles defined in this document serve two purposes:
 
@@ -133,10 +133,10 @@ An ~~iGov~~iGov-NL-compliant OAuth 2.0 client MUST use all functions as describe
 
 An ~~iGov~~iGov-NL-compliant OAuth 2.0 protected resource MUST use all functions as described in this specification. A general-purpose protected resource library MAY support additional features for use with non-~~iGov~~iGov-NL authorization servers and clients.
 <!-- ### [2.](#rfc.section.2) [Client Profiles](#ClientProfiles) -->
-### Client Profiles
+# Client Profiles
 
 <!-- ### [2.1.](#rfc.section.2.1) [Client Types](#ClientTypes) -->
-### Client Types
+## Client Types
 
 The following profile descriptions give patterns of deployment for use in different types of client applications based on the OAuth grant type. Additional grant types, such as assertions, chained tokens, or other mechanisms, are out of scope of this profile and must be covered separately by appropriate profile documents.
 
@@ -181,7 +181,7 @@ This profile applies to clients that connect directly to protected resources and
 These clients use the client credentials flow of OAuth 2 by sending a request to the token endpoint with the client's credentials and obtaining an access token in the response. Since this profile does not involve an authenticated user, this flow is appropriate only for trusted applications, such as those that would traditionally use a developer key. For example, a partner system that performs bulk data transfers between two systems would be considered a direct access client.
 
 <!-- ### [2.2.](#rfc.section.2.2) [Client Registration](#ClientRegistration) -->
-### Client Registration
+## Client Registration
 
 All clients MUST register with the authorization server. For client software that may be installed on multiple client instances, such as native applications or web application software, each client instance MAY receive a unique client identifier from the authorization server. Clients that share client identifiers are considered public clients.
 
@@ -205,7 +205,7 @@ Clients SHOULD NOT have multiple redirect URIs on different domains.
 Clients MUST NOT forward values passed back to their redirect URIs to other arbitrary or user-provided URIs (a practice known as an "open redirector”).
 
 <!-- ### [2.3.](#rfc.section.2.3) Connection to the Authorization Server -->
-### Connection to the Authorization Server
+## Connection to the Authorization Server
 
 
 <!-- ### [2.3.1.](#rfc.section.2.3.1) [Requests to the Authorization Endpoint](#RequestsToAuthorizationEndpoint) -->
@@ -476,7 +476,7 @@ For best practices on token lifetime see section [Token Lifetimes](#TokenLifetim
 
 
 <!-- ### [2.4.](#rfc.section.2.4) Connection to the Protected Resource -->
-### Connection to the Protected Resource
+## Connection to the Protected Resource
 
 <!-- ### [2.4.1.](#rfc.section.2.4.1) [Requests to the Protected Resource](#RequestsToProtectedResource) -->
 ### Requests to the Protected Resource
@@ -501,14 +501,14 @@ User-Agent: Apache-HttpClient/4.2.3 (java 1.5)
 </pre>
 
 <!-- ### [3.](#rfc.section.3) [Authorization Server Profile](#ServerProfile) -->
-### Authorization Server Profile
+# Authorization Server Profile
 
 All servers MUST conform to applicable recommendations found in the Security Considerations sections of [[rfc6749]] and those found in the "OAuth Threat Model Document" [[rfc6819]] .
 
 The authorization server MUST protect all communications to and from its OAuth endpoints using TLS.
 
 <!-- ### [3.1.](#rfc.section.3.1) Connections with clients -->
-### Connections with clients
+## Connections with clients
 
 <!-- ### [3.1.1.](#rfc.section.3.1.1) Grant types -->
 ### Grant types
@@ -735,7 +735,7 @@ The authorization server MUST compare a client's registered redirect URIs with t
 ~~Clients using the Direct Credentials method MUST NOT be issued refresh_tokens. These clients MUST present their client credentials with a new access_token request and the desired scope.~~
 
 <!-- ### [3.2.](#rfc.section.3.2) Connections with protected resources -->
-### Connections with protected resources
+## Connections with protected resources
 
 Unlike the core OAuth protocol, the ~~iGov~~iGov-NL profile intends to allow compliant protected resources to connect to compliant authorization servers.
 
@@ -932,7 +932,7 @@ The authorization server MUST require authentication for both the revocation and
 A protected resource MAY cache the response from the introspection endpoint for a period of time no greater than half the lifetime of the token. A protected resource MUST NOT accept a token that is not active according to the response from the introspection endpoint.
 
 <!-- ### [3.3.](#rfc.section.3.3) Response to Authorization Requests -->
-### Response to Authorization Requests
+## Response to Authorization Requests
 
 The following data will be sent as an Authorization Response to the Authorization Code Flow as desribed above. The authentication response is sent via HTTP redirect to the redirect URI specified in the request.
 
@@ -960,7 +960,7 @@ The following is an example response:
 </pre>
 
 <!-- ### [3.4.](#rfc.section.3.4) [Token Lifetimes](#TokenLifetimes) -->
-### Token Lifetimes
+## Token Lifetimes
 
 This profile provides RECOMMENDED lifetimes for different types of tokens issued to different types of clients. Specific applications MAY issue tokens with different lifetimes. Any active token MAY be revoked at any time.
 
@@ -971,7 +971,7 @@ For public clients access tokens SHOULD have a valid lifetime no greater than fi
 For clients using the client credentials grant type, access tokens SHOULD have a valid lifetime no greater than six hours.
 
 <!-- ### [3.5.](#rfc.section.3.5) [Scopes](#Scopes) -->
-### Scopes
+## Scopes
 
 Scopes define individual pieces of authority that can be requested by clients, granted by resource owners, and enforced by protected resources. Specific scope values will be highly dependent on the specific types of resources being protected in a given interface. OpenID Connect, for example, defines scope values to enable access to different attributes of user profiles.
 
@@ -980,10 +980,10 @@ Authorization servers SHOULD define and document default scope values that will 
 To facilitate general use across a wide variety of protected resources, authorization servers SHOULD allow for the use of arbitrary scope values at runtime, such as allowing clients or protected resources to use arbitrary scope strings upon registration. Authorization servers MAY restrict certain scopes from use by dynamically registered systems or public clients.
 
 <!-- ### [4.](#rfc.section.4) Protected Resource Profile -->
-### Protected Resource Profile
+# Protected Resource Profile
 
 <!-- ### [4.1.](#rfc.section.4.1) [Protecting Resources](#ProtectingResources) -->
-### Protecting Resources
+## Protecting Resources
 
 Protected Resources grant access to clients if they present a valid <samp>access_token</samp> with the appropriate <samp>scope</samp>. Resource servers trust the authorization server to authenticate the end user and client appropriately for the importance, risk, and value level of the protected resource scope.
 
@@ -1010,7 +1010,7 @@ TODO NL example
 **/NLProfile**
 
 <!-- ### [4.2.](#rfc.section.4.2) Connections with Clients -->
-### Connections with Clients
+## Connections with Clients
 
 A protected resource MUST accept bearer tokens passed in the authorization header as described in [[rfc6750]] . A protected resource MAY also accept bearer tokens passed in the form parameter ~~or query parameter~~ method~~s~~.
 
@@ -1026,7 +1026,7 @@ A Protected Resource under this profile SHOULD if verify if the client is the Au
 Protected resources MUST define and document which scopes are required for access to the resource.
 
 <!-- ### [4.3.](#rfc.section.4.3) Connections with Authorization Servers -->
-### Connections with Authorization Servers
+## Connections with Authorization Servers
 
 Protected resources MUST interpret access tokens using either JWT, token introspection, or a combination of the two.
 
@@ -1035,12 +1035,12 @@ The protected resource MUST check the <samp>aud</samp> (audience) claim, if it e
 A protected resource MUST limit which authorization servers it will accept valid tokens from. A resource server MAY accomplish this using a whitelist of trusted servers, a dynamic policy engine, or other means.
 
 <!-- ### [5.](#rfc.section.5) [Advanced OAuth Security Options](#AdvancedSecurity) -->
-### Advanced OAuth Security Options
+# Advanced OAuth Security Options
 
 The preceding portions of this OAuth profile provide a level of security adequate for a wide range of use cases, while still maintaining relative ease of implementation and usability for developers, system administrators, and end users. The following are some additional security measures that can be employed for use cases where elevated risks justify the use of additional controls at the expense of implementation effort and usability. This section also addresses future security capabilities, currently in the early draft stages, being added to the OAuth standard suite.
 
 <!-- ### [5.1.](#rfc.section.5.1) [Proof of Possession Tokens](#PoPTokens) -->
-### Proof of Possession Tokens
+## Proof of Possession Tokens
 
 OAuth proof of possession tokens are currently defined in a set of drafts under active development in the Internet Engineering Task Force (IETF) OAuth Working Group. While a bearer token can be used by anyone in possession of the token, a proof of possession token is bound to a particular symmetric or asymmetric key issued to, or already possessed by, the client. The association of the key to the token is also communicated to the protected resource; a variety of mechanisms for doing this are outlined in the draft [OAuth 2.0 Proof-of-Possession (PoP) Security Architecture] [[I-D.ietf-oauth-pop-architecture]] . When the client presents the token to the protected resource, it is also required to demonstrate possession of the corresponding key (e.g., by creating a cryptographic hash or signature of the request).
 
@@ -1054,7 +1054,7 @@ As an alternative, the authorization server can include a <code>cnf</code> param
 **/iGov-NL**
 
 <!-- ### [6.](#rfc.section.6) Security Considerations -->
-### Security Considerations
+# Security Considerations
 
 All transactions MUST be protected in transit by TLS as described in [[BCP195]] .
 
@@ -1063,4 +1063,4 @@ Authorization Servers SHOULD take into account device postures when dealing with
 All clients MUST conform to applicable recommendations found in the Security Considerations sections of [[rfc6749]] and those found in the [OAuth 2.0 Threat Model and Security Considerations document] [[rfc6819]] .
 
 <!-- ### [7.](#rfc.references) Normative References -->
-### Normative References
+# Normative References
