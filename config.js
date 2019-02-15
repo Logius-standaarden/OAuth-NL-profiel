@@ -13,7 +13,7 @@
 
 var respecConfig = 
 {
-  specStatus: "GN-CV",
+  specStatus: "GN-WV",
   specType: "HR",
   format: "markdown",   
   pubDomain: "api",
@@ -45,7 +45,6 @@ var respecConfig =
     },
   ],
   shortName: "oauth",
-  subtitle: "Consultation Version",
   github: "https://github.com/geonovum/KP-APIs/Werkgroep Authenticatie Autorisatie/NL GOV Assurance Profile OAuth/",
   issueBase: "https://github.com/geonovum/KP-APIs/Werkgroep Authenticatie Autorisatie/NL GOV Assurance Profile OAuth/issues/",
   licence: "cc-by-nd",
