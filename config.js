@@ -39,6 +39,11 @@ var respecConfig =
       companyURL: "http://www.kadaster.nl/",
     },
     {
+      name: "Leon van der Ree",
+      company: "Logius",
+      companyURL: "http://www.logius.nl/",
+    },
+    {
       name: "Bob te Riele",
       company: "RvIG",
       companyURL: "http://www.rvig.nl/",
