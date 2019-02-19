@@ -29,6 +29,21 @@ var respecConfig =
   authors: 
   [
     {
+      name: "Jaron Azaria",
+      company: "Logius",
+      companyURL: "http://www.logius.nl/",
+    },
+    {
+      name: "Martin Borgman",
+      company: "Kadaster",
+      companyURL: "http://www.kadaster.nl/",
+    },
+    {
+      name: "Bob te Riele",
+      company: "RvIG",
+      companyURL: "http://www.rvig.nl/",
+    },
+    {
       name: "Remco Schaar",
       company: "Logius",
       companyURL: "http://www.logius.nl/",
