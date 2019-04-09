@@ -268,7 +268,7 @@ Host: idp-p.example.com
 </pre>
 
 
-### Response from the Token Endpoint
+### Response from the Authorization Endpoint
 
 **iGov-NL**
 
