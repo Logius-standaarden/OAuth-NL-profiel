@@ -1,4 +1,3 @@
-
 # Dutch government Assurance profile for OAuth 2.0  
 This profile is based upon the international government assurance profile for OAuth 2.0 (iGOV) [[iGOV.OAuth2]] as published by the openID Foundation (https://openid.net/foundation/). It should be considered a fork of this profile as the iGov profile is geared more towards the American situtation and in the Netherlands we have to deal with an European Union context. 
 
@@ -20,17 +19,17 @@ Upon service provisioning, the service uses the identifier of the User for acces
 ## Context
 ### Resource Server
 The service is provided by a public/governmental organization.
-Assumed is the Resource Server is known (by the Authorization Server) prior to actual authentication/authorization of the User.
+Assumed is the Resource Server is known (by the Authorization Server) prior to actual authorization of the User.
 A Resource Server is assumed to posses a means for identification of the Resource Server and/or encrypted information, optionally by using a PKI certificate.
 Furthermore, a Resource Server is assumed to be provided over HTTP using TLS, other protocols are out of scope for this profile.
 
-### Authorization / Authentication Server
+### Authorization Server
 An Authorization Server is available, operated by either an independent trusted third-party or the service provider itself.
 Only a single Authorization Server is in use.
 The Authorization Server is trusted by the Resource Server.
-The Authorization Server can identify and authenticate the User.
+The Authorization Server can identify and authorize the User.
 In case the User has no direct relationship to the Authorization Server, it can forward the User to an IDP trusted by both the Authorization Server as well as the User.
-Alternatively, the Authorization Server can identify and authenticate the User and is trusted by that User.
+Alternatively, the Authorization Server can otherwise identify and authorize the User and is trusted by that User.
 
 
 ### Client
@@ -46,31 +45,32 @@ Typically a native application (_"mobile app"_) either starts a system browser a
 See RFC 8252 for more information on implementation of native applications.
 
 
-## Flow for authentication
+## Flow for authorization
 A Client wishes to send a request to an API, on behalf of the User.
-The API requires to have a trusted identification of the User, before providing the Service.
+The API requires to have a trusted identification and *authorization* of the User, before providing the Service.
 A Client has pre-registered with the Authorization Endpoint and has been assigned a client_id.
 
 The normal flow, that is without any error handling, is described below.
 
-### Step 1. Authorization / authentication initiation
+### Step 1. Authorization initiation
 As the client does not yet have a (valid) access token for this Service, it's first step is to obtain one.
 Therefor it sends an Authorization Request to the Authorization Server's Authorization Endpoint.
 It does so by redirecting / initiating the user-agent with the Authorization Request to the Authorization Endpoint.
-The Authorization / Authentication request holds further details, as specified in this profile.
+The Authorization request holds further details, as specified in this profile.
 
-### Step 2. Authorization / authentication Request
-The user-agent sends the Authorization / Authentication request to the Authentication Endpoint.
+### Step 2. Authorization Request
+The user-agent sends the Authorization request to the Authorization Endpoint.
 The Authorization Server receives and validates the request.
 
-### Step 3. User Authentication and consent
-The Authorization authenticates the User and obtains consent by the User for using the client to access the Service.
-The method and means for authentication, as well as how to obtain consent of the User, are implementation specific and explicitly left out of scope of this profile.
+### Step 3. User Authorization and consent
+The Authorization Server identifies the Resource Owner (often, but not necessarily, the User) and obtains authorization and consent from the Resource Owner for using the client to access the Service.
+The method and means for identification, as well as how to obtain authorization and consent from the Resource Owner for the request, are implementation specific and explicitly left out of scope of this profile.
+Note that if the User and Resource Owner are one and the same, the Autorization Server will have to authenticate the User in order to reliably identify the User as Resource Owner before obtaining the authorization and consent.
 
 ### Step 4. Authorization Grant
 Note: applicable to the Authorization Code Flow only.
 The Authorization Server redirects the user-agent back to the Client, with a Authorization Response.
-This Authorization Response holds an Authorization Grant and is send to the `redirect_uri` endpoint from the Authorization / Authentication request.
+This Authorization Response holds an Authorization Grant and is send to the `redirect_uri` endpoint from the Authorization request.
 
 ### Step 5. Access Token Request
 Note: applicable to the Authorization Code Flow only.
