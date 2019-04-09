@@ -1,7 +1,7 @@
 # Dutch government Assurance profile for OAuth 2.0  
-This profile is based upon the international government assurance profile for OAuth 2.0 (iGOV) [[iGOV.OAuth2]] as published by the openID Foundation (https://openid.net/foundation/). It should be considered a fork of this profile as the iGov profile is geared more towards the American situtation and in the Netherlands we have to deal with an European Union context. 
+This profile is based upon the international government assurance profile for OAuth 2.0 (iGov) [[iGOV.OAuth2]] as published by the openID Foundation (https://openid.net/foundation/). It should be considered a fork of this profile as the iGov profile is geared more towards the American situtation and in the Netherlands we have to deal with an European Union context. 
 
-We have added the chapter [Usecases](#Usecases) to illustrate the specific usecase the iGOV-NL profile is aimed at. Starting with chapter [Introduction](#Introduction) we follow the structure of the iGov profile. Where we do not use content from iGOV we use ~~strikethrough~~ to indicate it is not part of iGOV-NL. Where we have added more specific requirements for the Dutch situation this is indicated with **iGOV-NL** tags.
+We have added the chapter [Usecases](#Usecases) to illustrate the specific usecase the iGov-NL profile is aimed at. Starting with chapter [Introduction](#Introduction) we follow the structure of the iGov profile. Where we do not use content from iGov we use ~~strikethrough~~ to indicate it is not part of iGov-NL. Where we have added more specific requirements for the Dutch situation this is indicated with **iGov-NL** tags.
 
 # Usecases
  <figure id='authorization_code'>
@@ -177,7 +177,7 @@ Native applications not registering a separate public key for each instance are 
 
 ~~This client type MUST NOT request or be issued a refresh token.
 
-~~Direct Access Clients are out of scope in this version of iGOV-NL
+~~Direct Access Clients are out of scope in this version of iGov-NL
 
 This profile applies to clients that connect directly to protected resources and do not act on behalf of a particular resource owner, such as those clients that facilitate bulk transfers.
 
@@ -558,7 +558,7 @@ Authorization servers MAY protect their Dynamic Registration endpoints by requir
 
 **iGov-NL**
 
-In this version of iGOV-NL we follow iGOV for the requirement that the Authorization servers MUST support dynamic client registration. However depending on how the future authentication architecture of the dutch government develops in regards to OAuth we may revisit this in a future revision. The current requirement fits an architecture where there is a limited number of widely used authorization servers. However if in practice we start seeing a very large number of authorization servers with limited use this requirement can become a reccomendation in a future version of this profile. For these authorization servers with limited use we consider mandatory support for dynamic client registration a large burden.
+In this version of iGov-NL we follow iGov for the requirement that the Authorization servers MUST support dynamic client registration. However depending on how the future authentication architecture of the dutch government develops in regards to OAuth we may revisit this in a future revision. The current requirement fits an architecture where there is a limited number of widely used authorization servers. However if in practice we start seeing a very large number of authorization servers with limited use this requirement can become a reccomendation in a future version of this profile. For these authorization servers with limited use we consider mandatory support for dynamic client registration a large burden.
 
 **/iGov-NL**
 
@@ -703,7 +703,7 @@ Clients and protected resources SHOULD cache this key. It is RECOMMENDED that se
 
 **iGov-NL**
 
-iGOV requires that the authorization server provides an OpenIDConnect service discovery endpoint. Recently OAuth 2.0 Authorization Server Metadata [[rfc8414]] has been finalized, this provide the same functionality in a more generic way and could replace this requirement in a future version of the iGOV-NL profile.
+iGov requires that the authorization server provides an OpenIDConnect service discovery endpoint. Recently OAuth 2.0 Authorization Server Metadata [[rfc8414]] has been finalized, this provide the same functionality in a more generic way and could replace this requirement in a future version of the iGov-NL profile.
 
 **/iGov-NL**
 <!-- ### [3.1.6.](#rfc.section.3.1.6) Revocation -->
@@ -802,11 +802,11 @@ The following sample claim set illustrates the use of the required claims for an
 
 The access tokens MUST be signed with [JWS] [[rfc7515]] . The authorization server MUST support the RS256 signature method for tokens and MAY use other asymmetric signing methods as defined in the [IANA JSON Web Signatures and Encryption Algorithms registry] [[JWS.JWE.Algs]] . The JWS header MUST contain the following fields:
 
-**NLProfile**
+**iGov-NL**
 
 In addition to above signing methods, the Authorization server SHOULD support PS256 signing algorithm [[RFC7518]] for the signing of the JWT Bearer Tokens.
 
-**/NLProfile**
+**/iGov-NL**
 
 <dl>
 
@@ -1006,24 +1006,24 @@ For example: a resource server has resources classified as "public" and "sensiti
 
 In this manner, protected resources and authorization servers work together to meet risk tolerance levels for sensitive resources and end-user authentication.
 
-**NLProfile**
+**iGov-NL**
 
 TODO NL example
 
-**/NLProfile**
+**/iGov-NL**
 
 <!-- ### [4.2.](#rfc.section.4.2) Connections with Clients -->
 ## Connections with Clients
 
 A protected resource MUST accept bearer tokens passed in the authorization header as described in [[rfc6750]] . A protected resource MAY also accept bearer tokens passed in the form parameter ~~or query parameter~~ method~~s~~.
 
-**NLProfile**
+**iGov-NL**
 
 A Protected Resource under this profile MUST NOT accept access tokens passed using the query parameter method.
 
 A Protected Resource under this profile SHOULD if verify if the client is the Authorized party (AZP) when client authentications is used. See section [Advanced OAuth Security Options](#AdvancedSecurity) as well.
 
-**/NLProfile**
+**/iGov-NL**
 
 
 Protected resources MUST define and document which scopes are required for access to the resource.
