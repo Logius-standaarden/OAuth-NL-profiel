@@ -4,6 +4,8 @@ Additional specification and constraints of iGov-NL to the iGov profile
 # Introduction
 This document is a companion to the NL GOV Assurance profile for OAuth 2.0(iGov-NL). It lists all Added specification and additional constraints of iGov-NL. It provides a compact overview of the differences between the international and dutch profile. For each difference it points to a rationale.
 
+**TODO strikethroughs**
+
 ## 1.3.3.1 Requests to the Authorization Endpoint
 iGov-NL
 
@@ -219,7 +221,7 @@ Guidelines categorized as "insufficient" MUST NOT be applied and those categoriz
 
 **rationale to be provided by: Martin**
 
-**reference to rationale: Detailed rationale 2 **
+**reference to rationale: Detailed rationale 2**
 
 # General Rationale
 
