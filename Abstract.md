@@ -1,4 +1,5 @@
 
+## Abstract
 <!-- ### [Abstract](#rfc.abstract) -->
 The OAuth 2.0 protocol framework defines a mechanism to allow a resource owner to delegate access to a protected resource for a client application.  
 

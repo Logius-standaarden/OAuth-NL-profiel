@@ -1,7 +1,7 @@
 # Dutch government Assurance profile for OAuth 2.0  
-This profile is based upon the international government assurance profile for OAuth 2.0 (iGOV) [[iGOV.OAuth2]] as published by the openID Foundation (https://openid.net/foundation/). It should be considered a fork of this profile as the iGov profile is geared more towards the American situtation and in the Netherlands we have to deal with an European Union context. 
+This profile is based upon the international government assurance profile for OAuth 2.0 (iGov) [[iGOV.OAuth2]] as published by the OpenID Foundation (https://openid.net/foundation/). It should be considered a fork of this profile as the iGov profile is geared more towards the American situtation and in the Netherlands we have to deal with an European Union context. 
 
-We have added the chapter [Usecases](#Usecases) to illustrate the specific usecase the iGOV-NL profile is aimed at. Starting with chapter [Introduction](#Introduction) we follow the structure of the iGov profile. Where we do not use content from iGOV we use ~~strikethrough~~ to indicate it is not part of iGOV-NL. Where we have added more specific requirements for the Dutch situation this is indicated with **iGOV-NL** tags.
+We have added the chapter [Usecases](#Usecases) to illustrate the specific usecase the iGov-NL profile is aimed at. Starting with chapter [Introduction](#Introduction) we follow the structure of the iGov profile. Where we do not use content from iGov we use ~~strikethrough~~ to indicate it is not part of iGov-NL. Where we have added more specific requirements for the Dutch situation this is indicated with **iGov-NL** tags.
 
 # Usecases
  <figure id='authorization_code'>
@@ -19,17 +19,17 @@ Upon service provisioning, the service uses the identifier of the User for acces
 ## Context
 ### Resource Server
 The service is provided by a public/governmental organization.
-Assumed is the Resource Server is known (by the Authorization Server) prior to actual authentication/authorization of the User.
+Assumed is the Resource Server is known (by the Authorization Server) prior to actual authorization of the User.
 A Resource Server is assumed to posses a means for identification of the Resource Server and/or encrypted information, optionally by using a PKI certificate.
 Furthermore, a Resource Server is assumed to be provided over HTTP using TLS, other protocols are out of scope for this profile.
 
-### Authorization / Authentication Server
+### Authorization Server
 An Authorization Server is available, operated by either an independent trusted third-party or the service provider itself.
 Only a single Authorization Server is in use.
 The Authorization Server is trusted by the Resource Server.
-The Authorization Server can identify and authenticate the User.
+The Authorization Server can identify and authorize the User.
 In case the User has no direct relationship to the Authorization Server, it can forward the User to an IDP trusted by both the Authorization Server as well as the User.
-Alternatively, the Authorization Server can identify and authenticate the User and is trusted by that User.
+Alternatively, the Authorization Server can otherwise identify and authorize the User and is trusted by that User.
 
 
 ### Client
@@ -45,31 +45,32 @@ Typically a native application (_"mobile app"_) either starts a system browser a
 See RFC 8252 for more information on implementation of native applications.
 
 
-## Flow for authentication
+## Flow for authorization
 A Client wishes to send a request to an API, on behalf of the User.
-The API requires to have a trusted identification of the User, before providing the Service.
+The API requires to have a trusted identification and *authorization* of the User, before providing the Service.
 A Client has pre-registered with the Authorization Endpoint and has been assigned a client_id.
 
 The normal flow, that is without any error handling, is described below.
 
-### Step 1. Authorization / authentication initiation
+### Step 1. Authorization initiation
 As the client does not yet have a (valid) access token for this Service, it's first step is to obtain one.
 Therefor it sends an Authorization Request to the Authorization Server's Authorization Endpoint.
 It does so by redirecting / initiating the user-agent with the Authorization Request to the Authorization Endpoint.
-The Authorization / Authentication request holds further details, as specified in this profile.
+The Authorization request holds further details, as specified in this profile.
 
-### Step 2. Authorization / authentication Request
-The user-agent sends the Authorization / Authentication request to the Authentication Endpoint.
+### Step 2. Authorization Request
+The user-agent sends the Authorization request to the Authorization Endpoint.
 The Authorization Server receives and validates the request.
 
-### Step 3. User Authentication and consent
-The Authorization authenticates the User and obtains consent by the User for using the client to access the Service.
-The method and means for authentication, as well as how to obtain consent of the User, are implementation specific and explicitly left out of scope of this profile.
+### Step 3. User Authorization and consent
+The Authorization Server identifies the Resource Owner (often, but not necessarily, the User) and obtains authorization and consent from the Resource Owner for using the client to access the Service.
+The method and means for identification, as well as how to obtain authorization and consent from the Resource Owner for the request, are implementation specific and explicitly left out of scope of this profile.
+Note that if the User and Resource Owner are one and the same, the Autorization Server will have to authenticate the User in order to reliably identify the User as Resource Owner before obtaining the authorization and consent.
 
 ### Step 4. Authorization Grant
 Note: applicable to the Authorization Code Flow only.
 The Authorization Server redirects the user-agent back to the Client, with a Authorization Response.
-This Authorization Response holds an Authorization Grant and is send to the `redirect_uri` endpoint from the Authorization / Authentication request.
+This Authorization Response holds an Authorization Grant and is send to the `redirect_uri` endpoint from the Authorization request.
 
 ### Step 5. Access Token Request
 Note: applicable to the Authorization Code Flow only.
@@ -176,7 +177,7 @@ Native applications not registering a separate public key for each instance are 
 
 ~~This client type MUST NOT request or be issued a refresh token.
 
-~~Direct Access Clients are out of scope in this version of iGOV-NL
+~~Direct Access Clients are out of scope in this version of iGov-NL
 
 This profile applies to clients that connect directly to protected resources and do not act on behalf of a particular resource owner, such as those clients that facilitate bulk transfers.
 
@@ -267,7 +268,7 @@ Host: idp-p.example.com
 </pre>
 
 
-### Response from the Token Endpoint
+### Response from the Authorization Endpoint
 
 **iGov-NL**
 
@@ -557,7 +558,7 @@ Authorization servers MAY protect their Dynamic Registration endpoints by requir
 
 **iGov-NL**
 
-In this version of iGOV-NL we follow iGOV for the requirement that the Authorization servers MUST support dynamic client registration. However depending on how the future authentication architecture of the dutch government develops in regards to OAuth we may revisit this in a future revision. The current requirement fits an architecture where there is a limited number of widely used authorization servers. However if in practice we start seeing a very large number of authorization servers with limited use this requirement can become a reccomendation in a future version of this profile. For these authorization servers with limited use we consider mandatory support for dynamic client registration a large burden.
+In this version of iGov-NL we follow iGov for the requirement that the Authorization servers MUST support dynamic client registration. However depending on how the future authentication architecture of the dutch government develops in regards to OAuth we may revisit this in a future revision. The current requirement fits an architecture where there is a limited number of widely used authorization servers. However if in practice we start seeing a very large number of authorization servers with limited use this requirement can become a reccomendation in a future version of this profile. For these authorization servers with limited use we consider mandatory support for dynamic client registration a large burden.
 
 **/iGov-NL**
 
@@ -702,7 +703,7 @@ Clients and protected resources SHOULD cache this key. It is RECOMMENDED that se
 
 **iGov-NL**
 
-iGOV requires that the authorization server provides an OpenIDConnect service discovery endpoint. Recently OAuth 2.0 Authorization Server Metadata [[rfc8414]] has been finalized, this provide the same functionality in a more generic way and could replace this requirement in a future version of the iGOV-NL profile.
+iGov requires that the authorization server provides an OpenIDConnect service discovery endpoint. Recently OAuth 2.0 Authorization Server Metadata [[rfc8414]] has been finalized, this provide the same functionality in a more generic way and could replace this requirement in a future version of the iGov-NL profile.
 
 **/iGov-NL**
 <!-- ### [3.1.6.](#rfc.section.3.1.6) Revocation -->
@@ -776,7 +777,7 @@ The server MAY issue tokens with additional fields, including the following as d
 
 <dd style="margin-left: 8">The identifier of the end-user that authorized this client, or the client id of a client acting on its own behalf (such as a bulk transfer). Since this information could potentially leak private user information, it should be used only when needed. End-user identifiers SHOULD be pairwise anonymous identifiers unless the audiance requires otherwise.</dd>
 
-**/iGov-NL**
+**iGov-NL**
 
 In iGov-NL the sub claim MUST be present.
 
@@ -801,11 +802,11 @@ The following sample claim set illustrates the use of the required claims for an
 
 The access tokens MUST be signed with [JWS] [[rfc7515]] . The authorization server MUST support the RS256 signature method for tokens and MAY use other asymmetric signing methods as defined in the [IANA JSON Web Signatures and Encryption Algorithms registry] [[JWS.JWE.Algs]] . The JWS header MUST contain the following fields:
 
-**NLProfile**
+**iGov-NL**
 
 In addition to above signing methods, the Authorization server SHOULD support PS256 signing algorithm [[RFC7518]] for the signing of the JWT Bearer Tokens.
 
-**/NLProfile**
+**/iGov-NL**
 
 <dl>
 
@@ -832,7 +833,7 @@ pXDaLyyY-4HT9XHT9V73fKF8rLWJu9grrA</pre>
 
 The authorization server MAY encrypt access tokens ~~and refresh tokens~~ using [JWE] [[rfc7516]] . Encrypted access tokens MUST be encrypted using the public key of the protected resource. ~~Encrypted refresh tokens MUST be encrypted using the authorization server's public key.~~
 
-**/iGov-NL**
+**iGov-NL**
 
 How to select or obtain the key to be used for encryption of an access token is out of scope of this profile.
 A early draft of "Resource Indicators for OAuth 2.0" exist and could be used. This draft describes usage of the <code>resource</code> parameter to indicate the applicable resource server.
@@ -1005,24 +1006,24 @@ For example: a resource server has resources classified as "public" and "sensiti
 
 In this manner, protected resources and authorization servers work together to meet risk tolerance levels for sensitive resources and end-user authentication.
 
-**NLProfile**
+**iGov-NL**
 
 TODO NL example
 
-**/NLProfile**
+**/iGov-NL**
 
 <!-- ### [4.2.](#rfc.section.4.2) Connections with Clients -->
 ## Connections with Clients
 
 A protected resource MUST accept bearer tokens passed in the authorization header as described in [[rfc6750]] . A protected resource MAY also accept bearer tokens passed in the form parameter ~~or query parameter~~ method~~s~~.
 
-**NLProfile**
+**iGov-NL**
 
 A Protected Resource under this profile MUST NOT accept access tokens passed using the query parameter method.
 
 A Protected Resource under this profile SHOULD if verify if the client is the Authorized party (AZP) when client authentications is used. See section [Advanced OAuth Security Options](#AdvancedSecurity) as well.
 
-**/NLProfile**
+**/iGov-NL**
 
 
 Protected resources MUST define and document which scopes are required for access to the resource.
@@ -1059,6 +1060,15 @@ As an alternative, the authorization server can include a <code>cnf</code> param
 # Security Considerations
 
 All transactions MUST be protected in transit by TLS as described in [[BCP195]] .
+
+**iGov-NL**
+
+In addition to the Best Current Practice for TLS, it is highly RECOMMENDED for all conforming implementations to incorporate the TLS guidelines from the Dutch NCSC into their implementations. If these guidelines are applied:
+* For back-channel communication, the guidelines categorized as "good" MUST be applied.
+* For front-channel communication, the guidelines for "good" MUST be applied and the guidelines for "sufficient" MAY be applied, depending target audience and support requirements.
+* Guidelines categorized as "insufficient" MUST NOT be applied and those categorized as "deprecated" SHOULD NOT be used.
+
+**/iGov-NL**
 
 Authorization Servers SHOULD take into account device postures when dealing with native apps if possible. Device postures include characteristics such as a user's lock screen setting, or if the app has 'root access' (meaning the device OS may be compromised to gain additional privilages not intended by the vendor), or if there is a device attestation for the app for its validity. Specific policies or capabilities are outside the scope of this specification.
 
