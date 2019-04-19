@@ -777,7 +777,7 @@ The server MAY issue tokens with additional fields, including the following as d
 
 <dd style="margin-left: 8">The identifier of the end-user that authorized this client, or the client id of a client acting on its own behalf (such as a bulk transfer). Since this information could potentially leak private user information, it should be used only when needed. End-user identifiers SHOULD be pairwise anonymous identifiers unless the audiance requires otherwise.</dd>
 
-**/iGov-NL**
+**iGov-NL**
 
 In iGov-NL the sub claim MUST be present.
 
@@ -833,7 +833,7 @@ pXDaLyyY-4HT9XHT9V73fKF8rLWJu9grrA</pre>
 
 The authorization server MAY encrypt access tokens ~~and refresh tokens~~ using [JWE] [[rfc7516]] . Encrypted access tokens MUST be encrypted using the public key of the protected resource. ~~Encrypted refresh tokens MUST be encrypted using the authorization server's public key.~~
 
-**/iGov-NL**
+**iGov-NL**
 
 How to select or obtain the key to be used for encryption of an access token is out of scope of this profile.
 A early draft of "Resource Indicators for OAuth 2.0" exist and could be used. This draft describes usage of the <code>resource</code> parameter to indicate the applicable resource server.
