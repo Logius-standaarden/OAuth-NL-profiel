@@ -44,9 +44,9 @@ state
 Mandatory. MUST be a verbatim copy of the value of the state parameter in the Authorization Request.
 /iGov-NL
 
-**rationale to be provided by: Remco**
+**rationale to be provided by: Remco Schaar**
 
-**reference to rationale:**
+**reference to rationale: Detailed rationale 5**
 
 ## 1.3.3.3 Requests to the Token Endpoint
 iGov-NL
@@ -71,9 +71,9 @@ client_assertion
 Mandatory. MUST have the above specified signed JWT as contents.
 /iGov-NL
 
-**rationale to be provided by:**
+**rationale to be provided by: Remco Schaar**
 
-**reference to rationale:**
+**reference to rationale: PS256 in Detailed rationale 4, Token Request in Detailed rationale 5**
 
 ## 1.3.3.4 Client Keys
 
@@ -109,7 +109,7 @@ For best practices on token lifetime see section Token Lifetimes. /iGov-NL
 
 **rationale to be provided by: Remco**
 
-**reference to rationale:**
+**reference to rationale: Detailed rationale 5**
 
 ## 1.4.1.3 Dynamic Registration
 iGov-NL
@@ -129,9 +129,9 @@ iGov requires that the authorization server provides an OpenIDConnect service di
 
 /iGov-NL
 
-**rationale to be provided by:**
+**rationale to be provided by: Remco Schaar**
 
-**reference to rationale:**
+**reference to rationale: Detailed rationale 6**
 
 ## 1.4.2.1 JWT Bearer Tokens
 
@@ -151,9 +151,9 @@ In addition to above signing methods, the Authorization server SHOULD support PS
 
 /iGov-NL
 
-**rationale to be provided by:**
+**rationale to be provided by: Remco Schaar**
 
-**reference to rationale:**
+**reference to rationale: Detailed rationale 4**
 
 iGov-NL
 
@@ -254,5 +254,19 @@ Het Nederlands profiel OAuth is hier te vinden: https://geonovum.github.io/KP-AP
 
 ## 3 Support of limited use case 
 
+## 4 Support for PSS-based signature methods
 
+Standard OAuth2 en the OAuth2 iGov profile rely on `RS256` as signature method. This is explicitly stated in the international iGov profile. The OAuth2 standards have this implicitly included, as it is build on top of JOSE (signatures in JWS (RC7515), using algorithms of JWA (RFC7518)). RFC7518 recommends support for RS256.
+
+The `RS256` is specified as an RSA signature using PKCS v1.5 padding. This form of padding has been vulnerable to various attacks. Better alternatives are available using PSS padding. A method of RSA signature using PSS and SHA256 is standardized as `PS256` in RFC7518 as well.
+
+As PKIoverheid is currently still RSA based, moving to ECDSA is not yet an option. Therefore, this profile recommends (in the form of a SHOULD) the usage of PS256. This helps as a precursor to deprecating and removing RS256/PKCSv1.5 padding.
+
+## 5 Inclusion of detailed request / response structure
+
+Some steps in the flow of the international iGov profile have not been included or have been included incomplete. This profile has included some messages or parameters explicitly, although they are specified in the underlying standards. These have been included for reasons of completeness.
+
+## 6 OAuth2 Server Metadata prevails over OpenID Connect Discovery
+
+The international iGov profile specifies usage of metadata for the OAuth2 Authorization Server using OpenID Connect Discovery. A very similar, yet more generic, specification was adopted by the OAuth2 working group of IETF as RFC8414 "OAuth 2.0 Authorization Server Metadata". As this is a profile for OAuth2, relying on generic OAuth2 standards is preferred over application specific standards, such as OpenID Connetc Discovery.
 
