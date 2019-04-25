@@ -268,5 +268,5 @@ Some steps in the flow of the international iGov profile have not been included 
 
 ## 6 OAuth2 Server Metadata prevails over OpenID Connect Discovery
 
-The international iGov profile specifies usage of metadata for the OAuth2 Authorization Server using OpenID Connect Discovery. A very similar, yet more generic, specification was adopted by the OAuth2 working group of IETF as RFC8414 "OAuth 2.0 Authorization Server Metadata". As this is a profile for OAuth2, relying on generic OAuth2 standards is preferred over application specific standards, such as OpenID Connetc Discovery.
+The international iGov profile specifies usage of metadata for the OAuth2 Authorization Server using OpenID Connect Discovery. A very similar, yet more generic, specification was adopted by the OAuth2 working group of IETF as RFC8414 "OAuth 2.0 Authorization Server Metadata". As this is a profile for OAuth2, relying on generic OAuth2 standards is preferred over application specific standards, such as OpenID Connect Discovery.
 
