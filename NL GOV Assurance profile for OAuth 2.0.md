@@ -1021,7 +1021,7 @@ A protected resource MUST accept bearer tokens passed in the authorization heade
 
 A Protected Resource under this profile MUST NOT accept access tokens passed using the query parameter method.
 
-A Protected Resource under this profile SHOULD if verify if the client is the Authorized party (AZP) when client authentications is used. See section [Advanced OAuth Security Options](#AdvancedSecurity) as well.
+A Protected Resource under this profile SHOULD verify if the client is the Authorized party (AZP) when client authentications is used. See section [Advanced OAuth Security Options](#AdvancedSecurity) as well.
 
 **/iGov-NL**
 
