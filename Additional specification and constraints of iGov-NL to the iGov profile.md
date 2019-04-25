@@ -143,7 +143,7 @@ In iGov-NL the sub claim MUST be present.
 
 **rationale to be provided by:**
 
-**reference to rationale:**
+**reference to rationale: Detailed rationale 3**
 
 iGov-NL
 
@@ -188,13 +188,13 @@ iGov-NL
 
 A Protected Resource under this profile MUST NOT accept access tokens passed using the query parameter method.
 
-A Protected Resource under this profile SHOULD if verify if the client is the Authorized party (AZP) when client authentications is used. See section Advanced OAuth Security Options as well.
+A Protected Resource under this profile SHOULD verify if the client is the Authorized party (azp) when client authentication is used. See section Advanced OAuth Security Options as well.
 
 /iGov-NL
 
-**rationale to be provided by:**
+**rationale to be provided by: Remco Schaar**
 
-**reference to rationale:**
+**reference to rationale: Detailed rationale 8**
 
 ## 1.6.1 Proof of Possession Tokens
 
@@ -279,3 +279,15 @@ The international iGov profile describes two modes for deployment of native appl
 However, do note that this profile requires usage of PKIoverheid in inter-organizational use cases. As native application on end-user devices can rarely be considered as fully managed and controlled by one organization, dynamic registration would imply using a PKIoverheid on (mobile) end-user devices. This is in conflict with best practices and terms & conditions for PKIoverheid certificates.
 
 As such PKCE is included in the Autorization Request in this profile. This is in line with Detailed rationale 5 above.
+
+## 8 Mandating security recommendations
+
+The OAuth2 standards include various security considerations and additional best practices are being drafted. As this profile is intended for broad usage in situations were sensitive data is being exchanged, any compliant implementation should be secure and privacy friendly by default.
+
+As a result, a few not-so-secure options are explicitly excluded and more secure options required or recommended. These include:
+- access tokens in URL query string, as this can have security and privacy implications.
+- validation of parameters, as counter measure 
+- PSS padding in signing methods, see Detailed rationale 4
+- Usage of PKCE, see Detailed rationale 7
+
+
