@@ -31,7 +31,7 @@ In case `code_challenge` is used with a native app, mandatory. MUST use the valu
 
 **rationale to be provided by: Remco Schaar**
 
-**reference to rationale:**
+**reference to rationale: PKCE in Detailed rationale 7, Authorization Request in Detailed rationale 5**
 
 ## 1.3.3.2 Response from the Authorization Endpoint
 iGov-NL
@@ -107,7 +107,7 @@ scope
 Optional. Scope(s) of the access (token) granted, multiple scopes are separated by whitespace. The scope MAY be omitted if it is identical to the scope requested.
 For best practices on token lifetime see section Token Lifetimes. /iGov-NL
 
-**rationale to be provided by: Remco**
+**rationale to be provided by: Remco Schaar**
 
 **reference to rationale: Detailed rationale 5**
 
@@ -270,3 +270,12 @@ Some steps in the flow of the international iGov profile have not been included 
 
 The international iGov profile specifies usage of metadata for the OAuth2 Authorization Server using OpenID Connect Discovery. A very similar, yet more generic, specification was adopted by the OAuth2 working group of IETF as RFC8414 "OAuth 2.0 Authorization Server Metadata". As this is a profile for OAuth2, relying on generic OAuth2 standards is preferred over application specific standards, such as OpenID Connect Discovery.
 
+## 7 Using PKCE for native applications
+
+A known and actively exploited attack exists against native application implementing the OAuth2 Authorization Code flow. This attacks is described and a countermeasure is standardized in RFC7636, also known as PKCE.
+
+The international iGov profile describes two modes for deployment of native applications. Usage of PKCE is either mandatory in case no unique client id is registered, or optional in case dynamic registration and separate client ids are being used.
+
+However, do note that this profile requires usage of PKIoverheid in inter-organizational use cases. As native application on end-user devices can rarely be considered as fully managed and controlled by one organization, dynamic registration would imply using a PKIoverheid on (mobile) end-user devices. This is in conflict with best practices and terms & conditions for PKIoverheid certificates.
+
+As such PKCE is included in the Autorization Request in this profile. This is in line with Detailed rationale 5 above.
