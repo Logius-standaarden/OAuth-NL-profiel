@@ -1065,7 +1065,7 @@ All transactions MUST be protected in transit by TLS as described in [[BCP195]] 
 
 In addition to the Best Current Practice for TLS, it is highly RECOMMENDED for all conforming implementations to incorporate the TLS guidelines from the Dutch NCSC into their implementations. If these guidelines are applied:
 * For back-channel communication, the guidelines categorized as "good" MUST be applied.
-* For front-channel communication, the guidelines for "good" MUST be applied and the guidelines for "sufficient" MAY be applied, depending target audience and support requirements.
+* For front-channel communication, the guidelines for "good" MUST be applied and the guidelines for "sufficient" MAY be applied, depending on target audience and support requirements.
 * Guidelines categorized as "insufficient" MUST NOT be applied and those categorized as "phase out" SHOULD NOT be used.
 
 **/iGov-NL**
