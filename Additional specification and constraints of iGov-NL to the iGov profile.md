@@ -258,7 +258,7 @@ Het Nederlands profiel OAuth is hier te vinden: https://geonovum.github.io/KP-AP
 
 Standard OAuth2 en the OAuth2 iGov profile rely on `RS256` as signature method. This is explicitly stated in the international iGov profile. The OAuth2 standards have this implicitly included, as it is build on top of JOSE (signatures in JWS (RC7515), using algorithms of JWA (RFC7518)). RFC7518 recommends support for RS256.
 
-The `RS256` is specified as an RSA signature using PKCS v1.5 padding. This form of padding has been vulnerable to various attacks. Better alternatives are available using PSS padding. A method of RSA signature using PSS and SHA256 is standardized as `PS256` in RFC7518 as well.
+The `RS256` is specified as an RSA signature using PKCS v1.5 padding. This form of padding has been vulnerable to various attacks. Better alternatives are available using PSS padding. A method of RSA signature using PSS and SHA256 is standardized as `PS256` in RFC7518 as well. Other standards are deprecating PKCSv1.5 padding and are migrating towards PSS padding for RSA signatures, however JOSE and thereby OAuth2 have not done so yet.
 
 As PKIoverheid is currently still RSA based, moving to ECDSA is not yet an option. Therefore, this profile recommends (in the form of a SHOULD) the usage of PS256. This helps as a precursor to deprecating and removing RS256/PKCSv1.5 padding.
 
