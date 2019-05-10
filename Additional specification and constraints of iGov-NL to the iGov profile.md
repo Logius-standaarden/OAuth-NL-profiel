@@ -31,7 +31,7 @@ In case `code_challenge` is used with a native app, mandatory. MUST use the valu
 
 **rationale to be provided by: Remco Schaar**
 
-**reference to rationale:**
+**reference to rationale: PKCE in Detailed rationale 7, Authorization Request in Detailed rationale 5**
 
 ## 1.3.3.2 Response from the Authorization Endpoint
 iGov-NL
@@ -44,9 +44,9 @@ state
 Mandatory. MUST be a verbatim copy of the value of the state parameter in the Authorization Request.
 /iGov-NL
 
-**rationale to be provided by: Remco**
+**rationale to be provided by: Remco Schaar**
 
-**reference to rationale:**
+**reference to rationale: Detailed rationale 5**
 
 ## 1.3.3.3 Requests to the Token Endpoint
 iGov-NL
@@ -71,9 +71,9 @@ client_assertion
 Mandatory. MUST have the above specified signed JWT as contents.
 /iGov-NL
 
-**rationale to be provided by:**
+**rationale to be provided by: Remco Schaar**
 
-**reference to rationale:**
+**reference to rationale: PS256 in Detailed rationale 4, Token Request in Detailed rationale 5**
 
 ## 1.3.3.4 Client Keys
 
@@ -105,9 +105,9 @@ scope
 Optional. Scope(s) of the access (token) granted, multiple scopes are separated by whitespace. The scope MAY be omitted if it is identical to the scope requested.
 For best practices on token lifetime see section Token Lifetimes. /iGov-NL
 
-**rationale to be provided by: Remco**
+**rationale to be provided by: Remco Schaar**
 
-**reference to rationale:**
+**reference to rationale: Detailed rationale 5**
 
 ## 1.4.1.3 Dynamic Registration
 iGov-NL
@@ -126,7 +126,9 @@ iGov requires that the authorization server provides an OpenIDConnect service di
 
 /iGov-NL
 
-**reference to rationale: self explanatory, text provides insight in possible future changes to iGov-NL**
+**rationale to be provided by: Remco Schaar**
+
+**reference to rationale: Detailed rationale 6**
 
 ## 1.4.2.1 JWT Bearer Tokens
 
@@ -138,7 +140,7 @@ In iGov-NL the sub claim MUST be present.
 
 **rationale to be provided by:**
 
-**reference to rationale:**
+**reference to rationale: Detailed rationale 3**
 
 iGov-NL
 
@@ -146,9 +148,9 @@ In addition to above signing methods, the Authorization server SHOULD support PS
 
 /iGov-NL
 
-**rationale to be provided by:**
+**rationale to be provided by: Remco Schaar**
 
-**reference to rationale:**
+**reference to rationale: Detailed rationale 4**
 
 iGov-NL
 
@@ -183,13 +185,13 @@ iGov-NL
 
 A Protected Resource under this profile MUST NOT accept access tokens passed using the query parameter method.
 
-A Protected Resource under this profile SHOULD if verify if the client is the Authorized party (AZP) when client authentications is used. See section Advanced OAuth Security Options as well.
+A Protected Resource under this profile SHOULD verify if the client is the Authorized party (azp) when client authentication is used. See section Advanced OAuth Security Options as well.
 
 /iGov-NL
 
-**rationale to be provided by:**
+**rationale to be provided by: Remco Schaar**
 
-**reference to rationale:**
+**reference to rationale: Detailed rationale 8**
 
 ## 1.6.1 Proof of Possession Tokens
 
@@ -248,5 +250,40 @@ The Dutch government has its own infrastructure for PKI certificates based on in
 
 ## 3 Support of limited use case 
 
+## 4 Support for PSS-based signature methods
+
+Standard OAuth2 en the OAuth2 iGov profile rely on `RS256` as signature method. This is explicitly stated in the international iGov profile. The OAuth2 standards have this implicitly included, as it is build on top of JOSE (signatures in JWS (RC7515), using algorithms of JWA (RFC7518)). RFC7518 recommends support for RS256.
+
+The `RS256` is specified as an RSA signature using PKCS v1.5 padding. This form of padding has been vulnerable to various attacks. Better alternatives are available using PSS padding. A method of RSA signature using PSS and SHA256 is standardized as `PS256` in RFC7518 as well. Other standards are deprecating PKCSv1.5 padding and are migrating towards PSS padding for RSA signatures, however JOSE and thereby OAuth2 have not done so yet.
+
+As PKIoverheid is currently still RSA based, moving to ECDSA is not yet an option. Therefore, this profile recommends (in the form of a SHOULD) the usage of PS256. This helps as a precursor to deprecating and removing RS256/PKCSv1.5 padding.
+
+## 5 Inclusion of detailed request / response structure
+
+Some steps in the flow of the international iGov profile have not been included or have been included incomplete. This profile has included some messages or parameters explicitly, although they are specified in the underlying standards. These have been included for reasons of completeness.
+
+## 6 OAuth2 Server Metadata prevails over OpenID Connect Discovery
+
+The international iGov profile specifies usage of metadata for the OAuth2 Authorization Server using OpenID Connect Discovery. A very similar, yet more generic, specification was adopted by the OAuth2 working group of IETF as RFC8414 "OAuth 2.0 Authorization Server Metadata". As this is a profile for OAuth2, relying on generic OAuth2 standards is preferred over application specific standards, such as OpenID Connect Discovery.
+
+## 7 Using PKCE for native applications
+
+A known and actively exploited attack exists against native application implementing the OAuth2 Authorization Code flow. This attacks is described and a countermeasure is standardized in RFC7636, also known as PKCE.
+
+The international iGov profile describes two modes for deployment of native applications. Usage of PKCE is either mandatory in case no unique client id is registered, or optional in case dynamic registration and separate client ids are being used.
+
+However, do note that this profile requires usage of PKIoverheid in inter-organizational use cases. As native application on end-user devices can rarely be considered as fully managed and controlled by one organization, dynamic registration would imply using a PKIoverheid on (mobile) end-user devices. This is in conflict with best practices and terms & conditions for PKIoverheid certificates.
+
+As such PKCE is included in the Autorization Request in this profile. This is in line with Detailed rationale 5 above.
+
+## 8 Mandating security recommendations
+
+The OAuth2 standards include various security considerations and additional best practices are being drafted. As this profile is intended for broad usage in situations were sensitive data is being exchanged, any compliant implementation should be secure and privacy friendly by default.
+
+As a result, a few not-so-secure options are explicitly excluded and more secure options required or recommended. These include:
+- access tokens in URL query string, as this can have security and privacy implications.
+- validation of parameters, as counter measure 
+- PSS padding in signing methods, see Detailed rationale 4
+- Usage of PKCE, see Detailed rationale 7
 
 

@@ -558,7 +558,7 @@ Authorization servers MAY protect their Dynamic Registration endpoints by requir
 
 **iGov-NL**
 
-In this version of iGov-NL we follow iGov for the requirement that the Authorization servers MUST support dynamic client registration. However depending on how the future authentication architecture of the dutch government develops in regards to OAuth we may revisit this in a future revision. The current requirement fits an architecture where there is a limited number of widely used authorization servers. However if in practice we start seeing a very large number of authorization servers with limited use this requirement can become a reccomendation in a future version of this profile. For these authorization servers with limited use we consider mandatory support for dynamic client registration a large burden.
+In this version of iGov-NL we follow iGov for the requirement that the Authorization servers MUST support dynamic client registration. However depending on how the future authentication architecture of the Dutch government develops in regards to OAuth we may revisit this in a future revision. The current requirement fits an architecture where there is a limited number of widely used authorization servers. However if in practice we start seeing a very large number of authorization servers with limited use this requirement can become a reccomendation in a future version of this profile. For these authorization servers with limited use we consider mandatory support for dynamic client registration a large burden.
 
 **/iGov-NL**
 
@@ -1021,7 +1021,7 @@ A protected resource MUST accept bearer tokens passed in the authorization heade
 
 A Protected Resource under this profile MUST NOT accept access tokens passed using the query parameter method.
 
-A Protected Resource under this profile SHOULD if verify if the client is the Authorized party (AZP) when client authentications is used. See section [Advanced OAuth Security Options](#AdvancedSecurity) as well.
+A Protected Resource under this profile SHOULD verify if the client is the Authorized party (azp) when client authentication is used. See section [Advanced OAuth Security Options](#AdvancedSecurity) as well.
 
 **/iGov-NL**
 
@@ -1065,8 +1065,8 @@ All transactions MUST be protected in transit by TLS as described in [[BCP195]] 
 
 In addition to the Best Current Practice for TLS, it is highly RECOMMENDED for all conforming implementations to incorporate the TLS guidelines from the Dutch NCSC into their implementations. If these guidelines are applied:
 * For back-channel communication, the guidelines categorized as "good" MUST be applied.
-* For front-channel communication, the guidelines for "good" MUST be applied and the guidelines for "sufficient" MAY be applied, depending target audience and support requirements.
-* Guidelines categorized as "insufficient" MUST NOT be applied and those categorized as "deprecated" SHOULD NOT be used.
+* For front-channel communication, the guidelines for "good" MUST be applied and the guidelines for "sufficient" MAY be applied, depending on target audience and support requirements.
+* Guidelines categorized as "insufficient" MUST NOT be applied and those categorized as "phase out" SHOULD NOT be used.
 
 **/iGov-NL**
 
