@@ -29,8 +29,6 @@ code_challenge_method
 In case `code_challenge` is used with a native app, mandatory. MUST use the value `S256`.
 /iGov-NL
 
-**rationale to be provided by: Remco Schaar**
-
 **reference to rationale: PKCE in Detailed rationale 7, Authorization Request in Detailed rationale 5**
 
 ## 1.3.3.2 Response from the Authorization Endpoint
@@ -43,8 +41,6 @@ Mandatory. MUST be a cryptographic random value, using an unpredictable value wi
 state
 Mandatory. MUST be a verbatim copy of the value of the state parameter in the Authorization Request.
 /iGov-NL
-
-**rationale to be provided by: Remco Schaar**
 
 **reference to rationale: Detailed rationale 5**
 
@@ -70,8 +66,6 @@ Mandatory. MUST have the value `urn:ietf:params:oauth:client-assertion-type:jwt-
 client_assertion
 Mandatory. MUST have the above specified signed JWT as contents.
 /iGov-NL
-
-**rationale to be provided by: Remco Schaar**
 
 **reference to rationale: PS256 in Detailed rationale 4, Token Request in Detailed rationale 5**
 
@@ -105,8 +99,6 @@ scope
 Optional. Scope(s) of the access (token) granted, multiple scopes are separated by whitespace. The scope MAY be omitted if it is identical to the scope requested.
 For best practices on token lifetime see section Token Lifetimes. /iGov-NL
 
-**rationale to be provided by: Remco Schaar**
-
 **reference to rationale: Detailed rationale 5**
 
 ## 1.4.1.3 Dynamic Registration
@@ -125,8 +117,6 @@ iGov-NL
 iGov requires that the authorization server provides an OpenIDConnect service discovery endpoint. Recently OAuth 2.0 Authorization Server Metadata [rfc8414] has been finalized, this provide the same functionality in a more generic way and could replace this requirement in a future version of the iGov-NL profile.
 
 /iGov-NL
-
-**rationale to be provided by: Remco Schaar**
 
 **reference to rationale: Detailed rationale 6**
 
@@ -147,8 +137,6 @@ iGov-NL
 In addition to above signing methods, the Authorization server SHOULD support PS256 signing algorithm [RFC7518] for the signing of the JWT Bearer Tokens.
 
 /iGov-NL
-
-**rationale to be provided by: Remco Schaar**
 
 **reference to rationale: Detailed rationale 4**
 
@@ -189,8 +177,6 @@ A Protected Resource under this profile SHOULD verify if the client is the Autho
 
 /iGov-NL
 
-**rationale to be provided by: Remco Schaar**
-
 **reference to rationale: Detailed rationale 8**
 
 ## 1.6.1 Proof of Possession Tokens
@@ -219,8 +205,6 @@ Guidelines categorized as "insufficient" MUST NOT be applied and those categoriz
 **reference to rationale: Detailed rationale 2**
 
 # General Rationale
-
-**TODO translate to english**
 
 The reason for the creation of iGov-NL is an advisory document on the adoption of OAuth as a mandatory(comply or explain) standard for the Dutch public sector. It states that a Dutch profile is needed for the OAuth standard to avoid interoperability problems between different implementations. The existance of iGov-NL has become a precondition for the adaoption of OAuth as mandatory standard for the Dutch public sector.
  
