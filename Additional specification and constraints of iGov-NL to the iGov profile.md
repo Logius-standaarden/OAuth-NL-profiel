@@ -85,8 +85,6 @@ The PKIoverheid certificate MUST be included as a x5c parameter. The x5c paramet
 
 /iGov-NL
 
-**rationale to be provided by: Frank**
-
 **reference to rationale: Detailed rationale 1**
 
 ## 1.3.3.5 Token Response
@@ -118,9 +116,8 @@ In this version of iGov-NL we follow iGov for the requirement that the Authoriza
 
 /iGov-NL
 
-**rationale to be provided by:**
 
-**reference to rationale:**
+**reference to rationale: self explanatory, text provides insight in possible future changes to iGov-NL**
 
 ## 1.4.1.5 Discovery
 iGov-NL
@@ -129,9 +126,7 @@ iGov requires that the authorization server provides an OpenIDConnect service di
 
 /iGov-NL
 
-**rationale to be provided by:**
-
-**reference to rationale:**
+**reference to rationale: self explanatory, text provides insight in possible future changes to iGov-NL**
 
 ## 1.4.2.1 JWT Bearer Tokens
 
@@ -159,11 +154,11 @@ iGov-NL
 
 How to select or obtain the key to be used for encryption of an access token is out of scope of this profile. A early draft of "Resource Indicators for OAuth 2.0" exist and could be used. This draft describes usage of the resource parameter to indicate the applicable resource server.
 
+
 **reference to rationale: self explanatory: additional information (non normative) on how to implement requirement**
 
 In case the Authorization Server, Resource Server and client are not operated under responsibility of the same organisation, each party MUST use PKIoverheid certificates with OIN for encryption.
 
-**rationale to be provided by: Frank**
 
 **reference to rationale: Detailed rationale 1**
 
@@ -204,8 +199,6 @@ Proof of possession can be implemented using various methods. An example of such
 
 /iGov-NL
 
-**rationale to be provided by:**
-
 **reference to rationale: self explanatory: additional information (non normative) on how to implement requirement**
 
 ## 1.7 Security Considerations
@@ -229,26 +222,27 @@ Guidelines categorized as "insufficient" MUST NOT be applied and those categoriz
 
 The reason for the creation of iGov-NL is an advisory document on the adoption of OAuth as a mandatory(comply or explain) standard for the Dutch public sector. It states that a Dutch profile is needed for the OAuth standard to avoid interoperability problems between different implementations. The existance of iGov-NL has become a precondition for the adaoption of OAuth as mandatory standard for the Dutch public sector.
  
-## Expert advies OAuth forum standaardisatie
-Het opstellen van deze standaard is voortgekomen uit het Expert advies OAuth [Expert]. Daarin wordt aangeraden eerst een nederlands profiel op stellen alvorens OAuth op de pas toe of leg uit lijst van het forum standaardisatie te plaatsen.
+## Expert advice OAuth forum standaardisatie
+The creation of the iGov-NL profile is based on a reccomendation from the expert advice on OAuth [Expert]. This expert advice was writen as part of the procedure to make OAuth a mandotary standard for the dutch public sector. Conditional for the adoption of OAuth as a mandotory standard was the creation of a Dutch implementation profile. The Rationale provided is that without a local implementation profile the risk of diverging non-interoperable implementations of the standard becomes unacceptably large.
 
-## Werkingsgebied standaard
-Als organisatorisch werkingsgebied wordt geadviseerd: Nederlandse overheden (Rijk, provincies, gemeenten en waterschappen) en instellingen uit de (semi-) publieke sector
+## Orginazational scope of the standaard
+When iGov-NL becomes a mandatory standard, the following organisations will have to comply: Dutch government organizations (National, provinces, municipalities and regional water authorities) and organizations in the (semi-) public sector
 
-## Toepassingsgebied standaard
-Als functioneel toepassingsgebied wordt voorgesteld: Het gebruik van OAuth 2.0 is verplicht voor applicaties waarbij gebruikers (resource owner) toestemming geven (impliciet of expliciet) aan een dienst (van een derde) om namens hem toegang te krijgen tot specifieke gegevens via een RESTful API. Het gaat dan om een RESTful API waar de resource owner recht tot toegang heeft.
+## Functional scope of the standaard
+The use of OAuth 2.0 is mandatory for applications where users (resource owner) delegate rights (implicitly or explicitly) to a (third party) service with the purpose of giving this service acces to specific data using a RESTful API. Specifcally a RESTful API to which the resource owner has acces rights.
 
-## OpenID connect buiten scope
-de expertgroep is op 7 juli en op 22 september 2016 bijeengekomen om de standaarden, de aandachtspunten en openstaande vragen uit het voorbereidingsdossier te bespreken. Daarbij is vastgesteld dat OpenID Connect niet voor opneming op de lijst open standaarden in aanmerking komt.
+## OpenID connect out of scope
+The expertgroup that authored the expert advice on OAuth met on the 7th of juli and on 22nd september 2016. Based on their discussion OpenIDConnect was placed out of scope and not (yet) reccomended as a mandatory standard.
 
-## Aansluiting op internationale standaard iGov
-Het Nederlands profiel OAuth baseren we het internationale iGOV OAuth 2.0 profiel [iGOV.OAuth2] we nemen niet alle keuzes van dit internationale profiel over aangezien dit een aantal keuzes bevat die sterk leunen op de amerikaanse situatie. Het kan het best beschouwd worden als een fork waar we in ons profiel aangeven waar we afwijken. iGov heeft twee naast het OAuth profiel ook een OpenID connect profiel [iGOV.OpenID] wanneer mogelijk ook OpenID connect op de pas toe of leg uit lijst van het Forum standaardisatie komt kan dit Nederlandse profiel uitgebreid worden met een Nederlandse variant van het iGov OpenID Connect profiel. De usecase die hieronder wordt beschreven sorteerd daar al op voor.
-
-Het Nederlands profiel OAuth is hier te vinden: https://geonovum.github.io/KP-APIs-OAuthNL/#dutch-government-assurance-profile-for-oauth-2-0
+## Based on international iGov standard
+This profile is based upon the international government assurance profile for OAuth 2.0 (iGov) [iGOV.OAuth2] as published by the OpenID Foundation (https://openid.net/foundation/). It should be considered a fork of this profile as the iGov profile is geared more towards the American situtation and in the Netherlands we have to deal with an European Union context.
+We have added the chapter Usecases to illustrate the specific usecase the iGov-NL profile is aimed at.  
+Besides the OAuth profile iGov also has a complementary OpenID connect profile [iGOV.OpenID]. If and when OpenID connect becomes a mandatory standard for the Dutch public sector iGov-NL can be expanded with a Dutch version of the iGov OpenID Connect profile. De usecase described at the beginning of iGov-NL was written with this possible expansion in mind.
 
 # Detailed Rationale
 
-## 1 Use of local standards for PKI certificates (PKIOverheid)
+## 1 Use of local infrastructure for PKI certificates (PKIOverheid)
+The Dutch government has its own infrastructure for PKI certificates based on international open standards(x509 etc...). Its implementation is based on Dutch laws. It allows for a uniform way of identifying organizations based on the OIN identifier included in the certificate and then authenticating an authorizing them. This reduces the complexity of maintinging authorization tables for service providers, as these can be based directly on OIN identifiers. Using PKI certficates allows service consumers to re-use their existing PKIOverheid certificates instead of burdening them with maintaining yet another authentication product. 
 
 ## 2 Use of local standards and best practices for TLS
 
