@@ -422,8 +422,6 @@ cNt1H2_VQ_Ww1JOLn9vRn-H48FDj7TxlIT74XdTZgTv31w_GRPAOfyxEw_ZUmxhz5Z-gTlQ",
 
 **iGov-NL**
 
-
-
 In case the Authorization Server, Resource Server and client are not operated under responsibility of the same organisation, each party MUST use PKIoverheid certificates with OIN.
 The PKIoverheid certificate MUST be included either as a <code>x5c</code> or as ,<code>x5u</code> parameter, as per [[rfc7517]] §4.6 and 4.7. Parties SHOULD at least support the inclusion of the certificate as <code>x5c</code> parameter, for maximum interoperability. Parties MAY agree to use <code>x5u</code>, for instance for communication within specific environments.
 Rationale:
@@ -432,7 +430,6 @@ Parties receiving and validating JWT tokens may need to be able to support both 
 The choice between <code>x5c</code> and <code>x5u</code> entails a trade-off. Including the certificate chain in JWT tokens makes for longer tokens (around 1kB for tokens with url, versus around 5kB for tokens with a single embedded certificate). 
 Also, having the certificates accessible over URLs creates the possibility of establishing the necessary PKI infrastructure for encrypted message exchange. 
 However, certificates accessible by url introduce (possibly undesired) run-time dependence on an on-line resource. Also, detecting and supporting both options makes for more complex token validation logic.
-
 
 ~In case the Authorization Server, Resource Server and client are not operated under responsibility of the same organisation, each party MUST use PKIoverheid certificates with OIN.~
 
