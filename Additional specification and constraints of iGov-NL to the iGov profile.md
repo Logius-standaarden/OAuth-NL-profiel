@@ -1,3 +1,4 @@
+
 Additional specification and constraints of iGov-NL to the iGov profile
 =====
 
@@ -233,6 +234,13 @@ The Dutch government has its own infrastructure for PKI certificates based on in
 ## 2 Use of local standards and best practices for TLS
 
 ## 3 Support of limited use case 
+OAuth2 can be applied over a wide range of various use case scenarios. Profiles like this profile "iGov-NL" therefor exist to set a baseline to be applicable for specific use cases.
+
+Selected use cases have implications on choices for e.g. security, privacy and interoperability. This version of this profile is therefor scoped to a single use case. Future updates to this profile may increase the scope to additional use cases.
+
+Since this profile focuses on a particular use case, certain explicit requirements or changes from the upsteam iGov profile exists. These include (non exhaustive):
+- A `sub` identifier MUST be present in access tokens, as the use caseby definition focuses on authorization including an identifier.
+- Direct access clients are out of scope.
 
 ## 4 Support for PSS-based signature methods
 
