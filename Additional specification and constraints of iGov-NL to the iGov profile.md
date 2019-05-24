@@ -75,12 +75,12 @@ Mandatory. MUST have the above specified signed JWT as contents.
 iGov-NL
 
 In case the Authorization Server, Resource Server and client are not operated under responsibility of the same organisation, each party MUST use PKIoverheid certificates with OIN.
-
-The PKIoverheid certificate MUST be included as a x5c parameter. The x5c parameter MUST be included as a list (array) of X509 certificate(s), as Base64 DER encoded PKIoverheid certificate(s). The first certificate MUST be the Client's certificate, optionally followed by the rest of that certificate's chain. The jwks structure MUST include the public key parameters with the same values of the corresponding X509 certificate included as x5c, as per [rfc7517] §4.7.
+The PKIoverheid certificate MUST be included either as a <code>x5c</code> or as <code>x5u</code> parameter, as per [[rfc7517]] §4.6 and 4.7. Parties SHOULD at least support the inclusion of the certificate as <code>x5c</code> parameter, for maximum interoperability. 
+Parties MAY agree to use <code>x5u</code>, for instance for communication within specific environments.  
 
 /iGov-NL
 
-**reference to rationale: Detailed rationale 1**
+**reference to rationale: Detailed rationale 1 & 9**
 
 ## 1.3.3.5 Token Response
 
@@ -201,7 +201,6 @@ For front-channel communication, the guidelines for "good" MUST be applied and t
 Guidelines categorized as "insufficient" MUST NOT be applied and those categorized as "deprecated" SHOULD NOT be used.
 /iGov-NL
 
-**rationale to be provided by: Martin**
 
 **reference to rationale: Detailed rationale 2**
 
@@ -232,6 +231,8 @@ Besides the OAuth profile iGov also has a complementary OpenID connect profile [
 The Dutch government has its own infrastructure for PKI certificates based on international open standards(x509 etc...). Its implementation is based on Dutch laws. It allows for a uniform way of identifying organizations based on the OIN identifier included in the certificate and then authenticating an authorizing them. This reduces the complexity of maintainging authorization tables for service providers, as these can be based directly on OIN identifiers. Using PKI certficates allows service consumers to re-use their existing PKIOverheid certificates instead of burdening them with maintaining yet another authentication product. 
 
 ## 2 Use of local standards and best practices for TLS
+Implementations MUST support TLS. Which version(s) ought to be implemented will vary over time, and depend on the widespread deployment and known security vulnerabilities at the time of implementation.
+iGov-NL implementations MUST implement the Forum Standaardisatie TLS standard  https://www.forumstandaardisatie.nl/standaard/tls.
 
 ## 3 Support of limited use case 
 OAuth2 can be applied over a wide range of various use case scenarios. Profiles like this profile "iGov-NL" therefor exist to set a baseline to be applicable for specific use cases.
@@ -277,5 +278,11 @@ As a result, a few not-so-secure options are explicitly excluded and more secure
 - validation of parameters, as counter measure 
 - PSS padding in signing methods, see Detailed rationale 4
 - Usage of PKCE, see Detailed rationale 7
+## 9 Embedding certificates
 
+The party offering the JWT token has a choice to either include an embedded certificate chain (<code>x5c</code>) or include a url that points to the certificate chain (<code>x5u</code>). 
+Parties receiving and validating JWT tokens may need to be able to support both <code>x5c</code> and <code>x5u</code>. 
+The choice between <code>x5c</code> and <code>x5u</code> entails a trade-off. Including the certificate chain in JWT tokens makes for longer tokens (around 1kB for tokens with url, versus around 5kB for tokens with a single embedded certificate). 
+Also, having the certificates accessible over URLs creates the possibility of establishing the necessary PKI infrastructure for encrypted message exchange. 
+However, certificates accessible by url introduce (possibly undesired) run-time dependence on an on-line resource. Also, detecting and supporting both options makes for more complex token validation logic.
 

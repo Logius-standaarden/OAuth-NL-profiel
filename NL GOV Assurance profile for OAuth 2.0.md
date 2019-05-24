@@ -426,13 +426,6 @@ In case the Authorization Server, Resource Server and client are not operated un
 The PKIoverheid certificate MUST be included either as a <code>x5c</code> or as <code>x5u</code> parameter, as per [[rfc7517]] §4.6 and 4.7. Parties SHOULD at least support the inclusion of the certificate as <code>x5c</code> parameter, for maximum interoperability. 
 Parties MAY agree to use <code>x5u</code>, for instance for communication within specific environments.  
 
-Rationale:
-The party offering the JWT token has a choice to either include an embedded certificate chain (<code>x5c</code>) or include a url that points to the certificate chain (<code>x5u</code>). 
-Parties receiving and validating JWT tokens may need to be able to support both <code>x5c</code> and <code>x5u</code>. 
-The choice between <code>x5c</code> and <code>x5u</code> entails a trade-off. Including the certificate chain in JWT tokens makes for longer tokens (around 1kB for tokens with url, versus around 5kB for tokens with a single embedded certificate). 
-Also, having the certificates accessible over URLs creates the possibility of establishing the necessary PKI infrastructure for encrypted message exchange. 
-However, certificates accessible by url introduce (possibly undesired) run-time dependence on an on-line resource. Also, detecting and supporting both options makes for more complex token validation logic.
-
 ~In case the Authorization Server, Resource Server and client are not operated under responsibility of the same organisation, each party MUST use PKIoverheid certificates with OIN.~
 
 ~The PKIoverheid certificate MUST be included as a <code>x5c</code> parameter.~
@@ -1018,8 +1011,30 @@ For example: a resource server has resources classified as "public" and "sensiti
 In this manner, protected resources and authorization servers work together to meet risk tolerance levels for sensitive resources and end-user authentication.
 
 **iGov-NL**
+## Example
 
-TODO NL example
+### Registration of information in the app
+Client ID: h_CQcGxzWuZdEaqE0V_Lww_2kxEa
+Callback URL: http://wso2is.local:8080/playground2/oauth2client
+Authroization Endpoint: https://localhost:9443/oauth2/authorize
+Code Challange: YlbgC6e6H2Exd8XB06xQXTdmgIWcnocFj0eqaJ6IpO8
+Code verifier: a27f9f621eec49789dd92eca40257528d0932fd31e9b4431901f2ea531a6de40  
+
+
+### Authorization Request
+GET 302: 
+https://localhost:9443/oauth2/authorize?scope=default&response_type=code&code_challenge_method=S256&redirect_uri=http://wso2is.local:8080/playground2/oauth2client&code_challenge=YlbgC6e6H2Exd8XB06xQXTdmgIWcnocFj0eqaJ6IpO8&client_id=h_CQcGxzWuZdEaqE0V_Lww_2kxEa
+
+GET 200:
+http://wso2is.local:8080/playground2/oauth2client?code=72cb602f-dac0-346f-a36e-676ad21addb1
+
+code: 72cb602f-dac0-346f-a36e-676ad21addb1
+Callback URL: http://wso2is.local:8080/playground2/oauth2client
+Access Token Endpoint : https://localhost:9443/oauth2/token
+client secret: _ckQ2Q6BpqnofMQcVkBlc1VAY3oa
+PKCE Verifier: a27f9f621eec49789dd92eca40257528d0932fd31e9b4431901f2ea531a6de40
+
+TODO complete example
 
 **/iGov-NL**
 
