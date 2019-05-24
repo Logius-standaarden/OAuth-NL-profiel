@@ -38,6 +38,16 @@ var respecConfig =
       company: "Kadaster",
       companyURL: "http://www.kadaster.nl/",
     },
+	{
+      name: "Marc Fleischeuers",
+      company: "Kennisnet",
+      companyURL: "http://www.kennisnet.nl/",
+    },
+	{
+      name: "Peter Haasnoot",
+      company: "Logius",
+      companyURL: "http://www.logius.nl/",
+    },
     {
       name: "Leon van der Ree",
       company: "Logius",
