@@ -1,4 +1,4 @@
-# Dutch government Assurance profile for OAuth 2.0  
+﻿# Dutch government Assurance profile for OAuth 2.0  
 This profile is based upon the international government assurance profile for OAuth 2.0 (iGov) [[iGOV.OAuth2]] as published by the OpenID Foundation (https://openid.net/foundation/). It should be considered a fork of this profile as the iGov profile is geared more towards the American situtation and in the Netherlands we have to deal with an European Union context. 
 
 We have added the chapter [Usecases](#Usecases) to illustrate the specific usecase the iGov-NL profile is aimed at. Starting with chapter [Introduction](#Introduction) we follow the structure of the iGov profile. Where we do not use content from iGov we use ~~strikethrough~~ to indicate it is not part of iGov-NL. Where we have added more specific requirements for the Dutch situation this is indicated with **iGov-NL** tags.
@@ -434,12 +434,6 @@ In case the Authorization Server, Resource Server and client are not operated un
 The PKIoverheid certificate MUST be included either as a <code>x5c</code> or as <code>x5u</code> parameter, as per [[rfc7517]] §4.6 and 4.7. Parties SHOULD at least support the inclusion of the certificate as <code>x5c</code> parameter, for maximum interoperability. 
 Parties MAY agree to use <code>x5u</code>, for instance for communication within specific environments.  
 
-~In case the Authorization Server, Resource Server and client are not operated under responsibility of the same organisation, each party MUST use PKIoverheid certificates with OIN.~
-
-~The PKIoverheid certificate MUST be included as a <code>x5c</code> parameter.~
-~The <code>x5c</code> parameter MUST be included as a list (array) of X509 certificate(s), as Base64 DER encoded PKIoverheid certificate(s).~
-~The first certificate MUST be the Client's certificate, optionally followed by the rest of that certificate's chain.~
-~The jwks structure MUST include the public key parameters with the same values of the corresponding X509 certificate included as <code>x5c</code>, as per [[rfc7517]] §4.7.~
 
 **/iGov-NL**
 
@@ -465,29 +459,6 @@ H2_VQ_Ww1JOLn9vRn-H48FDj7TxlIT74XdTZgTv31w_GRPAOfyxEw_ZUmxhz5Z-gTlQ",
 
 Note that the second example contains both the public and private keys, while the first example contains the public key only.
 
-
-### Token Response
-
-**iGov-NL**
-TODO logischer om "Token Response" in AS profile te beschrijven ipv in client profile.
-
-The Token Response has the following contents:
-
-<dl>
-<dt>access_token</dt>
-<dd>Mandatory. Structured access token a.k.a. a JWT Bearer token. The JWT MUST be signed.</dd>
-<dt>token_type</dt>
-<dd>Mandatory. The type for a JWT Bearer token is <code>Bearer</code>, as per [[rfc6750]]</dd>
-<dt>refresh_token</dt>
-<dd>Under this profile, refresh tokens are (currently) not supported and MUST NOT be used.</dd>
-<dt>expires_in</dt>
-<dd>Optional. Lifetime of the access token, in seconds.</dd>
-<dt>scope</dt>
-<dd>Optional. Scope(s) of the access (token) granted, multiple scopes are separated by whitespace. The scope MAY be omitted if it is identical to the scope requested.</dd>
-</dl>
-
-For best practices on token lifetime see section [Token Lifetimes](#TokenLifetimes).
-**/iGov-NL**
 
 
 <!-- ### [2.4.](#rfc.section.2.4) Connection to the Protected Resource -->
@@ -740,14 +711,38 @@ The authorization server MUST compare a client's registered redirect URIs with t
 <!-- ### [3.1.9.](#rfc.section.3.1.9) RefreshTokens -->
 ### RefreshTokens
 
-~~Authorization Servers MAY issue refresh tokens to clients under the following context:~~
+Authorization Servers MAY issue refresh tokens to clients under the following context:
+
+Clients MUST be registered with the Authorization Server.
+
+Clients MUST present a valid client_id. Confidential clients MUST present a signed client_assertion with their associated keypair.
+
+Clients using the Direct Credentials method MUST NOT be issued refresh_tokens. These clients MUST present their client credentials with a new access_token request and the desired scope.
 
 
-~~Clients MUST be registered with the Authorization Server.~~
+<!-- ### [3.1.10.](#rfc.section.3.1.10) Token Response -->
+### Token Response
 
-~~Clients MUST present a valid client_id. COnfidential clients MUST present a signed client_assertion with their associated keypair.~~
+**iGov-NL**
 
-~~Clients using the Direct Credentials method MUST NOT be issued refresh_tokens. These clients MUST present their client credentials with a new access_token request and the desired scope.~~
+The Token Response has the following contents:
+
+<dl>
+<dt>access_token</dt>
+<dd>Mandatory. Structured access token a.k.a. a JWT Bearer token. The JWT MUST be signed.</dd>
+<dt>token_type</dt>
+<dd>Mandatory. The type for a JWT Bearer token is <code>Bearer</code>, as per [[rfc6750]]</dd>
+<dt>refresh_token</dt>
+<dd>Under this profile, refresh tokens are supported.</dd>
+<dt>expires_in</dt>
+<dd>Optional. Lifetime of the access token, in seconds.</dd>
+<dt>scope</dt>
+<dd>Optional. Scope(s) of the access (token) granted, multiple scopes are separated by whitespace. The scope MAY be omitted if it is identical to the scope requested.</dd>
+</dl>
+
+For best practices on token lifetime see section [Token Lifetimes](#TokenLifetimes).
+**/iGov-NL**
+
 
 <!-- ### [3.2.](#rfc.section.3.2) Connections with protected resources -->
 ## Connections with protected resources
@@ -841,9 +836,9 @@ M70-GXuRY4iucKbuytz9e7eW4Egkk4Aagl3iTk9-l5V-tvL6dYu8IlR93GKsaKE8bng0
 EZ04xcnq8s4V5Yykuc_NARBJENiKTJM8w3wh7xWP2gvMp39Y0XnuCOLyIx-J1ttX83xm
 pXDaLyyY-4HT9XHT9V73fKF8rLWJu9grrA</pre>
 
-~~Refresh tokens SHOULD be signed with [JWS] [[rfc7515]] using the same private key and contain the same set of claims as the access tokens.~~
+Refresh tokens SHOULD be signed with [JWS] [[rfc7515]] using the same private key and contain the same set of claims as the access tokens.
 
-The authorization server MAY encrypt access tokens ~~and refresh tokens~~ using [JWE] [[rfc7516]] . Encrypted access tokens MUST be encrypted using the public key of the protected resource. ~~Encrypted refresh tokens MUST be encrypted using the authorization server's public key.~~
+The authorization server MAY encrypt access tokens and refresh tokens using [JWE] [[rfc7516]] . Encrypted access tokens MUST be encrypted using the public key of the protected resource. Encrypted refresh tokens MUST be encrypted using the authorization server's public key.
 
 **iGov-NL**
 
@@ -1012,9 +1007,9 @@ Authorization servers MUST only grant access to higher level scope resources to 
 
 Authorization servers MAY set the expiry time (<samp>exp</samp>) of access_tokens associated with higher level resources to be shorter than access_tokens for less sensitive resources.
 
-~~Authorization servers MAY allow a <samp>refresh_token</samp> issued at a higher level to be used to obtain an access_token for a lower level resource scope with an extended expiry time. The client MUST request both the higher level scope and lower level scope in the original authorization request. This allows clients to continue accessing lower level resources after the higher level resource access has expired -- without requiring an additonal user authentication/authorization.~~
+Authorization servers MAY allow a <samp>refresh_token</samp> issued at a higher level to be used to obtain an access_token for a lower level resource scope with an extended expiry time. The client MUST request both the higher level scope and lower level scope in the original authorization request. This allows clients to continue accessing lower level resources after the higher level resource access has expired -- without requiring an additonal user authentication/authorization.
 
-For example: a resource server has resources classified as "public" and "sensitive". "Sensitive" resources require the user to perform a two-factor authentication, and those access grants are short-lived: 15 minutes. For a client to obtain access to both "public" and "sensitive" resources, it makes an authorization request to the authorization server with <samp>scope=public+sensitive</samp>. The authorization server authenticates the end-user as required to meet the required trust level (two-factor authentication or some approved equivalent) and issues an <samp>access_token</samp> for the "public" and "sensitive" scopes with an expiry time of 15mins, ~~and a <samp>refresh_token</samp> for the "public" scope with an expiry time of 24 hrs~~. The client can access both "public" and "sensitive" resources for 15mins with the access_token. When the access_token expires, the client will NOT be able to access "public" or "sensitive" resources any longer as the access_token has expired, and must obtain a new access_token. The client makes a access grant request (as described in [OAuth 2.0] [[rfc6749]] section 6) ~~with the refresh_token, and the reduced scope of just "public". The token endpoint validates the refresh_token, and issues a new access_token for just the "public" scopewith an expiry time set to 24hrs.~~ An access grant request for a new access_token with the "sensitive" scope would be rejected, and require the client to get the end-user to re-authenticate/authorize the "sensitive" scope request.
+For example: a resource server has resources classified as "public" and "sensitive". "Sensitive" resources require the user to perform a two-factor authentication, and those access grants are short-lived: 15 minutes. For a client to obtain access to both "public" and "sensitive" resources, it makes an authorization request to the authorization server with <samp>scope=public+sensitive</samp>. The authorization server authenticates the end-user as required to meet the required trust level (two-factor authentication or some approved equivalent) and issues an <samp>access_token</samp> for the "public" and "sensitive" scopes with an expiry time of 15mins, and a <samp>refresh_token</samp> for the "public" scope with an expiry time of 24 hrs. The client can access both "public" and "sensitive" resources for 15mins with the access_token. When the access_token expires, the client will NOT be able to access "public" or "sensitive" resources any longer as the access_token has expired, and must obtain a new access_token. The client makes a access grant request (as described in [OAuth 2.0] [[rfc6749]] section 6) with the refresh_token, and the reduced scope of just "public". The token endpoint validates the refresh_token, and issues a new access_token for just the "public" scopewith an expiry time set to 24hrs. An access grant request for a new access_token with the "sensitive" scope would be rejected, and require the client to get the end-user to re-authenticate/authorize the "sensitive" scope request.
 
 In this manner, protected resources and authorization servers work together to meet risk tolerance levels for sensitive resources and end-user authentication.
 
