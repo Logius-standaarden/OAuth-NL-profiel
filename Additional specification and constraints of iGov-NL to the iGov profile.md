@@ -82,9 +82,9 @@ Parties MAY agree to use <code>x5u</code>, for instance for communication within
 
 **reference to rationale: Detailed rationale 1 & 9**
 
-## 1.3.3.5 Token Response
+## 1.4.1.10 Token Response
 
-iGov-NL TODO logischer om "Token Response" in AS profile te beschrijven ipv in client profile.
+iGov-NL
 
 The Token Response has the following contents:
 
@@ -93,12 +93,15 @@ Mandatory. Structured access token a.k.a. a JWT Bearer token. The JWT MUST be si
 token_type
 Mandatory. The type for a JWT Bearer token is Bearer, as per [rfc6750]
 refresh_token
-Under this profile, refresh tokens are (currently) not supported and MUST NOT be used.
+Under this profile, refresh tokens are supported.
 expires_in
 Optional. Lifetime of the access token, in seconds.
 scope
 Optional. Scope(s) of the access (token) granted, multiple scopes are separated by whitespace. The scope MAY be omitted if it is identical to the scope requested.
-For best practices on token lifetime see section Token Lifetimes. /iGov-NL
+For best practices on token lifetime see section Token Lifetimes. 
+
+/iGov-NL
+
 
 **reference to rationale: Detailed rationale 5**
 
@@ -228,24 +231,24 @@ Besides the OAuth profile iGov also has a complementary OpenID connect profile [
 # Detailed Rationale
 
 ## 1 Use of local infrastructure for PKI certificates (PKIOverheid)
-The Dutch government has its own infrastructure for PKI certificates based on international open standards (x509 etc...). Its implementation is based on Dutch laws. It allows for a uniform way of identifying organizations based on the OIN identifier included in the certificate and then authenticating and authorizing them. This reduces the complexity of maintaining authorization tables for service providers, as these can be based directly on OIN identifiers. Using PKI certficates allows service consumers to re-use their existing PKIOverheid certificates instead of burdening them with maintaining yet another authentication product. 
+The Dutch government has its own infrastructure for PKI certificates based on international open standards(x509 etc...). Its implementation is based on Dutch laws. It allows for a uniform way of identifying organizations based on the OIN identifier included in the certificate and then authenticating an authorizing them. This reduces the complexity of maintainging authorization tables for service providers, as these can be based directly on OIN identifiers. Using PKI certficates allows service consumers to re-use their existing PKIOverheid certificates instead of burdening them with maintaining yet another authentication product. 
 
 ## 2 Use of local standards and best practices for TLS
 Implementations MUST support TLS. Which version(s) ought to be implemented will vary over time, and depend on the widespread deployment and known security vulnerabilities at the time of implementation.
 iGov-NL implementations MUST implement the Forum Standaardisatie TLS standard  https://www.forumstandaardisatie.nl/standaard/tls.
 
-## 3 Support of limited use case 
-OAuth2 can be applied over a wide range of various use case scenarios. Profiles like this profile "iGov-NL" therefor exist to set a baseline to be applicable for specific use cases.
+## 3 Limiting the set of usecases 
+OAuth2 can be applied over a wide range of various use case scenarios. Profiles like this profile "iGov-NL" therefore exist to set a baseline to be applicable for specific use cases.
 
-Selected use cases have implications on choices for e.g. security, privacy and interoperability. This version of this profile is therefor scoped to a single use case. Future updates to this profile may increase the scope to additional use cases.
+Selected use cases have implications on choices for e.g. security, privacy and interoperability. This version of this profile is therefore scoped to a single use case. Future updates to this profile may increase the scope to additional use cases.
 
-Since this profile focuses on a particular use case, certain explicit requirements or changes from the upsteam iGov profile exists. These include (non exhaustive):
-- A `sub` identifier MUST be present in access tokens, as the use caseby definition focuses on authorization including an identifier.
+Since this profile focuses on a particular use case, certain explicit requirements or changes from the upsteam iGov profile exist. These include (non exhaustive):
+- A `sub` identifier MUST be present in access tokens, as the use case by definition focuses on authorization including an identifier.
 - Direct access clients are out of scope.
 
 ## 4 Support for PSS-based signature methods
 
-Standard OAuth2 en the OAuth2 iGov profile rely on `RS256` as signature method. This is explicitly stated in the international iGov profile. The OAuth2 standards have this implicitly included, as it is build on top of JOSE (signatures in JWS (RC7515), using algorithms of JWA (RFC7518)). RFC7518 recommends support for RS256.
+Standard OAuth2 and the OAuth2 iGov profile rely on `RS256` as signature method. This is explicitly stated in the international iGov profile. The OAuth2 standards have this implicitly included, as it is built on top of JOSE (signatures in JWS (RC7515), using algorithms of JWA (RFC7518)). RFC7518 recommends support for RS256.
 
 The `RS256` is specified as an RSA signature using PKCS v1.5 padding. This form of padding has been vulnerable to various attacks. Better alternatives are available using PSS padding. A method of RSA signature using PSS and SHA256 is standardized as `PS256` in RFC7518 as well. Other standards are deprecating PKCSv1.5 padding and are migrating towards PSS padding for RSA signatures, however JOSE and thereby OAuth2 have not done so yet.
 
@@ -253,7 +256,7 @@ As PKIoverheid is currently still RSA based, moving to ECDSA is not yet an optio
 
 ## 5 Inclusion of detailed request / response structure
 
-Some steps in the flow of the international iGov profile have not been included or have been included incomplete. This profile has included some messages or parameters explicitly, although they are specified in the underlying standards. These have been included for reasons of completeness.
+Some steps in the flow of the international iGov profile have not been described or have been incompletely described. This profile (iGov-NL) has described some messages or parameters explicitly, although they are specified in the underlying standards. These have been described for reasons of completeness.
 
 ## 6 OAuth2 Server Metadata prevails over OpenID Connect Discovery
 
@@ -261,7 +264,7 @@ The international iGov profile specifies usage of metadata for the OAuth2 Author
 
 ## 7 Using PKCE for native applications
 
-A known and actively exploited attack exists against native application implementing the OAuth2 Authorization Code flow. This attacks is described and a countermeasure is standardized in RFC7636, also known as PKCE.
+A known and actively exploited attack exists against native applications implementing the OAuth2 Authorization Code flow. This attack is described and a countermeasure is standardized in RFC7636, also known as PKCE.
 
 The international iGov profile describes two modes for deployment of native applications. Usage of PKCE is either mandatory in case no unique client id is registered, or optional in case dynamic registration and separate client ids are being used.
 
@@ -271,18 +274,19 @@ As such PKCE is included in the Autorization Request in this profile. This is in
 
 ## 8 Mandating security recommendations
 
-The OAuth2 standards include various security considerations and additional best practices are being drafted. As this profile is intended for broad usage in situations were sensitive data is being exchanged, any compliant implementation should be secure and privacy friendly by default.
+The OAuth2 standards include various security considerations. Additional best practices are being drafted. As this profile is intended for broad usage in situations where sensitive data is being exchanged, any compliant implementation should be secure and privacy friendly by default.
 
-As a result, a few not-so-secure options are explicitly excluded and more secure options required or recommended. These include:
+As a result, a few not-so-secure options are explicitly prohibited and more secure options required or recommended. These include:
 - access tokens in URL query string, as this can have security and privacy implications.
 - validation of parameters, as counter measure 
 - PSS padding in signing methods, see Detailed rationale 4
 - Usage of PKCE, see Detailed rationale 7
+
 ## 9 Embedding certificates
 
 The party offering the JWT token has a choice to either include an embedded certificate chain (<code>x5c</code>) or include a url that points to the certificate chain (<code>x5u</code>). 
 Parties receiving and validating JWT tokens may need to be able to support both <code>x5c</code> and <code>x5u</code>. 
 The choice between <code>x5c</code> and <code>x5u</code> entails a trade-off. Including the certificate chain in JWT tokens makes for longer tokens (around 1kB for tokens with url, versus around 5kB for tokens with a single embedded certificate). 
 Also, having the certificates accessible over URLs creates the possibility of establishing the necessary PKI infrastructure for encrypted message exchange. 
-However, certificates accessible by url introduce (possibly undesired) run-time dependence on an on-line resource. Also, detecting and supporting both options makes for more complex caching and token validation logic.
+However, certificates accessible by url introduce (possibly undesired) run-time dependence on an on-line resource. Also, detecting and supporting both options makes for more complex token validation logic.
 

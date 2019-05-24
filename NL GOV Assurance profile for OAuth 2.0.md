@@ -1017,14 +1017,18 @@ In this manner, protected resources and authorization servers work together to m
 ## Example
 
 ### Registration of information in the app
+
+```
 Client ID: h_CQcGxzWuZdEaqE0V_Lww_2kxEa
 Callback URL: http://wso2is.local:8080/playground2/oauth2client
 Authroization Endpoint: https://localhost:9443/oauth2/authorize
 Code Challange: YlbgC6e6H2Exd8XB06xQXTdmgIWcnocFj0eqaJ6IpO8
 Code verifier: a27f9f621eec49789dd92eca40257528d0932fd31e9b4431901f2ea531a6de40  
-
+``` 
 
 ### Authorization Request
+
+```
 GET 302: 
 https://localhost:9443/oauth2/authorize?scope=default&response_type=code&code_challenge_method=S256&redirect_uri=http://wso2is.local:8080/playground2/oauth2client&code_challenge=YlbgC6e6H2Exd8XB06xQXTdmgIWcnocFj0eqaJ6IpO8&client_id=h_CQcGxzWuZdEaqE0V_Lww_2kxEa
 
@@ -1036,6 +1040,7 @@ Callback URL: http://wso2is.local:8080/playground2/oauth2client
 Access Token Endpoint : https://localhost:9443/oauth2/token
 client secret: _ckQ2Q6BpqnofMQcVkBlc1VAY3oa
 PKCE Verifier: a27f9f621eec49789dd92eca40257528d0932fd31e9b4431901f2ea531a6de40
+```
 
 TODO complete example
 
