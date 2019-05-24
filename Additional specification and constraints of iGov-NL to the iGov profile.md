@@ -228,7 +228,7 @@ Besides the OAuth profile iGov also has a complementary OpenID connect profile [
 # Detailed Rationale
 
 ## 1 Use of local infrastructure for PKI certificates (PKIOverheid)
-The Dutch government has its own infrastructure for PKI certificates based on international open standards (x509 etc...). Its implementation is based on Dutch laws. It allows for a uniform way of identifying organizations based on the OIN identifier included in the certificate and then authenticating an authorizing them. This reduces the complexity of maintainging authorization tables for service providers, as these can be based directly on OIN identifiers. Using PKI certficates allows service consumers to re-use their existing PKIOverheid certificates instead of burdening them with maintaining yet another authentication product. 
+The Dutch government has its own infrastructure for PKI certificates based on international open standards (x509 etc...). Its implementation is based on Dutch laws. It allows for a uniform way of identifying organizations based on the OIN identifier included in the certificate and then authenticating and authorizing them. This reduces the complexity of maintaining authorization tables for service providers, as these can be based directly on OIN identifiers. Using PKI certficates allows service consumers to re-use their existing PKIOverheid certificates instead of burdening them with maintaining yet another authentication product. 
 
 ## 2 Use of local standards and best practices for TLS
 Implementations MUST support TLS. Which version(s) ought to be implemented will vary over time, and depend on the widespread deployment and known security vulnerabilities at the time of implementation.
