@@ -8,7 +8,7 @@ We have added the chapter [Usecases](#Usecases) to illustrate the specific useca
 	<img src='media/use_case4_authorization_code.png' width="600" />
 	<figcaption>Use case Authorization code flow</figcaption>
  </figure>
- 
+
 ## Introduction
 In this use case a (public/governmental) service is offered via an API.
 The service will be consumed by the User using a client, that can be any arbitrary, non-trusted application.
@@ -30,7 +30,6 @@ The Authorization Server is trusted by the Resource Server.
 The Authorization Server can identify and authorize the User.
 In case the User has no direct relationship to the Authorization Server, it can forward the User to an IDP trusted by both the Authorization Server as well as the User.
 Alternatively, the Authorization Server can otherwise identify and authorize the User and is trusted by that User.
-
 
 ### Client
 The User uses a client, which can be any arbitrary application decided upon by the User.

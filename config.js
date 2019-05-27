@@ -24,6 +24,11 @@ var respecConfig =
       name: "Frank Terpstra",
       company: "Geonovum",
       companyURL: "http://www.geonovum.nl/",
+    },
+    {
+      name: "Jan van Gelder",
+      company: "Geonovum",
+      companyURL: "http://www.geonovum.nl/",
     }
   ],
   authors: 
