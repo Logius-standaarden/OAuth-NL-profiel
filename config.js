@@ -80,8 +80,8 @@ var respecConfig =
     },
   ],
   shortName: "oauth",
-  github: "https://github.com/geonovum/KP-APIs/Werkgroep Authenticatie Autorisatie/NL GOV Assurance Profile OAuth/",
-  issueBase: "https://github.com/geonovum/KP-APIs/Werkgroep Authenticatie Autorisatie/NL GOV Assurance Profile OAuth/issues/",
+  github: "https://github.com/geonovum/KP-APIs-OAuthNL/",
+  issueBase: "https://github.com/geonovum/KP-APIs-OAuthNL/",
   licence: "cc-by-nd",
   localBiblio: {
   "OAuth2": {
