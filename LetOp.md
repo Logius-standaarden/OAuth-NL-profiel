@@ -6,3 +6,5 @@ heb ik het bestand *NL GOV Assurance profile for OAuth 2.0.md* Opgedeeld in vers
 Elk hoofdstuk is een separaat bestand geworden.
 Dus *Auteurs* let op: wijzigingen moeten in het betreffende hoofdstuk bestand worden gedaan!
 
+Jan van Gelder (Editor)
+Geonovum
