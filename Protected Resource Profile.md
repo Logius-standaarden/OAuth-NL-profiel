@@ -25,33 +25,32 @@ In this manner, protected resources and authorization servers work together to m
 **iGov-NL**
 #### Example
 
-##### Registration of information in the app
+
+##### Request
 
 ```
-Client ID: h_CQcGxzWuZdEaqE0V_Lww_2kxEa
-Callback URL: http://wso2is.local:8080/playground2/oauth2client
-Authroization Endpoint: https://localhost:9443/oauth2/authorize
-Code Challange: YlbgC6e6H2Exd8XB06xQXTdmgIWcnocFj0eqaJ6IpO8
-Code verifier: a27f9f621eec49789dd92eca40257528d0932fd31e9b4431901f2ea531a6de40  
-``` 
-
-##### Authorization Request
-
-```
-GET 302: 
-https://localhost:9443/oauth2/authorize?scope=default&response_type=code&code_challenge_method=S256&redirect_uri=http://wso2is.local:8080/playground2/oauth2client&code_challenge=YlbgC6e6H2Exd8XB06xQXTdmgIWcnocFj0eqaJ6IpO8&client_id=h_CQcGxzWuZdEaqE0V_Lww_2kxEa
-
-GET 200:
-http://wso2is.local:8080/playground2/oauth2client?code=72cb602f-dac0-346f-a36e-676ad21addb1
-
-code: 72cb602f-dac0-346f-a36e-676ad21addb1
-Callback URL: http://wso2is.local:8080/playground2/oauth2client
-Access Token Endpoint : https://localhost:9443/oauth2/token
-client secret: _ckQ2Q6BpqnofMQcVkBlc1VAY3oa
-PKCE Verifier: a27f9f621eec49789dd92eca40257528d0932fd31e9b4431901f2ea531a6de40
+GET /resource HTTP/1.1
+Authorization: Bearer 4f626847-91b1-3417-a91e-c5627f377ae1
+Accept: text/plain, application/json, application/*+json, */*
+Host: resource.com
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.2.3 (java 1.5)
 ```
 
-TODO complete example
+##### Response:
+```
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+  {
+   "sub": "248289761001",
+   "name": "Jane Doe",
+   "given_name": "Jane",
+   "family_name": "Doe",
+   "preferred_username": "j.doe",
+   "email": "janedoe@example.com",
+   "picture": "http://example.com/janedoe/me.jpg"
+  }
+```
 
 **/iGov-NL**
 
