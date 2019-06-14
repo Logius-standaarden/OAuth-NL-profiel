@@ -7,7 +7,7 @@ This document is a companion to the NL GOV Assurance profile for OAuth 2.0(iGov-
 
 **TODO strikethroughs**
 
-## 1.3.3.1 Requests to the Authorization Endpoint
+## 2.3.1 Requests to the Authorization Endpoint
 iGov-NL
 
 Native clients MUST apply PKCE, as per RFC7636. As code_verifier the S256 method MUST be applied. Effectively this means that a Native Client MUST include a cryptographic random code_challenge of at least 128 bits of entropy and the code_challenge_method with the value S256.
@@ -32,7 +32,7 @@ In case `code_challenge` is used with a native app, mandatory. MUST use the valu
 
 **reference to rationale: PKCE in Detailed rationale 7, Authorization Request in Detailed rationale 5**
 
-## 1.3.3.2 Response from the Authorization Endpoint
+## 2.3.2 Response from the Authorization Endpoint
 iGov-NL
 
 Response parameters
@@ -45,7 +45,7 @@ Mandatory. MUST be a verbatim copy of the value of the state parameter in the Au
 
 **reference to rationale: Detailed rationale 5**
 
-## 1.3.3.3 Requests to the Token Endpoint
+## 2.3.3 Requests to the Token Endpoint
 iGov-NL
 
 In addition to above signing methods, the Authorization server SHOULD support PS256 signing algorithm [RFC7518] for the signing of the private_key_jwt.
@@ -70,7 +70,7 @@ Mandatory. MUST have the above specified signed JWT as contents.
 
 **reference to rationale: PS256 in Detailed rationale 4, Token Request in Detailed rationale 5**
 
-## 1.3.3.4 Client Keys
+## 2.3.4 Client Keys
 
 iGov-NL
 
@@ -82,7 +82,7 @@ Parties MAY agree to use <code>x5u</code>, for instance for communication within
 
 **reference to rationale: Detailed rationale 1 & 9**
 
-## 1.4.1.10 Token Response
+## 3.1.10 Token Response
 
 iGov-NL
 
@@ -105,7 +105,7 @@ For best practices on token lifetime see section Token Lifetimes.
 
 **reference to rationale: Detailed rationale 5**
 
-## 1.4.1.3 Dynamic Registration
+## 3.1.3 Dynamic Registration
 iGov-NL
 
 In this version of iGov-NL we follow iGov for the requirement that the Authorization servers MUST support dynamic client registration. However depending on how the future authentication architecture of the dutch government develops in regards to OAuth we may revisit this in a future revision. The current requirement fits an architecture where there is a limited number of widely used authorization servers. However if in practice we start seeing a very large number of authorization servers with limited use this requirement can become a reccomendation in a future version of this profile. For these authorization servers with limited use we consider mandatory support for dynamic client registration a large burden.
@@ -115,7 +115,7 @@ In this version of iGov-NL we follow iGov for the requirement that the Authoriza
 
 **reference to rationale: self explanatory, text provides insight in possible future changes to iGov-NL**
 
-## 1.4.1.5 Discovery
+## 3.1.5 Discovery
 iGov-NL
 
 iGov requires that the authorization server provides an OpenIDConnect service discovery endpoint. Recently OAuth 2.0 Authorization Server Metadata [rfc8414] has been finalized, this provide the same functionality in a more generic way and could replace this requirement in a future version of the iGov-NL profile.
@@ -124,7 +124,7 @@ iGov requires that the authorization server provides an OpenIDConnect service di
 
 **reference to rationale: Detailed rationale 6**
 
-## 1.4.2.1 JWT Bearer Tokens
+## 3.2.1 JWT Bearer Tokens
 
 iGov-NL
 
@@ -159,7 +159,7 @@ In case the Authorization Server, Resource Server and client are not operated un
 /iGov-NL
 
 
-## 1.5.1 Protecting Resources
+## 4.1 Protecting Resources
 
 iGov-NL
 
@@ -171,7 +171,7 @@ TODO NL example
 
 **reference to rationale: self explanatory: additional information (non normative) on how to implement requirement**
 
-## 1.5.2 Connections with Clients
+## 4.2 Connections with Clients
 
 iGov-NL
 
@@ -183,7 +183,7 @@ A Protected Resource under this profile SHOULD verify if the client is the Autho
 
 **reference to rationale: Detailed rationale 8**
 
-## 1.6.1 Proof of Possession Tokens
+## 4.1 Proof of Possession Tokens
 
 iGov-NL
 
@@ -193,7 +193,7 @@ Proof of possession can be implemented using various methods. An example of such
 
 **reference to rationale: self explanatory: additional information (non normative) on how to implement requirement**
 
-## 1.7 Security Considerations
+## 6 Security Considerations
 
 iGov-NL
 
