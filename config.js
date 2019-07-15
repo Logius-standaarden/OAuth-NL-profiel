@@ -17,7 +17,7 @@ var respecConfig =
   specType: "HR",
   format: "markdown",   
   pubDomain: "api",
-  publishDate: "2019-07-05",
+  publishDate: "2019-07-15",
   previousPublishDate: "2019-02-13",
   previousMaturity: "GN-CV",
   editors: 
