@@ -1,5 +1,5 @@
 var respecConfig = {
-  specStatus: "GN-BASIS",
+  specStatus: "GN-DEF",
   specType: "HR",
   pubDomain: "etc",
   publishDate: "2017-12-13",
@@ -17,8 +17,8 @@ var respecConfig = {
   ],
   shortName: "Nederlands profiel OAuth 2.0",
   subtitle: "Werkversie",
-  github: "https://github.com/Geonovum/KP-APIs-OAuthNL",
-  issueBase: "https://github.com/Geonovum/KP-APIs-OAuthNL/issues/",
+  github: "https://github.com/Logius-standaarden/KP-APIs-OAuthNL",
+  issueBase: "https://github.com/Logius-standaarden/KP-APIs-OAuthNL/issues/",
   localBiblio: {
     "OAuth2": {
       href: "https://tools.ietf.org/html/rfc6749",
