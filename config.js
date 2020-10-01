@@ -13,7 +13,7 @@
 
 var respecConfig = 
 {
-  specStatus: "GN-VV",
+  specStatus: "GN-DEF",
   specType: "HR",
   format: "markdown",   
   pubDomain: "api",
@@ -82,8 +82,8 @@ var respecConfig =
     },
   ],
   shortName: "oauth",
-  github: "https://github.com/geonovum/KP-APIs-OAuthNL/",
-  issueBase: "https://github.com/geonovum/KP-APIs-OAuthNL/",
+  github: "https://github.com/Logius-standaarden/KP-APIs-OAuthNL/",
+  issueBase: "https://github.com/Logius-standaarden/KP-APIs-OAuthNL/",
   licence: "cc-by-nd",
   localBiblio: {
   "OAuth2": {
