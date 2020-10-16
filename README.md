@@ -8,5 +8,6 @@ https://publicatie.centrumvoorstandaarden.nl/api/oauth/
 
 Bekijk hier **de laatste werkversie** van de standaard:
 
-https://Logius-standaarden.github.io/KP-APIs-OAuthNL/
 https://Logius-standaarden.github.io/OAuth-NL-profiel
+
+OAuth-NL-profiel
