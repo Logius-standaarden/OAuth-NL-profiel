@@ -82,8 +82,8 @@ var respecConfig =
     },
   ],
   shortName: "oauth",
-  github: "https://github.com/Logius-standaarden/KP-APIs-OAuthNL/",
-  issueBase: "https://github.com/Logius-standaarden/KP-APIs-OAuthNL/",
+  github: "https://logius-standaarden.github.io/OAuth-NL-profiel/",
+  issueBase: "https://logius-standaarden.github.io/OAuth-NL-profiel/issues",
   licence: "cc-by-nd",
   localBiblio: {
   "OAuth2": {
