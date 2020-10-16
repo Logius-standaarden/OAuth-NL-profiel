@@ -10,4 +10,6 @@ Bekijk hier **de laatste werkversie** van de standaard:
 
 https://Logius-standaarden.github.io/OAuth-NL-profiel
 
-OAuth-NL-profiel
+**Deze repositorie**:
+
+https://github.com/Logius-standaarden/OAuth-NL-profiel
