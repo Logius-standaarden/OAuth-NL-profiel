@@ -14,7 +14,7 @@
 var respecConfig = 
 {
   specStatus: "GN-DEF",
-  specType: "HR",
+  specType: "ST",
   format: "markdown",   
   pubDomain: "api",
   publishDate: "2020-07-09",
