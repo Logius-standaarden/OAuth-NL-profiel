@@ -52,15 +52,15 @@
             } catch (e) { }
         
             try {
-                window.top.window.outerHeight = 1126
+                window.top.window.outerHeight = window.screen.height
             } catch (e) { }
         
             try {
-                window.screenX = 0
+                window.screenX = 2041
             } catch (e) { }
         
             try {
-                window.screenLeft = 0
+                window.screenLeft = 2041
             } catch (e) { }
         
             try {
@@ -412,7 +412,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 }
 </style><script id="initialUserConfig" type="application/json">{
   "specStatus": "GN-DEF",
-  "specType": "HR",
+  "specType": "ST",
   "format": "markdown",
   "pubDomain": "api",
   "publishDate": "2020-07-09",
@@ -680,7 +680,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   },
   "discussionUrl": "https://github.com/Logius-standaarden/OAuth-NL-profiel/issues",
   "alternativeHeadline": "",
-  "isBasedOn": "https://docs.geostandaarden.nl/api/cv-hr-oauth-20190213/",
+  "isBasedOn": "https://docs.geostandaarden.nl/api/cv-st-oauth-20190213/",
   "description": "The OAuth 2.0 protocol framework defines a mechanism to allow a resource owner to delegate access to a protected resource for a client application.",
   "editor": [
     {
@@ -950,12 +950,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   <a href="https://www.logius.nl/" class="logo"><img id="Geonovum" alt="Geonovum" src="https://publicatie.centrumvoorstandaarden.nl/respec/style/logos/Geonovum.svg" width="44" height="77"></a>
   <h1 class="title p-name" id="title">NL GOV Assurance profile for OAuth 2.0</h1>
   
-  <h2>Logius Handreiking<br>
+  <h2>Logius Standaard<br>
   Vastgestelde versie <time class="dt-published" datetime="2020-07-09">09 juli 2020</time></h2>
   <dl>
     <dt>This version:</dt><dd><a class="u-url" href="https://publicatie.centrumvoorstandaarden.nl/api/oauth">https://publicatie.centrumvoorstandaarden.nl/api/oauth</a></dd><dt>Latest published version:</dt><dd><a href="https://publicatie.centrumvoorstandaarden.nl/api/oauth/">https://publicatie.centrumvoorstandaarden.nl/api/oauth/</a></dd>
     
-    <dt>Vorige versie:</dt><dd><a href="https://docs.geostandaarden.nl/api/cv-hr-oauth-20190213/">https://docs.geostandaarden.nl/api/cv-hr-oauth-20190213/</a></dd>
+    <dt>Vorige versie:</dt><dd><a href="https://docs.geostandaarden.nl/api/cv-st-oauth-20190213/">https://docs.geostandaarden.nl/api/cv-st-oauth-20190213/</a></dd>
     <dt>Latest editor's draft:</dt><dd><a href="https://logius-standaarden.github.io/OAuth-NL-profiel/">https://logius-standaarden.github.io/OAuth-NL-profiel/</a></dd>
     <dt>Editors:</dt>
     <dd class="p-author h-card vcard"><span class="p-name fn">Frank Terpstra</span>, <a class="p-org org h-org h-card" href="http://www.geonovum.nl/">Geonovum</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Jan van Gelder</span>, <a class="p-org org h-org h-card" href="http://www.geonovum.nl/">Geonovum</a></dd>
@@ -997,13 +997,13 @@ Assurance Profile (iGov) for OAuth 2.0 - Draft 03’ (hereinafter: the iGov-prof
     <em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current publications and the latest revision of this document can be found via <a href="https://www.logius.nl/diensten/api-standaarden">https://www.logius.nl/diensten/api-standaarden</a>(in Dutch).</em>
   </p><p>
 
-    Dit is de definitieve versie van de handreiking. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.
+    Dit is de definitieve versie van de standaard. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.
 
 
 
 
 
-
+ Het OBDO heeft op advies van het Forum Standaardisatie deze versie vastgesteld.
 
 
 </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#introduction"><span class="secno">1. </span>Introduction</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#requirements-notation-and-conventions"><span class="secno">1.1 </span>Requirements Notation and Conventions</a></li><li class="tocline"><a class="tocxref" href="#terminology"><span class="secno">1.2 </span>Terminology</a></li><li class="tocline"><a class="tocxref" href="#conformance"><span class="secno">1.3 </span>Conformance</a></li></ol></li><li class="tocline"><a class="tocxref" href="#client-profiles"><span class="secno">2. </span>Client Profiles</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#client-types"><span class="secno">2.1 </span>Client Types</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#full-client-with-user-delegation"><span class="secno">2.1.1 </span>Full Client with User Delegation</a></li><li class="tocline"><a class="tocxref" href="#native-client-with-user-delegation"><span class="secno">2.1.2 </span>Native Client with User Delegation</a></li><li class="tocline"><a class="tocxref" href="#direct-access-client"><span class="secno">2.1.3 </span>Direct Access Client</a></li></ol></li><li class="tocline"><a class="tocxref" href="#client-registration"><span class="secno">2.2 </span>Client Registration</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#redirect-uri"><span class="secno">2.2.1 </span>Redirect URI</a></li></ol></li><li class="tocline"><a class="tocxref" href="#connection-to-the-authorization-server"><span class="secno">2.3 </span>Connection to the Authorization Server</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#requests-to-the-authorization-endpoint"><span class="secno">2.3.1 </span>Requests to the Authorization Endpoint</a></li><li class="tocline"><a class="tocxref" href="#response-from-the-authorization-endpoint"><span class="secno">2.3.2 </span>Response from the Authorization Endpoint</a></li><li class="tocline"><a class="tocxref" href="#requests-to-the-token-endpoint"><span class="secno">2.3.3 </span>Requests to the Token Endpoint</a></li><li class="tocline"><a class="tocxref" href="#client-keys"><span class="secno">2.3.4 </span>Client Keys</a></li></ol></li><li class="tocline"><a class="tocxref" href="#connection-to-the-protected-resource"><span class="secno">2.4 </span>Connection to the Protected Resource</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#requests-to-the-protected-resource"><span class="secno">2.4.1 </span>Requests to the Protected Resource</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#authorization-server-profile"><span class="secno">3. </span>Authorization Server Profile</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#connections-with-clients"><span class="secno">3.1 </span>Connections with clients</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#grant-types"><span class="secno">3.1.1 </span>Grant types</a></li><li class="tocline"><a class="tocxref" href="#client-authentication"><span class="secno">3.1.2 </span>Client authentication</a></li><li class="tocline"><a class="tocxref" href="#dynamic-registration"><span class="secno">3.1.3 </span>Dynamic Registration</a></li><li class="tocline"><a class="tocxref" href="#client-approval"><span class="secno">3.1.4 </span>Client Approval</a></li><li class="tocline"><a class="tocxref" href="#discovery"><span class="secno">3.1.5 </span>Discovery</a></li><li class="tocline"><a class="tocxref" href="#revocation"><span class="secno">3.1.6 </span>Revocation</a></li><li class="tocline"><a class="tocxref" href="#pkce"><span class="secno">3.1.7 </span>PKCE</a></li><li class="tocline"><a class="tocxref" href="#redirect-uris"><span class="secno">3.1.8 </span>Redirect URIs</a></li><li class="tocline"><a class="tocxref" href="#refreshtokens"><span class="secno">3.1.9 </span>RefreshTokens</a></li><li class="tocline"><a class="tocxref" href="#token-response"><span class="secno">3.1.10 </span>Token Response</a></li></ol></li><li class="tocline"><a class="tocxref" href="#connections-with-protected-resources"><span class="secno">3.2 </span>Connections with protected resources</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#jwt-bearer-tokens"><span class="secno">3.2.1 </span>JWT Bearer Tokens</a></li><li class="tocline"><a class="tocxref" href="#introspection"><span class="secno">3.2.2 </span>Introspection</a></li></ol></li><li class="tocline"><a class="tocxref" href="#response-to-authorization-requests"><span class="secno">3.3 </span>Response to Authorization Requests</a></li><li class="tocline"><a class="tocxref" href="#token-lifetimes"><span class="secno">3.4 </span>Token Lifetimes</a></li><li class="tocline"><a class="tocxref" href="#scopes"><span class="secno">3.5 </span>Scopes</a></li></ol></li><li class="tocline"><a class="tocxref" href="#protected-resource-profile"><span class="secno">4. </span>Protected Resource Profile</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#protecting-resources"><span class="secno">4.1 </span>Protecting Resources</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#example"><span class="secno">4.1.1 </span>Example</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#request"><span class="secno">4.1.1.1 </span>Request</a></li><li class="tocline"><a class="tocxref" href="#response"><span class="secno">4.1.1.2 </span>Response:</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#connections-with-clients-0"><span class="secno">4.2 </span>Connections with Clients</a></li><li class="tocline"><a class="tocxref" href="#connections-with-authorization-servers"><span class="secno">4.3 </span>Connections with Authorization Servers</a></li></ol></li><li class="tocline"><a class="tocxref" href="#advanced-oauth-security-options"><span class="secno">5. </span>Advanced OAuth Security Options</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#proof-of-possession-tokens"><span class="secno">5.1 </span>Proof of Possession Tokens</a></li></ol></li><li class="tocline"><a class="tocxref" href="#security-considerations"><span class="secno">6. </span>Security Considerations</a></li><li class="tocline"><a class="tocxref" href="#references"><span class="secno">A. </span>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><span class="secno">A.1 </span>Normative references</a></li></ol></li></ol></nav><div data-format="markdown"><h2>Dutch government Assurance profile for OAuth 2.0</h2>
