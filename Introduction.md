@@ -10,9 +10,9 @@ This OAuth profile is intended to be shared broadly, and has been ~~greatly infl
 
 <!-- ### [1.1.](#rfc.section.1.1) [Requirements Notation and Conventions](#rnc) -->
 ## Requirements Notation and Conventions  
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [[!rfc2119]] .
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [[rfc2119]] .
 
-All uses of [JSON Web Signature (JWS)] [[!rfc7515]] and [JSON Web Encryption (JWE)] [[!rfc7516]] data structures in this specification utilize the JWS Compact Serialization or the JWE Compact Serialization; the JWS JSON Serialization and the JWE JSON Serialization are not used.
+All uses of [JSON Web Signature (JWS)] [[rfc7515]] and [JSON Web Encryption (JWE)] [[rfc7516]] data structures in this specification utilize the JWS Compact Serialization or the JWE Compact Serialization; the JWS JSON Serialization and the JWE JSON Serialization are not used.
 
 <!-- ### [1.2.](#rfc.section.1.2) [Terminology](#Terminology) -->
 ## Terminology
