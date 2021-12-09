@@ -196,7 +196,7 @@ The following sample claim set illustrates the use of the required claims for a 
 }
 </pre>
 
-The JWT assertion MUST be signed by the client using the client's private key. See [Section 2.2](#client-registration) for mechanisms by which the client can make its public key known to the server.
+The JWT assertion MUST be signed by the client using the client's private key. See [Section 2.3.4](#ClientKeys) for mechanisms by which the client can make its public key known to the server.
 The authorization server MUST support the RS256 signature method (the Rivest, Shamir, and Adleman (RSA) signature algorithm with a 256-bit hash) and MAY use other asymmetric signature methods listed in the JSON Web Algorithms ( [JWA] [[rfc7518]] ) specification.
 
 **iGov-NL**
