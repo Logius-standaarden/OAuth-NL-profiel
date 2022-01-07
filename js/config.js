@@ -19,6 +19,12 @@ var respecConfig = {
   subtitle: "Werkversie",
   github: "https://github.com/Logius-standaarden/KP-APIs-OAuthNL",
   issueBase: "https://github.com/Logius-standaarden/KP-APIs-OAuthNL/issues/",
+  alternateFormats: [
+    {
+      label: "pdf",
+      uri: "OAuth-NL-profiel.pdf",
+    },
+    ],
   localBiblio: {
     "OAuth2": {
       href: "https://tools.ietf.org/html/rfc6749",
