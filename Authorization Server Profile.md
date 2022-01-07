@@ -453,7 +453,7 @@ Connection: close
 }
 </pre>
 
-The authorization server MUST require authentication for both the revocation and introspection endpoints as described in [Section 2.3.2](#requests-t0-the-token-endpoint) . Protected resources calling the introspection endpoint MUST use credentials distinct from any other OAuth client registered at the server.
+The authorization server MUST require authentication for both the revocation and introspection endpoints as described in [Section 2.3.2](#requests-to-the-token-endpoint) . Protected resources calling the introspection endpoint MUST use credentials distinct from any other OAuth client registered at the server.
 
 A protected resource MAY cache the response from the introspection endpoint for a period of time no greater than half the lifetime of the token. A protected resource MUST NOT accept a token that is not active according to the response from the introspection endpoint.
 
