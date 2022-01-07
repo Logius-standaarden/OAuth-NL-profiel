@@ -6,7 +6,7 @@ We have added the chapter [Usecases](#usecases) to illustrate the specific useca
 
 ### Usecases
  <figure id='authorization_code'>
-	<img src='media/use_case4_authorization_code.png' width="600" />
+	<img src='media/use_case4_authorization_code.png' width="600" alt="Use case Authorization code flow"/>
 	<figcaption>Use case Authorization code flow</figcaption>
  </figure>
 
