@@ -1,3 +1,5 @@
+![build](https://github.com/Logius-standaarden/OAuth-NL-profiel/actions/workflows/build.yml/badge.svg)
+
 # OAuth-NL-profiel
 
 Dit is het **Nederlandse profiel** voor de internationale **OAuth** API-standaard.

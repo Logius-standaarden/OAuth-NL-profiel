@@ -65,14 +65,14 @@ Clients using the authorization code grant type MUST register their full redirec
 A client MUST protect the values passed back to its redirect URI by ensuring that the redirect URI is one of the following:
 
 *   Hosted on a website with Transport Layer Security (TLS) protection (a Hypertext Transfer Protocol – Secure (HTTPS) URI)
-*   Hosted on a client-specific non-remote-protocol URI scheme (e.g., myapp://)
-*   Hosted on the local domain of the client (e.g., http://localhost/).
+*   Hosted on a client-specific non-remote-protocol URI scheme (e.g., `myapp://`)
+*   Hosted on the local domain of the client (e.g., `http://localhost/`).
 
 Clients MUST NOT allow the redirecting to the local domain.
 
 Clients SHOULD NOT have multiple redirect URIs on different domains.
 
-Clients MUST NOT forward values passed back to their redirect URIs to other arbitrary or user-provided URIs (a practice known as an "open redirector”).
+Clients MUST NOT forward values passed back to their redirect URIs to other arbitrary or user-provided URIs (a practice known as an "open redirector").
 
 <!-- ### [2.3.](#rfc.section.2.3) Connection to the Authorization Server -->
 ### Connection to the Authorization Server
