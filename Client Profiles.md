@@ -13,7 +13,7 @@ This client type applies to clients that act on behalf of a particular resource 
 
 These clients MUST use the authorization code flow of OAuth 2 by sending the resource owner to the authorization endpoint to obtain authorization. The user MUST authenticate to the authorization endpoint. The user’s web browser is then redirected back to a URI hosted by the client service, from which the client can obtain an authorization code passed as a query parameter. The client then presents that authorization code along with its own credentials (private_key_jwt) to the authorization server's token endpoint to obtain an access token.
 
-These clients MUST be associated with a unique public key, as described in [Section 2.2](#client-registration) .
+These clients MUST be associated with a unique public key, as described in [Section 2.3.4](#ClientKeys).
 
 This client type MAY request and be issued a refresh token if the security parameters of the access request allow for it.
 
@@ -134,7 +134,7 @@ This causes the browser to send the following (non-normative) request to the aut
 Host: idp-p.example.com
 </pre>
 
-
+<!-- ### [2.3.2.](#rfc.section.2.3.2) [Response from the Authorization Endpoint](#ResonseFromAuthorizationEndpoint) -->
 #### Response from the Authorization Endpoint
 
 **iGov-NL**
@@ -151,7 +151,7 @@ Response parameters
 
 
 
-<!-- ### [2.3.2.](#rfc.section.2.3.2) [Requests to the Token Endpoint](#RequestsToTokenEndpoint) -->
+<!-- ### [2.3.3.](#rfc.section.2.3.3) [Requests to the Token Endpoint](#RequestsToTokenEndpoint) -->
 #### Requests to the Token Endpoint
 
 Full clients, native clients with dynamically registered keys, and direct access clients as defined above MUST authenticate to the authorization server's token endpoint using a JWT assertion as defined by the [JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants][[rfc7523]] using only the <samp>private_key_jwt</samp> method defined in [OpenID Connect Core] [[OpenID.Core]] . The assertion MUST use the claims as follows:
@@ -196,7 +196,7 @@ The following sample claim set illustrates the use of the required claims for a 
 }
 </pre>
 
-The JWT assertion MUST be signed by the client using the client's private key. See [Section 2.2](#client-registration) for mechanisms by which the client can make its public key known to the server.
+The JWT assertion MUST be signed by the client using the client's private key. See [Section 2.3.4](#ClientKeys) for mechanisms by which the client can make its public key known to the server.
 The authorization server MUST support the RS256 signature method (the Rivest, Shamir, and Adleman (RSA) signature algorithm with a 256-bit hash) and MAY use other asymmetric signature methods listed in the JSON Web Algorithms ( [JWA] [[rfc7518]] ) specification.
 
 **iGov-NL**
@@ -264,7 +264,7 @@ L4l6p83G7wKGDeLETOTHszt-ZjKR38v4F_MnSrx8e0iIqgZwurW0RtetEWvynOCJXk-p166T7qZR45
 xuCxgOotXY6O3et4n77GtgspMgOEKj3b_WpCiuNEwQ
 </pre>
 
-<!-- ### [2.3.3.](#rfc.section.2.3.3) Client Keys -->
+<!-- ### [2.3.4.](#rfc.section.2.3.4) [Client Keys](#ClientKeys) -->
 #### Client Keys
 
 Clients using the authorization code grant type ~~or direct access clients using the client credentials grant type~~ MUST have a public and private key pair for use in authentication to the token endpoint. These clients MUST register their public keys in their client registration metadata by either sending the public key directly in the <samp>jwks</samp> field or by registering a <samp>jwks\_uri</samp> that MUST be reachable by the authorization server. It is RECOMMENDED that clients use a <samp>jwks_uri</samp> if possible as this allows for key rotation more easily. This applies to both dynamic and static (out-of-band) client registration.
