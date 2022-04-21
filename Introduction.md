@@ -34,11 +34,11 @@ The specification also defines features for interaction between these components
 *   Client to authorization server.
 *   Protected resource to authorization server.
 
-**iGov-NL**
+<aside class=" addition">
+**iGov-NL : Additional content**
 
 This profile is based upon the international government assurance profile for OAuth 2.0 (iGov) [[iGOV.OAuth2]] as published by the OpenID Foundation (https://openid.net/foundation/). It should be considered a fork of this profile as the iGov profile is geared more towards the American situtation and in the Netherlands we have to deal with an European Union context.
-
-**/iGov-NL**
+</aside>
 
 
 When an ~~iGov~~iGov-NL-compliant component is interacting with other ~~iGov~~iGov-NL-compliant components, in any valid combination, all components MUST fully conform to the features and requirements of this specification. All interaction with non-~~iGov~~iGov-NL components is outside the scope of this specification.
