@@ -38,11 +38,14 @@ Native applications not registering a separate public key for each instance are 
 <!-- ### [2.1.3.](#rfc.section.2.1.3) [Direct Access Client](#DirectClient) -->
 #### Direct Access Client
 
-**iGov-NL**
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
 
 Direct Access Clients are out of scope in this version of iGov-NL.
 
-**/iGov-NL**
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
 ~~This client type MUST NOT request or be issued a refresh token.~~
 
@@ -85,7 +88,9 @@ Full clients and browser-embedded clients making a request to the authorization 
 
 Clients MUST include their full redirect URI in the authorization request. To prevent open redirection and other injection attacks, the authorization server MUST match the entire redirect URI using a direct string comparison against registered values and MUST reject requests with an invalid or missing redirect URI.
 
-**iGov-NL**
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
 
 Native clients MUST apply PKCE, as per RFC7636.
 As `code_verifier` the S256 method MUST be applied.
@@ -109,7 +114,8 @@ Request fields:
 <dd>In case `code_challenge` is used with a native app, mandatory. MUST use the value `S256`.</dd>
 </dl>
 
-**/iGov-NL**
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
 The following is a sample response from a web-based client to the end user’s browser for the purpose of redirecting the end user to the authorization server's authorization endpoint:
 
@@ -137,7 +143,9 @@ Host: idp-p.example.com
 <!-- ### [2.3.2.](#rfc.section.2.3.2) [Response from the Authorization Endpoint](#ResonseFromAuthorizationEndpoint) -->
 #### Response from the Authorization Endpoint
 
-**iGov-NL**
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
 
 Response parameters
 <dl>
@@ -147,7 +155,8 @@ Response parameters
 <dd>Mandatory. MUST be a verbatim copy of the value of the <code>state</code> parameter in the Authorization Request.</dd>
 </dl>
 
-**/iGov-NL**
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
 
 
@@ -199,7 +208,9 @@ The following sample claim set illustrates the use of the required claims for a 
 The JWT assertion MUST be signed by the client using the client's private key. See [Section 2.3.4](#ClientKeys) for mechanisms by which the client can make its public key known to the server.
 The authorization server MUST support the RS256 signature method (the Rivest, Shamir, and Adleman (RSA) signature algorithm with a 256-bit hash) and MAY use other asymmetric signature methods listed in the JSON Web Algorithms ( [JWA] [[rfc7518]] ) specification.
 
-**iGov-NL**
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
 
 In addition to above signing methods, the Authorization server SHOULD support PS256 signing algorithm [[RFC7518]] for the signing of the private\_key\_jwt.
 
@@ -221,7 +232,8 @@ Effectively, the Token Request has the following content:
 <dd>Mandatory. MUST have the above specified signed JWT as contents.</dd>
 </dl>
 
-**/iGov-NL**
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
 The following sample JWT contains the above claims and has been signed using the RS256 JWS algorithm and the client's own private key (with line breaks for display purposes only):
 
@@ -288,14 +300,17 @@ cNt1H2_VQ_Ww1JOLn9vRn-H48FDj7TxlIT74XdTZgTv31w_GRPAOfyxEw_ZUmxhz5Z-gTlQ",
 }
 </pre>
 
-**iGov-NL**
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
 
 In case the Authorization Server, Resource Server and client are not operated under responsibility of the same organisation, each party MUST use PKIoverheid certificates with OIN.
 The PKIoverheid certificate MUST be included either as a <code>x5c</code> or as <code>x5u</code> parameter, as per [[rfc7517]] §4.6 and 4.7. Parties SHOULD at least support the inclusion of the certificate as <code>x5c</code> parameter, for maximum interoperability. 
 Parties MAY agree to use <code>x5u</code>, for instance for communication within specific environments.  
 
 
-**/iGov-NL**
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
 For reference, the corresponding public/private key pair for this public key is the following (in JWK format):
 

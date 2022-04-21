@@ -22,7 +22,9 @@ For example: a resource server has resources classified as "public" and "sensiti
 
 In this manner, protected resources and authorization servers work together to meet risk tolerance levels for sensitive resources and end-user authentication.
 
-**iGov-NL**
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
 #### Example
 
 
@@ -52,20 +54,24 @@ User-Agent: Apache-HttpClient/4.2.3 (java 1.5)
   }
 ```
 
-**/iGov-NL**
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
 <!-- ### [4.2.](#rfc.section.4.2) Connections with Clients -->
 ### Connections with Clients
 
 A protected resource MUST accept bearer tokens passed in the authorization header as described in [[rfc6750]] . A protected resource MAY also accept bearer tokens passed in the form parameter ~~or query parameter~~ method~~s~~.
 
-**iGov-NL**
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
 
 A Protected Resource under this profile MUST NOT accept access tokens passed using the query parameter method.
 
 A Protected Resource under this profile SHOULD verify if the client is the Authorized party (azp) when client authentication is used. See section [Advanced OAuth Security Options](#advanced-oauth-security-options) as well.
 
-**/iGov-NL**
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
 
 Protected resources MUST define and document which scopes are required for access to the resource.

@@ -54,12 +54,15 @@ to client software developers from a trusted registration entity. The software s
 
 </dl>
 
-**iGov-NL**
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
 
 In this version of iGov-NL we follow iGov for the requirement that the Authorization servers MUST support dynamic client registration. However depending on how the future authentication architecture of the Dutch government develops in regards to OAuth we may revisit this in a future revision. 
 The current requirement fits an architecture where there is a limited number of widely used authorization servers. However if in practice we start seeing a very large number of authorization servers with limited use this requirement can become a reccomendation in a future version of this profile. For these authorization servers with limited use we consider mandatory support for dynamic client registration a large burden.
 
-**/iGov-NL**
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
 <!-- ### [3.1.4.](#rfc.section.3.1.4) Client Approval -->
 #### Client Approval
@@ -200,11 +203,14 @@ U-27mb6esswnP2WgHZQPsk779fTcNDBIcYgyLujlcUATEqfCaPDNp00J6AbY6w",
 
 Clients and protected resources SHOULD cache this key. It is RECOMMENDED that servers provide cache information through HTTP headers and make the cache valid for at least one week.
 
-**iGov-NL**
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
 
 iGov requires that the authorization server provides an OpenIDConnect service discovery endpoint. Recently OAuth 2.0 Authorization Server Metadata [[rfc8414]] has been finalized, this provide the same functionality in a more generic way and could replace this requirement in a future version of the iGov-NL profile.
 
-**/iGov-NL**
+</aside>
+<!-- iGov-NL : End of the additional content -->
 <!-- ### [3.1.6.](#rfc.section.3.1.6) Revocation -->
 #### Revocation
 
@@ -239,7 +245,9 @@ Clients using the Direct Credentials method MUST NOT be issued refresh_tokens. T
 <!-- ### [3.1.10.](#rfc.section.3.1.10) Token Response -->
 #### Token Response
 
-**iGov-NL**
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
 
 The Token Response has the following contents:
 
@@ -257,7 +265,8 @@ The Token Response has the following contents:
 </dl>
 
 For best practices on token lifetime see section [Token Lifetimes](#token-lifetimes).
-**/iGov-NL**
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
 
 <!-- ### [3.2.](#rfc.section.3.2) Connections with protected resources -->
@@ -300,11 +309,14 @@ The server MAY issue tokens with additional fields, including the following as d
 
 <dd style="margin-left: 8">The identifier of the end-user that authorized this client, or the client id of a client acting on its own behalf (such as a bulk transfer). Since this information could potentially leak private user information, it should be used only when needed. End-user identifiers SHOULD be pairwise anonymous identifiers unless the audiance requires otherwise.</dd>
 
-**iGov-NL**
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
 
 In iGov-NL the sub claim MUST be present.
 
-**/iGov-NL**
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
 <dt>aud</dt>
 
@@ -325,11 +337,14 @@ The following sample claim set illustrates the use of the required claims for an
 
 The access tokens MUST be signed with [JWS] [[rfc7515]] . The authorization server MUST support the RS256 signature method for tokens and MAY use other asymmetric signing methods as defined in the [IANA JSON Web Signatures and Encryption Algorithms registry] [[JWS.JWE.Algs]] . The JWS header MUST contain the following fields:
 
-**iGov-NL**
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
 
 In addition to above signing methods, the Authorization server SHOULD support PS256 signing algorithm [[RFC7518]] for the signing of the JWT Bearer Tokens.
 
-**/iGov-NL**
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
 <dl>
 
@@ -356,14 +371,17 @@ Refresh tokens SHOULD be signed with [JWS] [[rfc7515]] using the same private ke
 
 The authorization server MAY encrypt access tokens and refresh tokens using [JWE] [[rfc7516]] . Encrypted access tokens MUST be encrypted using the public key of the protected resource. Encrypted refresh tokens MUST be encrypted using the authorization server's public key.
 
-**iGov-NL**
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
 
 How to select or obtain the key to be used for encryption of an access token is out of scope of this profile.
 A early draft of "Resource Indicators for OAuth 2.0" exist and could be used. This draft describes usage of the <code>resource</code> parameter to indicate the applicable resource server.
 
 In case the Authorization Server, Resource Server and client are not operated under responsibility of the same organisation, each party MUST use PKIoverheid certificates with OIN for encryption.
 
-**/iGov-NL**
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
 <!-- ### [3.2.2.](#rfc.section.3.2.2) Introspection -->
 #### Introspection
