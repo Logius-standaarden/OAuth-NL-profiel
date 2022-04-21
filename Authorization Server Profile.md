@@ -211,6 +211,7 @@ iGov requires that the authorization server provides an OpenIDConnect service di
 
 </aside>
 <!-- iGov-NL : End of the additional content -->
+
 <!-- ### [3.1.6.](#rfc.section.3.1.6) Revocation -->
 #### Revocation
 
@@ -267,7 +268,6 @@ The Token Response has the following contents:
 For best practices on token lifetime see section [Token Lifetimes](#token-lifetimes).
 </aside>
 <!-- iGov-NL : End of the additional content -->
-
 
 <!-- ### [3.2.](#rfc.section.3.2) Connections with protected resources -->
 ### Connections with protected resources

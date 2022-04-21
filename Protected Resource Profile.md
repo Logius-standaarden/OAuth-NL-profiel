@@ -25,8 +25,8 @@ In this manner, protected resources and authorization servers work together to m
 <!-- iGov-NL : Start of the additional content -->
 <aside class=" addition">
 <b>iGov-NL : Additional content</b></br>  
-#### Example
 
+#### Example
 
 ##### Request
 
