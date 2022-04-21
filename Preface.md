@@ -1,23 +1,32 @@
-## Dutch government Assurance profile for OAuth 2.0  
+
+### Dutch government Assurance profile for OAuth 2.0  
 This profile is based upon the international government assurance profile for OAuth 2.0 (iGov) [[iGOV.OAuth2]] as published
 by the OpenID Foundation (https://openid.net/foundation/). It should be considered a fork of this profile as the iGov profile is geared more towards the American situtation and in the Netherlands we have to deal with an European Union context. 
 
 We have added the chapter [Usecases](#usecases) to illustrate the specific usecase the iGov-NL profile is aimed at. Starting with chapter [Introduction](#introduction) we follow the structure of the iGov profile. Where we do not use content from iGov we use ~~strikethrough~~ to indicate it is not part of iGov-NL. Where we have added more specific requirements for the Dutch situation this is indicated with **iGov-NL** tags.
 
 ### Usecases
- <figure id='authorization_code'>
-	<img src='media/use_case4_authorization_code.png' width="600" alt="Use case Authorization code flow"/>
-	<figcaption>Use case Authorization code flow</figcaption>
- </figure>
+This use case shows the authorization code flow as shown in the figure "Use case Authorization code flow". 
 
-### Introduction
 In this use case a (public/governmental) service is offered via an API.
 The service will be consumed by the User using a client, that can be any arbitrary, non-trusted application.
 For provisioning the service, the service provider requires an identifier of the User.
 The identifier of the User can be either an arbitrary (self-registered) identifier or a formal identifier (citizen number or other restricted, registered ID).
 Upon service provisioning, the service uses the identifier of the User for access control within the service.
 
-### Context
+<figure id='authorization_code'>
+	<img src='media/use_case4_authorization_code.png' width="600" alt="Use case Authorization code flow"/>
+	<figcaption>Use case Authorization code flow</figcaption>
+ </figure>
+
+### Introduction
+
+#### Context
+For the Authorization code flow usecase to work the following application building blocks need to be inplace:
+1. the Resource Server (usually described as the API)
+2. the Authorization Server
+3. the client (application)
+
 #### Resource Server
 The service is provided by a public/governmental organization.
 Assumed is the Resource Server is known (by the Authorization Server) prior to actual authorization of the User.
