@@ -17,18 +17,11 @@ For provisioning the service, the service provider requires an identifier of the
 The identifier of the User can be either an arbitrary (self-registered) identifier or a formal identifier (citizen number or other restricted, registered ID).
 Upon service provisioning, the service uses the identifier of the User for access control within the service.
 
-<figure id='authorization_code'>
-	<img src='media/use_case4_authorization_code.png' width="600" alt="Use case Authorization code flow"/>
-	<figcaption>Use case Authorization code flow</figcaption>
- </figure>
-
 ### Introduction
-
-#### Context
 For the Authorization code flow usecase to work the following application building blocks need to be inplace:
 1. the Resource Server (usually described as the API)
 2. the Authorization Server
-3. the client (application)
+3. the Client (application)
 
 #### Resource Server
 The service is provided by a public/governmental organization.
@@ -61,6 +54,11 @@ See RFC 8252 for more information on implementation of native applications.
 A Client wishes to send a request to an API, on behalf of the User.
 The API requires to have a trusted identification and *authorization* of the User, before providing the Service.
 A Client has pre-registered with the Authorization Endpoint and has been assigned a client_id.
+
+<figure id='authorization_code'>
+	<img src='media/use_case4_authorization_code.png' width="600" alt="Use case Authorization code flow"/>
+	<figcaption>Use case Authorization code flow</figcaption>
+ </figure>
 
 The normal flow, that is without any error handling, is described below.
 
