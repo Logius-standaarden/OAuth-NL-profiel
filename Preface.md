@@ -1,3 +1,6 @@
+## Status of This Document
+This is the definitive version of the standard. Edits resulting from consultations have been applied.
+Het OBDO heeft op advies van het Forum Standaardisatie deze versie vastgesteld.
 
 ### Dutch government Assurance profile for OAuth 2.0  
 This profile is based upon the international government assurance profile for OAuth 2.0 (iGov) [[iGOV.OAuth2]] as published
