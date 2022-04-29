@@ -26,10 +26,9 @@ In this manner, protected resources and authorization servers work together to m
 <aside class=" addition">
 <b>iGov-NL : Additional content</b></br>  
 
-#### Example
+<aside class="example">
 
-##### Request
-
+Request:
 ```
 GET /resource HTTP/1.1
 Authorization: Bearer 4f626847-91b1-3417-a91e-c5627f377ae1
@@ -39,7 +38,7 @@ Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.2.3 (java 1.5)
 ```
 
-##### Response:
+Response:
 ```
   HTTP/1.1 200 OK
   Content-Type: application/json
@@ -53,7 +52,7 @@ User-Agent: Apache-HttpClient/4.2.3 (java 1.5)
    "picture": "http://example.com/janedoe/me.jpg"
   }
 ```
-
+</aside>
 </aside>
 <!-- iGov-NL : End of the additional content -->
 

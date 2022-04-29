@@ -2,7 +2,16 @@
 This profile is based upon the international government assurance profile for OAuth 2.0 (iGov) [[iGOV.OAuth2]] as published
 by the OpenID Foundation (https://openid.net/foundation/). It should be considered a fork of this profile as the iGov profile is geared more towards the American situtation and in the Netherlands we have to deal with an European Union context. 
 
-We have added the chapter [Usecases](#usecases) to illustrate the specific usecase the iGov-NL profile is aimed at. Starting with chapter [Introduction](#introduction) we follow the structure of the iGov profile. Where we do not use content from iGov we use ~~strikethrough~~ to indicate it is not part of iGov-NL. Where we have added more specific requirements for the Dutch situation this is indicated with **iGov-NL** tags.
+We have added the chapter [Usecases](#usecases) to illustrate the specific usecase the iGov-NL profile is aimed at. Starting with chapter [Introduction](#introduction) we follow the structure of the iGov profile. Where we do not use content from iGov we use ~~strikethrough~~ to indicate it is not part of iGov-NL.
+
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
+
+Content added for the iGov-NL profile is indicated like this.
+
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
 ## Usecases
 This use case shows the authorization code flow as shown in the figure "Use case Authorization code flow". 

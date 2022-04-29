@@ -110,6 +110,7 @@ The authorization server MUST provide an [OpenID Connect service discovery] [[Op
 
 If the authorization server is also an OpenID Connect Provider, it MUST provide a discovery endpoint meeting the requirements listed in Section 3.6 of the iGov OpenID Connect profile.
 
+<aside class="example">
 The following example shows the JSON document found at a discovery endpoint for an authorization server:
 
 <pre>{
@@ -161,6 +162,7 @@ The following example shows the JSON document found at a discovery endpoint for 
   "op_policy_uri": "https://idp-p.example.com/about"
 }
 </pre>
+</aside>
 
 Clients and protected resources SHOULD cache this discovery information. It is RECOMMENDED that servers provide cache information through HTTP headers and make the cache valid for at least one week.
 
@@ -182,6 +184,7 @@ The server MUST provide its public key in JWK Set format. The key MUST contain t
 
 </dl>
 
+<aside class="example">
 The following is an example of a 2048-bit RSA public key:
 
 <pre>{
@@ -200,6 +203,7 @@ U-27mb6esswnP2WgHZQPsk779fTcNDBIcYgyLujlcUATEqfCaPDNp00J6AbY6w",
   ]
 }
 </pre>
+</aside>
 
 Clients and protected resources SHOULD cache this key. It is RECOMMENDED that servers provide cache information through HTTP headers and make the cache valid for at least one week.
 
@@ -324,6 +328,7 @@ In iGov-NL the sub claim MUST be present.
 
 </dl>
 
+<aside class="example">
 The following sample claim set illustrates the use of the required claims for an access token as defined in this profile; additional claims MAY be included in the claim set:
 
 <pre>{
@@ -334,6 +339,7 @@ The following sample claim set illustrates the use of the required claims for an
    "iat": 1418698788
 }
 </pre>
+</aside>
 
 The access tokens MUST be signed with [JWS] [[rfc7515]] . The authorization server MUST support the RS256 signature method for tokens and MAY use other asymmetric signing methods as defined in the [IANA JSON Web Signatures and Encryption Algorithms registry] [[JWS.JWE.Algs]] . The JWS header MUST contain the following fields:
 
@@ -354,6 +360,7 @@ In addition to above signing methods, the Authorization server SHOULD support PS
 
 </dl>
 
+<aside class="example">
 This example access token has been signed with the server's private key using RS256:
 
 <pre>eyJhbGciOiJSUzI1NiJ9.ew0KICAgImV4cCI6IDE0MTg3MDIzODgsDQogICAiYXpwIjo
@@ -366,6 +373,7 @@ XqwUQwbgF7Gwza9Z4AdhjHjzQx-lChXAyfL1xz0SBDkVbJdDjtXbvaSIyfF7ueWF3M1C
 M70-GXuRY4iucKbuytz9e7eW4Egkk4Aagl3iTk9-l5V-tvL6dYu8IlR93GKsaKE8bng0
 EZ04xcnq8s4V5Yykuc_NARBJENiKTJM8w3wh7xWP2gvMp39Y0XnuCOLyIx-J1ttX83xm
 pXDaLyyY-4HT9XHT9V73fKF8rLWJu9grrA</pre>
+</aside>
 
 Refresh tokens SHOULD be signed with [JWS] [[rfc7515]] using the same private key and contain the same set of claims as the access tokens.
 
@@ -388,6 +396,7 @@ In case the Authorization Server, Resource Server and client are not operated un
 
 Token introspection allows a protected resource to query the authorization server for metadata about a token. The protected resource makes a request like the following to the token introspection endpoint:
 
+<aside class="example">
 <pre>POST /introspect HTTP/1.1
 User-Agent: Faraday v0.9.0
 Content-Type: application/x-www-form-urlencoded
@@ -422,6 +431,7 @@ f3b0bAdjoQEHd_IvssIPH3xuBJkmtkrTlfWR0Q0pdpeyVePkMSI28XZvDaGnx
 A4j7QI5loZYeyzGR9h70xQLVzqwwl1P0-F_0JaDFMJFO1yl4IexfpoZZsB3Hh
 F2vFdL6D_lLeHRy-H2g2OzF59eMIsM_Ccs4G47862w
 </pre>
+</aside>
 
 The client assertion parameter is structured as described in [Section 2.3.3](#requests-to-the-token-endpoint) .
 
@@ -451,6 +461,7 @@ The server responds to an introspection request with a JSON object representing 
 
 </dl>
 
+<aside class="example">
 The following example is a response from the introspection endpoint:
 
 <pre>HTTP/1.1 200 OK
@@ -470,6 +481,7 @@ Connection: close
    "token_type": "Bearer"
 }
 </pre>
+</aside>
 
 The authorization server MUST require authentication for both the revocation and introspection endpoints as described in [Section 2.3.2](#requests-to-the-token-endpoint) . Protected resources calling the introspection endpoint MUST use credentials distinct from any other OAuth client registered at the server.
 
@@ -496,12 +508,14 @@ The following fields MUST be included in the response:
 
 PKCE parameters MUST be associated with the "code" as per Section 4.4 of [Proof Key for Code Exchange by OAuth Public Clients (PKCE)] [[rfc7636]]
 
+<aside class="example">
 The following is an example response:
 
 <pre>https://client.example.org/cb?
     state=2ca3359dfbfd0
    &code=gOIFJ1hV6Rb1sxUdFhZGACWwR1sMhYbJJcQbVJN0wHA
 </pre>
+</aside>
 
 <!-- ### [3.4.](#rfc.section.3.4) [Token Lifetimes](#TokenLifetimes) -->
 ### Token Lifetimes
