@@ -13,7 +13,7 @@ This client type applies to clients that act on behalf of a particular resource 
 
 These clients MUST use the authorization code flow of OAuth 2 by sending the resource owner to the authorization endpoint to obtain authorization. The user MUST authenticate to the authorization endpoint. The user’s web browser is then redirected back to a URI hosted by the client service, from which the client can obtain an authorization code passed as a query parameter. The client then presents that authorization code along with its own credentials (private_key_jwt) to the authorization server's token endpoint to obtain an access token.
 
-These clients MUST be associated with a unique public key, as described in [Section 2.3.4](#ClientKeys).
+These clients MUST be associated with a unique public key, as described in [Section 2.3.4](#client-keys).
 
 This client type MAY request and be issued a refresh token if the security parameters of the access request allow for it.
 
@@ -205,7 +205,7 @@ The following sample claim set illustrates the use of the required claims for a 
 }
 </pre>
 
-The JWT assertion MUST be signed by the client using the client's private key. See [Section 2.3.4](#ClientKeys) for mechanisms by which the client can make its public key known to the server.
+The JWT assertion MUST be signed by the client using the client's private key. See [Section 2.3.4](#client-keys) for mechanisms by which the client can make its public key known to the server.
 The authorization server MUST support the RS256 signature method (the Rivest, Shamir, and Adleman (RSA) signature algorithm with a 256-bit hash) and MAY use other asymmetric signature methods listed in the JSON Web Algorithms ( [JWA] [[rfc7518]] ) specification.
 
 <!-- iGov-NL : Start of the additional content -->

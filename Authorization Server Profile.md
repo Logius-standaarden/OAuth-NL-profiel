@@ -224,7 +224,7 @@ A client MUST immediately discard the token and not use it again after revoking 
 <!-- ### [3.1.7.](#rfc.section.3.1.7) PKCE -->
 #### PKCE
 
-An authorization server MUST support the Proof Key for Code Exchange ([PKCE] [[rfc7636]] ) extension to the authorization code flow, including support for the S256 code challenge method. The authorization server MUST NOT allow an ~~iGov~~iGov-NL client to use the plain code challenge method.
+An authorization server MUST support the Proof Key for Code Exchange ([PKCE] [[rfc7636]] ) extension to the authorization code flow, including support for the S256 code challenge method. The authorization server MUST NOT allow an ~~iGov~~ iGov-NL client to use the plain code challenge method.
 
 <!-- ### [3.1.8.](#rfc.section.3.1.8) Redirect URIs -->
 #### Redirect URIs
@@ -272,12 +272,12 @@ For best practices on token lifetime see section [Token Lifetimes](#token-lifeti
 <!-- ### [3.2.](#rfc.section.3.2) Connections with protected resources -->
 ### Connections with protected resources
 
-Unlike the core OAuth protocol, the ~~iGov~~iGov-NL profile intends to allow compliant protected resources to connect to compliant authorization servers.
+Unlike the core OAuth protocol, the ~~iGov~~ iGov-NL profile intends to allow compliant protected resources to connect to compliant authorization servers.
 
 <!-- ### [3.2.1.](#rfc.section.3.2.1) [JWT Bearer Tokens](#JWTBearerTokens) -->
 #### JWT Bearer Tokens
 
-In order to facilitate interoperability with multiple protected resources, all ~~iGov~~iGov-NL-compliant authorization servers issue cryptographically signed tokens in the JSON Web Token (JWT) format. The information carried in the JWT is intended to allow a protected resource to quickly test the integrity of the token without additional network calls, and to allow the protected resource to determine which authorization server issued the token. When combined with discovery, this information is sufficient to programmatically locate the token introspection service, which is in turn used for conveying additional security information about the token.
+In order to facilitate interoperability with multiple protected resources, all ~~iGov~~ iGov-NL-compliant authorization servers issue cryptographically signed tokens in the JSON Web Token (JWT) format. The information carried in the JWT is intended to allow a protected resource to quickly test the integrity of the token without additional network calls, and to allow the protected resource to determine which authorization server issued the token. When combined with discovery, this information is sufficient to programmatically locate the token introspection service, which is in turn used for conveying additional security information about the token.
 
 The server MUST issue tokens as JWTs with, at minimum, the following claims:
 
