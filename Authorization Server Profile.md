@@ -24,7 +24,7 @@ The authorization server MUST validate all redirect URIs for authorization code 
 <!-- ### [3.1.3.](#rfc.section.3.1.3) [Dynamic Registration](#DynamicRegistration) -->
 #### Dynamic Registration
 
-Dynamic Registration allows for authorized Clients to on-board programatically without administrative intervention. This is particularly important in ecosystems with many potential Clients, including Mobile Apps acting as independent Clients. Authorization servers MUST support dynamic client registration,
+Dynamic Registration allows for authorized Clients to on-board programmatically without administrative intervention. This is particularly important in ecosystems with many potential Clients, including Mobile Apps acting as independent Clients. Authorization servers MUST support dynamic client registration,
 and clients MAY register using the [Dynamic Client Registration Protocol] [[rfc7591]] for authorization code grant types. ~~Clients MUST NOT dynamically register for the client credentials grant type~~. Authorization servers MAY limit the scopes available to dynamically registered clients.
 
 Authorization servers MAY protect their Dynamic Registration endpoints by requiring clients to present credentials that the authorization server would recognize as authorized participants. Authorization servers MAY accept signed software statements as described in [[RFC7591]] [[rfc7591]] issued 
@@ -73,7 +73,7 @@ When prompting the end user with an interactive approval page, the authorization
 *   Whether the client is associated with a software statement, and in which case provide information about the trusted issuer of the software statement.
 *   What kind of access the client is requesting, including scope, protected resources (if applicable beyond scopes), and access duration.
 
-For example, for native clients a message indicating a new App installation has been registered as a client can help users determin if this is the expected behaviour. This signal helps users protect themselves fro potentially rogue clients.
+For example, for native clients a message indicating a new App installation has been registered as a client can help users determine if this is the expected behaviour. This signal helps users protect themselves from potentially rogue clients.
 
 <!-- ### [3.1.5.](#rfc.section.3.1.5) [Discovery](#Discovery) -->
 #### Discovery
@@ -307,7 +307,7 @@ The server MAY issue tokens with additional fields, including the following as d
 
 <dt>sub</dt>
 
-<dd style="margin-left: 8">The identifier of the end-user that authorized this client, or the client id of a client acting on its own behalf (such as a bulk transfer). Since this information could potentially leak private user information, it should be used only when needed. End-user identifiers SHOULD be pairwise anonymous identifiers unless the audiance requires otherwise.</dd>
+<dd style="margin-left: 8">The identifier of the end-user that authorized this client, or the client id of a client acting on its own behalf (such as a bulk transfer). Since this information could potentially leak private user information, it should be used only when needed. End-user identifiers SHOULD be pairwise anonymous identifiers unless the audience requires otherwise.</dd>
 
 <!-- iGov-NL : Start of the additional content -->
 <aside class=" addition">
@@ -478,7 +478,7 @@ A protected resource MAY cache the response from the introspection endpoint for 
 <!-- ### [3.3.](#rfc.section.3.3) Response to Authorization Requests -->
 ### Response to Authorization Requests
 
-The following data will be sent as an Authorization Response to the Authorization Code Flow as desribed above. The authentication response is sent via HTTP redirect to the redirect URI specified in the request.
+The following data will be sent as an Authorization Response to the Authorization Code Flow as described above. The authentication response is sent via HTTP redirect to the redirect URI specified in the request.
 
 The following fields MUST be included in the response:
 

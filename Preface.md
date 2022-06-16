@@ -1,6 +1,6 @@
 ## Dutch government Assurance profile for OAuth 2.0
 This profile is based upon the international government assurance profile for OAuth 2.0 (iGov) [[iGOV.OAuth2]] as published
-by the OpenID Foundation (https://openid.net/foundation/). It should be considered a fork of this profile as the iGov profile is geared more towards the American situtation and in the Netherlands we have to deal with an European Union context. 
+by the OpenID Foundation (https://openid.net/foundation/). It should be considered a fork of this profile as the iGov profile is geared more towards the American situation and in the Netherlands we have to deal with an European Union context. 
 
 We have added the chapter [Usecases](#usecases) to illustrate the specific usecase the iGov-NL profile is aimed at. Starting with chapter [Introduction](#introduction) we follow the structure of the iGov profile. Where we do not use content from iGov we use ~~strikethrough~~ to indicate it is not part of iGov-NL. Where we have added more specific requirements for the Dutch situation this is indicated with **iGov-NL** tags.
 
@@ -14,7 +14,7 @@ The identifier of the User can be either an arbitrary (self-registered) identifi
 Upon service provisioning, the service uses the identifier of the User for access control within the service.
 
 ## Introduction
-For the Authorization code flow usecase to work the following application building blocks need to be inplace:
+For the Authorization code flow usecase to work the following application building blocks need to be in place:
 1. the Resource Server (usually described as the API)
 2. the Authorization Server
 3. the Client (application)
@@ -22,7 +22,7 @@ For the Authorization code flow usecase to work the following application buildi
 ### Resource Server
 The service is provided by a public/governmental organization.
 Assumed is the Resource Server is known (by the Authorization Server) prior to actual authorization of the User.
-A Resource Server is assumed to posses a means for identification of the Resource Server and/or encrypted information, optionally by using a PKI certificate.
+A Resource Server is assumed to possess a means for identification of the Resource Server and/or encrypted information, optionally by using a PKI certificate.
 Furthermore, a Resource Server is assumed to be provided over HTTP using TLS, other protocols are out of scope for this profile.
 
 ### Authorization Server
