@@ -117,6 +117,7 @@ Request fields:
 </aside>
 <!-- iGov-NL : End of the additional content -->
 
+<aside class="example">
 The following is a sample response from a web-based client to the end user’s browser for the purpose of redirecting the end user to the authorization server's authorization endpoint:
 
 <pre>HTTP/1.2 302 Found
@@ -139,6 +140,7 @@ This causes the browser to send the following (non-normative) request to the aut
   &redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb HTTP/1.1
 Host: idp-p.example.com
 </pre>
+</aside>
 
 <!-- ### [2.3.2.](#rfc.section.2.3.2) [Response from the Authorization Endpoint](#ResonseFromAuthorizationEndpoint) -->
 #### Response from the Authorization Endpoint
@@ -193,6 +195,7 @@ Full clients, native clients with dynamically registered keys, and direct access
 
 </dl>
 
+<aside class="example">
 The following sample claim set illustrates the use of the required claims for a client authentication JWT as defined in this profile; additional claims MAY be included in the claim set.
 
 <pre>{
@@ -204,6 +207,7 @@ The following sample claim set illustrates the use of the required claims for a 
    "jti": "1418698788/107c4da5194df463e52b56865c5af34e5595"
 }
 </pre>
+</aside>
 
 The JWT assertion MUST be signed by the client using the client's private key. See [Section 2.3.4](#client-keys) for mechanisms by which the client can make its public key known to the server.
 The authorization server MUST support the RS256 signature method (the Rivest, Shamir, and Adleman (RSA) signature algorithm with a 256-bit hash) and MAY use other asymmetric signature methods listed in the JSON Web Algorithms ( [JWA] [[rfc7518]] ) specification.
@@ -235,6 +239,7 @@ Effectively, the Token Request has the following content:
 </aside>
 <!-- iGov-NL : End of the additional content -->
 
+<aside class="example">
 The following sample JWT contains the above claims and has been signed using the RS256 JWS algorithm and the client's own private key (with line breaks for display purposes only):
 
 <pre>eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.ew0KICAgImlzcyI6ICI1NWY5ZjU1OS0yNDk2LTQ5Z
@@ -275,6 +280,7 @@ IgT7-Lhf6BbwQNlMQubNeOPRFDqQoLWqe7UxuI06dKX3SEQRMqcxYSIAfP7CQZ4WLuKXb6oEbaqz6g
 L4l6p83G7wKGDeLETOTHszt-ZjKR38v4F_MnSrx8e0iIqgZwurW0RtetEWvynOCJXk-p166T7qZR45
 xuCxgOotXY6O3et4n77GtgspMgOEKj3b_WpCiuNEwQ
 </pre>
+</aside>
 
 <!-- ### [2.3.4.](#rfc.section.2.3.4) [Client Keys](#ClientKeys) -->
 #### Client Keys
@@ -283,6 +289,7 @@ Clients using the authorization code grant type ~~or direct access clients using
 
 The <samp>jwks</samp> field or the content available from the <samp>jwks\_uri</samp> of a client MUST contain a public key in [JSON Web Key Set (JWK Set)] [[rfc7517]] format. The authorization server MUST validate the content of the client's registered jwks_uri document and verify that it contains a JWK Set. The following example is of a 2048-bit RSA key:
 
+<aside class="example">
 <pre>{
    "keys": [
      {
@@ -299,6 +306,7 @@ cNt1H2_VQ_Ww1JOLn9vRn-H48FDj7TxlIT74XdTZgTv31w_GRPAOfyxEw_ZUmxhz5Z-gTlQ",
    ]
 }
 </pre>
+</aside>
 
 <!-- iGov-NL : Start of the additional content -->
 <aside class=" addition">
@@ -312,6 +320,7 @@ Parties MAY agree to use <code>x5u</code>, for instance for communication within
 </aside>
 <!-- iGov-NL : End of the additional content -->
 
+<aside class="example">
 For reference, the corresponding public/private key pair for this public key is the following (in JWK format):
 
 <pre>{
@@ -333,7 +342,7 @@ H2_VQ_Ww1JOLn9vRn-H48FDj7TxlIT74XdTZgTv31w_GRPAOfyxEw_ZUmxhz5Z-gTlQ",
 </pre>
 
 Note that the second example contains both the public and private keys, while the first example contains the public key only.
-
+</aside>
 
 
 <!-- ### [2.4.](#rfc.section.2.4) Connection to the Protected Resource -->
@@ -344,6 +353,7 @@ Note that the second example contains both the public and private keys, while th
 
 Clients SHOULD send bearer tokens passed in the Authentication header as defined by [[rfc6750]] . Clients MAY use the form-parameter ~~or query-parameter~~ method~~s~~ in [[rfc6750]] . Authorized requests MUST be made over TLS, and clients MUST validate the protected resource server's certificate.
 
+<aside class="example">
 An example of an OAuth-protected call to the OpenID Connect UserInfo endpoint, sending the token in the Authorization header, follows:
 
 <pre>GET /userinfo HTTP/1.1
@@ -360,3 +370,4 @@ Host: idp-p.example.com
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.2.3 (java 1.5)
 </pre>
+</aside>
