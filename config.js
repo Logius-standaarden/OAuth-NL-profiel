@@ -1,9 +1,9 @@
 //-------------------------------------------------------------------------------------
 //-- File. . . :  config.js
-//-- Bevat . . :  Template voor de  configuratie voor respec  
+//-- Bevat . . :  Template voor de  configuratie voor respec
 //--              Gebaseerd op https://github.com/Geonovum/respec/wiki
-//--              Deze file moet worden neergezet in de root-directory van de 
-//--              betreffende standaard. 
+//--              Deze file moet worden neergezet in de root-directory van de
+//--              betreffende standaard.
 //-- Door. . . :  Frank Terpstra/Jan van Gelder
 //-------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------
@@ -37,6 +37,16 @@ var respecConfig =
         name: "Jan van Gelder",
         company: "Geonovum",
         companyURL: "http://www.geonovum.nl/",
+      }
+      {
+        name: "Alexander Green",
+        company: "Logius",
+        companyURL: "http://www.logius.nl/",
+      }
+      {
+        name: "Martin van der Plas",
+        company: "Logius",
+        companyURL: "http://www.logius.nl/",
       }
     ],
   authors:
@@ -105,15 +115,15 @@ var respecConfig =
   nl_addReleaseTagTitle: true,
 
   // nl_organisationName is used for some company specific values in the header (and Sotd)
-  // currently supported: Logius and Geonovum (default)  
+  // currently supported: Logius and Geonovum (default)
   nl_organisationName: "Logius",
 
   // prefix for the names of company specific css, svg and ico prefixes
-  // defaults to "GN-"  
+  // defaults to "GN-"
   nl_organisationPrefix: "LS-",
 
   // class style can be automatically insertd in generated markdown tables
-  // currently defaults to simple, but this may change    
+  // currently defaults to simple, but this may change
   //  nl_markdownTableClass: "ebms",
 
   // if nl_markdownEmbedImageInFigure is set to true images in markdown generated content will be surrounded with <figures> element
