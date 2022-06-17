@@ -17,13 +17,13 @@ var respecConfig =
   specType: "ST",
   // format: "markdown",
   pubDomain: "api",
-  shortName: "oauth-nl",
+  shortName: "oauth",
 
   publishDate: "2022-06-17",
   previousPublishDate: "2020-07-09",
   
   publishVersion: "v1.1",
-  previousPublisversion: "1.0"
+  previousPublisversion: "1.0",
 
   //previousMaturity: "GN-CV",
   editors:
