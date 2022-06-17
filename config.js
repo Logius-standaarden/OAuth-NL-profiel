@@ -13,17 +13,17 @@
 
 var respecConfig =
 {
-  specStatus: "DEF",
+  specStatus: "ED",
   specType: "ST",
   // format: "markdown",
   pubDomain: "api",
-  shortName: "oauth",
+  shortName: "oauth-nl",
 
-  publishDate: "2020-07-09",
-  //previousPublishDate: "2019-02-13",
-
-  publishVersion: "v1.0",
-  //previousPublishDate: "0.9",
+  publishDate: "2022-06-17",
+  previousPublishDate: "2020-07-09",
+  
+  publishVersion: "v1.1",
+  previousPublisversion: "1.0"
 
   //previousMaturity: "GN-CV",
   editors:
@@ -47,6 +47,7 @@ var respecConfig =
         name: "Martin van der Plas",
         company: "Logius",
         companyURL: "http://www.logius.nl/",
+        mailto: "api@logius.nl",
       }
     ],
   authors:
