@@ -13,7 +13,7 @@
 
 var respecConfig =
 {
-  specStatus: "ED",
+  specStatus: "WV",
   specType: "ST",
   // format: "markdown",
   pubDomain: "api",
