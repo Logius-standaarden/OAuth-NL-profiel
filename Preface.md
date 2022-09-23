@@ -53,12 +53,14 @@ Note:
 Web-applications by default use the system-browser on a User's device as user-agent.
 Typically a native application (_"mobile app"_) either starts a system browser as user-agent or uses an _in-app_ browser.
 See RFC 8252 for more information on implementation of native applications.
-
+<p class='warning'>Need to add machine client type to usecases</p>
 
 ## Flow for authorization
 A Client wishes to send a request to an API, on behalf of the User.
 The API requires to have a trusted identification and *authorization* of the User, before providing the Service.
 A Client has pre-registered with the Authorization Endpoint and has been assigned a client_id.
+
+<p class='warning'>additional picture and description for client credential flow needed</p>
 
 <figure id='authorization_code'>
 	<img src='media/use_case4_authorization_code.png' width="600" alt="Use case Authorization code flow"/>

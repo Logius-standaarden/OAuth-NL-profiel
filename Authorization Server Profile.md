@@ -11,13 +11,13 @@ The authorization server MUST protect all communications to and from its OAuth e
 <!-- ### [3.1.1.](#rfc.section.3.1.1) Grant types -->
 #### Grant types
 
-The authorization server MUST support the <samp>authorization_code</samp> , ~~and MAY support the <samp>client_credentials</samp>~~ grant types as described in [Section 2](#client-profiles).
- ~~The authorization server MUST limit each registered client (identified by a client ID) to a single grant type only, since a single piece of software will be functioning at runtime in only one of the modes described in [Section 2](#client-profiles). Clients that have multiple modes of operation MUST have a separate client ID for each mode.~~
+The authorization server MUST support the <samp>authorization_code</samp> , and MAY support the <samp>client_credentials</samp> grant types as described in [Section 2](#client-profiles).
+ The authorization server MUST limit each registered client (identified by a client ID) to a single grant type only, since a single piece of software will be functioning at runtime in only one of the modes described in [Section 2](#client-profiles). Clients that have multiple modes of operation MUST have a separate client ID for each mode.
 
 <!-- ### [3.1.2.](#rfc.section.3.1.2) Client authentication -->
 #### Client authentication
 
-The authorization server MUST enforce client authentication as described above for the authorization code ~~and client credentials grant types~~. Public client cannot authenticate to the authorization server.
+The authorization server MUST enforce client authentication as described above for the authorization code and client credentials grant types. Public client cannot authenticate to the authorization server.
 
 The authorization server MUST validate all redirect URIs for authorization code ~~and implicit grant types~~.
 
@@ -25,7 +25,7 @@ The authorization server MUST validate all redirect URIs for authorization code 
 #### Dynamic Registration
 
 Dynamic Registration allows for authorized Clients to on-board programmatically without administrative intervention. This is particularly important in ecosystems with many potential Clients, including Mobile Apps acting as independent Clients. Authorization servers MUST support dynamic client registration,
-and clients MAY register using the [Dynamic Client Registration Protocol] [[rfc7591]] for authorization code grant types. ~~Clients MUST NOT dynamically register for the client credentials grant type~~. Authorization servers MAY limit the scopes available to dynamically registered clients.
+and clients MAY register using the [Dynamic Client Registration Protocol] [[rfc7591]] for authorization code grant types. Clients MUST NOT dynamically register for the client credentials grant type. Authorization servers MAY limit the scopes available to dynamically registered clients.
 
 Authorization servers MAY protect their Dynamic Registration endpoints by requiring clients to present credentials that the authorization server would recognize as authorized participants. Authorization servers MAY accept signed software statements as described in [[RFC7591]] [[rfc7591]] issued 
 to client software developers from a trusted registration entity. The software statement can be used to tie together many instances of the same client software that will be run, dynamically registered, and authorized separately at runtime. The software statement MUST include the following client metadata parameters:
