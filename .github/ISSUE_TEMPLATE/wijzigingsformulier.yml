@@ -1,0 +1,34 @@
+name: Wijzigingsformulier
+description: Stel een (inhoudelijke) wijziging voor op de Digikoppeling standaard. Voor een tekstueele wijziging op de documentatie bestaat een ander formulier.
+title: "RFC ..."
+labels: ["Standaard: digikoppeling", "Type: wijziging"]
+body:
+  - type: textarea
+    id: omschrijving
+    attributes:
+      label: Omschrijving
+      description: Wat is de voorgestelde wijziging? 
+      placeholder: Vul hier de voorgestelde aanpassing in
+    validations:
+      required: true
+  - type: input
+    id: contact
+    attributes:
+      label: Naam
+      description: Naam. Uw naam wordt online getoond in het issue. U kunt ook anoniem invullem.
+    validations:
+      required: false
+  - type: input
+    id: email
+    attributes:
+      label: Email
+      description: E-mail adres. Uw e-mail adres wordt online getoond in het issue. U kunt ook anoniem invullem.
+    validations:
+      required: false
+  - type: input
+    id: organisatie
+    attributes:
+      label: Organisatie
+      description: Naam van uw organisatie. Dit veld is verplicht omdat we deze in het overzicht opnemen.
+    validations:
+      required: true
