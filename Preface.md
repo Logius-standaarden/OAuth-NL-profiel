@@ -14,7 +14,7 @@ Content added for the iGov-NL profile is indicated like this.
 <!-- iGov-NL : End of the additional content -->
 
 ## Usecases
-This use case shows the authorization code flow as shown in the figure "Use case Authorization code flow". 
+There are two usecases: The client credentials flow and the authorizations code flow. In two sections below we will elaborate on these, first we will introduce som common concepts.
 
 In this use case a (public/governmental) service is offered via an API.
 The service will be consumed by the User using a client, that can be any arbitrary, non-trusted application.
@@ -55,12 +55,40 @@ Typically a native application (_"mobile app"_) either starts a system browser a
 See RFC 8252 for more information on implementation of native applications.
 <p class='warning'>Need to add machine client type to usecases</p>
 
-## Flow for authorization
+## Usecase: Client credentials flow
+The client credentials flow can be used in usecases where there is an application to API connection where no user information is needed for authorization.
+Two examples are:
+* An application does a system API call. For instance a ping service to see if an API is available. The user does not need to be logged in for this and there is no relation to the identity of the end user.
+* A batch application processes a large number of transactions asynchronously at at later scheduled time. The original access_tokens of the preceding synchronous proces is no longer available.
+The flow for such a machine to machine interaction is shown in the figure below.
+
+<figure id='authorization_code'>
+	<img src='media/use_case_client_credentials_flow.png' width="600" alt="Use case Client credentials flow"/>
+	<figcaption>Use case Client credentials flow</figcaption>
+ </figure>
+ 
+### Step 1. Client Authentication
+Using the client credentials, the client sends a Authentication Request to the Authorization Server's token Endpoint.
+It does so using the Client authentication as pre-registered.
+The Authorization Server receives and validates the Authemtication Request.
+
+### Step 2. Access Token Response
+The Authorization Server authenticates the client and if valid responds to the client with an Access Token Response.
+The Authorization server issues an Access Token, specific to the requested authorization.
+The client receives the Access Token and can use the Access Token to send requests to the Service API.
+
+### Step 3. Resource interaction
+The Client can now send (a) request(s) to the Service, on behalf of itself.
+It does so by sending requests to the Resource Server, along with the Access Token.
+The Resource Server uses the Access Token for its access control decision.
+The Resource Server responds based on these decisions to the Client.
+The contents and protocol of the Resource Request and Resource Response are out of scope of this profile.
+ 
+## Usecase: Authorization code flow
 A Client wishes to send a request to an API, on behalf of the User.
 The API requires to have a trusted identification and *authorization* of the User, before providing the Service.
 A Client has pre-registered with the Authorization Endpoint and has been assigned a client_id.
 
-<p class='warning'>additional picture and description for client credential flow needed</p>
 
 <figure id='authorization_code'>
 	<img src='media/use_case4_authorization_code.png' width="600" alt="Use case Authorization code flow"/>
@@ -90,7 +118,6 @@ The Authorization Server redirects the user-agent back to the Client, with a Aut
 This Authorization Response holds an Authorization Grant and is send to the `redirect_uri` endpoint from the Authorization request.
 
 ### Step 5. Access Token Request
-Note: applicable to the Authorization Code Flow only.
 The Client receives the Authorization Response from the user-agent.
 Using the Authorization Grant from the response, the client sends a Token Request to the Authorization Server's token Endpoint.
 It does so using the Client authentication as pre-registered.
