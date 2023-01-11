@@ -13,6 +13,9 @@ The authorization server MUST protect all communications to and from its OAuth e
 
 The authorization server MUST support the <samp>authorization_code</samp> , and MAY support the <samp>client_credentials</samp> grant types as described in [Section 2](#client-profiles).
  The authorization server MUST limit each registered client (identified by a client ID) to a single grant type only, since a single piece of software will be functioning at runtime in only one of the modes described in [Section 2](#client-profiles). Clients that have multiple modes of operation MUST have a separate client ID for each mode.
+ 
+#### Token exchange
+Where possible, the token exchange [[rfc8693]] grant type SHOULD be implemented instead of client credentials grant type, as this proves the identity of the user (and, where applicable, a second user that may act on behalf of the user).
 
 <!-- ### [3.1.2.](#rfc.section.3.1.2) Client authentication -->
 #### Client authentication
