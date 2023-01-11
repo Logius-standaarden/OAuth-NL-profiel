@@ -63,10 +63,10 @@ Two examples are:
 The flow for such a machine to machine interaction is shown in the figure below.
 
 <figure id='authorization_code'>
-	<img src='media/use_case_client_credentials_flow.png' width="600" alt="Use case Client credentials flow"/>
+	<img src='media/use_case_client_credentials.svg' width="600" alt="Use case Client credentials flow"/>
 	<figcaption>Use case Client credentials flow</figcaption>
  </figure>
- 
+
 ### Step 1. Client Authentication
 Using the client credentials, the client sends a Authentication Request to the Authorization Server's token Endpoint.
 It does so using the Client authentication as pre-registered.
@@ -83,7 +83,7 @@ It does so by sending requests to the Resource Server, along with the Access Tok
 The Resource Server uses the Access Token for its access control decision.
 The Resource Server responds based on these decisions to the Client.
 The contents and protocol of the Resource Request and Resource Response are out of scope of this profile.
- 
+
 ## Usecase: Authorization code flow
 A Client wishes to send a request to an API, on behalf of the User.
 The API requires to have a trusted identification and *authorization* of the User, before providing the Service.
@@ -91,7 +91,7 @@ A Client has pre-registered with the Authorization Endpoint and has been assigne
 
 
 <figure id='authorization_code'>
-	<img src='media/use_case4_authorization_code.png' width="600" alt="Use case Authorization code flow"/>
+	<img src='media/use_case_authorization_code.svg' width="600" alt="Use case Authorization code flow"/>
 	<figcaption>Use case Authorization code flow</figcaption>
  </figure>
 
