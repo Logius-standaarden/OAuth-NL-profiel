@@ -56,7 +56,7 @@ See RFC 8252 for more information on implementation of native applications.
 <p class='warning'>Need to add machine client type to usecases</p>
 
 ## Usecase: Client credentials flow
-The client credentials flow can be used in usecases where there is an application to API connection where no user information is needed for authorization.
+The client credentials flow can be used in usecases where there is an Client to Resource server connection where no user information is needed by the resource server.
 Two examples are:
 * An application does a system API call. For instance a ping service to see if an API is available. The user does not need to be logged in for this and there is no relation to the identity of the end user.
 * A batch application processes a large number of transactions asynchronously at at later scheduled time. The original access_tokens of the preceding synchronous proces is no longer available.
