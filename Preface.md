@@ -2,7 +2,7 @@
 This profile is based upon the international government assurance profile for OAuth 2.0 (iGov) [[iGOV.OAuth2]] as published
 by the OpenID Foundation (https://openid.net/foundation/). It should be considered a fork of this profile as the iGov profile is geared more towards the American situation and in the Netherlands we have to deal with an European Union context. 
 
-We have added the chapter [Usecases](#usecases) to illustrate the specific usecase the iGov-NL profile is aimed at. Starting with chapter [Introduction](#introduction) we follow the structure of the iGov profile. Where we do not use content from iGov we use ~~strikethrough~~ to indicate it is not part of iGov-NL.
+We have added the chapter [Use cases](#usecases) to illustrate the specific use case the iGov-NL profile is aimed at. Starting with chapter [Introduction](#introduction) we follow the structure of the iGov profile. Where we do not use content from iGov we use ~~strikethrough~~ to indicate it is not part of iGov-NL.
 
 <!-- iGov-NL : Start of the additional content -->
 <aside class=" addition">
@@ -14,7 +14,7 @@ Content added for the iGov-NL profile is indicated like this.
 <!-- iGov-NL : End of the additional content -->
 
 ## Usecases
-There are two usecases: The client credentials flow and the authorizations code flow. In two sections below we will elaborate on these, first we will introduce som common concepts.
+There are two use cases: The *client credentials* flow and the *authorization code flow*. In two sections below we will elaborate on these, first we will introduce som common concepts.
 
 In this use case a (public/governmental) service is offered via an API.
 The service will be consumed by the User using a client, that can be any arbitrary, non-trusted application.
@@ -23,10 +23,10 @@ The identifier of the User can be either an arbitrary (self-registered) identifi
 Upon service provisioning, the service uses the identifier of the User for access control within the service.
 
 ## Introduction
-For the Authorization code flow usecase to work the following application building blocks need to be in place:
-1. the Resource Server (usually described as the API)
-2. the Authorization Server
-3. the Client (application)
+For the Client credentials flow and Authorization code flow usecases to work properly the following application building blocks need to be in place:
+1. the **Resource Server** (usually described as the API)
+2. the **Authorization Server**
+3. the **Client** (application)
 
 ### Resource Server
 The service is provided by a public/governmental organization.
@@ -55,7 +55,7 @@ Typically a native application (_"mobile app"_) either starts a system browser a
 See RFC 8252 for more information on implementation of native applications.
 <p class='warning'>Need to add machine client type to usecases</p>
 
-## Usecase: Client credentials flow
+## Use case: Client credentials flow
 The client credentials flow can be used in usecases where there is an Client to Resource server connection where no user information is needed by the resource server.
 Two examples are:
 * An application does a system API call. For instance a ping service to see if an API is available. The user does not need to be logged in for this and there is no relation to the identity of the end user.
@@ -70,7 +70,7 @@ The flow for such a machine to machine interaction is shown in the figure below.
 ### Step 1. Client Authentication
 Using the client credentials, the client sends a Authentication Request to the Authorization Server's token Endpoint.
 It does so using the Client authentication as pre-registered.
-The Authorization Server receives and validates the Authemtication Request.
+The Authorization Server receives and validates the Authentication Request.
 
 ### Step 2. Access Token Response
 The Authorization Server authenticates the client and if valid responds to the client with an Access Token Response.
@@ -84,7 +84,7 @@ The Resource Server uses the Access Token for its access control decision.
 The Resource Server responds based on these decisions to the Client.
 The contents and protocol of the Resource Request and Resource Response are out of scope of this profile.
 
-## Usecase: Authorization code flow
+## Use case: Authorization code flow
 A Client wishes to send a request to an API, on behalf of the User.
 The API requires to have a trusted identification and *authorization* of the User, before providing the Service.
 A Client has pre-registered with the Authorization Endpoint and has been assigned a client_id.
