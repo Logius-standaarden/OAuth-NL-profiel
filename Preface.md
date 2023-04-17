@@ -69,7 +69,7 @@ The normal flow, that is without any error handling, is described below.
 
 ### Step 1. Authorization initiation
 As the client does not yet have a (valid) access token for this Service, it's first step is to obtain one.
-Therefor it sends an Authorization Request to the Authorization Server's Authorization Endpoint.
+Therefore it sends an Authorization Request to the Authorization Server's Authorization Endpoint.
 It does so by redirecting / initiating the user-agent with the Authorization Request to the Authorization Endpoint.
 The Authorization request holds further details, as specified in this profile.
 
