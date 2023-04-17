@@ -104,5 +104,5 @@ The Client can now send (a) request(s) to the Service, on behalf of its User.
 It does so by sending requests to the Resource Server, along with the Access Token.
 The Resource Server uses the Access Token for its access control decision and any customization of the service or data for the User, if applicable.
 The Resource Server responds based on these decisions to the Client.
-The Client can inform an interact with the User based on the information received from the Resource Server.
+The Client can inform and interact with the User based on the information received from the Resource Server.
 The contents and protocol of the Resource Request and Resource Response are out of scope of this profile.
