@@ -26,4 +26,4 @@ The scopes and claims used in this system are defined by the DSO, and are relate
 
 ## Rationale
 
-On of the design decisions is that the DSO exposes API's secured on different levels. To standardise as much as possible, OAuth is used in several of the authentication and authorization flows. Therefore besides the Authorization code flow where an enduser is involved, the client credentials flow is used between systems. 
+The DSO exposes API's secured on different levels. To standardise as much as possible, OAuth is used in several of the authentication and authorization flows. Therefore besides the Authorization code flow where an enduser is involved, the client credentials flow is used between systems in order to use the same authorization mechanism for as many usecases as possible.
