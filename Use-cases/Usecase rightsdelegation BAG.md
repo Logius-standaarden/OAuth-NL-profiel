@@ -9,7 +9,7 @@ A municipality that is legally required to maintain information on its buildings
 ## Client
 A cloud provider or partnership of cooperating municipalities hosts an application that operates on behalf of the legal entity (municipality) to update and maintain the key registry Buildings & Adresses. This application acts as client that connects to the API of the Dutch Cadastre.
 
-**Authorization server**
+## Authorization server
 manager
 The authorization server is hosted by Dutch Cadastre and provides (among other things) authorizations to municipalities to update and maintain data on buildings and adresses.
 
