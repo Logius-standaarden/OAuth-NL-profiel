@@ -2,70 +2,69 @@ var respecConfig = {
   authors: [ 
       { 
         "company" : "Logius",
-        "companyURL" : "http://www.logius.nl/",
+        "companyURL" : "https://www.logius.nl/",
         "name" : "Jaron Azaria"
       },
       { 
         "company" : "Kadaster",
-        "companyURL" : "http://www.kadaster.nl/",
+        "companyURL" : "https://www.kadaster.nl/",
         "name" : "Martin Borgman"
       },
       { 
         "company" : "Kennisnet",
-        "companyURL" : "http://www.kennisnet.nl/",
+        "companyURL" : "https://www.kennisnet.nl/",
         "name" : "Marc Fleischeuers"
       },
       { 
         "company" : "Logius",
-        "companyURL" : "http://www.logius.nl/",
+        "companyURL" : "https://www.logius.nl/",
         "name" : "Peter Haasnoot"
       },
       { 
         "company" : "Logius",
-        "companyURL" : "http://www.logius.nl/",
+        "companyURL" : "https://www.logius.nl/",
         "name" : "Leon van der Ree"
       },
       { 
         "company" : "RvIG",
-        "companyURL" : "http://www.rvig.nl/",
+        "companyURL" : "https://www.rvig.nl/",
         "name" : "Bob te Riele"
       },
       { 
         "company" : "Logius",
-        "companyURL" : "http://www.logius.nl/",
+        "companyURL" : "https://www.logius.nl/",
         "name" : "Remco Schaar"
       },
       { 
         "company" : "Geonovum",
-        "companyURL" : "http://geonovum.nl/",
+        "companyURL" : "https://www.geonovum.nl/",
         "name" : "Frank Terpstra"
       },
       { 
         "company" : "Rijkswaterstaat",
-        "companyURL" : "http://www.rws.nl/",
+        "companyURL" : "https://www.rijkswaterstaat.nl/",
         "name" : "Jan Jaap Zoutendijk"
       }
     ],
   editors: [ 
       { 
         "company" : "Geonovum",
-        "companyURL" : "http://www.geonovum.nl/",
+        "companyURL" : "https://www.geonovum.nl/",
         "name" : "Frank Terpstra"
       },
       { 
         "company" : "Geonovum",
-        "companyURL" : "http://www.geonovum.nl/",
+        "companyURL" : "https://www.geonovum.nl/",
         "name" : "Jan van Gelder"
       },
       { 
         "company" : "Logius",
-        "companyURL" : "http://www.logius.nl/",
+        "companyURL" : "https://www.logius.nl/",
         "name" : "Alexander Green"
       },
       { 
         "company" : "Logius",
-        "companyURL" : "http://www.logius.nl/",
-        "mailto" : "api@logius.nl",
+        "companyURL" : "https://www.logius.nl/",
         "name" : "Martin van der Plas"
       }
     ],
