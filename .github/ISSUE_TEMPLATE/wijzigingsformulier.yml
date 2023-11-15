@@ -1,5 +1,5 @@
 name: Wijzigingsformulier
-description: Stel een (inhoudelijke) wijziging voor op de Digikoppeling standaard. Voor een tekstueele wijziging op de documentatie bestaat een ander formulier.
+description: Stel een (inhoudelijke) wijziging voor op de Digikoppeling standaard. Voor een tekstuele wijziging op de documentatie bestaat een ander formulier.
 title: "RFC ..."
 labels: ["Standaard: digikoppeling", "Type: wijziging"]
 body:
@@ -15,14 +15,14 @@ body:
     id: contact
     attributes:
       label: Naam
-      description: Naam. Uw naam wordt online getoond in het issue. U kunt ook anoniem invullem.
+      description: Naam. Uw naam wordt online getoond in het issue. U kunt ook anoniem invullen.
     validations:
       required: false
   - type: input
     id: email
     attributes:
       label: Email
-      description: E-mail adres. Uw e-mail adres wordt online getoond in het issue. U kunt ook anoniem invullem.
+      description: E-mailadres. Uw e-mailadres wordt online getoond in het issue. U kunt ook anoniem invullen.
     validations:
       required: false
   - type: input
