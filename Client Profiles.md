@@ -27,13 +27,13 @@ These clients MUST use the authorization code flow of OAuth 2 by sending the res
 Native clients MUST either:
 
 *   use dynamic client registration to obtain a separate client id for each instance, or
-*   act as a public client by using a common client id and use [PKCE][[RFC7636]] to protect calls to the token endpoint.
+*   act as a public client by using a common client id and use PKCE [[RFC7636]] to protect calls to the token endpoint.
 
 Native applications using dynamic registration SHOULD generate a unique public and private key pair on the device and register that public key value with the authorization server. Alternatively, an authorization server MAY issue a public and private key pair to the client as part of the registration process. In such cases, the authorization server MUST discard its copy of the private key. Client credentials MUST NOT be shared among instances of client software.
 
 Dynamically registered native applications MAY use PKCE.
 
-Native applications not registering a separate public key for each instance are considered Public Clients, and MUST use [PKCE][[#rfc7636]] with the S256 code challenge mechanism. Public Clients do not authenticate with the Token Endpoint in any other way.
+Native applications not registering a separate public key for each instance are considered Public Clients, and MUST use PKCE [[RFC7636]] with the S256 code challenge mechanism. Public Clients do not authenticate with the Token Endpoint in any other way.
 
 <!-- ### [2.1.3.](#rfc.section.2.1.3) [Direct Access Client](#DirectClient) -->
 #### Direct Access Client

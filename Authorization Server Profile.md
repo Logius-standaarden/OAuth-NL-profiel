@@ -239,7 +239,7 @@ A client MUST immediately discard the token and not use it again after revoking 
 <!-- ### [3.1.7.](#rfc.section.3.1.7) PKCE -->
 #### PKCE
 
-An authorization server MUST support the Proof Key for Code Exchange ([PKCE] [[rfc7636]] ) extension to the authorization code flow, including support for the S256 code challenge method. The authorization server MUST NOT allow an ~~iGov~~ iGov-NL client to use the plain code challenge method.
+An authorization server MUST support the Proof Key for Code Exchange (PKCE [[rfc7636]] ) extension to the authorization code flow, including support for the S256 code challenge method. The authorization server MUST NOT allow an ~~iGov~~ iGov-NL client to use the plain code challenge method.
 
 <!-- ### [3.1.8.](#rfc.section.3.1.8) Redirect URIs -->
 #### Redirect URIs
