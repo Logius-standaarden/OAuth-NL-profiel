@@ -259,7 +259,7 @@ Clients using the Direct Credentials method MUST NOT be issued refresh_tokens. T
 
 <aside class=" addition">
 <b>iGov-NL : Additional content</b></br>  
-Refresh tokens for public clients must either be sender-constrained or one-time use [from OAuth 2.1](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-10#name-refresh-token-grant)
+Refresh tokens for public clients must either be sender-constrained or one-time use. From [[[ietf-oauth-v2-1-10-refresh-token-grant]]]
 </aside>
 
 <!-- ### [3.1.10.](#rfc.section.3.1.10) Token Response -->
