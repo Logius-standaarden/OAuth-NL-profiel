@@ -257,6 +257,10 @@ Clients MUST present a valid client_id. Confidential clients MUST present a sign
 
 Clients using the Direct Credentials method MUST NOT be issued refresh_tokens. These clients MUST present their client credentials with a new access_token request and the desired scope.
 
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
+Refresh tokens for public clients must either be sender-constrained or one-time use [from OAuth 2.1](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-10#name-refresh-token-grant)
+</aside>
 
 <!-- ### [3.1.10.](#rfc.section.3.1.10) Token Response -->
 #### Token Response
