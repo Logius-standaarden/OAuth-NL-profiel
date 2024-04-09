@@ -108,7 +108,7 @@ For best practices on token lifetime see section Token Lifetimes.
 ## 3.1.3 Dynamic Registration
 iGov-NL
 
-In this version of iGov-NL we follow iGov for the requirement that the Authorization servers MUST support dynamic client registration. However depending on how the future authentication architecture of the dutch government develops in regards to OAuth we may revisit this in a future revision. The current requirement fits an architecture where there is a limited number of widely used authorization servers. However if in practice we start seeing a very large number of authorization servers with limited use this requirement can become a reccomendation in a future version of this profile. For these authorization servers with limited use we consider mandatory support for dynamic client registration a large burden.
+In this version of iGov-NL we follow iGov for the requirement that the Authorization servers MUST support dynamic client registration. However depending on how the future authentication architecture of the dutch government develops in regards to OAuth we may revisit this in a future revision. The current requirement fits an architecture where there is a limited number of widely used authorization servers. However if in practice we start seeing a very large number of authorization servers with limited use this requirement can become a recommendation in a future version of this profile. For these authorization servers with limited use we consider mandatory support for dynamic client registration a large burden.
 
 /iGov-NL
 
@@ -212,7 +212,7 @@ Guidelines categorized as "insufficient" MUST NOT be applied and those categoriz
 The reason for the creation of iGov-NL is an advisory document on the adoption of OAuth as a mandatory(comply or explain) standard for the Dutch public sector. It states that a Dutch profile is needed for the OAuth standard to avoid interoperability problems between different implementations. The existance of iGov-NL has become a precondition for the adaoption of OAuth as mandatory standard for the Dutch public sector.
  
 ## Expert advice OAuth forum standaardisatie
-The creation of the iGov-NL profile is based on a reccomendation from the expert advice on OAuth [Expert]. This expert advice was writen as part of the procedure to make OAuth a mandotary standard for the dutch public sector. Conditional for the adoption of OAuth as a mandotory standard was the creation of a Dutch implementation profile. The Rationale provided is that without a local implementation profile the risk of diverging non-interoperable implementations of the standard becomes unacceptably large.
+The creation of the iGov-NL profile is based on a recommendation from the expert advice on OAuth [Expert]. This expert advice was writen as part of the procedure to make OAuth a mandotary standard for the dutch public sector. Conditional for the adoption of OAuth as a mandotory standard was the creation of a Dutch implementation profile. The Rationale provided is that without a local implementation profile the risk of diverging non-interoperable implementations of the standard becomes unacceptably large.
 
 ## Orginazational scope of the standaard
 When iGov-NL becomes a mandatory standard, the following organisations will have to comply: Dutch government organizations (National, provinces, municipalities and regional water authorities) and organizations in the (semi-) public sector

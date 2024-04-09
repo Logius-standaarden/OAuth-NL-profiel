@@ -34,17 +34,18 @@ The specification also defines features for interaction between these components
 *   Client to authorization server.
 *   Protected resource to authorization server.
 
-**iGov-NL**
-
+ <!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
 This profile is based upon the international government assurance profile for OAuth 2.0 (iGov) [[iGOV.OAuth2]] as published by the OpenID Foundation (https://openid.net/foundation/). It should be considered a fork of this profile as the iGov profile is geared more towards the American situtation and in the Netherlands we have to deal with an European Union context.
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
-**/iGov-NL**
 
+When an ~~iGov~~ iGov-NL-compliant component is interacting with other ~~iGov~~ iGov-NL-compliant components, in any valid combination, all components MUST fully conform to the features and requirements of this specification. All interaction with non-~~iGov~~ iGov-NL components is outside the scope of this specification.
 
-When an ~~iGov~~iGov-NL-compliant component is interacting with other ~~iGov~~iGov-NL-compliant components, in any valid combination, all components MUST fully conform to the features and requirements of this specification. All interaction with non-~~iGov~~iGov-NL components is outside the scope of this specification.
+An ~~iGov~~ iGov-NL-compliant OAuth 2.0 authorization server MUST support all features as described in this specification. A general-purpose authorization server MAY support additional features for use with non-~~iGov~~ iGov-NL clients and protected resources.
 
-An ~~iGov~~iGov-NL-compliant OAuth 2.0 authorization server MUST support all features as described in this specification. A general-purpose authorization server MAY support additional features for use with non-~~iGov~~iGov-NL clients and protected resources.
+An ~~iGov~~ iGov-NL-compliant OAuth 2.0 client MUST use all functions as described in this specification. A general-purpose client library MAY support additional features for use with non-iGov authorization servers and protected resources.
 
-An ~~iGov~~iGov-NL-compliant OAuth 2.0 client MUST use all functions as described in this specification. A general-purpose client library MAY support additional features for use with non-iGov authorization servers and protected resources.
-
-An ~~iGov~~iGov-NL-compliant OAuth 2.0 protected resource MUST use all functions as described in this specification. A general-purpose protected resource library MAY support additional features for use with non-~~iGov~~iGov-NL authorization servers and clients.
+An ~~iGov~~ iGov-NL-compliant OAuth 2.0 protected resource MUST use all functions as described in this specification. A general-purpose protected resource library MAY support additional features for use with non-~~iGov~~ iGov-NL authorization servers and clients.

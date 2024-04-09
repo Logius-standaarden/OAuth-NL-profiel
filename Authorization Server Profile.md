@@ -11,21 +11,32 @@ The authorization server MUST protect all communications to and from its OAuth e
 <!-- ### [3.1.1.](#rfc.section.3.1.1) Grant types -->
 #### Grant types
 
-The authorization server MUST support the <samp>authorization_code</samp> , ~~and MAY support the <samp>client_credentials</samp>~~ grant types as described in [Section 2](#client-profiles).
- ~~The authorization server MUST limit each registered client (identified by a client ID) to a single grant type only, since a single piece of software will be functioning at runtime in only one of the modes described in [Section 2](#ClientProfiles). Clients that have multiple modes of operation MUST have a separate client ID for each mode.~~
+The authorization server MUST support the <samp>authorization_code</samp> , and MAY support the <samp>client_credentials</samp> grant types as described in [Section 2](#client-profiles).
+ The authorization server MUST limit each registered client (identified by a client ID) to a single grant type only, since a single piece of software will be functioning at runtime in only one of the modes described in [Section 2](#client-profiles). Clients that have multiple modes of operation MUST have a separate client ID for each mode.
+ 
+<!-- #### Token exchange
+Where possible, the token exchange [[rfc8693]] grant type SHOULD be implemented instead of client credentials grant type, as this proves the identity of the user (and, where applicable, a second user that may act on behalf of the user). 
+
+To Do add as a third flow in this document in usecases
+
+Voorbeelden token exchange (rfc8693)
+•	Impersonation. Een achterliggende applicatie doet namens een andere applicatie een API aanroep met een tweede token (delegation scenario, met act claim). Het tweede token zal vaak minder of andere scopes of audience restricties hebben dan het originele token. Een ander bekend voorbeeld is dat het token slechts geldig is in de context van één transactie, en/of dat het token langer geldig is, bijvoorbeeld bij asynchrone (batch) verwerking van gegevens. 
+•	Delegation. Een gebruiker (vertegenwoordigd door een actor token) acteert namens een andere gebruiker (subject token).
+
+-->
 
 <!-- ### [3.1.2.](#rfc.section.3.1.2) Client authentication -->
 #### Client authentication
 
-The authorization server MUST enforce client authentication as described above for the authorization code ~~and client credentials grant types~~. Public client cannot authenticate to the authorization server.
+The authorization server MUST enforce client authentication as described above for the authorization code and client credentials grant types. Public client cannot authenticate to the authorization server.
 
 The authorization server MUST validate all redirect URIs for authorization code ~~and implicit grant types~~.
 
 <!-- ### [3.1.3.](#rfc.section.3.1.3) [Dynamic Registration](#DynamicRegistration) -->
 #### Dynamic Registration
 
-Dynamic Registration allows for authorized Clients to on-board programatically without administrative intervention. This is particularly important in ecosystems with many potential Clients, including Mobile Apps acting as independent Clients. Authorization servers MUST support dynamic client registration,
-and clients MAY register using the [Dynamic Client Registration Protocol] [[rfc7591]] for authorization code grant types. ~~Clients MUST NOT dynamically register for the client credentials grant type~~. Authorization servers MAY limit the scopes available to dynamically registered clients.
+Dynamic Registration allows for authorized Clients to on-board programmatically without administrative intervention. This is particularly important in ecosystems with many potential Clients, including Mobile Apps acting as independent Clients. Authorization servers MUST support dynamic client registration,
+and clients MAY register using the [Dynamic Client Registration Protocol] [[rfc7591]] for authorization code grant types. Clients MUST NOT dynamically register for the client credentials grant type. Authorization servers MAY limit the scopes available to dynamically registered clients.
 
 Authorization servers MAY protect their Dynamic Registration endpoints by requiring clients to present credentials that the authorization server would recognize as authorized participants. Authorization servers MAY accept signed software statements as described in [[RFC7591]] [[rfc7591]] issued 
 to client software developers from a trusted registration entity. The software statement can be used to tie together many instances of the same client software that will be run, dynamically registered, and authorized separately at runtime. The software statement MUST include the following client metadata parameters:
@@ -54,12 +65,15 @@ to client software developers from a trusted registration entity. The software s
 
 </dl>
 
-**iGov-NL**
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
 
 In this version of iGov-NL we follow iGov for the requirement that the Authorization servers MUST support dynamic client registration. However depending on how the future authentication architecture of the Dutch government develops in regards to OAuth we may revisit this in a future revision. 
-The current requirement fits an architecture where there is a limited number of widely used authorization servers. However if in practice we start seeing a very large number of authorization servers with limited use this requirement can become a reccomendation in a future version of this profile. For these authorization servers with limited use we consider mandatory support for dynamic client registration a large burden.
+The current requirement fits an architecture where there is a limited number of widely used authorization servers. However if in practice we start seeing a very large number of authorization servers with limited use this requirement can become a recommendation in a future version of this profile. For these authorization servers with limited use we consider mandatory support for dynamic client registration a large burden.
 
-**/iGov-NL**
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
 <!-- ### [3.1.4.](#rfc.section.3.1.4) Client Approval -->
 #### Client Approval
@@ -70,7 +84,7 @@ When prompting the end user with an interactive approval page, the authorization
 *   Whether the client is associated with a software statement, and in which case provide information about the trusted issuer of the software statement.
 *   What kind of access the client is requesting, including scope, protected resources (if applicable beyond scopes), and access duration.
 
-For example, for native clients a message indicating a new App installation has been registered as a client can help users determin if this is the expected behaviour. This signal helps users protect themselves fro potentially rogue clients.
+For example, for native clients a message indicating a new App installation has been registered as a client can help users determine if this is the expected behaviour. This signal helps users protect themselves from potentially rogue clients.
 
 <!-- ### [3.1.5.](#rfc.section.3.1.5) [Discovery](#Discovery) -->
 #### Discovery
@@ -107,6 +121,7 @@ The authorization server MUST provide an [OpenID Connect service discovery] [[Op
 
 If the authorization server is also an OpenID Connect Provider, it MUST provide a discovery endpoint meeting the requirements listed in Section 3.6 of the iGov OpenID Connect profile.
 
+<aside class="example">
 The following example shows the JSON document found at a discovery endpoint for an authorization server:
 
 <pre>{
@@ -158,6 +173,7 @@ The following example shows the JSON document found at a discovery endpoint for 
   "op_policy_uri": "https://idp-p.example.com/about"
 }
 </pre>
+</aside>
 
 Clients and protected resources SHOULD cache this discovery information. It is RECOMMENDED that servers provide cache information through HTTP headers and make the cache valid for at least one week.
 
@@ -179,6 +195,7 @@ The server MUST provide its public key in JWK Set format. The key MUST contain t
 
 </dl>
 
+<aside class="example">
 The following is an example of a 2048-bit RSA public key:
 
 <pre>{
@@ -197,14 +214,19 @@ U-27mb6esswnP2WgHZQPsk779fTcNDBIcYgyLujlcUATEqfCaPDNp00J6AbY6w",
   ]
 }
 </pre>
+</aside>
 
 Clients and protected resources SHOULD cache this key. It is RECOMMENDED that servers provide cache information through HTTP headers and make the cache valid for at least one week.
 
-**iGov-NL**
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
 
 iGov requires that the authorization server provides an OpenIDConnect service discovery endpoint. Recently OAuth 2.0 Authorization Server Metadata [[rfc8414]] has been finalized, this provide the same functionality in a more generic way and could replace this requirement in a future version of the iGov-NL profile.
 
-**/iGov-NL**
+</aside>
+<!-- iGov-NL : End of the additional content -->
+
 <!-- ### [3.1.6.](#rfc.section.3.1.6) Revocation -->
 #### Revocation
 
@@ -217,7 +239,7 @@ A client MUST immediately discard the token and not use it again after revoking 
 <!-- ### [3.1.7.](#rfc.section.3.1.7) PKCE -->
 #### PKCE
 
-An authorization server MUST support the Proof Key for Code Exchange ([PKCE] [[rfc7636]] ) extension to the authorization code flow, including support for the S256 code challenge method. The authorization server MUST NOT allow an ~~iGov~~iGov-NL client to use the plain code challenge method.
+An authorization server MUST support the Proof Key for Code Exchange (PKCE [[rfc7636]] ) extension to the authorization code flow, including support for the S256 code challenge method. The authorization server MUST NOT allow an ~~iGov~~ iGov-NL client to use the plain code challenge method.
 
 <!-- ### [3.1.8.](#rfc.section.3.1.8) Redirect URIs -->
 #### Redirect URIs
@@ -235,11 +257,17 @@ Clients MUST present a valid client_id. Confidential clients MUST present a sign
 
 Clients using the Direct Credentials method MUST NOT be issued refresh_tokens. These clients MUST present their client credentials with a new access_token request and the desired scope.
 
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
+Refresh tokens for public clients must either be sender-constrained or one-time use. From [[[ietf-oauth-v2-1-10-refresh-token-grant]]]
+</aside>
 
 <!-- ### [3.1.10.](#rfc.section.3.1.10) Token Response -->
 #### Token Response
 
-**iGov-NL**
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
 
 The Token Response has the following contents:
 
@@ -257,18 +285,18 @@ The Token Response has the following contents:
 </dl>
 
 For best practices on token lifetime see section [Token Lifetimes](#token-lifetimes).
-**/iGov-NL**
-
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
 <!-- ### [3.2.](#rfc.section.3.2) Connections with protected resources -->
 ### Connections with protected resources
 
-Unlike the core OAuth protocol, the ~~iGov~~iGov-NL profile intends to allow compliant protected resources to connect to compliant authorization servers.
+Unlike the core OAuth protocol, the ~~iGov~~ iGov-NL profile intends to allow compliant protected resources to connect to compliant authorization servers.
 
 <!-- ### [3.2.1.](#rfc.section.3.2.1) [JWT Bearer Tokens](#JWTBearerTokens) -->
 #### JWT Bearer Tokens
 
-In order to facilitate interoperability with multiple protected resources, all ~~iGov~~iGov-NL-compliant authorization servers issue cryptographically signed tokens in the JSON Web Token (JWT) format. The information carried in the JWT is intended to allow a protected resource to quickly test the integrity of the token without additional network calls, and to allow the protected resource to determine which authorization server issued the token. When combined with discovery, this information is sufficient to programmatically locate the token introspection service, which is in turn used for conveying additional security information about the token.
+In order to facilitate interoperability with multiple protected resources, all ~~iGov~~ iGov-NL-compliant authorization servers issue cryptographically signed tokens in the JSON Web Token (JWT) format. The information carried in the JWT is intended to allow a protected resource to quickly test the integrity of the token without additional network calls, and to allow the protected resource to determine which authorization server issued the token. When combined with discovery, this information is sufficient to programmatically locate the token introspection service, which is in turn used for conveying additional security information about the token.
 
 The server MUST issue tokens as JWTs with, at minimum, the following claims:
 
@@ -298,13 +326,16 @@ The server MAY issue tokens with additional fields, including the following as d
 
 <dt>sub</dt>
 
-**iGov-NL**
+<dd style="margin-left: 8"><del>The identifier of the end-user that authorized this client, or the client id of a client acting on its own behalf (such as a bulk transfer). Since this information could potentially leak private user information, it should be used only when needed. End-user identifiers SHOULD be pairwise anonymous identifiers unless the audiance requires otherwise.</del>
 
-<dd style="margin-left: 8"><strikethrough>The identifier of the end-user that authorized this client, or the client id of a client acting on its own behalf (such as a bulk transfer). Since this information could potentially leak private user information, it should be used only when needed. End-user identifiers SHOULD be pairwise anonymous identifiers unless the audiance requires otherwise.</strikethrough></dd>
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>
 
-<dd style="margin-left: 8"><strikethrough>The identifier of the end-user that authorized this client. In iGov-NL the sub claim MUST be present as is evident from the use case in scope of this profile. Since this information could potentially leak private user information, end-user identifiers SHOULD be pairwise pseudonymious identifiers, unless another identifier is explicit needed and agreed upon for the context of the application.</dd>
+The identifier of the end-user that authorized this client. In iGov-NL the sub claim MUST be present as is evident from the use case in scope of this profile. Since this information could potentially leak private user information, end-user identifiers SHOULD be pairwise pseudonymious identifiers, unless another identifier is explicit needed and agreed upon for the context of the application.</dd>
 
-**/iGov-NL**
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
 <dt>aud</dt>
 
@@ -312,6 +343,7 @@ The server MAY issue tokens with additional fields, including the following as d
 
 </dl>
 
+<aside class="example">
 The following sample claim set illustrates the use of the required claims for an access token as defined in this profile; additional claims MAY be included in the claim set:
 
 <pre>{
@@ -322,14 +354,18 @@ The following sample claim set illustrates the use of the required claims for an
    "iat": 1418698788
 }
 </pre>
+</aside>
 
 The access tokens MUST be signed with [JWS] [[rfc7515]] . The authorization server MUST support the RS256 signature method for tokens and MAY use other asymmetric signing methods as defined in the [IANA JSON Web Signatures and Encryption Algorithms registry] [[JWS.JWE.Algs]] . The JWS header MUST contain the following fields:
 
-**iGov-NL**
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
 
 In addition to above signing methods, the Authorization server SHOULD support PS256 signing algorithm [[RFC7518]] for the signing of the JWT Bearer Tokens.
 
-**/iGov-NL**
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
 <dl>
 
@@ -339,6 +375,7 @@ In addition to above signing methods, the Authorization server SHOULD support PS
 
 </dl>
 
+<aside class="example">
 This example access token has been signed with the server's private key using RS256:
 
 <pre>eyJhbGciOiJSUzI1NiJ9.ew0KICAgImV4cCI6IDE0MTg3MDIzODgsDQogICAiYXpwIjo
@@ -351,25 +388,30 @@ XqwUQwbgF7Gwza9Z4AdhjHjzQx-lChXAyfL1xz0SBDkVbJdDjtXbvaSIyfF7ueWF3M1C
 M70-GXuRY4iucKbuytz9e7eW4Egkk4Aagl3iTk9-l5V-tvL6dYu8IlR93GKsaKE8bng0
 EZ04xcnq8s4V5Yykuc_NARBJENiKTJM8w3wh7xWP2gvMp39Y0XnuCOLyIx-J1ttX83xm
 pXDaLyyY-4HT9XHT9V73fKF8rLWJu9grrA</pre>
+</aside>
 
 Refresh tokens SHOULD be signed with [JWS] [[rfc7515]] using the same private key and contain the same set of claims as the access tokens.
 
 The authorization server MAY encrypt access tokens and refresh tokens using [JWE] [[rfc7516]] . Encrypted access tokens MUST be encrypted using the public key of the protected resource. Encrypted refresh tokens MUST be encrypted using the authorization server's public key.
 
-**iGov-NL**
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
 
 How to select or obtain the key to be used for encryption of an access token is out of scope of this profile.
 A early draft of "Resource Indicators for OAuth 2.0" exist and could be used. This draft describes usage of the <code>resource</code> parameter to indicate the applicable resource server.
 
 In case the Authorization Server, Resource Server and client are not operated under responsibility of the same organisation, each party MUST use PKIoverheid certificates with OIN for encryption.
 
-**/iGov-NL**
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
 <!-- ### [3.2.2.](#rfc.section.3.2.2) Introspection -->
 #### Introspection
 
 Token introspection allows a protected resource to query the authorization server for metadata about a token. The protected resource makes a request like the following to the token introspection endpoint:
 
+<aside class="example">
 <pre>POST /introspect HTTP/1.1
 User-Agent: Faraday v0.9.0
 Content-Type: application/x-www-form-urlencoded
@@ -404,6 +446,7 @@ f3b0bAdjoQEHd_IvssIPH3xuBJkmtkrTlfWR0Q0pdpeyVePkMSI28XZvDaGnx
 A4j7QI5loZYeyzGR9h70xQLVzqwwl1P0-F_0JaDFMJFO1yl4IexfpoZZsB3Hh
 F2vFdL6D_lLeHRy-H2g2OzF59eMIsM_Ccs4G47862w
 </pre>
+</aside>
 
 The client assertion parameter is structured as described in [Section 2.3.3](#requests-to-the-token-endpoint) .
 
@@ -433,6 +476,7 @@ The server responds to an introspection request with a JSON object representing 
 
 </dl>
 
+<aside class="example">
 The following example is a response from the introspection endpoint:
 
 <pre>HTTP/1.1 200 OK
@@ -452,15 +496,16 @@ Connection: close
    "token_type": "Bearer"
 }
 </pre>
+</aside>
 
-The authorization server MUST require authentication for both the revocation and introspection endpoints as described in [Section 2.3.2](#requests-t0-the-token-endpoint) . Protected resources calling the introspection endpoint MUST use credentials distinct from any other OAuth client registered at the server.
+The authorization server MUST require authentication for both the revocation and introspection endpoints as described in [Section 2.3.2](#requests-to-the-token-endpoint) . Protected resources calling the introspection endpoint MUST use credentials distinct from any other OAuth client registered at the server.
 
 A protected resource MAY cache the response from the introspection endpoint for a period of time no greater than half the lifetime of the token. A protected resource MUST NOT accept a token that is not active according to the response from the introspection endpoint.
 
 <!-- ### [3.3.](#rfc.section.3.3) Response to Authorization Requests -->
 ### Response to Authorization Requests
 
-The following data will be sent as an Authorization Response to the Authorization Code Flow as desribed above. The authentication response is sent via HTTP redirect to the redirect URI specified in the request.
+The following data will be sent as an Authorization Response to the Authorization Code Flow as described above. The authentication response is sent via HTTP redirect to the redirect URI specified in the request.
 
 The following fields MUST be included in the response:
 
@@ -478,12 +523,14 @@ The following fields MUST be included in the response:
 
 PKCE parameters MUST be associated with the "code" as per Section 4.4 of [Proof Key for Code Exchange by OAuth Public Clients (PKCE)] [[rfc7636]]
 
+<aside class="example">
 The following is an example response:
 
 <pre>https://client.example.org/cb?
     state=2ca3359dfbfd0
    &code=gOIFJ1hV6Rb1sxUdFhZGACWwR1sMhYbJJcQbVJN0wHA
 </pre>
+</aside>
 
 <!-- ### [3.4.](#rfc.section.3.4) [Token Lifetimes](#TokenLifetimes) -->
 ### Token Lifetimes
