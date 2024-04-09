@@ -62,10 +62,7 @@ Two examples are:
 * A batch application processes a large number of transactions asynchronously at at later scheduled time. The original access_tokens of the preceding synchronous proces is no longer available.
 The flow for such a machine to machine interaction is shown in the figure below.
 
-<figure id='authorization_code'>
-	<img src='media/use_case_client_credentials.svg' width="600" alt="Use case Client credentials flow"/>
-	<figcaption>Use case Client credentials flow</figcaption>
- </figure>
+![Use case Client credentials flow](media/use_case_client_credentials.svg "Use case Client credentials flow")
 
 ### Step 1. Client Authentication
 Using the client credentials, the client sends a Authentication Request to the Authorization Server's token Endpoint.
@@ -89,11 +86,7 @@ A Client wishes to send a request to an API, on behalf of the User.
 The API requires to have a trusted identification and *authorization* of the User, before providing the Service.
 A Client has pre-registered with the Authorization Endpoint and has been assigned a client_id.
 
-
-<figure id='authorization_code'>
-	<img src='media/use_case_authorization_code.svg' width="600" alt="Use case Authorization code flow"/>
-	<figcaption>Use case Authorization code flow</figcaption>
- </figure>
+![Use case Authorization code flow](media/use_case_client_credentials.svg "Use case Authorization code flow")
 
 The normal flow, that is without any error handling, is described below.
 
