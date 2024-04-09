@@ -326,13 +326,13 @@ The server MAY issue tokens with additional fields, including the following as d
 
 <dt>sub</dt>
 
-<dd style="margin-left: 8">The identifier of the end-user that authorized this client, or the client id of a client acting on its own behalf (such as a bulk transfer). Since this information could potentially leak private user information, it should be used only when needed. End-user identifiers SHOULD be pairwise anonymous identifiers unless the audience requires otherwise.</dd>
+<dd style="margin-left: 8"><del>The identifier of the end-user that authorized this client, or the client id of a client acting on its own behalf (such as a bulk transfer). Since this information could potentially leak private user information, it should be used only when needed. End-user identifiers SHOULD be pairwise anonymous identifiers unless the audiance requires otherwise.</del>
 
 <!-- iGov-NL : Start of the additional content -->
 <aside class=" addition">
-<b>iGov-NL : Additional content</b></br>  
+<b>iGov-NL : Additional content</b></br>
 
-In iGov-NL the sub claim MUST be present.
+The identifier of the end-user that authorized this client. In iGov-NL the sub claim MUST be present as is evident from the use case in scope of this profile. Since this information could potentially leak private user information, end-user identifiers SHOULD be pairwise pseudonymious identifiers, unless another identifier is explicit needed and agreed upon for the context of the application.</dd>
 
 </aside>
 <!-- iGov-NL : End of the additional content -->
