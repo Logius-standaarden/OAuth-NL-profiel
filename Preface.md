@@ -86,7 +86,7 @@ A Client wishes to send a request to an API, on behalf of the User.
 The API requires to have a trusted identification and *authorization* of the User, before providing the Service.
 A Client has pre-registered with the Authorization Endpoint and has been assigned a client_id.
 
-![Use case Authorization code flow](media/use_case_client_credentials.svg "Use case Authorization code flow")
+![Use case Authorization code flow](media/use_case_authorization_code.svg "Use case Authorization code flow")
 
 The normal flow, that is without any error handling, is described below.
 
