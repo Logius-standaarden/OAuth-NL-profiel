@@ -123,7 +123,12 @@ If the authorization server is also an OpenID Connect Provider, it MUST provide 
 
 <aside class="example">
 The following example shows the JSON document found at a discovery endpoint for an authorization server:
-
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
+Added `tls_client_auth`
+</aside>
+<!-- iGov-NL : End of the additional content -->
 <pre>{
   "request_parameter_supported": true,
   "registration_endpoint": "https://idp-p.example.com/register",
@@ -138,7 +143,7 @@ The following example shows the JSON document found at a discovery endpoint for 
     "A128CBC-HS256", "A128GCM", "A256GCM"
   ],
   "token_endpoint_auth_methods_supported": [
-    "private_key_jwt",
+    "private_key_jwt", "tls_client_auth"
   ],
   "jwks_uri": "https://idp-p.example.com/jwk",
   "authorization_endpoint": "https://idp-p.example.com/authorize",
