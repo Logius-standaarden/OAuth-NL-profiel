@@ -15,7 +15,7 @@ These clients MUST use the authorization code flow of OAuth 2 by sending the res
 <!-- iGov-NL : Start of the additional content -->
 <aside class=" addition">
 <b>iGov-NL : Additional content</b></br>  
-In addition to `private_key_jwt`, the client authentication method `tls_client_auth` [rfc8705] may also be used.
+In addition to `private_key_jwt`, the client authentication method `tls_client_auth` [[rfc8705]] may also be used.
 </aside>
 <!-- iGov-NL : End of the additional content -->
 
@@ -55,7 +55,7 @@ These clients use the client credentials flow of OAuth 2 by sending a request to
 <!-- iGov-NL : Start of the additional content -->
 <aside class=" addition">
 <b>iGov-NL : Additional content</b></br>  
-One of the client authentication methods `private_key_jwt` or `tls_client_auth` [rfc8705] MUST be used.
+One of the client authentication methods `private_key_jwt` or `tls_client_auth` [[rfc8705]] MUST be used.
 </aside>
 <!-- iGov-NL : End of the additional content -->
 
@@ -204,7 +204,7 @@ Full clients, native clients with dynamically registered keys, and direct access
 <!-- iGov-NL : Start of the additional content -->
 <aside class=" addition">
 <b>iGov-NL : Additional content</b></br>  
-In addition to `private_key_jwt`, the client authentication method `tls_client_auth` [rfc8705] may also be used.
+In addition to `private_key_jwt`, the client authentication method `tls_client_auth` [[rfc8705]] may also be used.
 </aside>
 <!-- iGov-NL : End of the additional content -->
 
