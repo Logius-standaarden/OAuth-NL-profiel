@@ -14,7 +14,7 @@ Content added for the iGov-NL profile is indicated like this.
 <!-- iGov-NL : End of the additional content -->
 
 ## Usecases
-There are two use cases: The *client credentials* flow and the *authorization code flow*. In two sections below we will elaborate on these, first we will introduce som common concepts.
+There are multiple use cases: The *client credentials flow*, *authorization code flow* and the . In two sections below we will elaborate on these, first we will introduce som common concepts.
 
 In this use case a (public/governmental) service is offered via an API.
 The service will be consumed by the User using a client, that can be any arbitrary, non-trusted application.
@@ -135,3 +135,35 @@ The Resource Server uses the Access Token for its access control decision and an
 The Resource Server responds based on these decisions to the Client.
 The Client can inform and interact with the User based on the information received from the Resource Server.
 The contents and protocol of the Resource Request and Resource Response are out of scope of this profile.
+
+##  Device authorization Flow
+The OAuth 2.0 device authorization grant is designed for Internet-connected devices that either lack a browser to perform a user-agent-based authorization or are input constrained to the extent that requiring the user to input text in order to authenticate during the authorization flow is impractical.  It enables OAuth clients on such devices (like smart TVs, media consoles, IOT devices, and printers) to obtain user authorization to access protected resources /y using a user agent on a separate device. 
+[The OAuth 2.0 Device Authorization Grant is described in RFC 8628](https://www.rfc-editor.org/rfc/rfc8628), the current status is PROPOSED STANDARD
+
+The device client typically chooses the set of authorization servers    to support (i.e., its own authorization server or those of providers with which it has relationships).  It is common for the device client to support only one authorization server, such as in the case of a TV application for a specific media provider that supports only that media provider's authorization server.  The user may not yet have an established relationship with that authorization provider, though one can potentially be set up during the authorization flow.
+
+
+
+@@@ plaatje invoegen
+
+### STEP 1
+
+STEP 2
+
+STEP 3
+
+STEP 4
+
+STEP 5
+
+STEP 
+
+
+
+## Client Initiated Backchannel Authentication
+
+
+
+
+
+## Addition to use case Authorization code flow - Pushed Authorization Requests
