@@ -85,9 +85,9 @@ Clients MUST include their full redirect URI in the authorization request. To pr
 <aside class=" addition">
 <b>iGov-NL : Additional content</b></br>  
 
-Native clients MUST apply PKCE, as per RFC7636.
+Public clients MUST apply PKCE, as per RFC7636.
 As `code_verifier` the S256 method MUST be applied.
-Effectively this means that a Native Client MUST include a cryptographic random `code_challenge` of at least 128 bits of entropy and the `code_challenge_method` with the value `S256`.
+Effectively this means that Browser based and Native Client MUST include a cryptographic random `code_challenge` of at least 128 bits of entropy and the `code_challenge_method` with the value `S256`.
 
 Request fields:
 <dl>
