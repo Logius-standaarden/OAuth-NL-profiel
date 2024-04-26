@@ -204,7 +204,7 @@ Full clients, native clients with dynamically registered keys, and direct access
 <!-- iGov-NL : Start of the additional content -->
 <aside class=" addition">
 <b>iGov-NL : Additional content</b></br>  
-In addition to `private_key_jwt`, the client authentication method `tls_client_auth` [[rfc8705]] may also be used.
+In addition to `private_key_jwt`, the client authentication method `tls_client_auth` [[rfc8705]] MAY also be used.
 </aside>
 <!-- iGov-NL : End of the additional content -->
 
