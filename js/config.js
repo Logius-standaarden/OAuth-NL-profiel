@@ -124,7 +124,7 @@ var respecConfig = {
         "iGOV.OAuth2": {
             authors: ["J. Richer, M. Varley, P. Grassi"],
             date: "October 5 2018",
-            href: "https://openid.net/specs/openid-igov-oauth2-1_0.html",
+            href: "https://openid.net/specs/openid-igov-oauth2-1_0-03.html",
             publisher: "OpenID foundation",
             title: "International Government Assurance Profile (iGov) for OAuth 2.0"
         },
