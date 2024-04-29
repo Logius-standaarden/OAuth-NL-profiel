@@ -555,4 +555,4 @@ To facilitate general use across a wide variety of protected resources, authoriz
 <!-- ### [3.5.1.](#rfc.section.3.5.1) [Scopes](#Scopes) -->
 #### Claims for Authorization Outside of Delegation Scenarios
 
-If there is a need to include resource owner memberships in roles and groups that are relevant to the resource being accessed, entitlements assigned to the resource owner for the targeted resource that the authorization server knows about. The authorization server SHOULD include such attributes as claims in a JWT access token as defined in section 2.2.3.1 of [[rfc9068]]
+If there is a need to include resource owner memberships in roles and groups that are relevant to the resource being accessed, entitlements assigned to the resource owner for the targeted resource that the authorization server knows about. The authorization server SHOULD include such attributes as claims in a JWT access token as defined in section 2.2.3.1 of [[rfc9068]].
