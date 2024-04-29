@@ -551,3 +551,8 @@ Scopes define individual pieces of authority that can be requested by clients, g
 Authorization servers SHOULD define and document default scope values that will be used if an authorization request does not specify a requested set of scopes.
 
 To facilitate general use across a wide variety of protected resources, authorization servers SHOULD allow for the use of arbitrary scope values at runtime, such as allowing clients or protected resources to use arbitrary scope strings upon registration. Authorization servers MAY restrict certain scopes from use by dynamically registered systems or public clients.
+
+<!-- ### [3.5.1.](#rfc.section.3.5.1) [Scopes](#Scopes) -->
+#### Claims for Authorization Outside of Delegation Scenarios
+
+If there is a need to include resource owner memberships in roles and groups that are relevant to the resource being accessed, entitlements assigned to the resource owner for the targeted resource that the authorization server knows about. The authorization server SHOULD include such attributes as claims in a JWT access token as defined in section 2.2.3.1 of [[rfc9068]]
