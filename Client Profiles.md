@@ -87,7 +87,7 @@ Clients MUST include their full redirect URI in the authorization request. To pr
 
 Public clients MUST apply PKCE, as per RFC7636.
 As `code_challenge` the S256 method MUST be applied.
-Effectively this means that Browser based and Native Client MUST include a cryptographic random `code_verifier` of at least 128 bits of entropy and the `code_challenge_method` with the value `S256`.
+Effectively this means that browser based and native clients MUST include a cryptographic random `code_verifier` of at least 128 bits of entropy and the `code_challenge_method` with the value `S256`.
 
 Request fields:
 <dl>
