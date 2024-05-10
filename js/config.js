@@ -72,10 +72,10 @@ var respecConfig = {
     previousPublishDate: "2020-07-09",
     previousPublishVersion: "v1.0",
     pubDomain: "api",
-    publishDate: "2022-06-17",
+    publishDate: "2024-05-13",
     publishVersion: "v1.1",
     shortName: "oauth",
-    specStatus: "WV",
+    specStatus: "VV",
     specType: "ST",
 
     localBiblio: {
