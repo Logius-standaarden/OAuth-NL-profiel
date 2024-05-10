@@ -11,9 +11,15 @@ The following profile descriptions give patterns of deployment for use in differ
 
 This client type applies to clients that act on behalf of a particular resource owner and require delegation of that user’s authority to access the protected resource. Furthermore, these clients are capable of interacting with a separate web browser application to facilitate the resource owner's interaction with the authentication endpoint of the authorization server.
 
-These clients MUST use the authorization code flow of OAuth 2 by sending the resource owner to the authorization endpoint to obtain authorization. The user MUST authenticate to the authorization endpoint. The user’s web browser is then redirected back to a URI hosted by the client service, from which the client can obtain an authorization code passed as a query parameter. The client then presents that authorization code along with its own credentials (private_key_jwt) to the authorization server's token endpoint to obtain an access token.
+These clients MUST use the authorization code flow of OAuth 2 by sending the resource owner to the authorization endpoint to obtain authorization. The user MUST authenticate to the authorization endpoint. The user’s web browser is then redirected back to a URI hosted by the client service, from which the client can obtain an authorization code passed as a query parameter. The client then presents that authorization code along with its own credentials (`private_key_jwt`) to the authorization server's token endpoint to obtain an access token.
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
+In addition to `private_key_jwt`, the client authentication method `tls_client_auth` [[rfc8705]] MAY also be used.
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
-These clients MUST be associated with a unique public key, as described in [Section 2.2](#client-registration) .
+These clients MUST be associated with a unique public key, as described in [Section 2.3.4](#client-keys).
 
 This client type MAY request and be issued a refresh token if the security parameters of the access request allow for it.
 
@@ -27,28 +33,31 @@ These clients MUST use the authorization code flow of OAuth 2 by sending the res
 Native clients MUST either:
 
 *   use dynamic client registration to obtain a separate client id for each instance, or
-*   act as a public client by using a common client id and use [PKCE][[RFC7636]] to protect calls to the token endpoint.
+*   act as a public client by using a common client id and use PKCE [[RFC7636]] to protect calls to the token endpoint.
 
 Native applications using dynamic registration SHOULD generate a unique public and private key pair on the device and register that public key value with the authorization server. Alternatively, an authorization server MAY issue a public and private key pair to the client as part of the registration process. In such cases, the authorization server MUST discard its copy of the private key. Client credentials MUST NOT be shared among instances of client software.
 
 Dynamically registered native applications MAY use PKCE.
 
-Native applications not registering a separate public key for each instance are considered Public Clients, and MUST use [PKCE][[#rfc7636]] with the S256 code challenge mechanism. Public Clients do not authenticate with the Token Endpoint in any other way.
+Native applications not registering a separate public key for each instance are considered Public Clients, and MUST use PKCE [[RFC7636]] with the S256 code challenge mechanism. Public Clients do not authenticate with the Token Endpoint in any other way.
 
 <!-- ### [2.1.3.](#rfc.section.2.1.3) [Direct Access Client](#DirectClient) -->
 #### Direct Access Client
 
-**iGov-NL**
 
-Direct Access Clients are out of scope in this version of iGov-NL.
 
-**/iGov-NL**
+This client type MUST NOT request or be issued a refresh token.
 
-~~This client type MUST NOT request or be issued a refresh token.~~
+This profile applies to clients that connect directly to protected resources and do not act on behalf of a particular resource owner, such as those clients that facilitate bulk transfers.
 
-~~This profile applies to clients that connect directly to protected resources and do not act on behalf of a particular resource owner, such as those clients that facilitate bulk transfers.~~
+These clients use the client credentials flow of OAuth 2 by sending a request to the token endpoint with the client's credentials and obtaining an access token in the response. Since this profile does not involve an authenticated user, this flow is appropriate only for trusted applications, such as those that would traditionally use a developer key. For example, a partner system that performs bulk data transfers between two systems would be considered a direct access client.
 
-~~These clients use the client credentials flow of OAuth 2 by sending a request to the token endpoint with the client's credentials and obtaining an access token in the response. Since this profile does not involve an authenticated user, this flow is appropriate only for trusted applications, such as those that would traditionally use a developer key. For example, a partner system that performs bulk data transfers between two systems would be considered a direct access client.~~
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
+One of the client authentication methods `private_key_jwt` or `tls_client_auth` [[rfc8705]] MUST be used.
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
 <!-- ### [2.2.](#rfc.section.2.2) [Client Registration](#ClientRegistration) -->
 ### Client Registration
@@ -65,14 +74,14 @@ Clients using the authorization code grant type MUST register their full redirec
 A client MUST protect the values passed back to its redirect URI by ensuring that the redirect URI is one of the following:
 
 *   Hosted on a website with Transport Layer Security (TLS) protection (a Hypertext Transfer Protocol – Secure (HTTPS) URI)
-*   Hosted on a client-specific non-remote-protocol URI scheme (e.g., myapp://)
-*   Hosted on the local domain of the client (e.g., http://localhost/).
+*   Hosted on a client-specific non-remote-protocol URI scheme (e.g., `myapp://`)
+*   Hosted on the local domain of the client (e.g., `http://localhost/`).
 
 Clients MUST NOT allow the redirecting to the local domain.
 
 Clients SHOULD NOT have multiple redirect URIs on different domains.
 
-Clients MUST NOT forward values passed back to their redirect URIs to other arbitrary or user-provided URIs (a practice known as an "open redirector”).
+Clients MUST NOT forward values passed back to their redirect URIs to other arbitrary or user-provided URIs (a practice known as an "open redirector").
 
 <!-- ### [2.3.](#rfc.section.2.3) Connection to the Authorization Server -->
 ### Connection to the Authorization Server
@@ -85,11 +94,13 @@ Full clients and browser-embedded clients making a request to the authorization 
 
 Clients MUST include their full redirect URI in the authorization request. To prevent open redirection and other injection attacks, the authorization server MUST match the entire redirect URI using a direct string comparison against registered values and MUST reject requests with an invalid or missing redirect URI.
 
-**iGov-NL**
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
 
-Native clients MUST apply PKCE, as per RFC7636.
-As `code_verifier` the S256 method MUST be applied.
-Effectively this means that a Native Client MUST include a cryptographic random `code_challenge` of at least 128 bits of entropy and the `code_challenge_method` with the value `S256`.
+Public clients MUST apply PKCE, as per RFC7636.
+As `code_challenge` the S256 method MUST be applied.
+Effectively this means that browser based and native clients MUST include a cryptographic random `code_verifier` of at least 128 bits of entropy and the `code_challenge_method` with the value `S256`.
 
 Request fields:
 <dl>
@@ -109,8 +120,10 @@ Request fields:
 <dd>In case `code_challenge` is used with a native app, mandatory. MUST use the value `S256`.</dd>
 </dl>
 
-**/iGov-NL**
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
+<aside class="example">
 The following is a sample response from a web-based client to the end user’s browser for the purpose of redirecting the end user to the authorization server's authorization endpoint:
 
 <pre>HTTP/1.2 302 Found
@@ -133,11 +146,14 @@ This causes the browser to send the following (non-normative) request to the aut
   &redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb HTTP/1.1
 Host: idp-p.example.com
 </pre>
+</aside>
 
-
+<!-- ### [2.3.2.](#rfc.section.2.3.2) [Response from the Authorization Endpoint](#ResonseFromAuthorizationEndpoint) -->
 #### Response from the Authorization Endpoint
 
-**iGov-NL**
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
 
 Response parameters
 <dl>
@@ -147,14 +163,26 @@ Response parameters
 <dd>Mandatory. MUST be a verbatim copy of the value of the <code>state</code> parameter in the Authorization Request.</dd>
 </dl>
 
-**/iGov-NL**
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
 
 
-<!-- ### [2.3.2.](#rfc.section.2.3.2) [Requests to the Token Endpoint](#RequestsToTokenEndpoint) -->
+<!-- ### [2.3.3.](#rfc.section.2.3.3) [Requests to the Token Endpoint](#RequestsToTokenEndpoint) -->
 #### Requests to the Token Endpoint
 
-Full clients, native clients with dynamically registered keys, and direct access clients as defined above MUST authenticate to the authorization server's token endpoint using a JWT assertion as defined by the [JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants][[rfc7523]] using only the <samp>private_key_jwt</samp> method defined in [OpenID Connect Core] [[OpenID.Core]] . The assertion MUST use the claims as follows:
+Full clients, native clients with dynamically registered keys, and direct access clients as defined above MUST authenticate to the authorization server's token endpoint using a JWT assertion as defined by the [JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants][[rfc7523]] using only the <samp>private_key_jwt</samp> method defined in [OpenID Connect Core] [[OpenID.Core]]. ~~The assertion MUST use the claims as follows:~~
+
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
+
+Direct access clients that are using the client credentials grant type and are not using OpenIDConnect are also allowed to use an X.509 certificate to authenticate with the authorization server's token endpoint. This flow is compatible with OAuth 2.0 due to section 2.3.2 of [[rfc6749]].
+
+</aside>
+<!-- iGov-NL : End of the additional content -->
+
+When using the JWT assertion, the assertion MUST use the claims as follows:
 
 <dl>
 
@@ -184,6 +212,14 @@ Full clients, native clients with dynamically registered keys, and direct access
 
 </dl>
 
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
+In addition to `private_key_jwt`, the client authentication method `tls_client_auth` [[rfc8705]] MAY also be used.
+</aside>
+<!-- iGov-NL : End of the additional content -->
+
+<aside class="example">
 The following sample claim set illustrates the use of the required claims for a client authentication JWT as defined in this profile; additional claims MAY be included in the claim set.
 
 <pre>{
@@ -195,11 +231,14 @@ The following sample claim set illustrates the use of the required claims for a 
    "jti": "1418698788/107c4da5194df463e52b56865c5af34e5595"
 }
 </pre>
+</aside>
 
-The JWT assertion MUST be signed by the client using the client's private key. See [Section 2.2](#client-registration) for mechanisms by which the client can make its public key known to the server.
+The JWT assertion MUST be signed by the client using the client's private key. See [Section 2.3.4](#client-keys) for mechanisms by which the client can make its public key known to the server.
 The authorization server MUST support the RS256 signature method (the Rivest, Shamir, and Adleman (RSA) signature algorithm with a 256-bit hash) and MAY use other asymmetric signature methods listed in the JSON Web Algorithms ( [JWA] [[rfc7518]] ) specification.
 
-**iGov-NL**
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
 
 In addition to above signing methods, the Authorization server SHOULD support PS256 signing algorithm [[RFC7518]] for the signing of the private\_key\_jwt.
 
@@ -221,8 +260,10 @@ Effectively, the Token Request has the following content:
 <dd>Mandatory. MUST have the above specified signed JWT as contents.</dd>
 </dl>
 
-**/iGov-NL**
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
+<aside class="example">
 The following sample JWT contains the above claims and has been signed using the RS256 JWS algorithm and the client's own private key (with line breaks for display purposes only):
 
 <pre>eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.ew0KICAgImlzcyI6ICI1NWY5ZjU1OS0yNDk2LTQ5Z
@@ -263,14 +304,16 @@ IgT7-Lhf6BbwQNlMQubNeOPRFDqQoLWqe7UxuI06dKX3SEQRMqcxYSIAfP7CQZ4WLuKXb6oEbaqz6g
 L4l6p83G7wKGDeLETOTHszt-ZjKR38v4F_MnSrx8e0iIqgZwurW0RtetEWvynOCJXk-p166T7qZR45
 xuCxgOotXY6O3et4n77GtgspMgOEKj3b_WpCiuNEwQ
 </pre>
+</aside>
 
-<!-- ### [2.3.3.](#rfc.section.2.3.3) Client Keys -->
+<!-- ### [2.3.4.](#rfc.section.2.3.4) [Client Keys](#ClientKeys) -->
 #### Client Keys
 
 Clients using the authorization code grant type ~~or direct access clients using the client credentials grant type~~ MUST have a public and private key pair for use in authentication to the token endpoint. These clients MUST register their public keys in their client registration metadata by either sending the public key directly in the <samp>jwks</samp> field or by registering a <samp>jwks\_uri</samp> that MUST be reachable by the authorization server. It is RECOMMENDED that clients use a <samp>jwks_uri</samp> if possible as this allows for key rotation more easily. This applies to both dynamic and static (out-of-band) client registration.
 
 The <samp>jwks</samp> field or the content available from the <samp>jwks\_uri</samp> of a client MUST contain a public key in [JSON Web Key Set (JWK Set)] [[rfc7517]] format. The authorization server MUST validate the content of the client's registered jwks_uri document and verify that it contains a JWK Set. The following example is of a 2048-bit RSA key:
 
+<aside class="example">
 <pre>{
    "keys": [
      {
@@ -287,16 +330,21 @@ cNt1H2_VQ_Ww1JOLn9vRn-H48FDj7TxlIT74XdTZgTv31w_GRPAOfyxEw_ZUmxhz5Z-gTlQ",
    ]
 }
 </pre>
+</aside>
 
-**iGov-NL**
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
 
 In case the Authorization Server, Resource Server and client are not operated under responsibility of the same organisation, each party MUST use PKIoverheid certificates with OIN.
 The PKIoverheid certificate MUST be included either as a <code>x5c</code> or as <code>x5u</code> parameter, as per [[rfc7517]] §4.6 and 4.7. Parties SHOULD at least support the inclusion of the certificate as <code>x5c</code> parameter, for maximum interoperability. 
 Parties MAY agree to use <code>x5u</code>, for instance for communication within specific environments.  
 
 
-**/iGov-NL**
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
+<aside class="example">
 For reference, the corresponding public/private key pair for this public key is the following (in JWK format):
 
 <pre>{
@@ -318,7 +366,7 @@ H2_VQ_Ww1JOLn9vRn-H48FDj7TxlIT74XdTZgTv31w_GRPAOfyxEw_ZUmxhz5Z-gTlQ",
 </pre>
 
 Note that the second example contains both the public and private keys, while the first example contains the public key only.
-
+</aside>
 
 
 <!-- ### [2.4.](#rfc.section.2.4) Connection to the Protected Resource -->
@@ -329,6 +377,7 @@ Note that the second example contains both the public and private keys, while th
 
 Clients SHOULD send bearer tokens passed in the Authentication header as defined by [[rfc6750]] . Clients MAY use the form-parameter ~~or query-parameter~~ method~~s~~ in [[rfc6750]] . Authorized requests MUST be made over TLS, and clients MUST validate the protected resource server's certificate.
 
+<aside class="example">
 An example of an OAuth-protected call to the OpenID Connect UserInfo endpoint, sending the token in the Authorization header, follows:
 
 <pre>GET /userinfo HTTP/1.1
@@ -345,3 +394,4 @@ Host: idp-p.example.com
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.2.3 (java 1.5)
 </pre>
+</aside>

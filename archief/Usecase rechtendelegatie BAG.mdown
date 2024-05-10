@@ -1,0 +1,14 @@
+**Rights delegation key registry Buildings & adresses**
+
+**Overview**
+
+**Client**
+
+**Authorization server**
+
+**Resource server**
+
+**Scopes & claims**
+
+**Rationale**
+
