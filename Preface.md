@@ -53,7 +53,7 @@ Note:
 Web-applications by default use the system-browser on a User's device as user-agent.
 Typically a native application (_"mobile app"_) either starts a system browser as user-agent or uses an _in-app_ browser.
 See RFC 8252 for more information on implementation of native applications.
-<p class='warning'>Need to add machine client type to usecases</p>
+Clients can also be 'machine clients' types.
 
 ## Use case: Client credentials flow
 The client credentials flow can be used in usecases where there is an Client to Resource server connection where no user information is needed by the resource server.
