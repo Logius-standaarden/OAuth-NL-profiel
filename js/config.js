@@ -73,7 +73,7 @@ var respecConfig = {
     previousPublishVersion: "v1.0",
     pubDomain: "api",
     publishDate: "2022-06-17",
-    publishVersion: "v1.1",
+    publishVersion: "v1.1.0-rc.1",
     shortName: "oauth",
     specStatus: "WV",
     specType: "ST",
