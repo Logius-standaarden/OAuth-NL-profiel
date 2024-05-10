@@ -171,7 +171,18 @@ Response parameters
 <!-- ### [2.3.3.](#rfc.section.2.3.3) [Requests to the Token Endpoint](#RequestsToTokenEndpoint) -->
 #### Requests to the Token Endpoint
 
-Full clients, native clients with dynamically registered keys, and direct access clients as defined above MUST authenticate to the authorization server's token endpoint using a JWT assertion as defined by the [JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants][[rfc7523]] using only the <samp>private_key_jwt</samp> method defined in [OpenID Connect Core] [[OpenID.Core]] . The assertion MUST use the claims as follows:
+Full clients, native clients with dynamically registered keys, and direct access clients as defined above MUST authenticate to the authorization server's token endpoint using a JWT assertion as defined by the [JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants][[rfc7523]] using only the <samp>private_key_jwt</samp> method defined in [OpenID Connect Core] [[OpenID.Core]]. ~~The assertion MUST use the claims as follows:~~
+
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
+
+Direct access clients that are using the client credentials grant type and are not using OpenIDConnect are also allowed to use an X.509 certificate to authenticate with the authorization server's token endpoint. This flow is compatible with OAuth 2.0 due to section 2.3.2 of [[rfc6749]].
+
+</aside>
+<!-- iGov-NL : End of the additional content -->
+
+When using the JWT assertion, the assertion MUST use the claims as follows:
 
 <dl>
 
