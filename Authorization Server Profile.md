@@ -68,8 +68,7 @@ to client software developers from a trusted registration entity. The software s
 <!-- iGov-NL : Start of the additional content -->
 <aside class=" addition">
 <b>iGov-NL : Additional content</b></br>  
-
-In this version of iGov-NL we follow iGov for the requirement that the Authorization servers MUST support dynamic client registration. However depending on how the future authentication architecture of the Dutch government develops in regards to OAuth we may revisit this in a future revision. 
+In this version of iGov-NL we recommend that the Authorization servers SHOULD support dynamic client registration. However depending on how the future authentication architecture of the Dutch government develops in regards to OAuth we may revisit this in a future revision.  
 The current requirement fits an architecture where there is a limited number of widely used authorization servers. However if in practice we start seeing a very large number of authorization servers with limited use this requirement can become a recommendation in a future version of this profile. For these authorization servers with limited use we consider mandatory support for dynamic client registration a large burden.
 
 </aside>
