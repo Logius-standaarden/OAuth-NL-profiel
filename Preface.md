@@ -1,5 +1,5 @@
 ## Dutch government Assurance profile for OAuth 2.0
-This profile is based upon the international government assurance profile for OAuth 2.0 (iGov) [[iGOV.OAuth2]] as published
+This profile is based upon the [[[iGOV.OAuth2]]] as published
 by the OpenID Foundation (https://openid.net/foundation/). It should be considered a fork of this profile as the iGov profile is geared more towards the American situation and in the Netherlands we have to deal with an European Union context. 
 
 We have added the chapter [Use cases](#usecases) to illustrate the specific use case the iGov-NL profile is aimed at. Starting with chapter [Introduction](#introduction) we follow the structure of the iGov profile. Where we do not use content from iGov we use ~~strikethrough~~ to indicate it is not part of iGov-NL.
@@ -62,10 +62,7 @@ Two examples are:
 * A batch application processes a large number of transactions asynchronously at at later scheduled time. The original access_tokens of the preceding synchronous proces is no longer available.
 The flow for such a machine to machine interaction is shown in the figure below.
 
-<figure id='authorization_code'>
-	<img src='media/use_case_client_credentials.svg' width="600" alt="Use case Client credentials flow"/>
-	<figcaption>Use case Client credentials flow</figcaption>
- </figure>
+![Use case Client credentials flow](media/use_case_client_credentials.svg "Use case Client credentials flow")
 
 ### Step 1. Client Authentication
 Using the client credentials, the client sends a Authentication Request to the Authorization Server's token Endpoint.
@@ -89,11 +86,7 @@ A Client wishes to send a request to an API, on behalf of the User.
 The API requires to have a trusted identification and *authorization* of the User, before providing the Service.
 A Client has pre-registered with the Authorization Endpoint and has been assigned a client_id.
 
-
-<figure id='authorization_code'>
-	<img src='media/use_case_authorization_code.svg' width="600" alt="Use case Authorization code flow"/>
-	<figcaption>Use case Authorization code flow</figcaption>
- </figure>
+![Use case Authorization code flow](media/use_case_authorization_code.svg "Use case Authorization code flow")
 
 The normal flow, that is without any error handling, is described below.
 

@@ -123,7 +123,12 @@ If the authorization server is also an OpenID Connect Provider, it MUST provide 
 
 <aside class="example">
 The following example shows the JSON document found at a discovery endpoint for an authorization server:
-
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
+Added `tls_client_auth`
+</aside>
+<!-- iGov-NL : End of the additional content -->
 <pre>{
   "request_parameter_supported": true,
   "registration_endpoint": "https://idp-p.example.com/register",
@@ -138,7 +143,7 @@ The following example shows the JSON document found at a discovery endpoint for 
     "A128CBC-HS256", "A128GCM", "A256GCM"
   ],
   "token_endpoint_auth_methods_supported": [
-    "private_key_jwt",
+    "private_key_jwt", "tls_client_auth"
   ],
   "jwks_uri": "https://idp-p.example.com/jwk",
   "authorization_endpoint": "https://idp-p.example.com/authorize",
@@ -239,7 +244,7 @@ A client MUST immediately discard the token and not use it again after revoking 
 <!-- ### [3.1.7.](#rfc.section.3.1.7) PKCE -->
 #### PKCE
 
-An authorization server MUST support the Proof Key for Code Exchange ([PKCE] [[rfc7636]] ) extension to the authorization code flow, including support for the S256 code challenge method. The authorization server MUST NOT allow an ~~iGov~~ iGov-NL client to use the plain code challenge method.
+An authorization server MUST support the Proof Key for Code Exchange (PKCE [[rfc7636]] ) extension to the authorization code flow, including support for the S256 code challenge method. The authorization server MUST NOT allow an ~~iGov~~ iGov-NL client to use the plain code challenge method.
 
 <!-- ### [3.1.8.](#rfc.section.3.1.8) Redirect URIs -->
 #### Redirect URIs
@@ -257,6 +262,10 @@ Clients MUST present a valid client_id. Confidential clients MUST present a sign
 
 Clients using the Direct Credentials method MUST NOT be issued refresh_tokens. These clients MUST present their client credentials with a new access_token request and the desired scope.
 
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
+Refresh tokens for public clients must either be sender-constrained or one-time use. From [[[ietf-oauth-v2-1-10-refresh-token-grant]]]
+</aside>
 
 <!-- ### [3.1.10.](#rfc.section.3.1.10) Token Response -->
 #### Token Response
@@ -322,13 +331,13 @@ The server MAY issue tokens with additional fields, including the following as d
 
 <dt>sub</dt>
 
-<dd style="margin-left: 8">The identifier of the end-user that authorized this client, or the client id of a client acting on its own behalf (such as a bulk transfer). Since this information could potentially leak private user information, it should be used only when needed. End-user identifiers SHOULD be pairwise anonymous identifiers unless the audience requires otherwise.</dd>
+<dd style="margin-left: 8"><del>The identifier of the end-user that authorized this client, or the client id of a client acting on its own behalf (such as a bulk transfer). Since this information could potentially leak private user information, it should be used only when needed. End-user identifiers SHOULD be pairwise anonymous identifiers unless the audiance requires otherwise.</del>
 
 <!-- iGov-NL : Start of the additional content -->
 <aside class=" addition">
-<b>iGov-NL : Additional content</b></br>  
+<b>iGov-NL : Additional content</b></br>
 
-In iGov-NL the sub claim MUST be present.
+The identifier of the end-user that authorized this client. In iGov-NL the sub claim MUST be present as is evident from the use case in scope of this profile. Since this information could potentially leak private user information, end-user identifiers SHOULD be pairwise pseudonymious identifiers, unless another identifier is explicit needed and agreed upon for the context of the application.</dd>
 
 </aside>
 <!-- iGov-NL : End of the additional content -->
