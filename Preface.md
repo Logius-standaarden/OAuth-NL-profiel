@@ -14,7 +14,7 @@ Content added for the iGov-NL profile is indicated like this.
 <!-- iGov-NL : End of the additional content -->
 
 ## Usecases
-There are two use cases: The *client credentials* flow and the *authorization code flow*. In two sections below we will elaborate on these, first we will introduce som common concepts.
+There are two use cases: The *client credentials* flow and the *authorization code flow*. In two sections below we will elaborate on these, first we will introduce some common concepts.
 
 In this use case a (public/governmental) service is offered via an API.
 The service will be consumed by the User using a client, that can be any arbitrary, non-trusted application.
