@@ -11,7 +11,13 @@ The following profile descriptions give patterns of deployment for use in differ
 
 This client type applies to clients that act on behalf of a particular resource owner and require delegation of that user’s authority to access the protected resource. Furthermore, these clients are capable of interacting with a separate web browser application to facilitate the resource owner's interaction with the authentication endpoint of the authorization server.
 
-These clients MUST use the authorization code flow of OAuth 2 by sending the resource owner to the authorization endpoint to obtain authorization. The user MUST authenticate to the authorization endpoint. The user’s web browser is then redirected back to a URI hosted by the client service, from which the client can obtain an authorization code passed as a query parameter. The client then presents that authorization code along with its own credentials (private_key_jwt) to the authorization server's token endpoint to obtain an access token.
+These clients MUST use the authorization code flow of OAuth 2 by sending the resource owner to the authorization endpoint to obtain authorization. The user MUST authenticate to the authorization endpoint. The user’s web browser is then redirected back to a URI hosted by the client service, from which the client can obtain an authorization code passed as a query parameter. The client then presents that authorization code along with its own credentials (`private_key_jwt`) to the authorization server's token endpoint to obtain an access token.
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
+In addition to `private_key_jwt`, the client authentication method `tls_client_auth` [[rfc8705]] MAY also be used.
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
 These clients MUST be associated with a unique public key, as described in [Section 2.3.4](#client-keys).
 
@@ -45,6 +51,13 @@ This client type MUST NOT request or be issued a refresh token.
 This profile applies to clients that connect directly to protected resources and do not act on behalf of a particular resource owner, such as those clients that facilitate bulk transfers.
 
 These clients use the client credentials flow of OAuth 2 by sending a request to the token endpoint with the client's credentials and obtaining an access token in the response. Since this profile does not involve an authenticated user, this flow is appropriate only for trusted applications, such as those that would traditionally use a developer key. For example, a partner system that performs bulk data transfers between two systems would be considered a direct access client.
+
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
+One of the client authentication methods `private_key_jwt` or `tls_client_auth` [[rfc8705]] MUST be used.
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
 <!-- ### [2.2.](#rfc.section.2.2) [Client Registration](#ClientRegistration) -->
 ### Client Registration
@@ -85,9 +98,9 @@ Clients MUST include their full redirect URI in the authorization request. To pr
 <aside class=" addition">
 <b>iGov-NL : Additional content</b></br>  
 
-Native clients MUST apply PKCE, as per RFC7636.
-As `code_verifier` the S256 method MUST be applied.
-Effectively this means that a Native Client MUST include a cryptographic random `code_challenge` of at least 128 bits of entropy and the `code_challenge_method` with the value `S256`.
+Public clients MUST apply PKCE, as per RFC7636.
+As `code_challenge` the S256 method MUST be applied.
+Effectively this means that browser based and native clients MUST include a cryptographic random `code_verifier` of at least 128 bits of entropy and the `code_challenge_method` with the value `S256`.
 
 Request fields:
 <dl>
@@ -158,7 +171,18 @@ Response parameters
 <!-- ### [2.3.3.](#rfc.section.2.3.3) [Requests to the Token Endpoint](#RequestsToTokenEndpoint) -->
 #### Requests to the Token Endpoint
 
-Full clients, native clients with dynamically registered keys, and direct access clients as defined above MUST authenticate to the authorization server's token endpoint using a JWT assertion as defined by the [JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants][[rfc7523]] using only the <samp>private_key_jwt</samp> method defined in [OpenID Connect Core] [[OpenID.Core]] . The assertion MUST use the claims as follows:
+Full clients, native clients with dynamically registered keys, and direct access clients as defined above MUST authenticate to the authorization server's token endpoint using a JWT assertion as defined by the [JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants][[rfc7523]] using only the <samp>private_key_jwt</samp> method defined in [OpenID Connect Core] [[OpenID.Core]]. ~~The assertion MUST use the claims as follows:~~
+
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
+
+Direct access clients that are using the client credentials grant type and are not using OpenIDConnect are also allowed to use an X.509 certificate to authenticate with the authorization server's token endpoint. This flow is compatible with OAuth 2.0 due to section 2.3.2 of [[rfc6749]].
+
+</aside>
+<!-- iGov-NL : End of the additional content -->
+
+When using the JWT assertion, the assertion MUST use the claims as follows:
 
 <dl>
 
@@ -187,6 +211,13 @@ Full clients, native clients with dynamically registered keys, and direct access
 <dd style="margin-left: 8">a unique identifier generated by the client for this authentication. This identifier MUST contain at least 128 bits of entropy and MUST NOT be re-used by any subsequent authentication token.</dd>
 
 </dl>
+
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
+In addition to `private_key_jwt`, the client authentication method `tls_client_auth` [[rfc8705]] MAY also be used.
+</aside>
+<!-- iGov-NL : End of the additional content -->
 
 <aside class="example">
 The following sample claim set illustrates the use of the required claims for a client authentication JWT as defined in this profile; additional claims MAY be included in the claim set.

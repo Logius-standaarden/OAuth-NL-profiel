@@ -1,5 +1,5 @@
 ## Dutch government Assurance profile for OAuth 2.0
-This profile is based upon the international government assurance profile for OAuth 2.0 (iGov) [[iGOV.OAuth2]] as published
+This profile is based upon the [[[iGOV.OAuth2]]] as published
 by the OpenID Foundation (https://openid.net/foundation/). It should be considered a fork of this profile as the iGov profile is geared more towards the American situation and in the Netherlands we have to deal with an European Union context. 
 
 We have added the chapter [Use cases](#usecases) to illustrate the specific use case the iGov-NL profile is aimed at. Starting with chapter [Introduction](#introduction) we follow the structure of the iGov profile. Where we do not use content from iGov we use ~~strikethrough~~ to indicate it is not part of iGov-NL.
@@ -53,7 +53,7 @@ Note:
 Web-applications by default use the system-browser on a User's device as user-agent.
 Typically a native application (_"mobile app"_) either starts a system browser as user-agent or uses an _in-app_ browser.
 See RFC 8252 for more information on implementation of native applications.
-<p class='warning'>Need to add machine client type to usecases</p>
+Clients can also be 'machine clients' types.
 
 ## Use case: Client credentials flow
 The client credentials flow can be used in usecases where there is an Client to Resource server connection where no user information is needed by the resource server.

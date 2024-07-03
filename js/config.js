@@ -72,10 +72,10 @@ var respecConfig = {
     previousPublishDate: "2020-07-09",
     previousPublishVersion: "v1.0",
     pubDomain: "api",
-    publishDate: "2022-06-17",
-    publishVersion: "v1.1",
+    publishDate: "2024-05-13",
+    publishVersion: "v1.1.0-rc.1",
     shortName: "oauth",
-    specStatus: "WV",
+    specStatus: "VV",
     specType: "ST",
 
     localBiblio: {
@@ -124,7 +124,7 @@ var respecConfig = {
         "iGOV.OAuth2": {
             authors: ["J. Richer, M. Varley, P. Grassi"],
             date: "October 5 2018",
-            href: "https://openid.net/specs/openid-igov-oauth2-1_0.html",
+            href: "https://openid.net/specs/openid-igov-oauth2-1_0-03.html",
             publisher: "OpenID foundation",
             title: "International Government Assurance Profile (iGov) for OAuth 2.0"
         },
