@@ -215,11 +215,14 @@ When using the JWT assertion, the assertion MUST use the claims as follows:
 <!-- iGov-NL : Start of the additional content -->
 <aside class=" addition">
 <b>iGov-NL : Additional content</b></br>  
-In addition to `private_key_jwt`, the client authentication method `tls_client_auth` [[rfc8705]] MAY also be used.
+In addition to `private_key_jwt`, the client authentication method `tls_client_auth` [[rfc8705]] MAY also be used. Examples can be found in the related documentation of the specific standards.
+
+> Private Key JWT is a method of client authentication where the client creates and signs a JWT using its own private key. This method is described in a combination of RFC 7521 (Assertion Framework) and RFC 7523 (JWT Profile for Client Authentication), and referenced by OpenID Connect and FAPI 2.0 Security Profile.
 </aside>
 <!-- iGov-NL : End of the additional content -->
 
-<aside class="example">
+<!-- iGov-NL : the folowing example only relates to private key jwt and not the tls_client_auth -->
+<!-- <aside class="example">
 The following sample claim set illustrates the use of the required claims for a client authentication JWT as defined in this profile; additional claims MAY be included in the claim set.
 
 <pre>{
@@ -231,7 +234,7 @@ The following sample claim set illustrates the use of the required claims for a 
    "jti": "1418698788/107c4da5194df463e52b56865c5af34e5595"
 }
 </pre>
-</aside>
+</aside> -->
 
 The JWT assertion MUST be signed by the client using the client's private key. See [Section 2.3.4](#client-keys) for mechanisms by which the client can make its public key known to the server.
 The authorization server MUST support the RS256 signature method (the Rivest, Shamir, and Adleman (RSA) signature algorithm with a 256-bit hash) and MAY use other asymmetric signature methods listed in the JSON Web Algorithms ( [JWA] [[rfc7518]] ) specification.
@@ -241,24 +244,6 @@ The authorization server MUST support the RS256 signature method (the Rivest, Sh
 <b>iGov-NL : Additional content</b></br>  
 
 In addition to above signing methods, the Authorization server SHOULD support PS256 signing algorithm [[RFC7518]] for the signing of the private\_key\_jwt.
-
-Effectively, the Token Request has the following content:
-<dl>
-<dt>grant_type</dt>
-<dd>Mandatory. MUST contain the value `authorization_code`</dd>
-<dt>code</dt>
-<dd>Mandatory. MUST be the value obtained from the Authorization Response.</dd>
-<dt>scope<dt>
-<dd>Optional. MUST be less or same as the requested scope.</dd>
-<dt>redirect_uri</dt>
-<dd>Mandatory. MUST be an absolute HTTPS URL, pre-registered with the Authorization Server.</dd>
-<dt>client_id</dt>
-<dd>Mandatory. MUST have the value as obtained during registration.</dd>
-<dt>client_assertion_type</dt>
-<dd>Mandatory. MUST have the value `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`, properly encoded.</dd>
-<dt>client_assertion</dt>
-<dd>Mandatory. MUST have the above specified signed JWT as contents.</dd>
-</dl>
 
 </aside>
 <!-- iGov-NL : End of the additional content -->
