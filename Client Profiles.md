@@ -44,20 +44,11 @@ Native applications not registering a separate public key for each instance are 
 <!-- ### [2.1.3.](#rfc.section.2.1.3) [Direct Access Client](#DirectClient) -->
 #### Direct Access Client
 
-
-
 This client type MUST NOT request or be issued a refresh token.
 
 This profile applies to clients that connect directly to protected resources and do not act on behalf of a particular resource owner, such as those clients that facilitate bulk transfers.
 
 These clients use the client credentials flow of OAuth 2 by sending a request to the token endpoint with the client's credentials and obtaining an access token in the response. Since this profile does not involve an authenticated user, this flow is appropriate only for trusted applications, such as those that would traditionally use a developer key. For example, a partner system that performs bulk data transfers between two systems would be considered a direct access client.
-
-<!-- iGov-NL : Start of the additional content -->
-<aside class=" addition">
-<b>iGov-NL : Additional content</b></br>  
-One of the client authentication methods `private_key_jwt` or `tls_client_auth` [[rfc8705]] MUST be used.
-</aside>
-<!-- iGov-NL : End of the additional content -->
 
 <!-- ### [2.2.](#rfc.section.2.2) [Client Registration](#ClientRegistration) -->
 ### Client Registration
@@ -166,8 +157,6 @@ Response parameters
 </aside>
 <!-- iGov-NL : End of the additional content -->
 
-
-
 <!-- ### [2.3.3.](#rfc.section.2.3.3) [Requests to the Token Endpoint](#RequestsToTokenEndpoint) -->
 #### Requests to the Token Endpoint
 
@@ -177,12 +166,10 @@ Full clients, native clients with dynamically registered keys, and direct access
 <aside class=" addition">
 <b>iGov-NL : Additional content</b></br>  
 
-Direct access clients that are using the client credentials grant type and are not using OpenIDConnect are also allowed to use an X.509 certificate to authenticate with the authorization server's token endpoint. This flow is compatible with OAuth 2.0 due to section 2.3.2 of [[rfc6749]].
+When using the JWT assertion, the assertion MUST use the claims as follows:
 
 </aside>
 <!-- iGov-NL : End of the additional content -->
-
-When using the JWT assertion, the assertion MUST use the claims as follows:
 
 <dl>
 
@@ -215,7 +202,7 @@ When using the JWT assertion, the assertion MUST use the claims as follows:
 <!-- iGov-NL : Start of the additional content -->
 <aside class=" addition">
 <b>iGov-NL : Additional content</b></br>  
-In addition to `private_key_jwt`, the client authentication method `tls_client_auth` [[rfc8705]] MAY also be used. Examples can be found in the related documentation of the specific standards.
+In addition to `private_key_jwt`, the client authentication method `tls_client_auth` [[rfc8705]] MAY also be used. Examples of this method can be found in the related documentation of the specific standards.
 
 > Private Key JWT is a method of client authentication where the client creates and signs a JWT using its own private key. This method is described in a combination of RFC 7521 (Assertion Framework) and RFC 7523 (JWT Profile for Client Authentication), and referenced by OpenID Connect and FAPI 2.0 Security Profile.
 </aside>

@@ -85,6 +85,9 @@ The Resource Server uses the Access Token for its access control decision.
 The Resource Server responds based on these decisions to the Client.
 The contents and protocol of the Resource Request and Resource Response are out of scope of this profile.
 
+> Direct access clients that are using the client credentials grant type and are not using OpenIDConnect are also allowed to use an X.509 certificate to authenticate with the authorization server's token endpoint. This flow is compatible with OAuth 2.0 due to section 2.3.2 of [[rfc6749]].
+
+
 ## Use case: Authorization code flow
 
 In this use case a (public/governmental) service is offered via an API.
