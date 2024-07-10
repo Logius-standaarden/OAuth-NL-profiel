@@ -44,20 +44,11 @@ Native applications not registering a separate public key for each instance are 
 <!-- ### [2.1.3.](#rfc.section.2.1.3) [Direct Access Client](#DirectClient) -->
 #### Direct Access Client
 
-
-
 This client type MUST NOT request or be issued a refresh token.
 
 This profile applies to clients that connect directly to protected resources and do not act on behalf of a particular resource owner, such as those clients that facilitate bulk transfers.
 
 These clients use the client credentials flow of OAuth 2 by sending a request to the token endpoint with the client's credentials and obtaining an access token in the response. Since this profile does not involve an authenticated user, this flow is appropriate only for trusted applications, such as those that would traditionally use a developer key. For example, a partner system that performs bulk data transfers between two systems would be considered a direct access client.
-
-<!-- iGov-NL : Start of the additional content -->
-<aside class=" addition">
-<b>iGov-NL : Additional content</b></br>  
-One of the client authentication methods `private_key_jwt` or `tls_client_auth` [[rfc8705]] MUST be used.
-</aside>
-<!-- iGov-NL : End of the additional content -->
 
 <!-- ### [2.2.](#rfc.section.2.2) [Client Registration](#ClientRegistration) -->
 ### Client Registration
@@ -166,8 +157,6 @@ Response parameters
 </aside>
 <!-- iGov-NL : End of the additional content -->
 
-
-
 <!-- ### [2.3.3.](#rfc.section.2.3.3) [Requests to the Token Endpoint](#RequestsToTokenEndpoint) -->
 #### Requests to the Token Endpoint
 
@@ -177,12 +166,10 @@ Full clients, native clients with dynamically registered keys, and direct access
 <aside class=" addition">
 <b>iGov-NL : Additional content</b></br>  
 
-Direct access clients that are using the client credentials grant type and are not using OpenIDConnect are also allowed to use an X.509 certificate to authenticate with the authorization server's token endpoint. This flow is compatible with OAuth 2.0 due to section 2.3.2 of [[rfc6749]].
+When using the JWT assertion, the assertion MUST use the claims as follows:
 
 </aside>
 <!-- iGov-NL : End of the additional content -->
-
-When using the JWT assertion, the assertion MUST use the claims as follows:
 
 <dl>
 
@@ -215,11 +202,14 @@ When using the JWT assertion, the assertion MUST use the claims as follows:
 <!-- iGov-NL : Start of the additional content -->
 <aside class=" addition">
 <b>iGov-NL : Additional content</b></br>  
-In addition to `private_key_jwt`, the client authentication method `tls_client_auth` [[rfc8705]] MAY also be used.
+In addition to `private_key_jwt`, the client authentication method `tls_client_auth` [[rfc8705]] MAY also be used. Examples of this method can be found in the related documentation of the specific standards.
+
+> Private Key JWT is a method of client authentication where the client creates and signs a JWT using its own private key. This method is described in a combination of RFC 7521 (Assertion Framework) and RFC 7523 (JWT Profile for Client Authentication), and referenced by OpenID Connect and FAPI 2.0 Security Profile.
 </aside>
 <!-- iGov-NL : End of the additional content -->
 
-<aside class="example">
+<!-- iGov-NL : the folowing example only relates to private key jwt and not the tls_client_auth -->
+<!-- <aside class="example">
 The following sample claim set illustrates the use of the required claims for a client authentication JWT as defined in this profile; additional claims MAY be included in the claim set.
 
 <pre>{
@@ -231,7 +221,7 @@ The following sample claim set illustrates the use of the required claims for a 
    "jti": "1418698788/107c4da5194df463e52b56865c5af34e5595"
 }
 </pre>
-</aside>
+</aside> -->
 
 The JWT assertion MUST be signed by the client using the client's private key. See [Section 2.3.4](#client-keys) for mechanisms by which the client can make its public key known to the server.
 The authorization server MUST support the RS256 signature method (the Rivest, Shamir, and Adleman (RSA) signature algorithm with a 256-bit hash) and MAY use other asymmetric signature methods listed in the JSON Web Algorithms ( [JWA] [[rfc7518]] ) specification.
@@ -241,24 +231,6 @@ The authorization server MUST support the RS256 signature method (the Rivest, Sh
 <b>iGov-NL : Additional content</b></br>  
 
 In addition to above signing methods, the Authorization server SHOULD support PS256 signing algorithm [[RFC7518]] for the signing of the private\_key\_jwt.
-
-Effectively, the Token Request has the following content:
-<dl>
-<dt>grant_type</dt>
-<dd>Mandatory. MUST contain the value `authorization_code`</dd>
-<dt>code</dt>
-<dd>Mandatory. MUST be the value obtained from the Authorization Response.</dd>
-<dt>scope<dt>
-<dd>Optional. MUST be less or same as the requested scope.</dd>
-<dt>redirect_uri</dt>
-<dd>Mandatory. MUST be an absolute HTTPS URL, pre-registered with the Authorization Server.</dd>
-<dt>client_id</dt>
-<dd>Mandatory. MUST have the value as obtained during registration.</dd>
-<dt>client_assertion_type</dt>
-<dd>Mandatory. MUST have the value `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`, properly encoded.</dd>
-<dt>client_assertion</dt>
-<dd>Mandatory. MUST have the above specified signed JWT as contents.</dd>
-</dl>
 
 </aside>
 <!-- iGov-NL : End of the additional content -->
@@ -309,7 +281,7 @@ xuCxgOotXY6O3et4n77GtgspMgOEKj3b_WpCiuNEwQ
 <!-- ### [2.3.4.](#rfc.section.2.3.4) [Client Keys](#ClientKeys) -->
 #### Client Keys
 
-Clients using the authorization code grant type ~~or direct access clients using the client credentials grant type~~ MUST have a public and private key pair for use in authentication to the token endpoint. These clients MUST register their public keys in their client registration metadata by either sending the public key directly in the <samp>jwks</samp> field or by registering a <samp>jwks\_uri</samp> that MUST be reachable by the authorization server. It is RECOMMENDED that clients use a <samp>jwks_uri</samp> if possible as this allows for key rotation more easily. This applies to both dynamic and static (out-of-band) client registration.
+Clients using the authorization code grant type or direct access clients using the client credentials grant type MUST have a public and private key pair for use in authentication to the token endpoint. These clients MUST register their public keys in their client registration metadata by either sending the public key directly in the <samp>jwks</samp> field or by registering a <samp>jwks\_uri</samp> that MUST be reachable by the authorization server. It is RECOMMENDED that clients use a <samp>jwks_uri</samp> if possible as this allows for key rotation more easily. This applies to both dynamic and static (out-of-band) client registration.
 
 The <samp>jwks</samp> field or the content available from the <samp>jwks\_uri</samp> of a client MUST contain a public key in [JSON Web Key Set (JWK Set)] [[rfc7517]] format. The authorization server MUST validate the content of the client's registered jwks_uri document and verify that it contains a JWK Set. The following example is of a 2048-bit RSA key:
 
