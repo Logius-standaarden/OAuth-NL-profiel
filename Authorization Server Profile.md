@@ -330,16 +330,7 @@ The server MAY issue tokens with additional fields, including the following as d
 
 <dt>sub</dt>
 
-<dd style="margin-left: 8"><del>The identifier of the end-user that authorized this client, or the client id of a client acting on its own behalf (such as a bulk transfer). Since this information could potentially leak private user information, it should be used only when needed. End-user identifiers SHOULD be pairwise anonymous identifiers unless the audiance requires otherwise.</del>
-
-<!-- iGov-NL : Start of the additional content -->
-<aside class=" addition">
-<b>iGov-NL : Additional content</b></br>
-
-The identifier of the end-user that authorized this client. In iGov-NL the sub claim MUST be present as is evident from the use case in scope of this profile. Since this information could potentially leak private user information, end-user identifiers SHOULD be pairwise pseudonymious identifiers, unless another identifier is explicit needed and agreed upon for the context of the application.</dd>
-
-</aside>
-<!-- iGov-NL : End of the additional content -->
+<dd style="margin-left: 8">The identifier of the end-user that authorized this client, or the client id of a client acting on its own behalf (such as a bulk transfer). Since this information could potentially leak private user information, it should be used only when needed. End-user identifiers SHOULD be pairwise anonymous identifiers unless the audiance requires otherwise.
 
 <dt>aud</dt>
 
@@ -556,7 +547,15 @@ Authorization servers SHOULD define and document default scope values that will 
 
 To facilitate general use across a wide variety of protected resources, authorization servers SHOULD allow for the use of arbitrary scope values at runtime, such as allowing clients or protected resources to use arbitrary scope strings upon registration. Authorization servers MAY restrict certain scopes from use by dynamically registered systems or public clients.
 
-<!-- ### [3.5.1.](#rfc.section.3.5.1) [Scopes](#Scopes) -->
+ <!-- ### [3.5.1.](#rfc.section.3.5.1) [Scopes](#Scopes) -->
 #### Claims for Authorization Outside of Delegation Scenarios
 
-If there is a need to include resource owner memberships in roles and groups that are relevant to the resource being accessed, entitlements assigned to the resource owner for the targeted resource that the authorization server knows about. The authorization server SHOULD include such attributes as claims in a JWT access token as defined in section 2.2.3.1 of [[rfc9068]]
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>
+
+If there is a need to include resource owner memberships in roles and groups that are relevant to the resource being accessed, entitlements assigned to the resource owner for the targeted resource that the authorization server knows about. The authorization server SHOULD include such attributes as claims in a JWT access token as defined in section 2.2.3.1 of [[rfc9068]].
+
+</aside>
+<!-- iGov-NL : End of the additional content -->
+
