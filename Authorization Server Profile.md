@@ -393,9 +393,9 @@ The authorization server MAY encrypt access tokens and refresh tokens using [JWE
 <aside class=" addition">
 <b>iGov-NL : Additional content</b></br>  
 
-How to select or obtain the key to be used for encryption of an access token is out of scope of this profile. A early draft of "Resource Indicators for OAuth 2.0" exist and could be used. This draft describes usage of the resource parameter to indicate the applicable resource server.
+How to select or obtain the key to be used for encryption of an access token is out of scope of this profile. An early draft of "Resource Indicators for OAuth 2.0" exist and COULD be used. This draft describes usage of the resource parameter to indicate the applicable resource server.
 
-In case the Authorization Server and Resource Server are not operated under responsibility of the same organisation, the bearer token MUST be signed with the use of a PKIoverheid certificates with OIN.
+In case the Authorization Server and Resource Server are not operated under responsibility of the same organization, the bearer token MUST be signed with the use of a PKIoverheid certificates with OIN.
 
 If the bearer token is also encrypted the bearer token MUST be encrypted with the use of a PKIoverheid certificates with OIN.
 
