@@ -395,7 +395,7 @@ The authorization server MAY encrypt access tokens and refresh tokens using [JWE
 How to select or obtain the key to be used for encryption of an access token is out of scope of this profile.
 A early draft of "Resource Indicators for OAuth 2.0" exist and could be used. This draft describes usage of the <code>resource</code> parameter to indicate the applicable resource server.
 
-In case the Authorization Server, Resource Server and client are not operated under responsibility of the same organisation, each party MUST use PKIoverheid certificates with OIN for encryption.
+In case the Authorization Server, Resource Server and client are not operated under responsibility of the same organization, each party MUST use PKIoverheid certificates with OIN for encryption.
 
 </aside>
 <!-- iGov-NL : End of the additional content -->
