@@ -17,7 +17,27 @@ var respecConfig = {
         {
             "company": "Logius",
             "companyURL": "https://www.logius.nl/",
+            "name": "Alexander Green"
+        },
+        {
+            "company": "Logius",
+            "companyURL": "https://www.logius.nl/",
             "name": "Peter Haasnoot"
+        },
+        {
+            "company": "Logius",
+            "companyURL": "https://www.logius.nl/",
+            "name": "Heiko Hudig"
+        },
+        {
+            "company": "Logius",
+            "companyURL": "https://www.logius.nl/",
+            "name": "Martin van der Plas"
+        },
+        {
+            "company": "Logius",
+            "companyURL": "https://www.logius.nl/",
+            "name": "Stas Mironov"
         },
         {
             "company": "Logius",
@@ -69,13 +89,13 @@ var respecConfig = {
     github: "https://github.com/Logius-standaarden/OAuth-NL-profiel/",
     issueBase: "https://github.com/Logius-standaarden/OAuth-NL-profiel/issues",
     licence: "cc-by-nd",
-    previousPublishDate: "2020-07-09",
-    previousPublishVersion: "v1.0",
+    previousPublishDate: "2024-12-03",
+    previousPublishVersion: "v1.1.0",
     pubDomain: "api",
-    publishDate: "2024-12-03",
-    publishVersion: "v1.1.0",
+    publishDate: "2025-01-09",
+    publishVersion: "1.2.0",
     shortName: "oauth",
-    specStatus: "def",
+    specStatus: "WV",
     specType: "ST",
 
     localBiblio: {
