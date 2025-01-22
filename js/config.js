@@ -90,7 +90,7 @@ var respecConfig = {
     issueBase: "https://github.com/Logius-standaarden/OAuth-NL-profiel/issues",
     licence: "cc-by-nd",
     previousPublishDate: "2024-12-03",
-    previousPublishVersion: "1.1.0",
+    previousPublishVersion: "v1.1.0",
     pubDomain: "api",
     publishDate: "2025-01-09",
     publishVersion: "1.2.0",
