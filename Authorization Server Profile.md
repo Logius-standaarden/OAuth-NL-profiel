@@ -557,6 +557,8 @@ To facilitate general use across a wide variety of protected resources, authoriz
 
 If there is a need to include resource owner memberships in roles and groups that are relevant to the resource being accessed, entitlements assigned to the resource owner for the targeted resource that the authorization server knows about. The authorization server SHOULD include such attributes as claims in a JWT access token as defined in section 2.2.3.1 of [[rfc9068]].
 
+In cases where the default scopes provided by Authorization Server are not descriptive enough, one can make use of the `authorization_details` claim (see [[#rich-authorization-requests]] ) which provide extra details and thus greater flexibility for the Resource Server to handle the request.
+
 </aside>
 <!-- iGov-NL : End of the additional content -->
 

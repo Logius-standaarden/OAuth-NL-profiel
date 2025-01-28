@@ -14,7 +14,7 @@ When the client presents the token to the protected resource, it is also require
 <!-- iGov-NL : Start of the additional content -->
 <aside class=" addition">
 <b>iGov-NL : Additional content</b></br>  
-DPoP, or Demonstrating Proof of Possession (see: [[RFC9449]]), is an extension that describes a technique to cryptographically bind access tokens to a particular client when they are issued.   
+[[[RFC9449]]], is an extension that describes a technique to cryptographically bind access tokens to a particular client when they are issued.   
 </aside>
 <!-- iGov-NL : End of the additional content -->
 
@@ -36,5 +36,19 @@ Another implementation of PoP is using TLS with mutual authentication, where the
 
 More detailed information about securely implementing PoP are described in [FAPI 2.0 Security Profile](https://openid.net/specs/fapi-2_0-security-02.html#name-requirements-for-clients).
 
+</aside>
+<!-- iGov-NL : End of the additional content -->
+
+<!-- iGov-NL : Start of the additional content -->
+## Rich Authorization Requests
+
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
+
+[[[RFC9396]]], is an extension that provides a way for clients to request and obtain fine-grained authorization from resource owners such as end users during the Authorization Code Flow.
+In traditional OAuth flows, clients typically request access to a set of scopes from a Resource Server. The Resource Owner then grants access to the resources to the client. However, this approach does not allow for granular control over the access granted to a client and can lead to over-provisioning of access, which poses various security risks. With RAR, clients can pass an `authorization_details` claim to request specific permissions for each individual resource they want to access. It also allows for the Resource Server to implement specific business logic to deal with special types of requests. Think of one-time payments or step-up multi-factor authentication.
+
+According to the RFC, `authorization_details` requires just one field, `type` which determines the allowable contents of the `authorization_details`. The value is unique for the described API in the context of the Authorization Server. 
+The RFC suggests to suppport `locations`, `datatypes`, `identifier` and `privileges` as common fields in the `authorization_details` parameter.
 </aside>
 <!-- iGov-NL : End of the additional content -->
