@@ -38,3 +38,7 @@ More detailed information about securely implementing PoP are described in [FAPI
 
 </aside>
 <!-- iGov-NL : End of the additional content -->
+
+## Rich Authorization Requests
+
+
