@@ -113,7 +113,8 @@ It does so by redirecting / initiating the user-agent with the Authorization Req
 The Authorization request holds further details, as specified in this profile.
 
 <aside class="note" title="Extra security consideration">
-<p>When the Authorization Server supports Pushed Authorization Requests (PAR), the client may first use PAR (or is required to use it, see `require_pushed_authorization_requests` in [Authorization Server Metadata](https://datatracker.ietf.org/doc/html/rfc9126#name-authorization-server-metada)). The client can initiate the flow by pushing a POST request with the parameters to the `pushed_authorization_request_endpoint`. The Authorization Server responds to the client with a `request_uri` containing a reference. The client will then use this `request_uri` as the redirect.</p>
+
+When the Authorization Server supports [[[rfc9126]]] (PAR), the client may first use PAR (or is required to use it, see `require_pushed_authorization_requests` in [Authorization Server Metadata](https://datatracker.ietf.org/doc/html/rfc9126#name-authorization-server-metada)). The client can initiate the flow by pushing a POST request with the parameters to the `pushed_authorization_request_endpoint`. The Authorization Server responds to the client with a `request_uri` containing a reference. The client will then use this `request_uri` as the redirect.
 </aside>
 
 ### Step 2. Authorization Request
