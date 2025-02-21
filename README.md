@@ -9,7 +9,7 @@ Bij het Kennisplatform APIs is onlangs een sessie geweest om kennis te delen ove
 ## Links
 
 - Bekijk hier de **laatste vastgestelde versie** van de standaard:
-  - https://publicatie.centrumvoorstandaarden.nl/api/oauth/
+  - https://gitdocumentatie.logius.nl/publicatie/api/oauth/
 - Bekijk hier **de laatste werkversie** van de standaard:
   - https://Logius-standaarden.github.io/OAuth-NL-profiel
 - Bekijk hier **het beheermodel** van deze standaard:
