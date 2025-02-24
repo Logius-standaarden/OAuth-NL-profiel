@@ -9,7 +9,7 @@ The preceding portions of this OAuth profile provide a level of security adequat
 <aside class="addition">
 <b>iGov-NL : Additional content</b></br>
 
-Traditionally, OAuth 2.0 authorization requests are sent via front-channel communication (e.g., browser redirects), which exposes sensitive parameters to potential tampering or interception. PAR [[rfc9126]] addresses these vulnerabilities by allowing clients to push authorization requests directly to the authorization server over a secure back-channel. Below are some of the issues it alleviates:
+Traditionally, OAuth 2.0 authorization requests are sent via front-channel communication (e.g., browser redirects), which exposes sensitive parameters to potential tampering or interception. PAR [[rfc9126]] addresses these vulnerabilities by allowing clients to push authorization requests directly to the authorization server over a secure back-channel. [[[OpenID.FAPI2.0]]] also includes this feature as of version 2.0 . Below are some of the issues it alleviates:
 
 * **Lack of Integrity and Authenticity:**
 Authorization request parameters sent as URI query parameters are vulnerable to tampering. Attackers can modify values like scope or redirect_uri, potentially altering the context of transactions or access permissions. Such sensitive data in front-channel requests can be intercepted or phished, compromising client credentials or authorization codes. Attackers can exploit the request_uri parameter by injecting malicious URIs, leading to unauthorized access or token leakage.
