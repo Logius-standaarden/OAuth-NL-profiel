@@ -117,7 +117,7 @@ Request fields:
 <aside class="example">
 The following is a sample response from a web-based client to the end user’s browser for the purpose of redirecting the end user to the authorization server's authorization endpoint:
 
-<pre>HTTP/1.2 302 Found
+<pre class="http">HTTP/1.2 302 Found
 Cache-Control: no-cache
 Connection: close
 Content-Type: text/plain; charset=UTF-8
@@ -129,7 +129,7 @@ Status: 302 Found
 
 This causes the browser to send the following (non-normative) request to the authorization endpoint (inline wraps for display purposes only):
 
-<pre>GET /authorize?
+<pre class="http">GET /authorize?
    client_id=55f9f559-2496-49d4-b6c3-351a586b7484
   &nonce=cd567ed4d958042f721a7cdca557c30d
   &response_type=code
@@ -212,7 +212,7 @@ In addition to `private_key_jwt`, the client authentication method `tls_client_a
 <!-- <aside class="example">
 The following sample claim set illustrates the use of the required claims for a client authentication JWT as defined in this profile; additional claims MAY be included in the claim set.
 
-<pre>{
+<pre class="json">{
    "iss": "55f9f559-2496-49d4-b6c3-351a586b7484",
    "sub": "55f9f559-2496-49d4-b6c3-351a586b7484",
    "aud": "https://idp-p.example.com/token",
@@ -251,7 +251,7 @@ THszt-ZjKR38v4F_MnSrx8e0iIqgZwurW0RtetEWvynOCJXk-p166T7qZR45xuCxgOotXY6O3et4n7
 
 This is sent in the request to the token endpoint as in the following example:
 
-<pre>POST /token HTTP/1.1
+<pre class="http">POST /token HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 User-Agent: Rack::OAuth2 (1.0.8.7) (2.5.3.2, ruby 2.1.3 (2014-09-19))
 Accept: */*
@@ -286,7 +286,7 @@ Clients using the authorization code grant type or direct access clients using t
 The <samp>jwks</samp> field or the content available from the <samp>jwks\_uri</samp> of a client MUST contain a public key in [JSON Web Key Set (JWK Set)] [[rfc7517]] format. The authorization server MUST validate the content of the client's registered jwks_uri document and verify that it contains a JWK Set. The following example is of a 2048-bit RSA key:
 
 <aside class="example">
-<pre>{
+<pre class="json">{
    "keys": [
      {
        "alg": "RS256",
@@ -352,7 +352,7 @@ Clients SHOULD send bearer tokens passed in the Authentication header as defined
 <aside class="example">
 An example of an OAuth-protected call to the OpenID Connect UserInfo endpoint, sending the token in the Authorization header, follows:
 
-<pre>GET /userinfo HTTP/1.1
+<pre >GET /userinfo HTTP/1.1
 Authorization: Bearer eyJhbGciOiJSUzI1NiJ9.eyJleHAiOjE0MTg3MDI0MTIsImF1ZCI6WyJjMWJjOD
 RlNC00N2VlLTRiNjQtYmI1Mi01Y2RhNmM4MWY3ODgiXSwiaXNzIjoiaHR0cHM6XC9cL2lkcC1wLmV4YW1wbGU
 uY29tXC8iLCJqdGkiOiJkM2Y3YjQ4Zi1iYzgxLTQwZWMtYTE0MC05NzRhZjc0YzRkZTMiLCJpYXQiOjE0MTg2

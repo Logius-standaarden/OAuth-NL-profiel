@@ -127,7 +127,7 @@ The following example shows the JSON document found at a discovery endpoint for 
 Added `tls_client_auth`
 </aside>
 <!-- iGov-NL : End of the additional content -->
-<pre>{
+<pre class="json">{
   "request_parameter_supported": true,
   "registration_endpoint": "https://idp-p.example.com/register",
   "userinfo_signing_alg_values_supported": [
@@ -201,7 +201,7 @@ The server MUST provide its public key in JWK Set format. The key MUST contain t
 <aside class="example">
 The following is an example of a 2048-bit RSA public key:
 
-<pre>{
+<pre class="json">{
   "keys": [
     {
       "alg": "RS256",
@@ -340,7 +340,7 @@ The server MAY issue tokens with additional fields, including the following as d
 <aside class="example">
 The following sample claim set illustrates the use of the required claims for an access token as defined in this profile; additional claims MAY be included in the claim set:
 
-<pre>{
+<pre class="json">{
    "exp": 1418702388,
    "azp": "55f9f559-2496-49d4-b6c3-351a586b7484",
    "iss": "https://idp-p.example.com/",
@@ -408,7 +408,7 @@ If the bearer token is also encrypted the bearer token MUST be encrypted with th
 Token introspection allows a protected resource to query the authorization server for metadata about a token. The protected resource makes a request like the following to the token introspection endpoint:
 
 <aside class="example">
-<pre>POST /introspect HTTP/1.1
+<pre class="http">POST /introspect HTTP/1.1
 User-Agent: Faraday v0.9.0
 Content-Type: application/x-www-form-urlencoded
 Accept-Encoding: gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -475,7 +475,7 @@ The server responds to an introspection request with a JSON object representing 
 <aside class="example">
 The following example is a response from the introspection endpoint:
 
-<pre>HTTP/1.1 200 OK
+<pre><code class="http">HTTP/1.1 200 OK
 Date: Tue, 16 Dec 2014 03:00:14 GMT
 Access-Control-Allow-Origin: *
 Content-Type: application/json;charset=ISO-8859-1
@@ -483,6 +483,8 @@ Content-Language: en-US
 Content-Length: 266
 Connection: close
 
+</code>
+<code class="json">
 {
    "active": true,
    "scope": "file search visa",
@@ -491,6 +493,7 @@ Connection: close
    "client_id": "e71fb72a-974f-4001-bcb7-e67c2bc0037f",
    "token_type": "Bearer"
 }
+</code>
 </pre>
 </aside>
 
@@ -522,7 +525,7 @@ PKCE parameters MUST be associated with the "code" as per Section 4.4 of [Proof 
 <aside class="example">
 The following is an example response:
 
-<pre>https://client.example.org/cb?
+<pre class="nohighlight">https://client.example.org/cb?
     state=2ca3359dfbfd0
    &code=gOIFJ1hV6Rb1sxUdFhZGACWwR1sMhYbJJcQbVJN0wHA
 </pre>
