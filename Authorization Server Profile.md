@@ -148,7 +148,7 @@ Added `tls_client_auth`
   "require_request_uri_registration": false,
   "introspection_endpoint": "https://idp-p.example.com/introspect",
   "request_object_encryption_alg_values_supported": [
-    "RSA-OAEP", ?RSA1_5", "RSA-OAEP-256"
+    "RSA-OAEP", "RSA1_5", "RSA-OAEP-256"
   ],
   "service_documentation": "https://idp-p.example.com/about",
   "response_types_supported": [
@@ -201,22 +201,18 @@ The server MUST provide its public key in JWK Set format. The key MUST contain t
 <aside class="example">
 The following is an example of a 2048-bit RSA public key:
 
-<pre class="json">{
+<pre class="hljs" style="white-space: pre-wrap"><code class="json">{
   "keys": [
     {
       "alg": "RS256",
       "e": "AQAB",
-      "n": "o80vbR0ZfMhjZWfqwPUGNkcIeUcweFyzB2S2T-hje83IOVct8gVg9FxvHPK1R
-eEW3-p7-A8GNcLAuFP_8jPhiL6LyJC3F10aV9KPQFF-w6Eq6VtpEgYSfzvFegNiPtpMWd7C43
-EDwjQ-GrXMVCLrBYxZC-P1ShyxVBOzeR_5MTC0JGiDTecr_2YT6o_3aE2SIJu4iNPgGh9Mnyx
-dBo0Uf0TmrqEIabquXA1-V8iUihwfI8qjf3EujkYi7gXXelIo4_gipQYNjr4DBNlE0__RI0kD
-U-27mb6esswnP2WgHZQPsk779fTcNDBIcYgyLujlcUATEqfCaPDNp00J6AbY6w",
+      "n": "o80vbR0ZfMhjZWfqwPUGNkcIeUcweFyzB2S2T-hje83IOVct8gVg9FxvHPK1ReEW3-p7-A8GNcLAuFP_8jPhiL6LyJC3F10aV9KPQFF-w6Eq6VtpEgYSfzvFegNiPtpMWd7C43EDwjQ-GrXMVCLrBYxZC-P1ShyxVBOzeR_5MTC0JGiDTecr_2YT6o_3aE2SIJu4iNPgGh9MnyxdBo0Uf0TmrqEIabquXA1-V8iUihwfI8qjf3EujkYi7gXXelIo4_gipQYNjr4DBNlE0__RI0kDU-27mb6esswnP2WgHZQPsk779fTcNDBIcYgyLujlcUATEqfCaPDNp00J6AbY6w",
       "kty": "RSA",
       "kid": "rsa1"
     }
   ]
 }
-</pre>
+</code></pre>
 </aside>
 
 Clients and protected resources SHOULD cache this key. It is RECOMMENDED that servers provide cache information through HTTP headers and make the cache valid for at least one week.
@@ -525,9 +521,8 @@ PKCE parameters MUST be associated with the "code" as per Section 4.4 of [Proof 
 <aside class="example">
 The following is an example response:
 
-<pre class="nohighlight">https://client.example.org/cb?
-    state=2ca3359dfbfd0
-   &code=gOIFJ1hV6Rb1sxUdFhZGACWwR1sMhYbJJcQbVJN0wHA
+<pre class="nohighlight">
+https://client.example.org/cb?state=2ca3359dfbfd0&code=gOIFJ1hV6Rb1sxUdFhZGACWwR1sMhYbJJcQbVJN0wHA
 </pre>
 </aside>
 
