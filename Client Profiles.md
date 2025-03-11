@@ -117,7 +117,7 @@ Request fields:
 <aside class="example">
 The following is a sample response from a web-based client to the end user’s browser for the purpose of redirecting the end user to the authorization server's authorization endpoint:
 
-<pre class="http">HTTP/1.2 302 Found
+<pre class="hljs"><code class="http">HTTP/1.2 302 Found
 Cache-Control: no-cache
 Connection: close
 Content-Type: text/plain; charset=UTF-8
@@ -125,18 +125,13 @@ Date: Wed, 07 Jan 2015 20:24:15 GMT
 Location: https://idp-p.example.com/authorize?client_id=55f9f559-2496-49d4-b6c3-351a58
 6b7484&nonce=cd567ed4d958042f721a7cdca557c30d&response_type=code&scope=openid+email&redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb
 Status: 302 Found
-</pre>
+</code></pre>
 
-This causes the browser to send the following (non-normative) request to the authorization endpoint (inline wraps for display purposes only):
+This causes the browser to send the following (non-normative) request to the authorization endpoint:
 
-<pre class="http">GET /authorize?
-   client_id=55f9f559-2496-49d4-b6c3-351a586b7484
-  &nonce=cd567ed4d958042f721a7cdca557c30d
-  &response_type=code
-  &scope=openid+email
-  &redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb HTTP/1.1
+<pre class="hljs" style="white-space: pre-wrap"><code class="http">GET /authorize?   client_id=55f9f559-2496-49d4-b6c3-351a586b7484&nonce=cd567ed4d958042f721a7cdca557c30d&response_type=code&scope=openid+email&redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb HTTP/1.1
 Host: idp-p.example.com
-</pre>
+</code></pre>
 </aside>
 
 <!-- ### [2.3.2.](#rfc.section.2.3.2) [Response from the Authorization Endpoint](#ResonseFromAuthorizationEndpoint) -->
@@ -286,21 +281,20 @@ Clients using the authorization code grant type or direct access clients using t
 The <samp>jwks</samp> field or the content available from the <samp>jwks\_uri</samp> of a client MUST contain a public key in [JSON Web Key Set (JWK Set)] [[rfc7517]] format. The authorization server MUST validate the content of the client's registered jwks_uri document and verify that it contains a JWK Set. The following example is of a 2048-bit RSA key:
 
 <aside class="example">
-<pre class="json">{
+
+<pre class="hljs" style="white-space: pre-wrap"><code class="json">
+{
    "keys": [
      {
        "alg": "RS256",
        "e": "AQAB",
-       "n": "kAMYD62n_f2rUcR4awJX4uccDt0zcXRssq_mDch5-ifcShx9aTtTVza23P
-Tn3KaKrsBXwWcfioXR6zQn5eYdZQVGNBfOR4rxF5i7t3hfb4WkS50EK1gBYk2lO9NSrQ-xG
-9QsUsAnN6RHksXqsdOqv-nxjLexDfIJlgbcCN9h6TB-C66ZXv7PVhl19gIYVifSU7liHkLe
-0l0fw7jUI6rHLHf4d96_neR1HrNIK_xssr99Xpv1EM_ubxpktX0T925-qej9fMEpzzQ5HLm
-cNt1H2_VQ_Ww1JOLn9vRn-H48FDj7TxlIT74XdTZgTv31w_GRPAOfyxEw_ZUmxhz5Z-gTlQ",
+       "n": "kAMYD62n_f2rUcR4awJX4uccDt0zcXRssq_mDch5-ifcShx9aTtTVza23PTn3KaKrsBXwWcfioXR6zQn5eYdZQVGNBfOR4rxF5i7t3hfb4WkS50EK1gBYk2lO9NSrQ-xG9QsUsAnN6RHksXqsdOqv-nxjLexDfIJlgbcCN9h6TB-C66ZXv7PVhl19gIYVifSU7liHkLe0l0fw7jUI6rHLHf4d96_neR1HrNIK_xssr99Xpv1EM_ubxpktX0T925-qej9fMEpzzQ5HLmcNt1H2_VQ_Ww1JOLn9vRn-H48FDj7TxlIT74XdTZgTv31w_GRPAOfyxEw_ZUmxhz5Z-gTlQ",
        "kty": "RSA",
        "kid": "oauth-client"
      }
    ]
 }
+</code>
 </pre>
 </aside>
 
