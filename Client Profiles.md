@@ -117,7 +117,7 @@ Request fields:
 <aside class="example">
 The following is a sample response from a web-based client to the end user’s browser for the purpose of redirecting the end user to the authorization server's authorization endpoint:
 
-<pre class="hljs" style="white-space: pre-wrap"><code class="http">HTTP/1.2 302 Found
+<pre class="hljs" style="white-space: pre-wrap"><code class="http">HTTP/1.1 302 Found
 Cache-Control: no-cache
 Connection: close
 Content-Type: text/plain; charset=UTF-8
