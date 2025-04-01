@@ -163,10 +163,9 @@ Added `tls_client_auth`
   ],
   "grant_types_supported": [
     "authorization_code",
-    "implicit",
     "urn:ietf:params:oauth:grant-type:jwt-bearer",
     "client_credentials",
-    "urn:ietf:params:oauth:grant_type:redelegate"
+    "urn:ietf:params:oauth:grant-type:token-exchange"
   ],
   "scopes_supported": [
     "profile", "openid", "email", "address", "phone", "offline_access"
