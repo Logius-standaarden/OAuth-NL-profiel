@@ -149,3 +149,23 @@ The Resource Server uses the Access Token for its access control decision and an
 The Resource Server responds based on these decisions to the Client.
 The Client can inform and interact with the User based on the information received from the Resource Server.
 The contents and protocol of the Resource Request and Resource Response are out of scope of this profile.
+
+
+## Use case: Token exchange
+
+Token exchange can be used in usecases where ...
+Two examples are:
+* A
+* B
+The flow for such a machine to machine interaction is shown in the figure below.
+
+![Use case token exchange](media/use_case_client_credentials.svg "Use case token exchange")
+
+### Step 1. xxx
+
+
+### Step 2. xxx
+
+
+### Step 3. xxx
+
