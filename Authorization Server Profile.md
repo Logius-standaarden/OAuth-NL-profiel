@@ -343,8 +343,7 @@ The following sample claim set illustrates the use of the required claims for an
    "aud": "api.example.com"
    "jti": "2402f87c-b6ce-45c4-95b0-7a3f2904997f",
    "iat": 1418698788,
-   "acr": "myACR",
-   "auth_time": 16463400198
+   "acr": "myACR"
 }
 </pre>
 </aside>
