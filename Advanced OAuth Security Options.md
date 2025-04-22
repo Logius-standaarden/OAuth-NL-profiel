@@ -50,5 +50,7 @@ In traditional OAuth flows, clients typically request access to a set of scopes 
 
 According to the RFC, `authorization_details` requires just one field, `type`, which determines the allowable contents of the `authorization_details`. The value is unique for the described API in the context of the Authorization Server. 
 The RFC suggests to suppport `locations`, `datatypes`, `identifier` and `privileges` as common fields in the `authorization_details` parameter.
+
+In case more data or more recent data is required for fine-grained authorization than is practical to include in `authorization_details` the OpenID AuthZEN standard MAY be used.
 </aside>
 <!-- iGov-NL : End of the additional content -->
