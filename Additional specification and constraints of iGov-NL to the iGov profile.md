@@ -48,7 +48,7 @@ Mandatory. MUST be a verbatim copy of the value of the state parameter in the Au
 ## 2.3.3 Requests to the Token Endpoint
 iGov-NL
 
-In addition to above signing methods, the Authorization server SHOULD support PS256 signing algorithm [RFC7518] for the signing of the private_key_jwt.
+In addition to above signing methods, the Authorization server SHOULD support PS256 signing algorithm [rfc7518] for the signing of the private_key_jwt.
 
 Effectively, the Token Request has the following content:
 
@@ -138,7 +138,7 @@ In iGov-NL the sub claim MUST be present.
 
 iGov-NL
 
-In addition to above signing methods, the Authorization server SHOULD support PS256 signing algorithm [RFC7518] for the signing of the JWT Bearer Tokens.
+In addition to above signing methods, the Authorization server SHOULD support PS256 signing algorithm [rfc7518] for the signing of the JWT Bearer Tokens.
 
 /iGov-NL
 
