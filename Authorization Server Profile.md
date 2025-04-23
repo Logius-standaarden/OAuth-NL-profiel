@@ -336,7 +336,6 @@ The following sample claim set illustrates the use of the required claims for an
 <pre class="json">{
    "exp": 1418702388,
    "client_id": "55f9f559-2496-49d4-b6c3-351a586b7484",
-   "azp": "55f9f559-2496-49d4-b6c3-351a586b7484",
    "iss": "https://idp-p.example.com/",
    "sub" : "93ff28e3-3982-c34b-f2a4-98bb3d42b277",
    "aud": "api.example.com"
