@@ -86,8 +86,10 @@ Full clients and browser-embedded clients making a request to the authorization 
 Clients MUST include their full redirect URI in the authorization request. To prevent open redirection and other injection attacks, the authorization server MUST match the entire redirect URI using a direct string comparison against registered values and MUST reject requests with an invalid or missing redirect URI.
 
 <!-- iGov-NL : Start of the additional content -->
-<aside class=" addition">
-<b>iGov-NL : Additional content</b></br>  
+<aside class="addition">
+<b>iGov-NL : Additional content</b></br>
+
+When the Authorization Server supports [[[rfc9126]]] (PAR), the client may first use PAR (or is required to use it, see `require_pushed_authorization_requests` in [Authorization Server Metadata](https://datatracker.ietf.org/doc/html/rfc9126#name-authorization-server-metada)). The client can initiate the flow by pushing a POST request with the parameters to the `pushed_authorization_request_endpoint`. The Authorization Server responds to the client with a `request_uri` containing a reference. The client will then use this `request_uri` as the redirect.
 
 Public clients MUST apply PKCE, as per RFC7636.
 As `code_challenge` the S256 method MUST be applied.
@@ -149,6 +151,7 @@ Response parameters
 </dl>
 
 </aside>
+
 <!-- iGov-NL : End of the additional content -->
 
 <!-- ### [2.3.3.](#rfc.section.2.3.3) [Requests to the Token Endpoint](#RequestsToTokenEndpoint) -->

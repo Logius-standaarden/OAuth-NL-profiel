@@ -154,6 +154,14 @@ var respecConfig = {
             href: "https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-10#name-refresh-token-grant",
             publisher: "IETF",
             title: "The OAuth 2.1 Authorization Framework: Refresh Token Grant",
+        },
+        "OpenID.FAPI2.0": {
+            authors: ["D. Fett, D. Tonge, J. Heenan"],
+            date: "February 22 2025",
+            href: "https://openid.net/specs/fapi-security-profile-2_0-final.html",
+            publisher: "OpenID foundation",
+            title: "FAPI 2.0 Security Profile"
         }
+        
     }
 };
