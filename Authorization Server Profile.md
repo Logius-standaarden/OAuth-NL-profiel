@@ -37,7 +37,7 @@ The authorization server MUST validate all redirect URIs for authorization code 
 Dynamic Registration allows for authorized Clients to on-board programmatically without administrative intervention. This is particularly important in ecosystems with many potential Clients, including Mobile Apps acting as independent Clients. Authorization servers MUST support dynamic client registration,
 and clients MAY register using the [Dynamic Client Registration Protocol] [[rfc7591]] for authorization code grant types. Clients MUST NOT dynamically register for the client credentials grant type. Authorization servers MAY limit the scopes available to dynamically registered clients.
 
-Authorization servers MAY protect their Dynamic Registration endpoints by requiring clients to present credentials that the authorization server would recognize as authorized participants. Authorization servers MAY accept signed software statements as described in [[RFC7591]] [[rfc7591]] issued 
+Authorization servers MAY protect their Dynamic Registration endpoints by requiring clients to present credentials that the authorization server would recognize as authorized participants. Authorization servers MAY accept signed software statements as described in [[rfc7591]] [[rfc7591]] issued 
 to client software developers from a trusted registration entity. The software statement can be used to tie together many instances of the same client software that will be run, dynamically registered, and authorized separately at runtime. The software statement MUST include the following client metadata parameters:
 
 <dl>
@@ -101,7 +101,7 @@ The authorization server MUST provide an [OpenID Connect service discovery] [[Op
 
 <dt>token_endpoint</dt>
 
-<dd style="margin-left: 8">REQUIRED. The fully qualified URL of the server's token endpoint defined by [OAuth 2.0] [[RFC6749]]</dd>
+<dd style="margin-left: 8">REQUIRED. The fully qualified URL of the server's token endpoint defined by [OAuth 2.0] [[rfc6749]]</dd>
 
 <dt>introspection_endpoint</dt>
 
@@ -163,10 +163,9 @@ Added `tls_client_auth`
   ],
   "grant_types_supported": [
     "authorization_code",
-    "implicit",
     "urn:ietf:params:oauth:grant-type:jwt-bearer",
     "client_credentials",
-    "urn:ietf:params:oauth:grant_type:redelegate"
+    "urn:ietf:params:oauth:grant-type:token-exchange"
   ],
   "scopes_supported": [
     "profile", "openid", "email", "address", "phone", "offline_access"
@@ -353,7 +352,7 @@ The access tokens MUST be signed with [JWS] [[RFC7515]] . If private_key_jwt is 
 <aside class=" addition">
 <b>iGov-NL : Additional content</b></br>  
 
-In addition to above signing methods, the Authorization server SHOULD support PS256 signing algorithm [[RFC7518]] for the signing of the JWT Bearer Tokens.
+In addition to above signing methods, the Authorization server SHOULD support PS256 signing algorithm [[rfc7518]] for the signing of the JWT Bearer Tokens.
 
 </aside>
 <!-- iGov-NL : End of the additional content -->

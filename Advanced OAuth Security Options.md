@@ -14,7 +14,7 @@ When the client presents the token to the protected resource, it is also require
 <!-- iGov-NL : Start of the additional content -->
 <aside class=" addition">
 <b>iGov-NL : Additional content</b></br>  
-DPoP, or Demonstrating Proof of Possession (see: [[RFC9449]]), is an extension that describes a technique to cryptographically bind access tokens to a particular client when they are issued.   
+DPoP, or Demonstrating Proof of Possession (see: [[rfc9449]]), is an extension that describes a technique to cryptographically bind access tokens to a particular client when they are issued.   
 </aside>
 <!-- iGov-NL : End of the additional content -->
 
