@@ -292,6 +292,9 @@ For best practices on token lifetime see section [Token Lifetimes](#token-lifeti
 Unlike the core OAuth protocol, the ~~iGov~~ iGov-NL profile defines interoperability requirements between authorization servers and resource servers.
 
 <!-- ### [3.2.1.](#rfc.section.3.2.1) [JWT Bearer Tokens](#JWTBearerTokens) -->
+
+[/]: Dit is §3.3 geworden in de nieuwe versie van iGov. De tekst is ook (qua zinsbouw) aangepast.
+
 #### JSON Web Tokens (JWT)
 
 In order to facilitate interoperability with multiple protected resources, all ~~iGov~~ iGov-NL-compliant authorization servers MUST issue cryptographically signed sender-constrained tokens in the JSON Web Token (JWT) format as defined in [[[RFC9068]]] . The information carried in the JWT is intended to allow a protected resource to quickly test the integrity of the token without additional network calls, and to allow the protected resource to determine which authorization server issued the token. The protected resource MAY use the authorization server token introspection service, which is in turn used for conveying service to retrieve additional security information about the token. 
