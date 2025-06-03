@@ -84,4 +84,13 @@ Protected resources MUST interpret access tokens using either JWT, token introsp
 
 The protected resource MUST check the <samp>aud</samp> (audience) claim, if it exists in the token, to ensure that it includes the protected resource's identifier. The protected resource MUST ensure that the rights associated with the token are sufficient to grant access to the resource. For example, this can be accomplished by querying the scopes and acr associated with the token from the authorization server's token introspection endpoint.
 
+<!-- iGov-NL : Start of the additional content -->
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
+
+In case these (optional) attributes are already provided within the token, no introspection is needed. For further details we encourage to read the [[[NLGOV.OpenID]]] specification.
+
+</aside>
+<!-- iGov-NL : End of the additional content -->
+
 A protected resource MUST limit which authorization servers it will accept valid tokens from. A resource server MAY accomplish this using a whitelist of trusted servers, a dynamic policy engine, or other means.
