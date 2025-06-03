@@ -286,15 +286,18 @@ For best practices on token lifetime see section [Token Lifetimes](#token-lifeti
 </aside>
 <!-- iGov-NL : End of the additional content -->
 
-<!-- ### [3.2.](#rfc.section.3.2) Connections with protected resources -->
-### Connections with protected resources
+<!-- ### [3.2.](#rfc.section.3.2) Connections between authorization servers and protected resources -->
+### Connections between authorization servers and protected resources
 
-Unlike the core OAuth protocol, the ~~iGov~~ iGov-NL profile intends to allow compliant protected resources to connect to compliant authorization servers.
+Unlike the core OAuth protocol, the ~~iGov~~ iGov-NL profile defines interoperability requirements between authorization servers and resource servers.
 
 <!-- ### [3.2.1.](#rfc.section.3.2.1) [JWT Bearer Tokens](#JWTBearerTokens) -->
-#### JWT Bearer Tokens
 
-In order to facilitate interoperability with multiple protected resources, all ~~iGov~~ iGov-NL-compliant authorization servers issue cryptographically signed tokens in the JSON Web Token (JWT) format. The information carried in the JWT is intended to allow a protected resource to quickly test the integrity of the token without additional network calls, and to allow the protected resource to determine which authorization server issued the token. When combined with discovery, this information is sufficient to programmatically locate the token introspection service, which is in turn used for conveying additional security information about the token.
+[/]: Dit is §3.3 geworden in de nieuwe versie van iGov. De tekst is ook (qua zinsbouw) aangepast.
+
+#### JSON Web Tokens (JWT)
+
+In order to facilitate interoperability with multiple protected resources, all ~~iGov~~ iGov-NL-compliant authorization servers MUST issue cryptographically signed sender-constrained tokens in the JSON Web Token (JWT) format as defined in [[[RFC9068]]] . The information carried in the JWT is intended to allow a protected resource to quickly test the integrity of the token without additional network calls, and to allow the protected resource to determine which authorization server issued the token. The protected resource MAY use the authorization server token introspection service, which is in turn used for conveying service to retrieve additional security information about the token. 
 
 The server MUST issue tokens as JWTs with, at minimum, the following claims:
 
@@ -304,7 +307,7 @@ The server MUST issue tokens as JWTs with, at minimum, the following claims:
 
 <dd style="margin-left: 8">The issuer URL of the server that issued the token</dd>
 
-<dt>azp</dt>
+<dt>client_id</dt>
 
 <dd style="margin-left: 8">The client id of the client to whom this token was issued</dd>
 
@@ -316,12 +319,6 @@ The server MUST issue tokens as JWTs with, at minimum, the following claims:
 
 <dd style="margin-left: 8">A unique JWT Token ID value with at least 128 bits of entropy. This value MUST NOT be re-used in another token. Clients MUST check for reuse of jti values and reject all tokens issued with duplicate jti values.</dd>
 
-</dl>
-
-The server MAY issue tokens with additional fields, including the following as defined here:
-
-<dl>
-
 <dt>sub</dt>
 
 <dd style="margin-left: 8">The identifier of the end-user that authorized this client, or the client id of a client acting on its own behalf (such as a bulk transfer). Since this information could potentially leak private user information, it should be used only when needed. End-user identifiers SHOULD be pairwise anonymous identifiers unless the audiance requires otherwise.
@@ -330,6 +327,10 @@ The server MAY issue tokens with additional fields, including the following as d
 
 <dd style="margin-left: 8">The audience of the token, an array containing the identifier(s) of protected resource(s) for which the token is valid, if this information is known. The aud claim may contain multiple values if the token is valid for multiple protected resources. Note that at runtime, the authorization server may not know the identifiers of all possible protected resources at which a token may be used.</dd>
 
+<dt>iat</dt>
+
+<dd style="margin-left: 8">The "iat" (issued at) claim identifies the time at which the JWT was issued. This claim can be used to determine the age of the JWT. Its value MUST be a number containing a NumericDate value.</dd>
+
 </dl>
 
 <aside class="example">
@@ -337,15 +338,18 @@ The following sample claim set illustrates the use of the required claims for an
 
 <pre class="json">{
    "exp": 1418702388,
-   "azp": "55f9f559-2496-49d4-b6c3-351a586b7484",
+   "client_id": "55f9f559-2496-49d4-b6c3-351a586b7484",
    "iss": "https://idp-p.example.com/",
+   "sub" : "93ff28e3-3982-c34b-f2a4-98bb3d42b277",
+   "aud": "api.example.com"
    "jti": "2402f87c-b6ce-45c4-95b0-7a3f2904997f",
-   "iat": 1418698788
+   "iat": 1418698788,
+   "acr": "myACR"
 }
 </pre>
 </aside>
 
-The access tokens MUST be signed with [JWS] [[rfc7515]] . The authorization server MUST support the RS256 signature method for tokens and MAY use other asymmetric signing methods as defined in the [IANA JSON Web Signatures and Encryption Algorithms registry] [[JWS.JWE.Algs]] . The JWS header MUST contain the following fields:
+The access tokens MUST be signed with [JWS] [[RFC7515]] . If private_key_jwt is used, the authorization server MUST support the RS256 signature method for tokens and MAY use other asymmetric signing methods as defined in the [IANA JSON Web Signatures and Encryption Algorithms registry] [[JWS.JWE.Algs]] . The JWS header MUST contain the following fields:
 
 <!-- iGov-NL : Start of the additional content -->
 <aside class=" addition">
