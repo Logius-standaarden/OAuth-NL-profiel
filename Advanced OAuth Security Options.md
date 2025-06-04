@@ -35,8 +35,8 @@ When the client presents the token to the protected resource, it is also require
 
 <!-- iGov-NL : Start of the additional content -->
 <aside class=" addition">
-<b>iGov-NL : Additional content</b></br>  
-DPoP, or Demonstrating Proof of Possession (see: [[rfc9449]]), is an extension that describes a technique to cryptographically bind access tokens to a particular client when they are issued.   
+<b>iGov-NL : Additional content</b></br>
+[[[RFC9449]]] is an extension that describes a technique to cryptographically bind access tokens to a particular client when they are issued.
 </aside>
 <!-- iGov-NL : End of the additional content -->
 
@@ -58,5 +58,24 @@ Another implementation of PoP is using TLS with mutual authentication, where the
 
 More detailed information about securely implementing PoP are described in [FAPI 2.0 Security Profile](https://openid.net/specs/fapi-2_0-security-02.html#name-requirements-for-clients).
 
+</aside>
+<!-- iGov-NL : End of the additional content -->
+
+<!-- iGov-NL : Start of the additional content -->
+## Rich Authorization Requests
+
+<aside class=" addition">
+<b>iGov-NL : Additional content</b></br>  
+
+[[[RFC9396]]] is an extension that provides a way for clients to request and obtain fine-grained authorization from resource owners such as end users during the Authorization Code Flow.
+In traditional OAuth flows, clients typically request access to a set of scopes from a Resource Server. The Resource Owner then grants access to the resources to the client. However, this approach allows limited granular control over the access granted to a client and can lead to over-provisioning of access, which poses various security risks. With RAR, clients can pass an `authorization_details` claim with additional details that allow for more fine-grained authorization. This also allows for the Resource Server to implement fine-grained authorization for specific requests. Think of one-time payment approvals, document signing or requesting or approving (access to a) specific cases or documents.
+
+According to the RFC, `authorization_details` requires just one field, `type`, which determines the allowable contents of the `authorization_details`. The value is unique for the described API in the context of the Authorization Server. 
+The underlying RFC defines a set of common data fields that are designed to be usable across different types of APIs. Fields like `locations`, `datatypes`, `identifier` and `privileges` can be added in the `authorization_details` parameter.
+
+As mentioned in [[RFC9396]]:
+> In case of authorization requests as defined in [[RFC6749]], implementers MAY consider using pushed authorization requests [[RFC9126]] to improve the security, privacy, and reliability of the flow.
+
+In case more data, or more recent data, is required for fine-grained authorization then one MAY include the OpenID AuthZEN standard in the `authorization_details`.
 </aside>
 <!-- iGov-NL : End of the additional content -->
