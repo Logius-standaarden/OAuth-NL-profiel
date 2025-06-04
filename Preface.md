@@ -106,10 +106,16 @@ The normal flow, that is without any error handling, is described below.
 
 ### Step 1. Authorization initiation
 
+
 As the client does not yet have a (valid) access token for this Service, it's first step is to obtain one.
 Therefore it sends an Authorization Request to the Authorization Server's Authorization Endpoint.
 It does so by redirecting / initiating the user-agent with the Authorization Request to the Authorization Endpoint.
 The Authorization request holds further details, as specified in this profile.
+
+<aside class="note" title="Extra security consideration">
+
+When the Authorization Server supports [[[rfc9126]]] (PAR), the client may first use PAR (or is required to use it, see `require_pushed_authorization_requests` in [Authorization Server Metadata](https://datatracker.ietf.org/doc/html/rfc9126#name-authorization-server-metada)). The client can initiate the flow by pushing a POST request with the parameters to the `pushed_authorization_request_endpoint`. The Authorization Server responds to the client with a `request_uri` containing a reference. The client will then use this `request_uri` as the redirect.
+</aside>
 
 ### Step 2. Authorization Request
 
@@ -149,3 +155,26 @@ The Resource Server uses the Access Token for its access control decision and an
 The Resource Server responds based on these decisions to the Client.
 The Client can inform and interact with the User based on the information received from the Resource Server.
 The contents and protocol of the Resource Request and Resource Response are out of scope of this profile.
+
+
+## Use case: Token exchange
+
+Token exchange is useful when the resource server requires a different token than the one(s) the client originally received during a prior interaction. To obtain this different token, the client can use token exchange [rfc8693]. It can be used for both impersonation and delegation, as specified in that RFC.
+
+The flow for such a machine to machine interaction is shown in the figure below.
+
+![Use case token exchange](media/use_case_client_credentials.svg "Use case token exchange")
+
+Note that the method by which the client received the original token(s)—either directly from an OAuth or SAML token server, or indirectly via other client applications—is not part of the token exchange process itself and, therefore, is not depicted in the diagram.
+
+### Step 1: Token Exchange Request
+
+Using client credentials, the client sends a token exchange request to the Authorization Server's token endpoint. At a minimum, this request includes the subject token and the token exchange grant type. Optionally, the request may also include an actor token, audience, resource, and scopes.
+
+### Step 2: Access Token Response
+
+The Authorization Server authenticates the client and validates the tokens and requested access, according to established policies. If valid, it issues a new token (typically an access token). This new token contains an "act" or "may_act" claim, linking the new token to the original subject token(s) as outlined in RFC 8693, as well as other claims relevant to the token type (e.g., an access token). The response may also include a refresh token, expiration details, and scopes. The client receives the new (access) token and can use it to make requests to the service API.
+
+### Step 3: Resource Interaction
+
+The client can now use the new token to send requests to the service. These requests are directed to the Resource Server, which evaluates the access token as part of its access control decisions (e.g., by using the subject in the access token). The Resource Server responds based on these access control decisions. The specifics of the Resource Request and Resource Response are beyond the scope of this document.
