@@ -14,6 +14,8 @@ Content added for the iGov-NL profile is indicated like this.
 </aside>
 <!-- iGov-NL : End of the additional content -->
 
+[The Governance of this standard](https://gitdocumentatie.logius.nl/publicatie/api/beheermodel/) is described by the API-Standaarden beheermodel in a [separate repository](https://github.com/Logius-standaarden/API-Standaarden-Beheermodel/) and published by Logius (api@logius.nl).
+
 ## Usecases
 
 There are two use cases: The *client credentials* flow and the *authorization code flow*. In two sections below we will elaborate on these, first we will introduce some common concepts.
