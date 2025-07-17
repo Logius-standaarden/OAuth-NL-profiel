@@ -297,7 +297,7 @@ Unlike the core OAuth protocol, the ~~iGov~~ iGov-NL profile defines interoperab
 
 #### JSON Web Tokens (JWT)
 
-In order to facilitate interoperability with multiple protected resources, all ~~iGov~~ iGov-NL-compliant authorization servers MUST issue cryptographically signed sender-constrained tokens in the JSON Web Token (JWT) format as defined in [[[RFC9068]]] . The information carried in the JWT is intended to allow a protected resource to quickly test the integrity of the token without additional network calls, and to allow the protected resource to determine which authorization server issued the token. The protected resource MAY use the authorization server token introspection service, which is in turn used for conveying service to retrieve additional security information about the token. 
+In order to facilitate interoperability with multiple protected resources, all ~~iGov~~ iGov-NL-compliant authorization servers MUST issue cryptographically signed tokens in the JSON Web Token (JWT) format as defined in [[[RFC9068]]] . The information carried in the JWT is intended to allow a protected resource to quickly test the integrity of the token without additional network calls, and to allow the protected resource to determine which authorization server issued the token. The protected resource MAY use the authorization server token introspection service, which is in turn used for conveying service to retrieve additional security information about the token. 
 
 The server MUST issue tokens as JWTs with, at minimum, the following claims:
 
