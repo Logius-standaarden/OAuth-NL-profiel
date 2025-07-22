@@ -1,6 +1,6 @@
 # Releasenotes NL GOV Assurance profile for OAuth 2.0 V1.2.0 (OAuth-NL)
 
-**Gepubliceerd op:** xxx 
+**Gepubliceerd op:** xxx <br>
 **Status:** Release Candidate (ter consultatie)
 
 Deze release candidate bevat inhoudelijke uitbreidingen en verduidelijkingen ten opzichte van v1.1.0 en markeert een belangrijke stap in de doorontwikkeling van het OAuth NL Profiel. De nadruk ligt op aanvullende use-cases, verbeterde securitymechanismen en uitlijning met internationale standaarden zoals RFC 9068, 8693 en 9126.
