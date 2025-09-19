@@ -27,7 +27,7 @@ When token exchange is not supported, SAML bearer grant [[rfc7522]] MAY be used 
 <!-- ### [3.1.2.](#rfc.section.3.1.2) Client authentication -->
 #### Client authentication
 
-The authorization server MUST enforce client authentication as described above for the authorization code and client credentials grant types. Public client cannot authenticate to the authorization server.
+The authorization server MUST enforce client authentication as described above for the authorization code and client credentials grant types. 
 
 The authorization server MUST validate all redirect URIs for authorization code ~~and implicit grant types~~.
 
