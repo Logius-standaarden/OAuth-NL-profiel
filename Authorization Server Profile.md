@@ -127,53 +127,53 @@ The following example shows the JSON document found at a discovery endpoint for 
 Added `tls_client_auth`
 </aside>
 <!-- iGov-NL : End of the additional content -->
-<pre class="json">{
-  "request_parameter_supported": true,
-  "registration_endpoint": "https://idp-p.example.com/register",
-  "userinfo_signing_alg_values_supported": [
-    "HS256", "HS384", "HS512", "RS256", "RS384", "RS512"
-  ],
-  "token_endpoint": "https://idp-p.example.com/token",
-  "request_uri_parameter_supported": false,
-  "request_object_encryption_enc_values_supported": [
-    "A192CBC-HS384", "A192GCM", "A256CBC+HS512",
-    "A128CBC+HS256", "A256CBC-HS512",
-    "A128CBC-HS256", "A128GCM", "A256GCM"
-  ],
-  "token_endpoint_auth_methods_supported": [
-    "private_key_jwt", "tls_client_auth"
-  ],
-  "jwks_uri": "https://idp-p.example.com/jwk",
-  "authorization_endpoint": "https://idp-p.example.com/authorize",
-  "require_request_uri_registration": false,
-  "introspection_endpoint": "https://idp-p.example.com/introspect",
-  "request_object_encryption_alg_values_supported": [
-    "RSA-OAEP", "RSA1_5", "RSA-OAEP-256"
-  ],
-  "service_documentation": "https://idp-p.example.com/about",
-  "response_types_supported": [
-    "code", "token"
-  ],
-  "token_endpoint_auth_signing_alg_values_supported": [
-    "HS256", "HS384", "HS512", "RS256", "RS384", "RS512"
-  ],
-  "revocation_endpoint": "https://idp-p.example.com/revoke",
-  "request_object_signing_alg_values_supported": [
-    "HS256", "HS384", "HS512", "RS256", "RS384", "RS512"
-  ],
-  "grant_types_supported": [
-    "authorization_code",
-    "urn:ietf:params:oauth:grant-type:jwt-bearer",
-    "client_credentials",
-    "urn:ietf:params:oauth:grant-type:token-exchange"
-  ],
-  "scopes_supported": [
-    "profile", "openid", "email", "address", "phone", "offline_access"
-  ],
-  "op_tos_uri": "https://idp-p.example.com/about",
-  "issuer": "https://idp-p.example.com/",
-  "op_policy_uri": "https://idp-p.example.com/about"
-}
+<pre class="json"> {
+    "request_parameter_supported": true,
+    "registration_endpoint": "https://idp-p.example.com/register",
+    "userinfo_signing_alg_values_supported": [
+      "HS256", "HS384", "HS512", "RS256", "RS384", "RS512"
+    ],
+    "token_endpoint": "https://idp-p.example.com/token",
+    "request_uri_parameter_supported": false,
+    "request_object_encryption_enc_values_supported": [
+      "A192CBC-HS384", "A192GCM", "A256CBC+HS512",
+      "A128CBC+HS256", "A256CBC-HS512",
+      "A128CBC-HS256", "A128GCM", "A256GCM"
+    ],
+    "token_endpoint_auth_methods_supported": [
+      "private_key_jwt",
+    ],
+    "jwks_uri": "https://idp-p.example.com/jwk",
+    "authorization_endpoint": "https://idp-p.example.com/authorize",
+    "require_request_uri_registration": false,
+    "introspection_endpoint": "https://idp-p.example.com/introspect",
+    "request_object_encryption_alg_values_supported": [
+      "RSA-OAEP", ?RSA1_5", "RSA-OAEP-256"
+    ],
+    "service_documentation": "https://idp-p.example.com/about",
+    "response_types_supported": [
+      "code", "token"
+    ],
+    "token_endpoint_auth_signing_alg_values_supported": [
+      "HS256", "HS384", "HS512", "RS256", "RS384", "RS512"
+    ],
+    "revocation_endpoint": "https://idp-p.example.com/revoke",
+    "request_object_signing_alg_values_supported": [
+      "HS256", "HS384", "HS512", "RS256", "RS384", "RS512"
+    ],
+    "grant_types_supported": [
+      "authorization_code",
+      "client_credentials"
+    ],
+    "scopes_supported": [
+      "profile", "openid", "email", "address", "phone", "offline_access"
+    ],
+    "op_tos_uri": "https://idp-p.example.com/about",
+    "issuer": "https://idp-p.example.com/",
+    "op_policy_uri": "https://idp-p.example.com/about"
+    "tls_client_certificate_bound_access_tokens": "true"
+    "dpop_signing_alg_values_supported": ["PS256", "ES256"]
+  }
 </pre>
 </aside>
 
