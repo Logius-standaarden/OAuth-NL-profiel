@@ -24,41 +24,6 @@ A resource server has resources classified as "public" and "sensitive". "Sensiti
 
 In this manner, protected resources and authorization servers work together to meet risk tolerance levels for sensitive resources and end-user authentication.
 
-<!-- iGov-NL : Start of the additional content -->
-<aside class=" addition">
-<b>iGov-NL : Additional content</b></br>  
-
-<aside class="example">
-
-Request:
-```
-GET /resource HTTP/1.1
-Authorization: Bearer 4f626847-91b1-3417-a91e-c5627f377ae1
-Accept: text/plain, application/json, application/*+json, */*
-Host: resource.com
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.2.3 (java 1.5)
-```
-
-Response:
-```
-  HTTP/1.1 200 OK
-  Content-Type: application/json
-  {
-   "sub": "248289761001",
-   "name": "Jane Doe",
-   "given_name": "Jane",
-   "family_name": "Doe",
-   "preferred_username": "j.doe",
-   "email": "janedoe@example.com",
-   "picture": "http://example.com/janedoe/me.jpg"
-  }
-```
-</aside>
-</aside>
-<!-- iGov-NL : End of the additional content -->
-
-<!-- ### [4.2.](#rfc.section.4.2) Connections with Clients -->
 ### Connections with Clients
 
 A protected resource MUST accept bearer tokens passed in the authorization header as described in [[rfc6750]] . A protected resource MAY also accept bearer tokens passed in the form parameter ~~or query parameter~~ method~~s~~.
