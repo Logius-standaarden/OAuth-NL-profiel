@@ -10,14 +10,41 @@
 
 ## Introduction
 
-OAuth and OIDC NL GOV profiles support several Use Cases for representing and delegating relationships, which apply when an End-User intends to consume an online service on behalf of a Person (Natural or Juridical) or an Organisation (the service consumer) , where authentication and authorization is required. The End-User in these Use Cases is either a Natural Person or an Organisation, representing the service consumer through a Representation Relationship. The relationship has to be formalized and may be either a direct relationship, either voluntarily or on legal grounds, or a chain of Representation Relationships. The formalization of these relationships is out of scope of this profile.
+The OAuth and OpenID Connect (OIDC) NL GOV profiles support multiple use cases where one entity acts on behalf of another. These occur when an End-User consumes an online service on behalf of a Person (natural or juridical) or an Organisation (the service consumer). In these cases, both authentication and authorization must express not only who the End-User is, but also whom they represent or act for.
 
-Example Representation Use Cases include voluntary authorization, representative assigned by court order (guardian, administrator), statutory signatory (director, president), limited authorized signatory, etc.
+Such relationships — called Representation Relationships — must be formally established.
+They can arise:
+* voluntarily (e.g., power of attorney),
+* by legal mandate (e.g., guardian, court-appointed administrator),
+* or by corporate capacity (e.g., director, statutory signatory).
+<!-- Example Representation Use Cases include voluntary authorization, representative assigned by court order (guardian, administrator), statutory signatory (director, president), limited authorized signatory, etc. -->
+
+The formalization of these relationships is out of scope of this profile; this document focuses on how these relationships are conveyed within OAuth and OIDC tokens.
 
 ### Delegation vs Representation
 Delegation: The user grants authority to another party (e.g., an app or service) to act on their behalf, but the delegated party’s actions are still traced back to the original user (the delegator).
 
 Representation: The actor presents themselves as another principal, so the system treats the actor as if they are that other entity — effectively standing in the shoes of the represented party.
+
+## OAuth tokens
+
+In traditional OAuth, an access token represents a single subject (the resource owner). However, many governmental and organizational use cases require multi-actor authorization, where multiple identities participate in or influence the authorization decision.
+Examples include:
+* an End-User acting as a legal entity,
+* an application acting for a user,
+* a chain of representation, such as citizen → intermediary → government service.
+
+To model these scenarios, OAuth provides a mechanism for expressing actor relationships through specific claims:
+* [RFC 8693] OAuth 2.0 Token Exchange — defines `act` and `may_act` claims for representing delegation chains.
+* [RFC 9396] Rich Authorization Requests (RAR) — defines how specific authorization details can be requested and conveyed between parties.
+* profile-specific claims such as represents introduced in this document.
+
+### Application in NL GOV Profiles
+
+Token Exchange ([RFC8693]) will be included in an upcoming release of the OAuth 2.0 NL GOV Profile.
+See: Logius OAuth Profile – Grant Types (Draft)
+
+
 
 ### Representation Relationships
 
@@ -94,5 +121,17 @@ Its Claims are as follows:
             "jti": "a65c560d-085c-466e-97c5-f8639fca5ea7",
             "nbf": 1418699112,
       }
+
+
+## Glossary
+| Term                            | Definition                                                                               |
+| ------------------------------- | ---------------------------------------------------------------------------------------- |
+| **End-User**                    | The natural or juridical person who authenticates and initiates an authorization flow.   |
+| **Service Consumer**            | The entity (person or organization) for which the service is ultimately consumed.        |
+| **Representation Relationship** | A formally defined relationship where one actor represents another.                      |
+| **Delegation**                  | Authorization for an actor to act on behalf of another while retaining its own identity. |
+| **Representation**              | Acting as another entity, where the system treats the actor as the represented party.    |
+| **Multi-Actor Authorization**   | Authorization scenario involving more than one principal influencing the decision.       |
+  
 </pre>
 </aside>
