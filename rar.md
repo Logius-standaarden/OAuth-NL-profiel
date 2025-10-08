@@ -41,8 +41,8 @@ To model these scenarios, OAuth provides a mechanism for expressing actor relati
 
 ### Application in NL GOV Profiles
 
-Token Exchange ([RFC8693]) will be included in an upcoming release of the OAuth 2.0 NL GOV Profile.
-See: Logius OAuth Profile – Grant Types (Draft)
+Token Exchange ([RFC8693]) will be included in an future release of the OAuth 2.0 NL GOV Profile.
+See the draft version: [Logius OAuth Profile – Grant Types](https://logius-standaarden.github.io/OAuth-NL-profiel/#grant-types)
 
 
 
@@ -121,7 +121,9 @@ Its Claims are as follows:
             "jti": "a65c560d-085c-466e-97c5-f8639fca5ea7",
             "nbf": 1418699112,
       }
-
+  
+</pre>
+</aside>
 
 ## Glossary
 | Term                            | Definition                                                                               |
@@ -132,6 +134,3 @@ Its Claims are as follows:
 | **Delegation**                  | Authorization for an actor to act on behalf of another while retaining its own identity. |
 | **Representation**              | Acting as another entity, where the system treats the actor as the represented party.    |
 | **Multi-Actor Authorization**   | Authorization scenario involving more than one principal influencing the decision.       |
-  
-</pre>
-</aside>
