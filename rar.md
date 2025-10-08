@@ -22,9 +22,14 @@ They can arise:
 The formalization of these relationships is out of scope of this profile; this document focuses on how these relationships are conveyed within OAuth and OIDC tokens.
 
 ### Delegation vs Representation
-Delegation: The user grants authority to another party (e.g., an app or service) to act on their behalf, but the delegated party’s actions are still traced back to the original user (the delegator).
+| Concept            | Description                                                                                                                                                | Token Claim Pattern                               |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| **Delegation**     | The End-User or service grants another party the right to act on their behalf, while the delegated party remains clearly identifiable as a separate actor. | `act` claim (delegated actor identified)          |
+| **Representation** | The actor presents themselves *as* another principal, and is treated as that entity by relying parties.                                                    | `represents` claim (represented party identified) |
 
-Representation: The actor presents themselves as another principal, so the system treats the actor as if they are that other entity — effectively standing in the shoes of the represented party.
+So in terms of examples:
+* <u>Delegation</u>: A service or application acts on behalf of a user (e.g., backend API call with act claim).
+* <u>Representation</u>: A natural person acts as an organization (e.g., director signing an electronic transaction).
 
 ## OAuth tokens
 
@@ -46,7 +51,7 @@ See the draft version: [Logius OAuth Profile – Grant Types](https://logius-sta
 
 
 
-### Representation Relationships
+### Representation Relationships in NL GOV Context
 
 In Use Cases that involve Representation Relationships, Representation Relationships are explicitly mentioned in the form of a `represents` Claim, analogous to the Delegation Semantics specified in [[RFC8693]].
 
