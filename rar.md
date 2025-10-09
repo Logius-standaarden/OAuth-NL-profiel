@@ -139,3 +139,89 @@ Its Claims are as follows:
 | **Delegation**                  | Authorization for an actor to act on behalf of another while retaining its own identity. |
 | **Representation**              | Acting as another entity, where the system treats the actor as the represented party.    |
 | **Multi-Actor Authorization**   | Authorization scenario involving more than one principal influencing the decision.       |
+
+------
+
+## Delegation Relationships
+
+In Use Cases that involve Delegation Relationships, as specified in [[rfc8693]].
+
+Resources SHOULD process the act claim, in case identification or the representing party (e.g. an intermediary party action on behalf of the subject) can be applicable in the context of the OpenID Client and OpenID Resouce.
+
+This profile specifies Delegation Relations in ID Tokens as follows:
+
+- The sub Claim is used for authorizing access to resources; This is the person being represented.
+- In case a chain with parties acting on behalf of the represented user is applicable, this is represented as an act (or may_act) claim.
+- Each act Claim MUST contain sub and iss Claims to uniquely identify the acting party and SHOULD contain a subject_type Claim to explicitly indicate the type of identifier used in the sub claim if the OpenID Provider supports multiple types of subject identifiers.
+- Act Claims MAY contain additional Claims (e.g. email, etc.) to provide additional useful information about the acting party.
+
+[Example 3](https://gitdocumentatie.logius.nl/publicatie/api/oidc/#example-3)
+
+A sample chain representation for may look like (note: the requested scope also includes the required openid scope and a fictional scope brp_sensitief; Claims that do not add to the example are omitted for readability):
+
+```
+{
+  "scope": "openid brp_sensitief",
+  /* represented party - User that has access the data */
+  "sub": "RKyLpEVr1L",
+  "subject_type": "public",
+  "aud": "sub_id_type": "urn:nl-eid-gdi:1.0:id:pseudonym":
+  "act": {
+    /* Intermediary in representation chain - an organization in this example */
+    "sub": "492099595",
+    "subject_type": "public",
+    "aud": " urn:nl-eid-gdi:1.0:id:RSIN ",    }
+    "act": {
+      /* person acting on behalf of the intermediary organisation */
+      "sub": "4Yg8u72NxR",
+      "subject_type": "pairwise",
+     "aud": "urn:nl-eid-gdi:1.0:id:pseudonym"
+    }
+}
+```
+
+NOTE. If more specific information (than a generic scope) is required for authorization - such as the organisation (E.g. the Dutch RSIN and/or KvK number etc.), or specific data, level of access, etc. - this information MAY be included as claims within the authorization_details claim, as specified in [[rfc9396]].
+Example:
+
+```
+  "authorization_details": {
+   	 “type”: “party_authorization_example”
+   “represented_party”:{
+  		  "sub": "492099595",
+ 		   /* represented party - an organization in this example */
+  		  "subject_type": " public",
+		  "sub_id_type": "urn:nl-eid-gdi:1.0:id:RSIN”, 
+ }
+}
+```
+
+## Representation Relationships
+
+In Use Cases that involve Representation Relationships and other situations where a token is meant to be used in the context of a specific scope, Rich Authorization requests MAY be used
+Example 4
+E.g. an intermediary party acting on behalf of a government party.
+
+```
+{
+  "scope": "openid brp_sensitief",
+  /* Intermediary in representation chain - a system (client) in this */
+  "sub": " example-client-id",
+  "subject_type": "public",
+  "iss": "example.as",
+  "authorization_details": {
+   	 “type”: “party_authorization_example
+   	 “represented_party”:{
+       		 "sub": "492099595",
+      		 /* represented party - an organization in this example */
+      		 "subject_type": " public",
+      		 "iss": " urn:nl-eid-gdi:1.0:id:RSIN ",    
+      		 "responsible_person": {
+             			/* person acting on behalf of the repreented organisation */
+             			"sub": "4Yg8u72NxR",
+            			"subject_type": "pairwise",
+             			"iss": " urn:<..eherkenning…>. "
+    			}
+ 		 }
+}
+}
+```
