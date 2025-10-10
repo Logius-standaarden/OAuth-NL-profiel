@@ -49,7 +49,67 @@ To model these scenarios, OAuth provides a mechanism for expressing actor relati
 Token Exchange ([[rfc8693]]) will be included in an future release of the OAuth 2.0 NL GOV Profile.
 See the draft version: [Logius OAuth Profile – Grant Types](https://logius-standaarden.github.io/OAuth-NL-profiel/#grant-types)
 
+## Delegation Relationships
 
+In Use Cases that involve Delegation Relationships, as specified in [[rfc8693]], an actor (for example, an intermediary or system) is authorized to perform actions on behalf of another principal, while remaining a distinct identity.
+
+Resources SHOULD process the `act` claim when identification of an intermediary or other acting party is applicable in the context of the OpenID Client and Resource Server.
+
+### Claim Structure
+
+This profile specifies delegation relationships in ID Tokens as follows:
+
+- The `sub` claim identifies the represented user (the subject of the authorization).
+- The `act` (or `may_act`) claim identifies the intermediary or acting party.
+- In case of a delegation chain (multiple parties acting on behalf of each other), these can be nested via multiple `act` objects.
+- Each `act` claim:
+	- MUST contain `sub` and `iss` claims to uniquely identify the acting party.
+	- SHOULD include a `subject_type` claim to indicate the identifier type if multiple types are supported.
+ 	- MAY include additional identity-related claims (e.g., `email`) to convey useful information about the acting party.
+
+
+### Example: Nested Delegation
+[Example 3](https://gitdocumentatie.logius.nl/publicatie/api/oidc/#example-3)
+
+A sample delegation chain may look like this (note: the requested scope also includes the required `openid` scope and a fictional `brp_sensitief` scope; claims not essential to the example are omitted for readability):
+
+```
+{
+  "scope": "openid brp_sensitief",
+  /* Represented party — user with access rights */
+  "sub": "RKyLpEVr1L",
+  "subject_type": "public",
+  "sub_id_type": "urn:nl-eid-gdi:1.0:id:pseudonym",
+  "act": {
+    /* Intermediary organization acting on behalf of the user */
+    "sub": "492099595",
+    "subject_type": "public",
+    "sub_id_type": "urn:nl-eid-gdi:1.0:id:RSIN",
+    "act": {
+      /* Individual acting on behalf of the intermediary organization */
+      "sub": "4Yg8u72NxR",
+      "subject_type": "pairwise",
+      "sub_id_type": "urn:nl-eid-gdi:1.0:id:pseudonym"
+    }
+  }
+}
+```
+
+### Integration with Rich Authorization Requests (RAR)
+
+If more specific authorization information is required — for example, identifying the organization (e.g., RSIN or KvK number), data categories, or access levels — such details MAY be included using the `authorization_details` claim, as defined in [[rfc9396]].
+
+Example:
+```
+"authorization_details": {
+  "type": "party_authorization_example",
+  "represented_party": {
+    "sub": "492099595",
+    "subject_type": "public",
+    "sub_id_type": "urn:nl-eid-gdi:1.0:id:RSIN"
+  }
+}
+```
 
 ### Representation Relationships in NL GOV Context
 
@@ -142,58 +202,7 @@ Its Claims are as follows:
 
 ------
 
-## Delegation Relationships
 
-In Use Cases that involve Delegation Relationships, as specified in [[rfc8693]].
-
-Resources SHOULD process the act claim, in case identification or the representing party (e.g. an intermediary party action on behalf of the subject) can be applicable in the context of the OpenID Client and OpenID Resouce.
-
-This profile specifies Delegation Relations in ID Tokens as follows:
-
-- The sub Claim is used for authorizing access to resources; This is the person being represented.
-- In case a chain with parties acting on behalf of the represented user is applicable, this is represented as an act (or may_act) claim.
-- Each act Claim MUST contain sub and iss Claims to uniquely identify the acting party and SHOULD contain a subject_type Claim to explicitly indicate the type of identifier used in the sub claim if the OpenID Provider supports multiple types of subject identifiers.
-- Act Claims MAY contain additional Claims (e.g. email, etc.) to provide additional useful information about the acting party.
-
-[Example 3](https://gitdocumentatie.logius.nl/publicatie/api/oidc/#example-3)
-
-A sample chain representation for may look like (note: the requested scope also includes the required openid scope and a fictional scope brp_sensitief; Claims that do not add to the example are omitted for readability):
-
-```
-{
-  "scope": "openid brp_sensitief",
-  /* represented party - User that has access the data */
-  "sub": "RKyLpEVr1L",
-  "subject_type": "public",
-  "aud": "sub_id_type": "urn:nl-eid-gdi:1.0:id:pseudonym":
-  "act": {
-    /* Intermediary in representation chain - an organization in this example */
-    "sub": "492099595",
-    "subject_type": "public",
-    "aud": " urn:nl-eid-gdi:1.0:id:RSIN ",    }
-    "act": {
-      /* person acting on behalf of the intermediary organisation */
-      "sub": "4Yg8u72NxR",
-      "subject_type": "pairwise",
-     "aud": "urn:nl-eid-gdi:1.0:id:pseudonym"
-    }
-}
-```
-
-NOTE. If more specific information (than a generic scope) is required for authorization - such as the organisation (E.g. the Dutch RSIN and/or KvK number etc.), or specific data, level of access, etc. - this information MAY be included as claims within the authorization_details claim, as specified in [[rfc9396]].
-Example:
-
-```
-  "authorization_details": {
-   	 “type”: “party_authorization_example”
-   “represented_party”:{
-  		  "sub": "492099595",
- 		   /* represented party - an organization in this example */
-  		  "subject_type": " public",
-		  "sub_id_type": "urn:nl-eid-gdi:1.0:id:RSIN”, 
- }
-}
-```
 
 ## Representation Relationships
 
