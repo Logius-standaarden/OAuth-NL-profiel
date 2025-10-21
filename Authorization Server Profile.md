@@ -35,7 +35,7 @@ The authorization server MUST validate all redirect URIs for authorization code 
 #### Dynamic Registration
 
 Dynamic Registration allows for authorized Clients to on-board programmatically without administrative intervention. This is particularly important in ecosystems with many potential Clients, including Mobile Apps acting as independent Clients. Authorization servers MUST support dynamic client registration,
-and clients MAY register using the [Dynamic Client Registration Protocol] [[rfc7591]] for authorization code grant types. Clients MUST NOT dynamically register for the client credentials grant type. Authorization servers MAY limit the scopes available to dynamically registered clients.
+and clients MAY register using the [Dynamic Client Registration Protocol] [[rfc7591]] for authorization code grant types.S Authorization servers MAY limit the scopes available to dynamically registered clients.
 
 Authorization servers MAY protect their Dynamic Registration endpoints by requiring clients to present credentials that the authorization server would recognize as authorized participants. Authorization servers MAY accept signed software statements as described in [[rfc7591]] [[rfc7591]] issued 
 to client software developers from a trusted registration entity. The software statement can be used to tie together many instances of the same client software that will be run, dynamically registered, and authorized separately at runtime. The software statement MUST include the following client metadata parameters:
