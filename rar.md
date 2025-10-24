@@ -22,7 +22,7 @@ They can arise:
 The formalization of these relationships is out of scope of this profile; this document focuses on how these relationships are conveyed within OAuth and OIDC tokens.
 
 ### Delegation vs Representation
-| Concept            | Description                                                                                                                                                | Token Claim Pattern                               |
+| Concept            | Description                                                                                                                                                | Token claim Pattern                               |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
 | **Delegation**     | The End-User or service grants another party the right to act on their behalf, while the delegated party remains clearly identifiable as a separate actor. | `act` claim (delegated actor identified)          |
 | **Representation** | The actor presents themselves *as* another principal, and is treated as that entity by relying parties.                                                    | `represents` claim (represented party identified) |
@@ -55,7 +55,7 @@ In Use Cases that involve Delegation Relationships, as specified in [[rfc8693]],
 
 Resources SHOULD process the `act` claim when identification of an intermediary or other acting party is applicable in the context of the OpenID Client and Resource Server.
 
-### Claim Structure
+### claim Structure
 
 This profile specifies delegation relationships in ID Tokens as follows:
 
@@ -69,126 +69,107 @@ This profile specifies delegation relationships in ID Tokens as follows:
 
 
 ### Example: Nested Delegation
+<aside class="example">
 [Example 3](https://gitdocumentatie.logius.nl/publicatie/api/oidc/#example-3)
 
 A sample delegation chain may look like this (note: the requested scope also includes the required `openid` scope and a fictional `brp_sensitief` scope; claims not essential to the example are omitted for readability):
 
-```
-{
-  "scope": "openid brp_sensitief",
-  /* Represented party — user with access rights */
-  "sub": "RKyLpEVr1L",
-  "subject_type": "public",
-  "sub_id_type": "urn:nl-eid-gdi:1.0:id:pseudonym",
-  "act": {
-    /* Intermediary organization acting on behalf of the user */
-    "sub": "492099595",
-    "subject_type": "public",
-    "sub_id_type": "urn:nl-eid-gdi:1.0:id:RSIN",
-    "act": {
-      /* Individual acting on behalf of the intermediary organization */
-      "sub": "4Yg8u72NxR",
-      "subject_type": "pairwise",
-      "sub_id_type": "urn:nl-eid-gdi:1.0:id:pseudonym"
-    }
-  }
-}
-```
+<pre>
+	{
+	  "scope": "openid brp_sensitief",
+	  /* Represented party — user with access rights */
+	  "sub": "RKyLpEVr1L",
+	  "subject_type": "public",
+	  "sub_id_type": "urn:nl-eid-gdi:1.0:id:pseudonym",
+	  "aud": ???,
+	  "act": {
+		/* Intermediary in reperesentation chain - an organization oacting on behalf of the user in this example */
+		"sub": "492099595",
+		"subject_type": "public",
+		"aud": ???,
+		"sub_id_type": "urn:nl-eid-gdi:1.0:id:RSIN",
+		"act": {
+		  /* Individual acting on behalf of the intermediary organization */
+		  "sub": "4Yg8u72NxR",
+		  "subject_type": "pairwise",
+		  "aud": "urn:nl-eid-gdi:1.0:id:pseudonym" // klopt dit?
+		}
+	  }
+	}
+</pre>
+</aside>
 
 ### Integration with Rich Authorization Requests (RAR)
 
 If more specific authorization information is required — for example, identifying the organization (e.g., RSIN or KvK number), data categories, or access levels — such details MAY be included using the `authorization_details` claim, as defined in [[rfc9396]].
 
-Example:
-```
-"authorization_details": {
-  "type": "party_authorization_example",
-  "represented_party": {
-    "sub": "492099595",
-    "subject_type": "public",
-    "sub_id_type": "urn:nl-eid-gdi:1.0:id:RSIN"
-  }
-}
-```
+<aside class="example">
+RAR example:
+<pre>
+	"authorization_details": {
+	  "type": "party_authorization_example",
+	  /* represented party - an organization in this example */
+	  "represented_party": {
+	    "sub": "492099595",
+	    "subject_type": "public",
+	    "sub_id_type": "urn:nl-eid-gdi:1.0:id:RSIN"
+	  }
+	}
+</pre>
+</aside>
 
-### Representation Relationships in NL GOV Context
+## Representation Relationships in NL GOV Context
 
-In Use Cases that involve Representation Relationships, Representation Relationships are explicitly mentioned in the form of a `represents` Claim, analogous to the Delegation Semantics specified in [[rfc8693]].
+In Use Cases that involve Representation Relationships, or other situations where a token must convey context about who is represented within a specific scope, [[[RFC9396]]] MAY be used to include explicit representation details within the `authorization_details` claim.
 
-<p class="note" title="Token Exchange in Assurance profile for OAuth 2.0">
-  Token Exchange [[rfc8693]] will be included in the upcoming release of the [[[NLGOV.OAuth2]]]. See the section in the latest draft: https://logius-standaarden.github.io/OAuth-NL-profiel/#grant-types
-</p>
+A representation relationship expresses that a principal (for example, an intermediary system or individual) acts as another principal (for example, a legal entity or organization).
+In contrast to delegation, where the actor remains a distinct identity, representation implies that the actor is treated as the represented party for the duration of the transaction.
 
-> **Note**: Whereas [[rfc8693]] lists the End-User in the `act` or `may_act` Claims and the represented service consumer in the `sub` Claim, this is reversed in this profile: the End-User is listed in the `sub` Claim and the represented service consumer is listed in the `represents` Claim. Reason for this is to mitigate the risk that a Client that does not explicitly supports the Representation Use Cases cannot recognize the difference between an End-User that authenticates on behalf of himself or on behalf of someone else via Representation.
-
-As such, all Clients MUST process `represents` Claims used, in case Representation can be applicable in the context of the OpenID Client and OpenID Provider. As an exception, `represents` Claims MAY be ignored by the Client if, and only if, it is explicitly agreed upon beforehand that no Representation will be provided.
-
-This profile specifies Representation Relations in ID Tokens as follows:
-
-- The End-User is always identified by the `sub` Claim;
-- The represented service consumer is mentioned in the `represents` Claim.
-- In case a chain representation is applicable, the representation chain is represented as a series of nested `represents` Claims with the represented service consumer listed as the deepest nested `represents` Claim.
-- Each `represents` Claim MUST contain `sub` and `iss` Claims to uniquely identify the represented party and SHOULD contain a `sub_id_type` Claim to explicitly indicate the type of identifier used in the `sub` claim if the OpenID Provider supports multiple types of subject identifiers.
-- `represents` Claims MAY contain additional Claims (e.g. `email`) to provide additional useful information about the represented party.
-- Claims within the `represents` Claim pertain only to the identity of that party and MUST NOT contain Claims that are not related to the represented party, such as top-level Claims `exp`, `nbf`, and `aud`.
+The RAR object allows these relationships to be expressed in a structured, scope-specific way.
 
 <aside class="example">
-A sample chain representation for a requested scope `urn:uuid:a9e17a2e-d358-406d-9d5f-ad6045f712ba` may look like (note: the requested scope also includes the required `openid` scope; Claims that do not add to the example are omitted for readability):
+A sample chain representation for a requested scope `urn:uuid:a9e17a2e-d358-406d-9d5f-ad6045f712ba` may look like (note: the requested scope also includes the required `openid` scope; claims that do not add to the example are omitted for readability):
 <pre>
       {
-        "scope": "openid urn:uuid:a9e17a2e-d358-406d-9d5f-ad6045f712ba",
-        /* End-User - representing the service consumer */
-        "sub": "RKyLpEVr1L",
-        "sub_id_type": "urn:nl-eid-gdi:1.0:id:pseudonym",
-        "iss": "urn:uuid:b556992a-e233-4fdc-915a-e2b52d3cc355",
-        "represents": {
-          /* Intermediary in representation chain - an organization in this example */
-          "sub": "492099595",
-          "sub_id_type": "urn:nl-eid-gdi:1.0:id:RSIN",
-          "iss": "urn:uuid:28e0686f-20ff-41bd-8520-57b9c68cc9a3",
-          "alt_sub": {
-            "sub": "27381312",
-            "sub_id_type": "urn:nl-eid-gdi:1.0:id:KvKnr",
-            "iss": "urn:uuid:ebc29845-d35f-4c6a-bbb2-a59fdcb1cc6b"
-          }
-          "represents": {
-            /* service consumer - represented by the End-User */
-            "sub": "4Yg8u72NxR",
-            "sub_id_type": "urn:nl-eid-gdi:1.0:id:pseudonym",
-            "iss": "urn:uuid:55291cc0-fd2a-4eb6-b444-5b2783e62673"
-          }
-        }
+        "scope": "openid brp_sensitief",
+	    /* Intermediary in representation chain - a system (client) in this example*/
+        "sub": "example-client-id",
+        "subject_type": "public",
+        "iss": "example.as,
+		"authorization_details": {
+		  “type”: “party_authorization_example"
+	 	   /* represented party - an organization in this example */
+           “represented_party”:{
+       		 "sub": "492099595",
+	          "subject_type": "public",
+	          "iss": "urn:nl-eid-gdi:1.0:id:RSIN",
+			  /* person acting on behalf of the represented organisation */
+	          "responsible_person": {
+	            "sub": "4Yg8u72NxR",
+	            "subject_type": "pairwise",
+	            "iss": "urn:<eherkenning>"
+          		}
+        	}
       }
 </pre>
 </aside>
 
-### Example claims
-<aside class="example">
-Its Claims are as follows:
-<pre>
-     {
-            "auth_time": 1418698782,
-            "exp": 1418699412,
-            "sub": "6WZQPpnQxV",
-            "sub_id_type": "urn:nl-eid-gdi:1.0:id:pseudonym",
-            "nonce": "188637b3af14a",
-            "aud": [
-              "c1bc84e4-47ee-4b64-bb52-5cda6c81f788"
-            ],
-            "alt_sub": [{
-              "aud": "379b022d-d9d0-4c43-b7de-290a023eb461",
-              "sub": "xSHCrFm9BG",
-              "sub_id_type": "urn:nl-eid-gdi:1.0:id:pseudonym"
-            }],
-            "iss": "https://idp-p.example.com/",
-            "acr": "http://eidas.europa.eu/LoA/substantial",
-            "iat": 1418698812,
-            "jti": "a65c560d-085c-466e-97c5-f8639fca5ea7",
-            "nbf": 1418699112,
-      }
-  
-</pre>
-</aside>
+### Implementation Guidance
+
+- The `authorization_details` object MAY include one or more `represented_party` elements to indicate the party or organization on whose behalf the client or user acts.
+
+- Nested relationships (for example, `organization → representative → sub-representative`) MAY be expressed through nested objects inside `represented_party`.
+
+- Each object SHOULD include the following claims:
+
+	- `sub` and `iss` — to uniquely identify the represented party.
+
+	- `subject_type` — to indicate the type of identifier used (for example, `public`, `pairwise`, RSIN, KvK).
+
+Additional contextual claims (e.g., `responsible_person`, `role`, or `mandate_type`) MAY be included to convey the legal or organizational basis of the representation.
+
+Claims unrelated to identity (such as `exp`, `nbf`, or `aud`) MUST NOT appear within these objects.
+
 
 ## Glossary
 | Term                            | Definition                                                                               |
@@ -202,7 +183,7 @@ Its Claims are as follows:
 
 ------
 
-
+Hieronder is een stukje van oude tekst voor opmaak en kan genegeerd worden.
 
 ## Representation Relationships
 
