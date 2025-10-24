@@ -166,9 +166,9 @@ A sample chain representation for a requested scope `urn:uuid:a9e17a2e-d358-406d
 
 	- `subject_type` — to indicate the type of identifier used (for example, `public`, `pairwise`, RSIN, KvK).
 
-Additional contextual claims (e.g., `responsible_person`, `role`, or `mandate_type`) MAY be included to convey the legal or organizational basis of the representation.
+- Additional contextual claims (e.g., `responsible_person`, `role`, or `mandate_type`) MAY be included to convey the legal or organizational basis of the representation.
 
-Claims unrelated to identity (such as `exp`, `nbf`, or `aud`) MUST NOT appear within these objects.
+- Claims unrelated to identity (such as `exp`, `nbf`, or `aud`) MUST NOT appear within these objects.
 
 
 ## Glossary
