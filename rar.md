@@ -106,7 +106,7 @@ If more specific authorization information is required — for example, identify
 <aside class="example">
 RAR example:
 <pre>
-	"authorization_details": {
+	"authorization_details": [{
 	  "type": "party_authorization_example",
 	  /* represented party - an organization in this example */
 	  "represented_party": {
@@ -114,7 +114,7 @@ RAR example:
 	    "subject_type": "public",
 	    "sub_id_type": "urn:nl-eid-gdi:1.0:id:RSIN"
 	  }
-	}
+	}]
 </pre>
 </aside>
 
@@ -136,7 +136,7 @@ A sample chain representation for a requested scope `urn:uuid:a9e17a2e-d358-406d
         "sub": "example-client-id",
         "subject_type": "public",
         "iss": "example.as,
-		"authorization_details": {
+		"authorization_details": [{
 		  “type”: “party_authorization_example"
 	 	   /* represented party - an organization in this example */
            “represented_party”:{
@@ -149,7 +149,8 @@ A sample chain representation for a requested scope `urn:uuid:a9e17a2e-d358-406d
 	            "subject_type": "pairwise",
 	            "iss": "urn:<eherkenning>"
           		}
-        	}
+		   }
+		}]
       }
 </pre>
 </aside>
@@ -198,7 +199,7 @@ E.g. an intermediary party acting on behalf of a government party.
   "sub": " example-client-id",
   "subject_type": "public",
   "iss": "example.as",
-  "authorization_details": {
+  "authorization_details": [{
    	 “type”: “party_authorization_example
    	 “represented_party”:{
        		 "sub": "492099595",
@@ -212,6 +213,6 @@ E.g. an intermediary party acting on behalf of a government party.
              			"iss": " urn:<..eherkenning…>. "
     			}
  		 }
-}
+}]
 }
 ```
