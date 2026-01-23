@@ -135,11 +135,11 @@ A sample chain representation for a requested scope `urn:uuid:a9e17a2e-d358-406d
 	    /* Intermediary in representation chain - a system (client) in this example*/
         "sub": "example-client-id",
         "subject_type": "public",
-        "iss": "example.as,
+        "iss": "example.as",
 		"authorization_details": [{
-		  “type”: “party_authorization_example"
+		  "type": "party_authorization_example",
 	 	   /* represented party - an organization in this example */
-           “represented_party”:{
+           "represented_party":{
        		 "sub": "492099595",
 	          "subject_type": "public",
 	          "iss": "urn:nl-eid-gdi:1.0:id:RSIN",
@@ -200,12 +200,12 @@ E.g. an intermediary party acting on behalf of a government party.
   "subject_type": "public",
   "iss": "example.as",
   "authorization_details": [{
-   	 “type”: “party_authorization_example
-   	 “represented_party”:{
+   	 "type": "party_authorization_example,
+   	 "represented_party":{
        		 "sub": "492099595",
       		 /* represented party - an organization in this example */
       		 "subject_type": " public",
-      		 "iss": " urn:nl-eid-gdi:1.0:id:RSIN ",    
+      		 "iss": " urn:nl-eid-gdi:1.0:id:RSIN ",
       		 "responsible_person": {
              			/* person acting on behalf of the repreented organisation */
              			"sub": "4Yg8u72NxR",
