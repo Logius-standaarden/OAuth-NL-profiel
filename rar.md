@@ -19,7 +19,7 @@ They can arise:
 * or by corporate capacity (e.g., director, statutory signatory).
 <!-- Example Representation Use Cases include voluntary authorization, representative assigned by court order (guardian, administrator), statutory signatory (director, president), limited authorized signatory, etc. -->
 
-The formalization of these relationships is out of scope of this profile; this document focuses on how these relationships are conveyed within OAuth and OIDC tokens.
+The formalization of these relationships is out of scope of this profile; this appendix focuses on how these relationships are conveyed within OAuth and OIDC tokens.
 
 ### Delegation vs Representation
 | Concept            | Description                                                                                                                                                | Token claim Pattern                               |
@@ -175,7 +175,7 @@ A sample chain representation for a requested scope `urn:uuid:a9e17a2e-d358-406d
 ## Glossary
 | Term                            | Definition                                                                               |
 | ------------------------------- | ---------------------------------------------------------------------------------------- |
-| **End-User**                    | The natural or juridical person who authenticates and initiates an authorization flow.   |
+| **End-User**                    | The natural or legal person who authenticates and initiates an authorization flow.   |
 | **Service Consumer**            | The entity (person or organization) for which the service is ultimately consumed.        |
 | **Representation Relationship** | A formally defined relationship where one actor represents another.                      |
 | **Delegation**                  | Authorization for an actor to act on behalf of another while retaining its own identity. |
