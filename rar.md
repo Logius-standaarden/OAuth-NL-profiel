@@ -42,7 +42,7 @@ Examples include:
 To model these scenarios, OAuth provides a mechanism for expressing actor relationships through specific claims:
 * [[rfc8693]] OAuth 2.0 Token Exchange — defines `act` and `may_act` claims for representing delegation chains.
 * [[rfc9396]] Rich Authorization Requests (RAR) — defines how specific authorization details can be requested and conveyed between parties.
-* profile-specific claims such as represents introduced in this document.
+* profile-specific, custom claims such as represents introduced NL Gov OIDC Profile. We want to avoid non-standard claims like these and thus will be moving away from it.
 
 ### Application in NL GOV Profiles
 
