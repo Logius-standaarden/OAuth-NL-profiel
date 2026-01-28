@@ -42,7 +42,7 @@ Examples include:
 To model these scenarios, OAuth provides a mechanism for expressing actor relationships through specific claims:
 * [[rfc8693]] OAuth 2.0 Token Exchange — defines `act` and `may_act` claims for representing delegation chains.
 * [[rfc9396]] Rich Authorization Requests (RAR) — defines how specific authorization details can be requested and conveyed between parties.
-* profile-specific, custom claims such as represents introduced NL Gov OIDC Profile. We want to avoid non-standard claims like these and thus will be moving away from it.
+* profile-specific, custom claims such as `represents` introduced NL Gov OIDC Profile. We want to avoid non-standard claims like these and thus will be moving away from it.
 
 ### Application in NL GOV Profiles
 
@@ -81,18 +81,19 @@ A sample delegation chain may look like this (note: the requested scope also inc
 	  "sub": "RKyLpEVr1L",
 	  "subject_type": "public",
 	  "sub_id_type": "urn:nl-eid-gdi:1.0:id:pseudonym",
-	  "aud": ???,
+	  "iss": "https://rvig.burger.example",
 	  "act": {
 		/* Intermediary in reperesentation chain - an organization oacting on behalf of the user in this example */
 		"sub": "492099595",
 		"subject_type": "public",
-		"aud": ???,
 		"sub_id_type": "urn:nl-eid-gdi:1.0:id:RSIN",
+		"iss": "https://rvig.organisatie.example",
 		"act": {
 		  /* Individual acting on behalf of the intermediary organization */
 		  "sub": "4Yg8u72NxR",
 		  "subject_type": "pairwise",
-		  "aud": "urn:nl-eid-gdi:1.0:id:pseudonym" // klopt dit?
+		  "sub_id_type": "urn:nl-eid-gdi:1.0:id:pseudonym",
+		  "iss": "https://rvig.eherkenning.example"
 		}
 	  }
 	}
