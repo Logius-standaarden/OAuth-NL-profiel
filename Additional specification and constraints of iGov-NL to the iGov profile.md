@@ -3,7 +3,7 @@ Additional specification and constraints of iGov-NL to the iGov profile
 =====
 
 # Introduction
-This document is a companion to the NL GOV Assurance profile for OAuth 2.0(iGov-NL). It lists all Added specification and additional constraints of iGov-NL. It provides a compact overview of the differences between the international and dutch profile. For each difference it points to a rationale.
+This document is a companion to the NLgov Assurance profile for OAuth 2.0(iGov-NL). It lists all Added specification and additional constraints of iGov-NL. It provides a compact overview of the differences between the international and dutch profile. For each difference it points to a rationale.
 
 **TODO strikethroughs**
 
