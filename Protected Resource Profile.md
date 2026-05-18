@@ -53,7 +53,7 @@ The protected resource MUST check the <samp>aud</samp> (audience) claim, if it e
 <aside class=" addition">
 <b>iGov-NL : Additional content</b></br>  
 
-In case these (optional) attributes are already provided within the token, no introspection is needed. For further details we encourage to read the [[[NLGOV.OpenID]]] specification.
+In case these (optional) attributes are already provided within the token, no introspection is needed. For further details we encourage to read the [[[NLgov.OpenID]]] specification.
 
 </aside>
 <!-- iGov-NL : End of the additional content -->
