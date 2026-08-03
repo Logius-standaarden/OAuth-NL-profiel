@@ -156,6 +156,7 @@ Parties MAY agree to use `x5u`, for instance for communication within specific
 environments.
  
 </span>
+
 <!-- REVIEW (issue #131): This is unique to the Netherlands and will not appear
      in iGov in this form. A more abstract version could be proposed upstream. -->
 
