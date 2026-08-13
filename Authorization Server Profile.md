@@ -27,7 +27,7 @@ When token exchange is not supported, SAML bearer grant [[rfc7522]] MAY be used 
 <!-- ### [3.1.2.](#rfc.section.3.1.2) Client authentication -->
 #### Client authentication
 
-The authorization server MUST enforce client authentication as described above for the authorization code and client credentials grant types. Public client cannot authenticate to the authorization server.
+The authorization server MUST enforce client authentication as described above for the authorization code and client credentials grant types. 
 
 The authorization server MUST validate all redirect URIs for authorization code ~~and implicit grant types~~.
 
@@ -35,7 +35,7 @@ The authorization server MUST validate all redirect URIs for authorization code 
 #### Dynamic Registration
 
 Dynamic Registration allows for authorized Clients to on-board programmatically without administrative intervention. This is particularly important in ecosystems with many potential Clients, including Mobile Apps acting as independent Clients. Authorization servers MUST support dynamic client registration,
-and clients MAY register using the [Dynamic Client Registration Protocol] [[rfc7591]] for authorization code grant types. Clients MUST NOT dynamically register for the client credentials grant type. Authorization servers MAY limit the scopes available to dynamically registered clients.
+and clients MAY register using the [Dynamic Client Registration Protocol] [[rfc7591]] for authorization code grant types.S Authorization servers MAY limit the scopes available to dynamically registered clients.
 
 Authorization servers MAY protect their Dynamic Registration endpoints by requiring clients to present credentials that the authorization server would recognize as authorized participants. Authorization servers MAY accept signed software statements as described in [[rfc7591]] [[rfc7591]] issued 
 to client software developers from a trusted registration entity. The software statement can be used to tie together many instances of the same client software that will be run, dynamically registered, and authorized separately at runtime. The software statement MUST include the following client metadata parameters:
@@ -127,53 +127,53 @@ The following example shows the JSON document found at a discovery endpoint for 
 Added `tls_client_auth`
 </aside>
 <!-- iGov-NL : End of the additional content -->
-<pre class="json">{
-  "request_parameter_supported": true,
-  "registration_endpoint": "https://idp-p.example.com/register",
-  "userinfo_signing_alg_values_supported": [
-    "HS256", "HS384", "HS512", "RS256", "RS384", "RS512"
-  ],
-  "token_endpoint": "https://idp-p.example.com/token",
-  "request_uri_parameter_supported": false,
-  "request_object_encryption_enc_values_supported": [
-    "A192CBC-HS384", "A192GCM", "A256CBC+HS512",
-    "A128CBC+HS256", "A256CBC-HS512",
-    "A128CBC-HS256", "A128GCM", "A256GCM"
-  ],
-  "token_endpoint_auth_methods_supported": [
-    "private_key_jwt", "tls_client_auth"
-  ],
-  "jwks_uri": "https://idp-p.example.com/jwk",
-  "authorization_endpoint": "https://idp-p.example.com/authorize",
-  "require_request_uri_registration": false,
-  "introspection_endpoint": "https://idp-p.example.com/introspect",
-  "request_object_encryption_alg_values_supported": [
-    "RSA-OAEP", "RSA1_5", "RSA-OAEP-256"
-  ],
-  "service_documentation": "https://idp-p.example.com/about",
-  "response_types_supported": [
-    "code", "token"
-  ],
-  "token_endpoint_auth_signing_alg_values_supported": [
-    "HS256", "HS384", "HS512", "RS256", "RS384", "RS512"
-  ],
-  "revocation_endpoint": "https://idp-p.example.com/revoke",
-  "request_object_signing_alg_values_supported": [
-    "HS256", "HS384", "HS512", "RS256", "RS384", "RS512"
-  ],
-  "grant_types_supported": [
-    "authorization_code",
-    "urn:ietf:params:oauth:grant-type:jwt-bearer",
-    "client_credentials",
-    "urn:ietf:params:oauth:grant-type:token-exchange"
-  ],
-  "scopes_supported": [
-    "profile", "openid", "email", "address", "phone", "offline_access"
-  ],
-  "op_tos_uri": "https://idp-p.example.com/about",
-  "issuer": "https://idp-p.example.com/",
-  "op_policy_uri": "https://idp-p.example.com/about"
-}
+<pre class="json"> {
+    "request_parameter_supported": true,
+    "registration_endpoint": "https://idp-p.example.com/register",
+    "userinfo_signing_alg_values_supported": [
+      "HS256", "HS384", "HS512", "RS256", "RS384", "RS512"
+    ],
+    "token_endpoint": "https://idp-p.example.com/token",
+    "request_uri_parameter_supported": false,
+    "request_object_encryption_enc_values_supported": [
+      "A192CBC-HS384", "A192GCM", "A256CBC+HS512",
+      "A128CBC+HS256", "A256CBC-HS512",
+      "A128CBC-HS256", "A128GCM", "A256GCM"
+    ],
+    "token_endpoint_auth_methods_supported": [
+      "private_key_jwt",
+    ],
+    "jwks_uri": "https://idp-p.example.com/jwk",
+    "authorization_endpoint": "https://idp-p.example.com/authorize",
+    "require_request_uri_registration": false,
+    "introspection_endpoint": "https://idp-p.example.com/introspect",
+    "request_object_encryption_alg_values_supported": [
+      "RSA-OAEP", ?RSA1_5", "RSA-OAEP-256"
+    ],
+    "service_documentation": "https://idp-p.example.com/about",
+    "response_types_supported": [
+      "code", "token"
+    ],
+    "token_endpoint_auth_signing_alg_values_supported": [
+      "HS256", "HS384", "HS512", "RS256", "RS384", "RS512"
+    ],
+    "revocation_endpoint": "https://idp-p.example.com/revoke",
+    "request_object_signing_alg_values_supported": [
+      "HS256", "HS384", "HS512", "RS256", "RS384", "RS512"
+    ],
+    "grant_types_supported": [
+      "authorization_code",
+      "client_credentials"
+    ],
+    "scopes_supported": [
+      "profile", "openid", "email", "address", "phone", "offline_access"
+    ],
+    "op_tos_uri": "https://idp-p.example.com/about",
+    "issuer": "https://idp-p.example.com/",
+    "op_policy_uri": "https://idp-p.example.com/about"
+    "tls_client_certificate_bound_access_tokens": "true"
+    "dpop_signing_alg_values_supported": ["PS256", "ES256"]
+  }
 </pre>
 </aside>
 

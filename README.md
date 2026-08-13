@@ -1,4 +1,4 @@
-# OAuth-NL-profiel
+# NLgov Assurance profile for OAuth 2.0
 
 Dit is het **Nederlandse profiel** voor de internationale **OAuth** API-standaard.
 

@@ -3,7 +3,7 @@ import { loadRespecWithConfiguration } from "https://logius-standaarden.github.i
 loadRespecWithConfiguration({
     authors: [{
         "company": "Logius",
-        "companyURL": "https://www.logius.nl/",
+        "companyURL": "https://www.logius.nl",
         "name": "Jaron Azaria"
     },
     {
@@ -18,32 +18,32 @@ loadRespecWithConfiguration({
     },
     {
         "company": "Logius",
-        "companyURL": "https://www.logius.nl/",
+        "companyURL": "https://www.logius.nl",
         "name": "Alexander Green"
     },
     {
         "company": "Logius",
-        "companyURL": "https://www.logius.nl/",
+        "companyURL": "https://www.logius.nl",
         "name": "Peter Haasnoot"
     },
     {
         "company": "Logius",
-        "companyURL": "https://www.logius.nl/",
+        "companyURL": "https://www.logius.nl",
         "name": "Heiko Hudig"
     },
     {
         "company": "Logius",
-        "companyURL": "https://www.logius.nl/",
+        "companyURL": "https://www.logius.nl",
         "name": "Martin van der Plas"
     },
     {
         "company": "Logius",
-        "companyURL": "https://www.logius.nl/",
+        "companyURL": "https://www.logius.nl",
         "name": "Stas Mironov"
     },
     {
         "company": "Logius",
-        "companyURL": "https://www.logius.nl/",
+        "companyURL": "https://www.logius.nl",
         "name": "Leon van der Ree"
     },
     {
@@ -53,7 +53,7 @@ loadRespecWithConfiguration({
     },
     {
         "company": "Logius",
-        "companyURL": "https://www.logius.nl/",
+        "companyURL": "https://www.logius.nl",
         "name": "Remco Schaar"
     },
     {
@@ -69,7 +69,7 @@ loadRespecWithConfiguration({
     ],
     editors: [{
             "company": "Logius",
-            "companyURL": "https://www.logius.nl/",
+            "companyURL": "https://www.logius.nl",
             "mailto:": "api@logius.nl",
             "name": "Logius Standaarden"
         },
