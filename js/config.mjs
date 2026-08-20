@@ -83,6 +83,6 @@ loadRespecWithConfiguration({
     publishDate: "2025-07-18",
     publishVersion: "1.2.0",
     shortName: "oauth",
-    specStatus: "CV",
+    specStatus: "WV",
     specType: "ST",
 });
