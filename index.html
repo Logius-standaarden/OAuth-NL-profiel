@@ -7,8 +7,21 @@
   <title>
    NLgov Assurance profile for OAuth 2.0
   </title>
-  <link href="https://gitdocumentatie.logius.nl/publicatie/respec/style/logos/logius.ico" rel="shortcut icon" type="image/x-icon"/>
-  <script class="remove" type="module" src="js/config.mjs"></script>
+  <!-- Invullen: de naam van de lokale CSS file  - - - - - - - - - - - - - - - - - - - - - - - -->
+  <link href="./media/style.css" rel="stylesheet" type="text/css"/>
+  <script class="remove" src="https://gitdocumentatie.logius.nl/publicatie/respec/organisation-config.js">
+  </script>
+  <script class="remove" src="js/config.js">
+  </script>
+  <script class="remove">
+   respecConfig = {...organisationConfig, ...respecConfig};
+  </script>
+  <!-- link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico" / -->
+  <link href="https://gitdocumentatie.logius.nl/publicatie/respec/style/logos/Geonovum.ico" rel="shortcut icon" type="image/x-icon"/>
+  <!-- script src="https://tools.geostandaarden.nl/respec/builds/respec-geonovum.js" class="remove" async></script -->
+  <!-- <script src="https://gitdocumentatie.logius.nl/publicatie/respec/builds/respec-geonovum.js" class="remove" async></script> -->
+  <script async="" class="remove" src="https://gitdocumentatie.logius.nl/publicatie/respec/builds/respec-nlgov.js">
+  </script>
  </head>
  <body>
   <div>
@@ -29,9 +42,15 @@
   </div>
   <section data-include="Abstract.md" data-include-format="markdown" id="abstract">
   </section>
+  <!-- <section id="conformance" class="notoc"> - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- </section>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - - - - -->
+  <!-- vanaf hier per hoofdstuk een sectie of een div in het document- - - - - - - - - - - - - -->
+  <!-- Secties komen in de inhoudsopgave div's niet- - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- Secties hebben verplicht <h2> tags, div's niet- - - - - - - - - - - - - - - - - - - - - -->
   <section id="sotd">
   </section>
-  <div data-include="SOTD.md" data-include-format="markdown"></div>
+  <div data-include="SOTD.md" data-include-format="markdown">
+  </div>
   <section class="introductory" data-include="Preface.md" data-include-format="markdown">
   </section>
   <section data-include="Introduction.md" data-include-format="markdown" id="conformance">
