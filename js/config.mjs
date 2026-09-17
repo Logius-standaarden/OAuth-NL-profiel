@@ -91,6 +91,14 @@ loadRespecWithConfiguration({
     github: "https://github.com/Logius-standaarden/OAuth-NL-profiel/",
     issueBase: "https://github.com/Logius-standaarden/OAuth-NL-profiel/issues",
     licence: "cc-by-nd",
+    localBiblio: {
+        "draft-ietf-oauth-v2-1": {
+            authors: ["Dick Hardt", "Aaron Parecki", "Torsten Lodderstedt"],
+            href: "https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1",
+            publisher: "IETF",
+            title: "The OAuth 2.1 Authorization Framework"
+        }
+    },
     previousPublishDate: "2024-12-03",
     previousPublishVersion: "v1.1.0",
     pubDomain: "api",
